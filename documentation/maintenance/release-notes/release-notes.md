@@ -5,6 +5,8 @@ description: RadiantOne IDDM Release Notes
 
 ## RadiantOne Identity Data Management Release Notes
 
+**v8 release notes:**
+
 - [v8.1.0](../../maintenance/release-notes/iddm-8-1-0) - Release Date: July 1, 2024
 - [v8.1.1](../../maintenance/release-notes/iddm-8-1-1) - Release Date: Oct 3, 2024
 - [v8.1.2](../../maintenance/release-notes/iddm-8-1-2) - Release Date: Dec 23, 2024
@@ -27,6 +29,11 @@ description: RadiantOne IDDM Release Notes
 - [v8.5.1](../../maintenance/release-notes/iddm-8-5-1.md) - Release Date: August 14, 2026
 - [v8.5.2](../../maintenance/release-notes/iddm-8-5-2.md) - Release Date: August 28, 2026
 - [v8.5.3](../../maintenance/release-notes/iddm-8-5-3.md) - Release Date: September 09, 2026
+- [v8.5.4](../../maintenance/release-notes/iddm-8-5-4.md) - Release Date: September 23, 2026
+
+See v9 release notes [here](../v9release-notes/v9release-notes.md).
+
+
 
 
 

@@ -5,6 +5,8 @@ description: Learn how to deploy RadiantOne Identity Data Management in your own
 
 ## Overview
 
+> ![warning] This document covers v8 deployment instructions. To deploy the latest v9 version, refer to the [v9 self-managed](./self-managed-v9.md) guide.
+
 This document provides instructions for deploying RadiantOne Identity Data Management on your Kubernetes cluster using Helm charts. It covers prerequisites, lists the microservices involved, and explains how to access the Identity Data Management control panel on your local machine via port-forwarding.
 
 Self-managed Identity Data Management can be deployed on supported Kubernetes cluster (cloud or on-premise). Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE) and RedHat OpenShift are currently supported. The installation process exclusively utilizes Helm, meaning you will use `helm install` or `helm upgrade` commands.
@@ -35,6 +37,8 @@ The table below shows the mapping between the Identity Data Management applicati
 | 8.5.1                                                                                    | 1.5.1                                |
 | 8.5.2                                                                                    | 1.5.2                                |
 | 8.5.3                                                                                    | 1.5.3                                |
+| 8.5.4                                                                                    | 1.5.4                                |
+
 
 
 
@@ -47,7 +51,7 @@ Ensure that you specify your target version when running installation and update
 - Install [kubectl](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
 - For new customers, an Identity Data Management license key will be provided to you during onboarding. For existing customers that want to upgrade to v8.1 self-managed, your existing license key should work. If you have issues, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
 - For new customers, ensure that you have received Container Registry Access and image pull credentials named **(regcred.yaml)** from Radiant Logic during onboarding. For existing customers that want to upgrade to v8.1 self-managed, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/ to request registry credentials.
-- Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
+- Identity Data Management requires the use of persistent volumes. Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
 - Estimate sufficient resources (CPU, memory, storage) for the deployment. <b> The default amount indicated in the helm chart MAY NOT BE SUFFICIENT FOR YOUR USE CASES. Update them accordingly. </b> Your Radiant Logic solutions engineer can guide you here based on your use cases.
 - Enable Nested Virtualization if you are testing self-managed deployments using Docker Desktop. Nested virtualization allows a virtual machine (VM) to act as a host for other VMs, enabling scenarios like running Docker Desktop inside a VM.
 
@@ -62,7 +66,7 @@ Ensure that you specify your target version when running installation and update
    ```yaml
    replicaCount: 1 # Use 1 for testing, use 2 or more for production if needed. 
    image:
-     tag: 8.5.3
+     tag: 8.5.4
    fid:
      license: >-
        YourLicense
@@ -134,7 +138,7 @@ Ensure that you specify your target version when running installation and update
 4. **Optional - dry run your deployment**
 
    ```bash
-   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.3 --values </path/to/your/values.yaml> --set env.INSTALL_SAMPLES=true --debug --dry-run
+   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.4 --values </path/to/your/values.yaml> --set env.INSTALL_SAMPLES=true --debug --dry-run
    ```
 
    This command will process your YAML config files without deploying anything. If everything looks good, re-run the command without the `--dry-run` parameter. Setting `INSTALL_SAMPLES=true` is optional for testing purposes and not recommended for production deployment.
@@ -145,7 +149,7 @@ Ensure that you specify your target version when running installation and update
    Ensure that you provide the appropriate path for your values.yaml file before running this command:
 
    ```bash
-   helm -n self-managed install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.3 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.4 --values </path/to/your/values.yaml> --debug
    ```
 
 6. **Verify deployment**
@@ -250,7 +254,7 @@ kubectl rollout status statefulset/fid -n self-managed
 To update any resources or settings, change the values in `values.yaml` and run the following command:
 
 ```bash
-   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.3 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.4 --values </path/to/your/values.yaml> --debug
 ```
 
 ## Troubleshooting your Kubernetes environment

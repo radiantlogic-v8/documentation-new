@@ -49,9 +49,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Self-managed Deployment](installation/self-managed/)
   > Learn how to deploy Identity Data Management using Helm charts in your own Kubernetes cluster.
  
-  > [Upgrades](installation/upgrades/)
-  > Learn about supported upgrade paths.
-      
+    
 </section>
 
 ## Configuration and Administration
@@ -158,14 +156,20 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to implement an integration that allows you to synchronize data between SailPoint and Identity Data Management.
 
   > [Synchronizing On-Prem Users to Entra ID](use-cases/onprem-entraidsync)
-  > Learn how to synchronize on-prem AD users to Entra ID using RadiantOne.
+  > Learn how to synchronize on-prem AD users to Entra ID.
 
   > [Synchronizing Passwords using RadiantOne Password Filter](use-cases/radiantone-password-filter)
   > Learn how to use the RadiantOne Password Filter to keep user passwords consistent across multiple Active Directories.
-     
 
-     
-     
+  > [Modernize Legacy LDAP Directories](use-cases/ldap-directory-replacement)
+  > Learn how to migrate from legacy LDAP directories to the RadiantOne Directory. 
+
+  > [Integrate Identity Data from Okta Universal Directory](use-cases/radiantone-okta-integration)
+  > Learn how to ingest/virtualize identity data from Okta Universal Directory.
+ 
+  > [Leverage Okta as the Identity Provider for SSO into Control Panel](use-cases/okta-sso-controlpanel)
+  > Learn how to configure Okta as an Identity Provider for Corporate SSO into Control Panel.
+  
 </section> 
 
 ## Troubleshooting
@@ -194,8 +198,11 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [Release Notes](maintenance/release-notes/release-notes)  
-  > Release notes contain important information about new features, improvements and bug fixes for RadiantOne Identity Data Management.
+  > [v8 Release Notes](maintenance/release-notes/release-notes)  
+  > Release notes contain important information about new features, improvements and bug fixes.
+
+  > [v9 Release Notes](maintenance/release-notes/release-notes)  
+  > Release notes contain important information about new features, improvements and bug fixes.
 
   > [Security Vulnerability Report](maintenance/vulnerability-report)  
   > Learn about security vulnerabilities that have been addressed in each patch release.
@@ -213,7 +220,11 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to restart environments. 
      
   > [Deleting Environments](maintenance/managing-environments#deleting-environments)  
-  > Learn how to delete environments. 
+  > Learn how to delete environments.
+
+  > [Upgrades](upgrade-guides/iddm-v8-v9-comparison)  
+  > Learn how to upgrade your RadiantOne v8 service. 
+
 
 </section>
 
@@ -290,6 +301,15 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
   > [API Developer Guide - v8.5.0](/api/v8.5.0)
   > Version 8.5.0 of RadiantOne Identity Data Management Configuration API.
+
+  > [API Developer Guide - v8.5.1](/api/v8.5.1)
+  > Version 8.5.1 of RadiantOne Identity Data Management Configuration API.
+
+  > [API Developer Guide - v8.5.2](/api/v8.5.2)
+  > Version 8.5.2 of RadiantOne Identity Data Management Configuration API.
+
+  > [API Developer Guide - v8.5.3](/api/v8.5.3)
+  > Version 8.5.3 of RadiantOne Identity Data Management Configuration API.
   
 </section>
 
@@ -321,16 +341,17 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 Discover and download connectors for the RadiantOne Identity Data Platform.
 
 <section>
-  <connector name="Bedrock Connector" eyebrow="AI Agents" meta="v1.0.1" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/agentic-aws-bedrock" capabilities="agents,readonly">List AI agents from Amazon Bedrock and Bedrock AgentCore — one region, and one or several AWS accounts in a single crawl.
+  <connector name="Bedrock Connector" eyebrow="AI Agents" meta="v1.0.1" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="agents,readonly">List AI agents from Amazon Bedrock and Bedrock AgentCore — one region, and one or several AWS accounts in a single crawl.
   </connector>
-  <connector name="Foundry Connector" eyebrow="AI Agents" meta="beta" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/microsoft-azure-ai-foundry" capabilities="agents,readonly">Lists AI agents from Azure AI Foundry in a single Azure subscription (optionally scoped to one resource group / project).
+  <connector name="Foundry Connector" eyebrow="AI Agents" meta="beta" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="agents,readonly">Lists AI agents from Azure AI Foundry in a single Azure subscription (optionally scoped to one resource group / project).
   </connector>
-  <connector name="GCP Connector" eyebrow="AI Agents" meta="beta" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/google-cloud-agents" capabilities="agents,readonly">Lists AI agents (Vertex AI Reasoning Engines, Dialogflow CX/ES, Agent Builder) across GCP projects and locations using a service-account key.
+  <connector name="GCP Connector" eyebrow="AI Agents" meta="beta" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="agents,readonly">Lists AI agents (Vertex AI Reasoning Engines, Dialogflow CX/ES, Agent Builder) across GCP projects and locations using a service-account key.
   </connector>
-  <connector name="Idira Privilege Cloud (formerly CyberArk)" eyebrow="Privileged Access" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/cyberark-privilege-cloud" capabilities="identity,readonly">List privileged users and the roles they belong to, with role nesting, from Idira.
+  <connector name="Idira Privilege Cloud (formerly CyberArk)" eyebrow="Privileged Access" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,readonly">List privileged users and the roles they belong to, with role nesting, from Idira.
   </connector>
-<connector name="ServiceNow" eyebrow="Workforce Automation" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/servicenow" capabilities="identity,limitedwriteback">List users, groups, and roles from ServiceNow.
+<connector name="ServiceNow" eyebrow="Workforce Automation" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List users, groups, and roles from ServiceNow.
 </connector>
+<connector name="Workday" eyebrow="Workforce Management" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,readonly">List workers, jobs, job postings, supervisory organizations, integration system users, security groups, security group memberships, security domains, and business processes from Workday.</connector>
 </section>
 </tabpanel>
 </tabpanels>

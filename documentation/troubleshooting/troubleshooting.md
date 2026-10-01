@@ -11,7 +11,6 @@ RadiantOne uses the log4J v2 API for logging. Although a variety of log files ar
 
 There are different log settings and log levels for each log type. Refer to the [log settings](../tuning/log-settings/) guide to learn how to manage these settings. 
 
-
 ## Viewing Logs
 
 Logs can be viewed from Server Control Panel and Environment Operations Center for SaaS deployments.
@@ -31,7 +30,7 @@ Once logged into the Classic Control Panel, click the Server Control Panel optio
 
 ![Server Control Panel](Media/server-cp.jpg)
 
-Go to the Log Viewer tab and select the log file from the drop-down list. To download logs, follow these steps:
+Go to the Log Viewer tab and select the log file from the drop-down list. To **download logs**, follow these steps:
 
 1. Switch to classic control panel.
 
@@ -50,6 +49,38 @@ Go to the Log Viewer tab and select the log file from the drop-down list. To dow
 	c. To download log files from all nodes with rollovers, click the Download dropdown and choose Download from All with Rollovers.  A .zip (e.g., vds_serverlog.zip) with the current log and all rollover files from every node is downloaded.
 		
 	d. To select specific log files from any server/node, click the dropdown arrow next to Download. Select the Open Download Browser. You can pick specific files and download only what you need.
+
+#### Downloading Cluster Logs
+
+In a clustered deployment, administrators can download and aggregate log files across all cluster nodes into a single archive. You can also specify an optional timestamp range to filter log entries within a specific timeframe.
+
+To download cluster logs:
+
+1. Switch to the Classic Control Panel.
+2. Go to Server Control Panel > Log Viewer tab.
+3. Click the **Download Cluster Logs** button to open the log collection dialog.
+
+From the dialog, choose one of two download methods:
+
+##### Method 1: Run as a Background Job
+
+Running log collection as a background job aggregates files asynchronously on the server without tying up the browser session.
+
+1. In the **Download Cluster Logs** modal, click **New Job**.
+2. *(Optional)* Select a **Start Date/Time** and **End Date/Time** to filter log entries across nodes for a specific investigation window.
+3. Click **Start**. The job is submitted and appears in the jobs table with its current status (*In Progress*, *Completed*, or *Failed*).
+4. Once the status shows **Completed**, select the job and click **Download** to save the generated `.zip` archive to your local machine.
+
+> Background job archives are stored server-side under `RLI_HOME/work/cluster-logs/`. Completed archives can be re-downloaded from the jobs list or accessed directly on the filesystem until cleaned up.
+
+##### Method 2: Immediate Download
+
+Streaming directly to the browser is useful when you want to retrieve logs immediately without consuming persistent server disk space.
+
+1. In the **Download Cluster Logs** modal, select the **Download immediately (stream to client)** option.
+2. *(Optional)* Specify the **Start Date/Time** and **End Date/Time** filter range.
+3. Click **Start**.
+4. The archive is streamed directly to your browser download directory as the nodes return their log streams.
 
 #### Audit logs
 
@@ -118,7 +149,26 @@ The vds_server_access.log contains less information than vds_server.log and is u
 
 **Log Output Format**
 
-The output formats for the access log are text and CSV by default. 
+The output formats for the access log are text and CSV by default.
+
+**Customizing Timestamp Format and Timezone**
+
+In self-managed Identity Data Management, you can format timestamps in ISO format and specify a timezone for vds_server_access.log.
+
+To configure:
+
+1. Navigate to Tuning > Log Settings.
+
+2. Select RadiantOne LDAP Access and expand Advanced.
+
+3. Configure the following:
+   * USE ISO TIMESTAMP FORMAT: Check to enable ISO 8601 formatting (e.g., 2026-02-14T01:55:10.668Z UTC).
+   * TIMESTAMP TIMEZONE: Select your desired timezone (e.g., UTC) from the list.
+
+4. Click Save.
+
+To verify:
+Open Server Control Panel > Log Viewer > vds_server_access.log to confirm new entries display the updated timestamp and timezone.
 
 **Bind DN Information in vds_server_access.log**
 

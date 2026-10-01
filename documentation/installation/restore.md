@@ -38,10 +38,13 @@ In the `url` property, enter a URL pointing to the backup export file  (`export.
  
 Once you have made the necessary changes to your values.yaml file, run the install command to deploy the chart: 
 
- 
-```bash 
-  helm -n self-managed install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.3 --values </path/to/your/values.yaml> --debug 
-``` 
+ ```
+helm -n self-managed install fid \
+  oci://registry-1.docker.io/radiantone/iddm-helm \
+  --version 9.0.0 \
+  --values </path/to/your/values.yaml> \
+  --wait
+  ```
 
  
 

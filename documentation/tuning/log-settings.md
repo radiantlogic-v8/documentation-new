@@ -24,9 +24,9 @@ The available components include:
 
 - **RadiantOne Server Log**: Core directory server log capturing LDAP requests and responses, backend commands, and server-side errors for general troubleshooting of the RadiantOne service.  
 
-- **RadiantOne LDAP Access**: Access/audit log that records who connects to RadiantOne via LDAP, what operations they perform, and the server’s results, typically in a detailed, reportable format.  
+- **RadiantOne LDAP Access**: Access/audit log that records who connects to RadiantOne via LDAP, what operations they perform, and the server’s results, typically in a detailed, reportable format. For self-managed deployments, you can configure RadiantOne LDAP Access log timestamps by enabling _Use ISO timestamp format_ and selecting the desired timezone (for example, UTC).
 
-- **ADAP Access**: REST/ADAP access log that tracks REST calls to RadiantOne (binds, searches, CRUD operations) and related errors for the ADAP web service interface.  
+- **ADAP Access**: REST/ADAP access log that tracks REST calls to RadiantOne (binds, searches, CRUD operations) and related errors for the ADAP web service interface.
 
 - **SCIM**: SCIM log that records SCIMv2 API activity, including POST, PUT, PATCH, and DELETE operations and internal processing for SCIM client requests.  
 
@@ -57,7 +57,7 @@ The table below shows which settings are available in each component based on th
 | Log Component | SaaS Settings | Self-Managed Settings |
 |---|---|---|
 | RadiantOne Server | Log Level, Enable Debug SSL, Log Failure Notification | Log Level, Enable Debug SSL, Log Failure Notification, Rollover Size, Archive Files to Keep, Integrity Assurance |
-| RadiantOne LDAP Access | Ignore Access Logs for Naming Contexts | Ignore Access Logs for Naming Contexts, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| RadiantOne LDAP Access | Ignore Access Logs for Naming Contexts | Ignore Access Logs for Naming Contexts, Rollover Size, Archive Files to Keep, Integrity Assurance, Timestamp Settings |
 | ADAP Access | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
 | SCIM | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
 | Persistent Cache Periodic Refresh | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
