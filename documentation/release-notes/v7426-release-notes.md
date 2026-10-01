@@ -79,6 +79,7 @@ Entry creation and modification details (who created or last changed an entry, a
 - [IV4-719, SQ-1570]: Fixed a problem where a directory store could become unusable after an interrupted background copy between cluster nodes. If replication was cut short — for example by a node restart or a network drop — the store could be left with an incomplete index file and would fail to load, reporting an unexpected file read error. Replicated data is now published only once it has been fully and verifiably copied, so an interrupted transfer simply retries and leaves the previous good copy in place.
 - [IV4-768, SQ-1803]: Fixed an issue where AD-to-AD password synchronization stopped applying password changes after a few successful syncs until RadiantOne was restarted.
 - [IV4-779, SQ-1843]: Fixed an issue with a move or rename on a RadiantOne Directory store that put the whole RDN into the first attribute when the entry had a multi-valued RDN like cn=Sam+uid=sammy. Renaming now removes just the old RDN value instead of the whole attribute, so other values on that attribute are kept.
+- [IV4-829, SQ-1968]: Fixed an issue in which large numbers of searches with timelimits could potentially exhaust the system's threads.
 
 ## Bug Fixes
 
