@@ -101,3 +101,11 @@ Additionally, you might need to perform these steps after the v8 application is 
 2. Reapply configuration changes made after the backup.
 3. Verify data and application access.
 4. Update client endpoints and, if applicable, the OIDC callback URL.
+
+## Release notes and support
+
+For v9 improvements and fixes, see the [v9.0 release notes](../maintenance/v9release-notes/v9release-notes).
+
+For known issues reported after release, see the [Radiant Logic Knowledge Base](https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues).
+
+To report problems or provide feedback, use [Radiant Logic Support](https://support.radiantlogic.com). If you do not have a Support login, contact [support@radiantlogic.com](mailto:support@radiantlogic.com).
