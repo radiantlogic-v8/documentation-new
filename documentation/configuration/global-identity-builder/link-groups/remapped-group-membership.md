@@ -19,4 +19,4 @@ After RadiantOne is configured to compute the group members, you can see that Do
 
 ![Remapped Group Membership Example](../../Media/image100.png)
 
-To learn more about Global Identity Builder, please read the chapter that describes how to [integrate and configure a Global Identity Builder custom data source](../integrate-configure-data-source.md)
+To learn more about Global Identity Builder, read [Integrate and configure a Global Identity Builder custom data source](../integrate-configure-data-source.md)

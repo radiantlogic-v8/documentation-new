@@ -17,7 +17,7 @@ The virtual view of group entries needs a computed attribute defined for the mem
 1. Select the **remapDN(attr2remap,dataSourceID,externalBaseDN,scope,externalIdAttr)** function and select **OK**.
 1. Select the `member` attribute as the `attr2remap` attribute. This the existing group entry attribute that contains the information needed to lookup the member in the global profile view.
 1. Select **vds** as the data source ID.
-1. Check the **External Base DN** option and enter the container where the global profile view was mounted below the `ou=Users` described in this chapter (for example `ou=Users,o=rli`).
+1. Check the **External Base DN** option and enter the container where the global profile view was mounted below the `ou=Users` described in this page (for example `ou=Users,o=rli`).
 1. The `externalIdAttr` attribute must be the one in the global profile that contains that matching value of the RDN in the existing group member DNs. In this example, it is the `cn` attribute.<br>
     ![Function Parameters](../../Media/image91.png)
 1. Select **Ok**.

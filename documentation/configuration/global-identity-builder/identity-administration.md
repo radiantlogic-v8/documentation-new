@@ -5,7 +5,7 @@ description: Perform manual identity administration in Global Identity Builder
 
 # Perform manual identity administration in Global Identity Builder
 
-With every Global Identity Builder project, there is usually an element of manual intervention required after initial project creation. This is because the quality of the data in identity sources makes it difficult to come up with enough combinations of correlation rules to match 100% of the overlapping identities. The manual tasks that an administrator can perform are described in this chapter.
+With every Global Identity Builder project, there is usually an element of manual intervention required after initial project creation. This is because the quality of the data in identity sources makes it difficult to come up with enough combinations of correlation rules to match 100% of the overlapping identities. The manual tasks that an administrator can perform are described in this page.
 
 ## Remove identities from the global profile
 
@@ -114,4 +114,4 @@ During the design phase of your project (while [real-time persistent cache refre
 >[!warning]
 >If the new login attribute does not exist in the global profile, you must re-upload the data. In this case, the login analysis is launched automatically so there is no need to manually trigger it.
 
-To learn more about the post-creation process, please read the chapter that describes how to [manage real-time persistent cache refresh](manage-persistent-cache/overview.md).
+To learn more about the post-creation process, refer to [manage real-time persistent cache refresh](manage-persistent-cache/overview.md) guide.

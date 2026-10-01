@@ -5,13 +5,14 @@ description: Web Services API Guide
 
 # SCIM
 
-The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This chapter describes the configuration of the RadiantOne SCIM service.  The RadiantOne service supports SCIMv2.
+The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This document explains how to configure the RadiantOne SCIM service. RadiantOne supports SCIMv2.
 
 ## Configuration
 
-For the RadiantOne service to support SCIM queries from clients, a SCIM schema and resource type are required. The SCIM configuration is accessed in the Classic Control Panel. 
+For the RadiantOne service to support SCIM queries from clients, a SCIM schema and resource type are required. You can access the SCIM configuration from the Classic Control Panel.
 
 ### Classic Control Panel
+
 Open Classic Control Panel from the logged in user icon drop-down in the upper right corner:
 
 ![An image showing ](Media/classic-cp.jpg)

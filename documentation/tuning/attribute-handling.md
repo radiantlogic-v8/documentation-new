@@ -37,55 +37,127 @@ Sometimes, LDAP directory schema definitions do not define certain attributes as
 
 ## Duplicate Entry Handling
 
-Manage duplicates handling from Classic Control Panel > Settings > Server Front End > Duplicates Handling.
+Use duplicate handling when aggregated virtual views can return the same identity more than once. Configure duplicate entry handling through the Settings Service REST API. With the deprecation of the Classic Control Panel, this setting is not available in the Control Panel UI. 
 
 ### Duplicate DN Removal
 
 During the identification phase (finding the identity in the directory tree) of the authentication process, it is important that a search for a specific, unique account only returns one entry.
 
-When aggregating model-driven virtual views (created in Context Builder) from multiple sources, there is the potential to have duplicate DN’s (e.g. the same person exists in more than one source or the same identifier belongs to different people). Returning multiple identities with the same DN is a violation of an LDAP directory. Therefore, if your virtual namespace encounters this configuration issue, you can enable the Duplicate DN Removal option to have RadiantOne return only the first entry. This is fine if the duplicate DN’s result in the same person. If they are not the same person, then you have a different problem which is identity correlation (correlating and reconciling the same person in multiple data sources) that needs to be addressed. To assist with your identity correlation problem, please see [Global Identity Builder Guide](/documentation/configuration/global-identity-builder/introduction).
+When aggregating model-driven virtual views (created in Context Builder) from multiple sources, there is the potential to have duplicate DN’s (e.g. the same person exists in more than one source or the same identifier belongs to different people). Returning multiple identities with the same DN is a violation of an LDAP directory. Therefore, if your virtual namespace encounters this configuration issue, you can enable the Duplicate DN Removal option to have RadiantOne return only the first entry. This is fine if the duplicate DN’s result in the same person. If they are not the same person, then you have a different problem which is identity correlation (correlating and reconciling the same person in multiple data sources) that needs to be addressed. If your sources contain overlapping accounts that must be correlated, reconciled, or combined into a complete profile, refer to the [Global Identity Builder guide](/documentation/configuration/global-identity-builder/introduction) for assistance.
 
-Let’s look at an example of duplicate DN’s being returned for the same person. A person named Laura Callahan has an Active Directory account and a Sun Directory account. If both sources are virtualized and then merge-linked into a common virtual tree, a search on the tree would yield two results (because the RDN configured in the virtual views is exactly the same). Below is a screen shot of the virtual tree where both virtual views are linked, and a search from the Control Panel > Manage > Directory Browser, that returns two results.
+#### Required permissions
 
-![Virtual View Aggregating Two Data Sources](Media/Image3.47.jpg)
- 
-![Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne](Media/Image3.48.jpg)
- 
-If Laura Callahan in Active Directory is in fact the same Laura Callahan as in Sun, you can enable Duplicate DN Removal to consolidate the two accounts. The screen shots below show the Duplicate DN Removal option enabled and the new result for the search.
+Requests must use an authorization token associated with an account that has the required **Tuning > Attribute Handling** scope.
 
-![Duplicate DN Removal Setting](Media/Image3.49.jpg)
- 
-![Search Result after Enabling Duplicate DN Removal](Media/Image3.50.jpg)
+![The Tuning section of the scope settings, with Attribute Handling set to View & Edit](Media/tuning-attribute-handling-scope.png)
 
-The one entry returned with attributes from the first source the user was found in (Active Directory in this example).
+| Scope | Permission | Allows you to |
+| --- | --- | --- |
+| `SCOPE_TUNING_GLOBAL_ATTRIBUTES_VIEW` | View | Retrieve the current duplicate-entry configuration |
+| `SCOPE_TUNING_GLOBAL_ATTRIBUTES_EDIT` | View & Edit | Update duplicate DN checking and duplicate identity rules |
 
-![Result of Duplicate DN Removal](Media/Image3.51.jpg)
+#### View the configuration
 
-### Duplicate Identity Removal Rules
+Retrieve the duplicate DN checking setting and configured duplicate identity rules.
 
->[!note] 
->In general, it is usually recommended that you use the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) to build your view if you know you have overlapping entries that require correlation/disambiguation.
+```
+GET /api/settings-service/duplicate_handling
+```
 
-In cases where RadiantOne is aggregating common user identities from multiple data sources, you have the option to configure it to remove any duplicate users (from search responses) if it finds there is a common attribute/identifier (across the data sources you have aggregated). It can also be used as a way for RadiantOne to eliminate ambiguity by returning only one unique entry. Let’s take two sources as an example. Source 1 is Active Directory and source 2 is a Sun directory. Both sources have been aggregated into the virtual namespace below a naming context of dc=demo and as the two following screens show, Laura Callahan exists in both.
+Example response:
 
-![Virtual Entry from Active Directory Backend](Media/Image3.52.jpg)
+```
+{
+  "duplicateDnChecking": true,
+  "duplicationDnRules": [
+    {
+      "suffix": "ou=hr,o=examples",
+      "attributes": ["uid"]
+    },
+    {
+      "suffix": "o=companyprofiles",
+      "attributes": ["uid", "mail"]
+    }
+  ]
+}
+```
 
-![Virtual Entry from Sun Directory Backend](Media/Image3.53.jpg)
+#### Configure duplicate DN checking
 
-The unique Identifier between the examples above is employeeID (employeeNumber in Sun has been mapped to employeeID to provide a common attribute between Sun and Active Directory). Therefore, a subtree search for employeeID=8 below dc=demo would return two people in this example.
+Duplicate DNs can occur when multiple virtual views are linked into the same namespace and generate entries with the same DN. LDAP search results cannot contain multiple entries with the same DN, so enable duplicate DN checking to return only the first matching entry.
 
-![Two Entries are Returned based on Filter of EmployeeID=8](Media/Image3.54.jpg)
+*Example: the same person in two linked views*
 
-Now, if Duplicate Identity Removal rules are configured, RadiantOne returns only the first entry that it finds (in this case, the one from Active Directory). Multiple duplicate identity rules can be configured (each branch in the RadiantOne namespace may have a duplicate identity removal rule). In addition, multiple attributes may be used to determine a duplicate identity. For example, you can set uid,employeeid and this means if an entry has the same uid and employeeid then it is the same person. Make sure to list the attributes you want to use to determine a duplicate identity with a comma separating each attribute name. Remember to save your settings after defining the rules.
+A person named Laura Callahan has an Active Directory account and a Sun Directory account. Both sources are virtualized and then merge-linked into a common virtual tree. Because the RDN configured in each virtual view is identical, both views generate the DN `cn=Laura Callahan,dc=demo`, and a search of the tree from **Control Panel > Manage > Directory Browser** returns two results.
 
-![Duplicate Identity Removal Settings](Media/Image3.55.jpg)
+If the Active Directory Laura Callahan is in fact the same person as the Sun Directory Laura Callahan, enable duplicate DN checking to consolidate the two accounts. The same search then returns a single entry, with attributes from the first source the user was found in — Active Directory, in this example.
 
->[!warning] 
->The identity attribute selected, must satisfy the following requirements: 
-<br>Single-valued <br>Represent an identity (sAMAccountName, employeeID, etc...) <br>If the attribute is not present in an entry, the entry is returned. <br>If no suffix is specified, this identity attribute applies to the whole server search response.<br>The RadiantOne service must be restarted after changing these parameters. <br>Any search response returned by RadiantOne (below the specified starting suffix) checks if another entry with the same attribute/value has already been returned. If an entry with the same identity attribute value has been returned, then others are not returned.
+Enable duplicate DN checking only when duplicate DNs represent the same person. If they represent different people, resolve the underlying identity correlation or namespace issue instead of suppressing the results.
 
-![One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled](Media/Image3.56.jpg)
+Make the following request to enable (duplicateDnChecking: true) or disable (duplicateDnChecking: false) duplicate DN checking. 
 
-This is ideal for handling authentication requests (to ensure only one entry is returned to base authentication on). However, for authorization purposes, if a user exists in more than one source, only attributes from the first source are returned. If you need a complete profile of attributes coming from all the user’s accounts, then you need to configure joins to all branches in the virtual tree where the user may have an account. This join condition can be based on the identity attribute (or any other attribute that can be used to uniquely identify the person in the other branch). As a result, searches for the user still return only one entry. Without a join configured across these virtual views, only attributes from the first source the user was found in would be returned. For details on joining, please see [Joins](../introduction/concepts#joins) in the Concepts section.
+```
+PUT /api/settings-service/duplicate_handling/dn-checking
+```
+
+```
+{
+  "duplicateDnChecking": true
+}
+```
+
+#### Configure duplicate identity rules
+
+Duplicate identity rules suppress entries with matching attribute values, even when the entries have different DNs. Define rules for a namespace suffix and one or more attributes that identify an identity.
+
+Use these rules when RadiantOne aggregates common user identities from multiple sources and a shared attribute identifies the same person across them. Every search response below the configured suffix is checked: if an entry with the same identity attribute value has already been returned, the remaining entries are suppressed.
+
+*Example: one identity across two aggregated sources*
+
+An Active Directory source and a Sun Directory source are aggregated into the virtual namespace below the naming context `dc=demo`. Laura Callahan has an account in each one. To give the two sources a common identifier, `employeeNumber` in Sun is mapped to `employeeID`, so both of her entries carry `employeeID: 8`.
+
+Without a rule, a subtree search for `employeeID=8` below `dc=demo` returns two entries. With a duplicate identity rule that uses `employeeID`, RadiantOne returns only the first entry it finds, the one from Active Directory.
+
+You can configure multiple rules: each branch of the RadiantOne namespace can have its own rule. A rule can also combine attributes. For example, `uid` and `employeeID` together mean that two entries are the same person only when both values match.
+
+##### Requirements for identity attributes
+
+- Use single-valued attributes that represent an identity, such as `employeeID`, `uid`, or `sAMAccountName`.
+- An entry is treated as a duplicate only if all attributes in the rule have matching values.
+- If an entry does not contain a configured attribute, RadiantOne returns the entry.
+- A rule applies to searches at or below its configured `suffix`.
+- If no suffix is specified, the rule applies to the entire server search response.
+- Restart the RadiantOne service after changing duplicate-entry settings.
+
+Use the following `PUT` request to create or replace duplicate identity rules:
+
+```
+PUT /api/settings-service/duplicate_handling/rules
+```
+
+```
+[
+  {
+    "suffix": "ou=hr,o=examples",
+    "attributes": ["uid"]
+  },
+  {
+    "suffix": "o=companyprofiles",
+    "attributes": ["uid", "mail", "cn", "title"]
+  }
+]
+```
+
+To delete specific rules, send an updated array that omits those rules. To delete all rules, send an empty array in the request body:
+
+```
+PUT /api/settings-service/duplicate_handling/rules
+```
+
+```
+[]
+```
+
+Duplicate identity rules are useful for authentication searches that must return a single account. For authorization and profile lookups, however, suppressed entries do not contribute their attributes. If you need a complete profile across multiple sources, configure joins between the relevant virtual views. See see [Joins](https://developer.radiantlogic.com/idm/v8.1/introduction/concepts/#joins) for more information.
 
 >[!warning] If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) as opposed to trying to use Duplicate Identity Removal.
