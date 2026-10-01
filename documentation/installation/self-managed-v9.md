@@ -11,6 +11,8 @@ You can install self-managed Identity Data Management on any supported Kubernete
 
 To update an existing v8 deployment to v9, refer to [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/).
 
+> ![warning] This document covers v9 deployment instructions. If you are looking for the legacy v8 version, refer to the [v8 self-managed](./self-managed.md) guide.
+
 ### Chart version
 
 In v9, the Helm chart version matches the product version. The chart is published as `iddm-helm` at `oci://registry-1.docker.io/radiantone/iddm-helm`.

@@ -104,10 +104,13 @@ This setup assumes that you are promoting configurations from DEV to QA to PROD.
 
 After modifying the `values.yaml` file, apply the changes by updating the deployment separately for each environment using the following Helm command:
 
-```bash
-helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid \
-  --version 1.1.4 --values </path/to/your/values.yaml> --debug
 ```
+helm -n self-managed upgrade --install fid \
+  oci://registry-1.docker.io/radiantone/iddm-helm \
+  --version 9.0.0 \
+  --values </path/to/your/values.yaml>
+```
+
 
 ## Next Steps
 

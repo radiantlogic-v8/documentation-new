@@ -6,7 +6,7 @@ description: Installing RadiantOne Identity Data Platform
 - [Deployment Options](#)
   - [Overview](deployment-options.md)
   - [SaaS](../../../eoc/latest/getting-started/overview/)
-  - [Self-managed](self-managed.md)
+  - [Self-managed](self-managed-v9.md)
     - [Enable metrics and logging](metrics-and-logging.md)
     - [Create backups](creating-backups.md)
     - [Restore using a backup](restore.md)
