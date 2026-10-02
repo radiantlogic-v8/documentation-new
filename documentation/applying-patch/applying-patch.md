@@ -53,61 +53,61 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 1. Navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin). Run setup.bat (.sh on Linux). If on Windows, right-click and Run As Administrator. This launches the Web Installation process. The web installer should open in your browser automatically. If it does not, open `http://localhost:8888` in a browser, which redirects to the update screen.
 
-1. The first screen displays **Select the RadiantOne update installer file to use** and the RadiantOne version currently installed. The installer updates the installation that `setup` was run from, so you don't need to specify `<RLI_HOME>`. Click Choose File and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
+2. The first screen displays **Select the RadiantOne update installer file to use** and the RadiantOne version currently installed. The installer updates the installation that `setup` was run from, so you don't need to specify `<RLI_HOME>`. Click Choose File and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
 
 ![An image showing ](Media/update-file.jpg)
 
-1. Click Next to confirm the file signature has been validated.
+3. Click Next to confirm the file signature has been validated.
 
 ![An image showing ](Media/signature-validation.jpg)
 
-1. Click Update on the Summary screen to start the patching process.
+4. Click Update on the Summary screen to start the patching process.
 
 ![An image showing ](Media/start-update.jpg)
  
-1. (v7.4.26 and higher) When the update completes, the installer displays **Installation completed successfully.** To remove leftover update files, click **Next: remove leftover files**.
+5. (v7.4.26 and higher) When the update completes, the installer displays **Installation completed successfully.** To remove leftover update files, click **Next: remove leftover files**.
 
 ![Installation done screen with Next: remove leftover files](Media/cleanup-next.png)
 
-1. The **Remove leftover files** screen lists the files left over from installing or updating RadiantOne that are not used by the running product, with their location, size, and status, and the total space that removing them reclaims. Click **Remove these files** to delete them, or click **Skip and exit** to keep them. You can remove them later with the [standalone cleanup tool](#cleaning-up-leftover-update-artifacts).
+6. The **Remove leftover files** screen lists the files left over from installing or updating RadiantOne that are not used by the running product, with their location, size, and status, and the total space that removing them reclaims. Click **Remove these files** to delete them, or click **Skip and exit** to keep them. You can remove them later with the [standalone cleanup tool](#cleaning-up-leftover-update-artifacts).
 
 >[!warning] The files are deleted permanently. There is no backup and this cannot be undone.
 
 ![Remove leftover files screen](Media/cleanup-remove-files.png)
 
-1. The **Cleanup done** screen shows the number of items removed and the space reclaimed. Click **Exit**.
+7. The **Cleanup done** screen shows the number of items removed and the space reclaimed. Click **Exit**.
 
 ![Cleanup done screen](Media/cleanup-done.png)
 
-1. Once the updater completes on the node click Exit and close the web browser. 
+8. Once the updater completes on the node click Exit and close the web browser. 
 
-1. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel).
+9. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel).
  
 >[!warning] If you are running the RadiantOne service and/or the Jetty server (which hosts the Control Panel) as services, restart them manually (or you can restart the machine and they will restart automatically in this scenario). 
 
-1. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
+10. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
 
-1. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
+11. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
 
-1. All changes made to <RLI_HOME>\jdk\jre\lib\security\java.security (e.g. changes to jdk.tls.disabledAlgorithms) must be applied again. Use your backup copy of java.security as a reference for what changes are needed. 
+12. All changes made to <RLI_HOME>\jdk\jre\lib\security\java.security (e.g. changes to jdk.tls.disabledAlgorithms) must be applied again. Use your backup copy of java.security as a reference for what changes are needed. 
 
-1. (Optional) If you use a modified/customized <RLI_HOME>\vds_server\conf\ldapschema_00.ldif file, copy your old file from the backup location and overwrite the ldapschema_00.ldif file that was updated as a result of applying the RadiantOne patch.  
+13. (Optional) If you use a modified/customized <RLI_HOME>\vds_server\conf\ldapschema_00.ldif file, copy your old file from the backup location and overwrite the ldapschema_00.ldif file that was updated as a result of applying the RadiantOne patch.  
 
  >[!warning] Generally, the ldapschema_00.ldif file should not be modified (a new ldapschema_<N>.ldif should be defined for special schema definitions). If manual customizations have been made to this file, beware that the update installer overwrites this file. 
 
-1. If you have an external Zookeeper ensemble deployed, follow the steps outlined in Updating External ZooKeeper Ensemble. Otherwise, continue to the next step. 
+14. If you have an external Zookeeper ensemble deployed, follow the steps outlined in Updating External ZooKeeper Ensemble. Otherwise, continue to the next step. 
 
-1. Run your standard tests to ensure your virtual views and complete configuration work as expected after the update. 
+15. Run your standard tests to ensure your virtual views and complete configuration work as expected after the update. 
 
-1. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
+16. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
 
-1. Follow the steps above to update other sites/clusters. 
+17. Follow the steps above to update other sites/clusters. 
 
 ### Applying the Patch Using Command Line 
 
 1. From command line, navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin).  
 
-1. Run the following command to apply the patch:
+2. Run the following command to apply the patch:
 
 ```
 setup.[bat|sh] --mode update --file <full path to the 7.4 archive> [--cleanup]
@@ -136,25 +136,25 @@ Example (Linux):
 When the update completes, the command returns: 
 INFO  com.rli.install.WebInstallUtil:311 - Update is done 
 
-1. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel). 
+3. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel). 
 
  >[!warning] If you are running the RadiantOne service and/or the Jetty server (which hosts the Control Panel) as services, restart them manually (or you can restart the machine and they will restart automatically in this scenario). 
 
-1. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
+4. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
 
-1. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
+5. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
 
-1. (Optional) If you use a modified/customized <RLI_HOME>\vds_server\conf\ldapschema_00.ldif file, copy your old file from the backup location and overwrite the ldapschema_00.ldif file that was updated as a result of applying the RadiantOne patch.  
+6. (Optional) If you use a modified/customized <RLI_HOME>\vds_server\conf\ldapschema_00.ldif file, copy your old file from the backup location and overwrite the ldapschema_00.ldif file that was updated as a result of applying the RadiantOne patch.  
 
  >[!warning] Generally, the ldapschema_00.ldif file should not be modified (a new ldapschema_<N>.ldif should be defined for special schema definitions). If manual customizations have been made to this file, beware that the update installer overwrites this file. 
 
-1. If you have an external Zookeeper ensemble deployed, follow the steps outlined in Updating External ZooKeeper Ensemble. Otherwise, continue to the next step. 
+7. If you have an external Zookeeper ensemble deployed, follow the steps outlined in Updating External ZooKeeper Ensemble. Otherwise, continue to the next step. 
 
-1. Run your standard tests to ensure your virtual views and complete configuration work as expected after the update. 
+8. Run your standard tests to ensure your virtual views and complete configuration work as expected after the update. 
 
-1. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
+9. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
 
-1. Follow the steps above to update other sites/clusters. 
+10. Follow the steps above to update other sites/clusters. 
 
 ## Cleaning Up Leftover Update Artifacts
 
@@ -223,13 +223,13 @@ If you have ZooKeeper deployed in an external ensemble, you must update it separ
 
 1. Copy the rli-zookeeper-external* file to each of your ZooKeeper servers. 
 
-1. Unzip the new ZooKeeper version in a separate, temporary folder (other than the one it is currently installed on). 
+2. Unzip the new ZooKeeper version in a separate, temporary folder (other than the one it is currently installed on). 
 
-1. Stop ZooKeeper on the node you are updating. 
+3. Stop ZooKeeper on the node you are updating. 
 
-1. If you haven’t already done so, make a copy/backup of the existing ZooKeeper home location. 
+4. If you haven’t already done so, make a copy/backup of the existing ZooKeeper home location. 
 
-1. Copy the following folders from the new version (that you unzipped in step 2) to the existing setup:
+5. Copy the following folders from the new version (that you unzipped in step 2) to the existing setup:
    * /bin/ &nbsp;&nbsp; - Copy this folder.
    * /setup/ &nbsp;&nbsp; - Remove from target first – remove all jars, then copy this folder. 
    * /zookeeper/bin/ &nbsp;&nbsp; - Remove from target first, then copy this folder.
@@ -238,11 +238,11 @@ If you have ZooKeeper deployed in an external ensemble, you must update it separ
    * /zookeeper/lib/ &nbsp;&nbsp; - Remove from target first, then copy this folder. 
    * /jdk/ &nbsp;&nbsp; - Remove from target first, then copy this folder. 
 
-1. Delete the temporary folder that you unzipped the new ZooKeeper version to in step 2. 
+6. Delete the temporary folder that you unzipped the new ZooKeeper version to in step 2. 
 
-1. Start ZooKeeper. 
+7. Start ZooKeeper. 
 
-1. Repeat the steps above for each ZooKeeper server in your external ensemble.  
+8. Repeat the steps above for each ZooKeeper server in your external ensemble.  
 
  >[!warning] The truststore and keystore are created when ZooKeeper is restarted after the update. Therefore, if you want to use SSL/TLS access to ZooKeeper, ensure you have imported the required certificates. For steps, see the RadiantOne Hardening Guide. 
 
