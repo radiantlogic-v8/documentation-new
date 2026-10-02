@@ -51,9 +51,9 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 ### Applying the Patch Using the Web Interface 
 
-1. Navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin). Run setup.bat (.sh on Linux). If on Windows, right-click and Run As Administrator. This launches the Web Installation process. 
+1. Navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin). Run setup.bat (.sh on Linux). If on Windows, right-click and Run As Administrator. This launches the Web Installation process. The web installer should open in your browser automatically. If it does not, open `http://localhost:8888` in a browser, which redirects to the update screen.
 
-1. Click Choose File and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
+1. The first screen displays **Select the RadiantOne update installer file to use** and the RadiantOne version currently installed. The installer updates the installation that `setup` was run from, so you don't need to specify `<RLI_HOME>`. Click Choose File and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
 
 ![An image showing ](Media/update-file.jpg)
 
@@ -65,6 +65,20 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 ![An image showing ](Media/start-update.jpg)
  
+1. (v7.4.26 and higher) When the update completes, the installer displays **Installation completed successfully.** To remove leftover update files, click **Next: remove leftover files**.
+
+![Installation done screen with Next: remove leftover files](Media/cleanup-next.png)
+
+1. The **Remove leftover files** screen lists the files left over from installing or updating RadiantOne that are not used by the running product, with their location, size, and status, and the total space that removing them reclaims. Click **Remove these files** to delete them, or click **Skip and exit** to keep them. You can remove them later with the [standalone cleanup tool](#cleaning-up-leftover-update-artifacts).
+
+>[!warning] The files are deleted permanently. There is no backup and this cannot be undone.
+
+![Remove leftover files screen](Media/cleanup-remove-files.png)
+
+1. The **Cleanup done** screen shows the number of items removed and the space reclaimed. Click **Exit**.
+
+![Cleanup done screen](Media/cleanup-done.png)
+
 1. Once the updater completes on the node click Exit and close the web browser. 
 
 1. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel).
@@ -96,12 +110,28 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 1. Run the following command to apply the patch:
 
 ```
-setup.[bat|sh] --mode update --file <full path to the 7.4 archive> 
+setup.[bat|sh] --mode update --file <full path to the 7.4 archive> [--cleanup]
 ```
 For example: 
 `C:\radiantone\vds\bin>setup.bat --mode update --file C:\Users\lgrad\Downloads\radiantone_7.4.8_update_windows_64.zip`
 
 >[!note] -m and -f can be used in the command as an alternative for mode and file.
+
+(Optional) `--cleanup` (`-c`): Automatically scans for and permanently removes residual update artifacts (such as `<RLI_HOME>/install/update-installer/resources` and old JDK backup directories such as `<RLI_HOME>/jdk.old.<yyyyMMdd-HHmmss>`) when the update completes. This prevents these files from causing false positives during security/vulnerability scans. For details on what is removed, see [Cleaning Up Leftover Update Artifacts](#cleaning-up-leftover-update-artifacts).
+
+>[!note] The `--cleanup` option is available for RadiantOne v7.4.26 and higher.
+
+Example (Windows):
+
+```
+C:\radiantone\vds\bin>setup.bat --mode update --file C:\Users\lgrad\Downloads\radiantone_7.4.26_update_windows_64.zip --cleanup
+```
+
+Example (Linux):
+
+```
+/opt/radiantone/vds/bin/setup.sh -m update -f /tmp/radiantone_7.4.26_update_linux_64.tar.gz -c
+```
 
 When the update completes, the command returns: 
 INFO  com.rli.install.WebInstallUtil:311 - Update is done 
@@ -125,6 +155,67 @@ INFO  com.rli.install.WebInstallUtil:311 - Update is done
 1. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
 
 1. Follow the steps above to update other sites/clusters. 
+
+## Cleaning Up Leftover Update Artifacts
+
+>[!note] The cleanup commands described in this section apply to RadiantOne v7.4.26 and higher. This is an optional step.
+
+If you did not pass the `--cleanup` option during a command line update, or if you clicked **Skip and exit** on the **Remove leftover files** screen of the web installer, you can run the standalone cleanup tool at any time from the `<RLI_HOME>/bin` directory.
+
+The cleanup utility targets obsolete files that may trigger vulnerability scan alerts, such as detection of legacy JAR versions. The cleanup report identifies each item by its target name, shown in parentheses below:
+
+- Migration resources (`migration.resources`): Temporary migration templates and old JARs in `<RLI_HOME>/install/update-installer/resources`.
+- Old JDK backup directories (`jdk.old`): Backups of the previous JDK created during the update, named `<RLI_HOME>/jdk.old.<yyyyMMdd-HHmmss>`.
+- Old Ant backup directories (`ant.old`): Backups of the previous Ant installation created during the update, named `<RLI_HOME>/ant-old-<yyyyMMdd-HHmmss>`.
+- Password capture backups (`ad_pwd.backup`): The Active Directory password capture backup folder, `<RLI_HOME>/work/ad_pwd.backup` (Windows only).
+
+The cleanup removes only the items listed above. Active installation folders, such as `<RLI_HOME>/jdk`, `<RLI_HOME>/lib`, and `<RLI_HOME>/config`, are not cleanup targets.
+
+>[!note] If you want to verify the update before removing leftover files, skip the cleanup during the update (click **Skip and exit** in the web installer, or omit `--cleanup` on the command line). Then run the standalone cleanup after your health checks pass.
+
+`-m` can be used in the commands below as an alternative for `--mode`.
+
+### Dry run the cleanup
+
+To inspect reclaimable space without modifying any files:
+
+```
+setup.[bat|sh] --mode cleanup
+```
+
+This generates a report that lists each item found, its location relative to `<RLI_HOME>`, and its size, along with the total reclaimable space. Each item is marked with one of the following statuses:
+
+- `[REMOVABLE]`: The item is removed when you run the cleanup with `--apply`.
+- `[BLOCKED]`: The item is not removed. For example, a JDK or Ant backup directory whose name does not carry a readable `yyyyMMdd-HHmmss` timestamp is blocked. The reason is shown next to the item.
+
+No files are removed in this mode.
+
+### Apply Interactive Cleanup
+
+To prompt for confirmation before permanently deleting residual files:
+
+```
+setup.[bat|sh] --mode cleanup --apply
+```
+
+The cleanup report is displayed first, followed by a confirmation prompt that shows the number of items and the space to be reclaimed. Confirm with `y` when prompted:
+
+```
+About to permanently remove <N> items (<size>). There is no backup and this cannot be undone.
+Continue? (y/N): y
+```
+
+Only `[REMOVABLE]` items are deleted; `[BLOCKED]` items are left in place. When the cleanup finishes, the report is displayed again, marked `APPLIED`.
+
+>[!warning] Removed files cannot be recovered. Make sure you have the backup of your `<RLI_HOME>` folder described in [Preparing for the Patch](#preparing-for-the-patch) before applying cleanup.
+
+### Apply Non-interactive Cleanup
+
+For automated cleanups that don't require interaction, run:
+
+```
+setup.[bat|sh] --mode cleanup --apply --assume-yes
+```
 
 ## Updating External ZooKeeper Ensemble 
 

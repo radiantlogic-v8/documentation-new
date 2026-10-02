@@ -7,6 +7,13 @@ description: Operations Guide
 
 Typically, before implementing code updates (patches) in production, they should be tested in a development/QA environment. Product updates are applied by running an updater. A document describing how to apply the patch update accompanies each updater.
 
+You can apply an update using either the web interface (GUI) or the command line:
+
+- **Web interface:** Run `setup.bat` (`setup.sh` on Linux) from the `<RLI_HOME>/bin` folder to launch the web installer, then select the update file. For steps, see [Applying the Patch Using the Web Interface](/applying-patch/applying-patch#applying-the-patch-using-the-web-interface).
+- **Command line:** Run `setup.[bat|sh] --mode update --file <full path to the archive>` from the `<RLI_HOME>/bin` folder. For steps, see [Applying the Patch Using Command Line](/applying-patch/applying-patch#applying-the-patch-using-command-line).
+
+Starting in v7.4.26, you can also remove leftover update files that are no longer used by the running product and may trigger vulnerability scan alerts. Do this from the web installer's **Remove leftover files** screen after the update, with the `--cleanup` option of the command line update, or at any time with the standalone cleanup tool (`setup.[bat|sh] --mode cleanup`). If you want to verify the update before removing leftover files, skip the cleanup during the update and run the standalone cleanup after your health checks pass. For details, see [Cleaning Up Leftover Update Artifacts](/applying-patch/applying-patch#cleaning-up-leftover-update-artifacts).
+
 In some cases, additional steps may be required to update your environment depending on your current version and the version you are updating to. Please email support@radiantlogic.com and request a link for the relevant updater and documentation.
 
 If your production machines are not yet configured with RadiantOne, you should follow the steps detailed in the Migration to Production section. This section is only related to patching existing production machine(s).
@@ -24,7 +31,7 @@ Below are high level steps for patching classic architectures. A more detailed d
 
 2. Make a backup of your entire production instance(s) <RLI_HOME> folder in addition to backing up any RadiantOne Universal Directory (HDAP) stores.
 
-3. Run the updater and make any additional updates recommended by Radiant Logic.
+3. Run the updater and make any additional updates recommended by Radiant Logic. For steps, see [Applying the Patch Using the Web Interface](/applying-patch/applying-patch#applying-the-patch-using-the-web-interface) or [Applying the Patch Using Command Line](/applying-patch/applying-patch#applying-the-patch-using-command-line).
 
 4. Restart the relevant RadiantOne components.
 
@@ -36,7 +43,7 @@ In a cluster, one node is updated at a time while the other node(s) maintain the
 
 1. Make a backup of the entire <RLI_HOME> folder in addition to backing up any RadiantOne Universal Directory (HDAP) stores. It is recommended to perform this on each node.
 
-1. On one of the cluster nodes, stop all services except for ZooKeeper and then run the updater.
+1. On one of the cluster nodes, stop all services except for ZooKeeper and then run the updater. For steps, see [Applying the Patch Using the Web Interface](/applying-patch/applying-patch#applying-the-patch-using-the-web-interface) or [Applying the Patch Using Command Line](/applying-patch/applying-patch#applying-the-patch-using-command-line).
 
     >[!warning] To execute the updater on Windows, right-click on the installer file and select Run As Administrator.
 

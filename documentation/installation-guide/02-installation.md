@@ -141,6 +141,8 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
     ![An image showing ](Media/Image2.8.jpg)
 
+    >[!note] In v7.4.26 and higher, when the installation completes, you can remove leftover installation files. See [Cleaning Up Leftover Installation Files](#cleaning-up-leftover-installation-files).
+
 9. If you are not going to use the temporary license key, copy your license.lic file into the <RLI_HOME>/vds_server directory before using RadiantOne.
 
 10. Start the Main Control Panel (<RLI_HOME>/bin/openControlPanel.bat/.sh) and then start the RadiantOne service (Main Control Panel ->Dashboard Tab).
@@ -371,9 +373,44 @@ When installation is complete, the command prompt displays the message “Instal
 >[!warning]
 >values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
 
+## Cleaning Up Leftover Installation Files
 
+>[!note] The cleanup options described in this section apply to RadiantOne v7.4.26 and higher. This is an optional step.
 
+After installation, some files that are used only during installation or updates remain in `<RLI_HOME>`, such as the migration resources in `<RLI_HOME>/install/update-installer/resources`. These files are not used by the running product, and they may trigger vulnerability scan alerts, such as detection of legacy JAR versions. You can remove them from the web installer when the installation completes, with the `--cleanup` option of a command line install, or at any time with the standalone cleanup tool.
 
+>[!warning] Leftover files are deleted permanently. There is no backup and this cannot be undone.
 
+### Using the Web Installer
 
+1. When the installation completes, the installer displays **Installation completed successfully.** Click **Next: remove leftover files**.
 
+    ![Installation done screen with Next: remove leftover files](Media/install-done.png)
+
+1. The **Remove leftover files** screen lists the files left over from installing RadiantOne that are not used by the running product, with their location, size, and status, and the total space that removing them reclaims. Click **Remove these files** to delete them, or click **Skip and exit** to keep them.
+
+    ![Remove leftover files screen](Media/cleanup-remove-files.png)
+
+1. The **Cleanup done** screen shows the number of items removed and the space reclaimed. Click **Exit**.
+
+    ![Cleanup done screen](Media/install-cleanup-done.png)
+
+### Using the Command Line
+
+To remove leftover files automatically when a command line installation completes, add the `--cleanup` (`-c`) option to the install command. From the `<RLI_HOME>/bin` folder, run:
+
+```
+setup.[bat|sh] --mode install --file <full path to the install properties file> --cleanup
+```
+
+When the installation completes, the cleanup report is displayed, marked `APPLIED`, with each removed item and the total space reclaimed.
+
+### Using the Standalone Cleanup Tool
+
+If you skipped the cleanup during installation, you can run the standalone cleanup tool at any time from the `<RLI_HOME>/bin` folder:
+
+- Report only (no files are removed): `setup.[bat|sh] --mode cleanup`
+- Remove the files after confirming at a prompt: `setup.[bat|sh] --mode cleanup --apply`
+- Remove the files without a prompt, for scripts and unattended deployments: `setup.[bat|sh] --mode cleanup --apply --assume-yes`
+
+For details on the cleanup targets, report statuses, and confirmation prompt, see [Cleaning Up Leftover Update Artifacts](/applying-patch/applying-patch#cleaning-up-leftover-update-artifacts) in the Applying Patches guide.
