@@ -108,7 +108,7 @@ A memory cache (requires [Expert Mode](00-preface#expert-mode)) can be configure
 >[!warning]
 >If you plan on using both entry and query cache on the same view/branch, be aware that the query cache is searched first.
 
-**Configuring Entry Memory Cache**
+### Configuring Entry Memory Cache
 
 This model of caching leverages two types of memory: Main and Virtual. Main memory is the real memory where a certain number of most recently used entries reside. Virtual memory is memory on disk where all entries that exceed the amount allowed in the main memory reside. The swapping of entries from Virtual to Main memory (and vice versa) is managed by RadiantOne.
 
@@ -620,7 +620,7 @@ To configure persistent cache with real-time refresh:
  	 
     Figure 2.8: Caching secondary views message
 
-6. Configure any needed connectors. Please see the section titled [Configuring Source Connectors](#configuring-source-connectors) for steps.
+6. Configure any needed connectors. Please see the section titled [Configuring Source Connectors](#configuring-source-connectors-overview) for steps.
 
 7. Click **Save**.
 
@@ -644,7 +644,7 @@ If you have a large data set and generated multiple LDIF files for the purpose o
 
 ### Configuring Source Connectors Overview
 
-Configuring connectors involves deciding how you want to detect changes from your backend(s). By default, all [directory connectors](#directory-connectors) and [custom connectors](#custom-connectors) (only custom connectors included in the RadiantOne install) are configured and started immediately without further configuration. For databases, configure the connector to use the desired change detection mechanism. 
+Configuring connectors involves deciding how you want to detect changes from your backend(s). By default, all [directory connectors](#directory-connectors-overview) and [custom connectors](#custom-connectors) (only custom connectors included in the RadiantOne install) are configured and started immediately without further configuration. For databases, configure the connector to use the desired change detection mechanism. 
 
 >[!warning]
 >All connectors leverage the connection pooling settings defined from the Main Control Panel > Settings tab. In other words, the connector opens a connection to the data source to pick up changes and keeps the connection open so when the next interval passes a new connection does not need to be created.
@@ -676,7 +676,7 @@ For database backends (JDBC-accessible), the change detection options are:
 >[!warning]
 >If none of these options are useable with your database, use a periodic cache refresh instead of real-time.
 
-**DB Changelog**
+#### DB Changelog
 
 RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel or from command line. Both options store the scripts under <RLI_HOME>/work/sql. The following scripts are generated. 
 
@@ -741,7 +741,7 @@ To configure DB Changelog connector:
 >[!warning]
 >If you make changes to the DB Changelog Connector configuration, restart the connector on the PCache Monitoring tab. Select the icon representing the database backend and click Stop. Then click Start to restart it.
 
-**Log Table Name Syntax**
+##### Log Table Name Syntax
 
 Proper syntax for the Log Table Name must include both the schema name and the table name separated with a period. Values for this property may contain quote marks as required by the database. In most cases, the double quote mark (“) is used, but some databases use a single quote (‘) or back quote (`). The following examples explain the property’s syntax and usage.
 
@@ -772,7 +772,7 @@ Example 3:
 
 `"Rli_con"."Test_log"`
 
-*Create Scripts to Generate Triggers and Changelog Table*
+##### Create Scripts to Generate Triggers and Changelog Table
 
 If the database backend doesn’t have a changelog table, you can use RadiantOne to create one. RadiantOne can generate SQL scripts that a DBA can run on the database backend. These scripts create the needed configuration to support the DB Changelog connector. Use <RLI_HOME>/bin/advanced/create_db_triggers.bat to generate the scripts. The command uses seven arguments (which are described below) and generates the SQL script needed to configure the database to support the DB Changelog connector.
 
@@ -803,9 +803,9 @@ Argument | Description
 -l | Specify the log table name instead of using default computation based on full base table name. 
 -s | Specify the log table schema name. 
 
-**DB Timestamp**
+#### DB Timestamp
 
-The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database Connectors](#database-connectors) section.
+The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database Connectors](#configuring-source-database-connectors) section.
 
 >[!warning]
 >this connector type does not detect delete operations. If you need to detect delete operations from the database, you should choose a different connector type.
@@ -835,9 +835,9 @@ The following steps assume your backend database table has a primary key defined
 >[!warning]
 >If you need to make changes to the timestamp column name, manually restart the connector and reset the cursor. This can be done from the PCache Monitoring tab. Select the icon representing the database backend and click Stop. Then click Start to restart it. Then click Reset Cursor.
  	
-**DB Counter**
+#### DB Counter
 
-The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database Connectors](#database-connectors) section.
+The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database Connectors](#configuring-source-database-connectors) section.
 
 1. From the Main Control Panel > Directory Namespace Tab, select the configured persistent cache branch below the Cache node.
 
@@ -903,7 +903,7 @@ The database connectors leverage the failover server that has been configured fo
 
 Figure 2.14: Configuring Failover Servers for the Backend Database
 
-If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in [Max Retries on Connection Error](#max-retries-on-connection-error-for-database-connectors) is reached. There is no automatic failback, meaning once the primary server is back online, the connector doesn’t automatically go back to it.
+If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in [Max Retries on Connection Error](#connector-properties) is reached. There is no automatic failback, meaning once the primary server is back online, the connector doesn’t automatically go back to it.
 
 ### Re-configuring Database Connectors
 
@@ -1038,9 +1038,17 @@ For the AD Hybrid connector, the failover process starts when the number of exce
 
 After the connector processes all entries, it requests a new cookie from Active Directory and switches to DirSync change detection.
 
-### Configuring Trigger Event Filtering for Real-Time Refresh (HDAP Trigger Connectors)
+### Configuring Trigger Event Filtering for Persistent Cache
 
 For persistent caches configured for real-time refresh using HDAP triggers, you can define LDAP filters that restrict which change events are captured. Filters can be defined for the whole cache and for an individual HDAP trigger connector. When both are defined, they are combined with a logical AND, so an event must match both filters.
+
+The following example shows how the whole-cache and per-connector filters are combined:
+
+| Filter | Value |
+|---|---|
+| Whole-cache event filter | `(department=Sales)` |
+| Per-connector event filter | `(l=Chicago)` |
+| Effective event filter | `(&(department=Sales)(l=Chicago))` |
 
 >[!note]
 >This optional setting is not required for most deployments. Configure it only when needed for performance optimization.
@@ -1049,7 +1057,7 @@ Both filters are configured from the Main Control Panel > Directory Namespace ta
 
 ![Persistent Cache Refresh Settings](Media/image-20261002-045613.png)
 
-**Whole-Cache Trigger Filter**
+#### 1. Whole-Cache Trigger Filter
 
 The whole-cache filter applies to the change events captured by all HDAP trigger connectors that refresh this cache.
 
@@ -1060,7 +1068,7 @@ The whole-cache filter applies to the change events captured by all HDAP trigger
 
 1. Click **OK**, then click **Save** on the Refresh Settings tab.
 
-**Per-Connector Trigger Filter**
+#### 2. Per-Connector Event Filter
 
 The per-connector filter applies only to the selected HDAP trigger refresh connector.
 
@@ -1072,19 +1080,10 @@ The per-connector filter applies only to the selected HDAP trigger refresh conne
 
 1. Click **OK**, then click **Save** on the Refresh Settings tab.
 
-The following example shows how the whole-cache and per-connector filters are combined:
-
-| Filter | Value |
-|---|---|
-| Whole-cache event filter | `(department=Sales)` |
-| Per-connector event filter | `(l=Chicago)` |
-| Effective event filter | `(&(department=Sales)(l=Chicago))` |
-
-**Disabled Global State**
-
-If trigger event filtering is disabled deployment-wide under Settings > Synchronization (Expert Mode), both filter dialogs display the following warning. Filters are saved but not enforced until the setting is re-enabled. For details, see [Synchronization Settings](/sys-admin-guide/synchronization-settings) in the RadiantOne System Administration Guide.
-
-_Trigger event filtering is disabled deployment-wide, so the triggers capture every event. This filter is saved but not enforced until it is re-enabled under Settings > Synchronization, available in expert mode._
+>[!warning]
+>If trigger event filtering is disabled deployment-wide under Settings > Synchronization (Expert Mode), both filter dialogs display the following warning. Filters are saved but not enforced until the setting is re-enabled. For details, see [Synchronization Settings](/sys-admin-guide/synchronization-settings) in the RadiantOne System Administration Guide.
+>
+>_Trigger event filtering is disabled deployment-wide, so the triggers capture every event. This filter is saved but not enforced until it is re-enabled under Settings > Synchronization, available in expert mode._
 
 ![Cache Trigger Event Filter dialog when Global Trigger Filtering is Disabled](Media/image-20261002-045947.png)
 

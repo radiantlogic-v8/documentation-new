@@ -8,9 +8,7 @@ description: System Administration Guide
 The Synchronization settings allow administrators to manage global event capture and filtering behaviors across all Global Synchronization topologies and Real-Time Persistent Caches.
 
 >[!note]
->The Synchronization section under Settings is an advanced administration setting. It is visible in the Main Control Panel navigation only when [Expert Mode](01-introduction#expert-mode) is ON. When Expert Mode is OFF (Standard Mode), the Synchronization section is hidden.
-
-## Accessing Synchronization Settings
+>**Prerequisite (Expert Mode):** The Synchronization section under Settings is an advanced administration setting. It is visible in the Main Control Panel navigation only when [Expert Mode](01-introduction#expert-mode) is ON. When Expert Mode is OFF (Standard Mode), the Synchronization section is hidden.
 
 To access the Synchronization settings:
 
@@ -25,7 +23,7 @@ To access the Synchronization settings:
 
     ![Settings - Synchronization - Trigger Event Filtering (Expert Mode)](Media/image-20261002-045559.png)
 
-## Global Trigger Event Filtering
+## Global Trigger Event Filtering Switch
 
 HDAP trigger filtering limits the change events received by HDAP trigger connectors to those that match configured filters. Use it to reduce event processing for trigger connectors used in persistent cache refresh and Global Synchronization topologies. By default, trigger event filtering is active system-wide.
 
@@ -43,6 +41,6 @@ To change the setting, check or uncheck **Enable trigger event filtering** and c
 
 For details on configuring the filters themselves, see:
 
-- [Topology-level trigger event filtering](/global-sync-guide/configuration/synchronization-topologies#configure-topology-level-trigger-event-filtering) in the RadiantOne Synchronization Guide.
-- [Pipeline-level event filtering](/global-sync-guide/configuration/capture-connector/capture-connector-configuration#event-filtering-capture-tab) in the RadiantOne Synchronization Guide.
-- [Persistent cache trigger event filtering](/deployment-and-tuning-guide/02-tuning-tips-for-caching-in-radiantone#configuring-trigger-event-filtering-for-real-time-refresh-hdap-trigger-connectors) in the RadiantOne Deployment and Tuning Guide.
+- [Topology-Level Trigger Filter](/global-sync-guide/configuration/synchronization-topologies#topology-level-trigger-filter) in the RadiantOne Synchronization Guide.
+- [2. Pipeline-Level Event Filter](/global-sync-guide/configuration/capture-connector/capture-connector-configuration#2-pipeline-level-event-filter) in the RadiantOne Synchronization Guide.
+- [Configuring Trigger Event Filtering for Persistent Cache](/deployment-and-tuning-guide/02-tuning-tips-for-caching-in-radiantone#configuring-trigger-event-filtering-for-persistent-cache) in the RadiantOne Deployment and Tuning Guide.

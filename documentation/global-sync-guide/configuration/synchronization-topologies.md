@@ -31,21 +31,17 @@ This section focuses on configuring the connector type. For details on the behav
 1. A pipeline represents a synchronization flow from a given source object and a target object endpoint. Each pipeline in the selected topology must be configured.
 1. Select **CONFIGURE** next to the pipeline. There are two components that need configured per pipeline: Capture Connector and Transformation. Apply Connectors do not require configuration.
 
-## Configure topology-level trigger event filtering
+## Topology-Level Trigger Filter
 
 When synchronizing changes from an HDAP/LDAP directory using trigger-based capture, you can define a topology-level filter to restrict which change events are captured across all pipelines within that topology.
 
 >[!note]
 >This optional setting is not required for most deployments. Configure it only when needed for performance optimization.
 
-### Conditional visibility of the Trigger Filter button
-
 The **Trigger Filter** button in the topology header is displayed conditionally based on connector types:
 
 - **Visible**: Shown only when the selected topology contains at least one pipeline configured with an HDAP trigger-based capture connector.
 - **Hidden**: Hidden automatically if all pipelines in the topology use non-trigger sources (for example, Database or Timestamp connectors).
-
-### Configure a topology trigger filter
 
 To configure a topology trigger filter:
 
@@ -58,11 +54,11 @@ To configure a topology trigger filter:
 
 1. Select **OK**.
 
-### Operational details
+Keep the following in mind when using a topology trigger filter:
 
 - Filtering takes place at the trigger source before change notifications are queued into the pipeline.
 - The topology trigger filter applies to Add and Modify events. It does not filter Delete operations.
-- The topology filter is inherited by every HDAP trigger pipeline in the topology and is displayed as **Inherited from topology** in each pipeline's [Event Filtering](capture-connector/capture-connector-configuration#event-filtering-capture-tab) section. If a pipeline also defines its own filter, both filters are combined with a logical AND.
+- The topology filter is inherited by every HDAP trigger pipeline in the topology and is displayed as **Inherited from topology** in each pipeline's Capture tab Event Filtering section. See [2. Pipeline-Level Event Filter](capture-connector/capture-connector-configuration#2-pipeline-level-event-filter). If a pipeline also defines its own filter, both filters are combined with a logical AND.
 - If global trigger event filtering is disabled under Settings > Synchronization (Expert Mode), the dialog displays a warning that trigger filtering is globally inactive. The filter is saved but not enforced until the setting is re-enabled. For details, see [Synchronization Settings](/sys-admin-guide/synchronization-settings) in the RadiantOne System Administration Guide.
 
     ![Topology Trigger Event Filter dialog when Global Trigger Filtering is Disabled](../media/image-20261002-050009.png)
