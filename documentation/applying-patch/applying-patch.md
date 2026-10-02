@@ -75,33 +75,31 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 ![Remove leftover files screen](Media/cleanup-remove-files.png)
 
-7. The **Cleanup done** screen shows the number of items removed and the space reclaimed. Click **Exit**.
+7. The **Cleanup done** screen shows the number of items removed and the space reclaimed. Click **Exit** and close the web browser.
 
 ![Cleanup done screen](Media/cleanup-done.png)
 
-8. Once the updater completes on the node click Exit and close the web browser. 
-
-9. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel).
+8. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel).
  
 >[!warning] If you are running the RadiantOne service and/or the Jetty server (which hosts the Control Panel) as services, restart them manually (or you can restart the machine and they will restart automatically in this scenario). 
 
-10. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
+9. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
 
-11. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
+10. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
 
-12. All changes made to <RLI_HOME>\jdk\jre\lib\security\java.security (e.g. changes to jdk.tls.disabledAlgorithms) must be applied again. Use your backup copy of java.security as a reference for what changes are needed. 
+11. All changes made to <RLI_HOME>\jdk\jre\lib\security\java.security (e.g. changes to jdk.tls.disabledAlgorithms) must be applied again. Use your backup copy of java.security as a reference for what changes are needed. 
 
-13. (Optional) If you use a modified/customized <RLI_HOME>\vds_server\conf\ldapschema_00.ldif file, copy your old file from the backup location and overwrite the ldapschema_00.ldif file that was updated as a result of applying the RadiantOne patch.  
+12. (Optional) If you use a modified/customized <RLI_HOME>\vds_server\conf\ldapschema_00.ldif file, copy your old file from the backup location and overwrite the ldapschema_00.ldif file that was updated as a result of applying the RadiantOne patch.  
 
  >[!warning] Generally, the ldapschema_00.ldif file should not be modified (a new ldapschema_<N>.ldif should be defined for special schema definitions). If manual customizations have been made to this file, beware that the update installer overwrites this file. 
 
-14. If you have an external Zookeeper ensemble deployed, follow the steps outlined in Updating External ZooKeeper Ensemble. Otherwise, continue to the next step. 
+13. If you have an external Zookeeper ensemble deployed, follow the steps outlined in Updating External ZooKeeper Ensemble. Otherwise, continue to the next step. 
 
-15. Run your standard tests to ensure your virtual views and complete configuration work as expected after the update. 
+14. Run your standard tests to ensure your virtual views and complete configuration work as expected after the update. 
 
-16. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
+15. If all works as expected, the update process can be run on your production nodes (using the same sequence as described above). It is recommended to update during non-peak traffic hours.  
 
-17. Follow the steps above to update other sites/clusters. 
+16. Follow the steps above to update other sites/clusters. 
 
 ### Applying the Patch Using Command Line 
 
