@@ -1038,6 +1038,58 @@ For the AD Hybrid connector, the failover process starts when the number of exce
 
 After the connector processes all entries, it requests a new cookie from Active Directory and switches to DirSync change detection.
 
+### Configuring Trigger Event Filtering for Real-Time Refresh (HDAP Trigger Connectors)
+
+For persistent caches configured for real-time refresh using HDAP triggers, you can define LDAP filters that restrict which change events are captured. Filters can be defined for the whole cache and for an individual HDAP trigger connector. When both are defined, they are combined with a logical AND, so an event must match both filters.
+
+>[!note]
+>This optional setting is not required for most deployments. Configure it only when needed for performance optimization.
+
+Both filters are configured from the Main Control Panel > Directory Namespace tab. Select the persistent cache branch below the Cache node and select the **Refresh Settings** tab.
+
+![Persistent Cache Refresh Settings](Media/image-20261002-045613.png)
+
+**Whole-Cache Trigger Filter**
+
+The whole-cache filter applies to the change events captured by all HDAP trigger connectors that refresh this cache.
+
+1. On the Refresh Settings tab, click **Trigger Filter**.
+1. In the **Cache Trigger Event Filter** dialog, review the performance advisory note and enter an LDAP filter expression in the **Whole-cache event filter** field. For example, `(department=Sales)`.
+
+    ![Cache Trigger Event Filter dialog](Media/image-20261002-045621.png)
+
+1. Click **OK**, then click **Save** on the Refresh Settings tab.
+
+**Per-Connector Trigger Filter**
+
+The per-connector filter applies only to the selected HDAP trigger refresh connector.
+
+1. On the Refresh Settings tab, select the HDAP Trigger connector row in the connector table.
+1. Click the filter button below the connector table.
+1. In the **Connector Event Filter** dialog, review the performance advisory note and enter an LDAP filter expression in the **Connector event filter** field. For example, `(l=Chicago)`.
+
+    ![Connector Event Filter dialog](Media/image-20261002-045712.png)
+
+1. Click **OK**, then click **Save** on the Refresh Settings tab.
+
+The following example shows how the whole-cache and per-connector filters are combined:
+
+| Filter | Value |
+|---|---|
+| Whole-cache event filter | `(department=Sales)` |
+| Per-connector event filter | `(l=Chicago)` |
+| Effective event filter | `(&(department=Sales)(l=Chicago))` |
+
+**Disabled Global State**
+
+If trigger event filtering is disabled deployment-wide under Settings > Synchronization (Expert Mode), both filter dialogs display the following warning. Filters are saved but not enforced until the setting is re-enabled. For details, see [Synchronization Settings](/sys-admin-guide/synchronization-settings) in the RadiantOne System Administration Guide.
+
+_Trigger event filtering is disabled deployment-wide, so the triggers capture every event. This filter is saved but not enforced until it is re-enabled under Settings > Synchronization, available in expert mode._
+
+![Cache Trigger Event Filter dialog when Global Trigger Filtering is Disabled](Media/image-20261002-045947.png)
+
+![Connector Event Filter dialog when Global Trigger Filtering is Disabled](Media/image-20261002-045957.png)
+
 ### Custom Connectors
 
 The following custom data sources support Real-time persistent cache refresh. For all other custom data sources, use a [periodic cache refresh](#periodic-refresh). 

@@ -33,66 +33,60 @@ Trigger event filtering can be configured at multiple hierarchical levels for **
 * **Empty Filter:** If a filter field is left blank, all change events are captured for that level.
 
 
-### Configuring Trigger Event Filtering for Global Sync Pipelines
+### Topology-level trigger filter
 
-You can configure filtering at both the topology level (applying to all HDAP trigger pipelines in the topology) and at the individual pipeline level.
+A topology-level filter applies to all HDAP trigger-based pipelines within the selected topology. It is configured from the **Trigger Filter** button in the topology header. For steps, see [Configure topology-level trigger event filtering](../synchronization-topologies#configure-topology-level-trigger-event-filtering).
 
-#### 1. Topology-Level Trigger Filter
+### Event Filtering (Capture tab)
 
-Use this when you need to apply the filter across all HDAP trigger-based pipelines within the selected synchronization topology.
+For pipelines using an HDAP trigger-based capture connector, the **Event Filtering** section on the Capture tab lets you inspect the inherited topology setting and define a pipeline-specific filter.
 
-1. In the **Main Control Panel**, navigate to the **Global Sync** (or **Sync Pipelines**) tab.
-2. Select the desired topology from the left pane.
-3. Click the **Trigger Filter** button in the topology header.
-4. In the **Topology Trigger Event Filter** dialog:
-   * Enter a valid LDAP filter string (e.g., `(department=Sales)`).
-5. Click **Apply** (or **Save**).
+>[!note]
+>This optional setting is not required for most deployments. Configure it only when needed for performance optimization.
 
-#### 2. Pipeline-Level Event Filter
+![Pipeline Capture Tab - Event Filtering](../../media/image-20261002-045848.png)
 
-Use this when filtering for a specific pipeline. The pipeline filter is combined with any existing topology-level filter, so entries must match both filters.
+To configure a pipeline event filter:
 
-1. Navigate to **Global Sync** > select your topology > select the specific **Pipeline**.
-2. Click the **Capture** tab.
-3. Locate the **Event Filtering** section.
-   * **Inherited from topology:** Displays the read-only filter configured at the topology level (if any).
-   * **Pipeline filter:** Enter an LDAP filter specific to this pipeline (e.g., `(l=NY*)`).
-4. Click **Save**.
+1. In the Main Control Panel > Global Sync tab, select the topology and select **Configure** next to the pipeline.
+1. Select the **Capture** section.
+1. In the **Event Filtering** section, review the inherited topology filter and enter a value for **Pipeline connector event filter** if needed.
+1. Select **Save**.
 
-### Configuring Trigger Event Filtering for Persistent Cache
+The Event Filtering section contains the following fields.
 
-For persistent cache proxy views configured with real-time refresh, filters can be defined for the entire cache and/or per individual HDAP trigger connector.
+| Field | Description |
+|---|---|
+| Inherited from topology | Displays the active LDAP filter configured on the parent topology using the topology header **Trigger Filter** button. <br><br> • If a topology filter exists, the exact filter expression is shown. <br> • If no topology filter is configured, the field displays `None (no topology filter set)`. <br> • Hovering over the information icon (ⓘ) displays a tooltip explaining inheritance from the topology header. |
+| Pipeline connector event filter | An optional LDAP filter specific to this pipeline. Enter an LDAP search filter to further narrow the change events processed by this pipeline. <br><br> Example: `(l=NY*)` |
 
-#### 1. Whole-Cache Trigger Filter
-This applies to all real-time change events captured for the persistent cache naming context.
+#### Combined filter evaluation
 
-1. In the **Main Control Panel**, navigate to **Directory Configuration**.
-2. Select the naming context hosting the persistent cache proxy view.
-3. Go to the **Refresh Settings** tab.
-4. Locate the **Trigger Event Filter (whole cache)** field.
-5. Enter the desired LDAP filter string (e.g., `(title=active)`).
-6. Click **Save**.
+When both a topology-level filter and a pipeline-level filter are defined:
 
-#### 2. Per-Trigger Connector Filter
+- The connector combines both criteria using a logical AND operation.
+- An event is processed only if it satisfies both the topology filter and the pipeline filter.
 
-This applies to a specific HDAP trigger connector row within the persistent cache refresh configuration.
+For example:
 
-1. Under the **Refresh Settings** tab, locate the table of configured real-time connectors.
-2. In the row corresponding to your HDAP trigger connector, click **Trigger Filter**.
-3. In the dialog, enter the specific filter in the **Event Filter** / **Pipeline filter** field.
-4. Click **OK** and then **Save**.
+| Filter | Value |
+|---|---|
+| Topology event filter | `(department=Sales)` |
+| Pipeline connector event filter | `(l=Chicago)` |
+| Effective event filter | `(&(department=Sales)(l=Chicago))` |
 
+#### Disabled global state
 
-#### Global Trigger Event Filtering Switch
+If an administrator has disabled Trigger Event Filtering under Settings > Synchronization, a warning banner appears above the Event Filtering section:
 
-RadiantOne provides a deployment-wide switch to temporarily disable or enable trigger event filtering without deleting configured filter rules.
+_Trigger event filtering is disabled deployment-wide, so the triggers capture every event. Filters below are saved but not enforced until it is re-enabled under Settings > Synchronization, available in expert mode._
 
-1. In the **Main Control Panel**, go to **Settings** > **Synchronization** > **Trigger Event Filtering**.
-2. To enable or disable enforcement:
-   * **Check** the box to enable filter enforcement (enabled by default).
-   * **Uncheck** the box to bypass all trigger event filtering deployment-wide.
-3. Click **Save**.
+![Capture Tab Event Filtering when Global Trigger Filtering is Disabled](../../media/image-20261002-050026.png)
 
-When global trigger event filtering is disabled, all configured filters remain stored in the configuration but are **not enforced** (all trigger events are captured and published). 
-The following informational note is displayed in the Control Panel on the Persistent Cache **Refresh Settings** tab and the Pipeline **Capture** tab:  
-_Trigger event filtering is disabled deployment-wide, so the triggers capture every event. Filters here are saved but not enforced until it is re-enabled under Settings > Synchronization._
+### Persistent cache trigger filters
+
+For persistent cache proxy views configured with real-time refresh, filters can be defined for the entire cache and for individual HDAP trigger connectors. For steps, see [Configuring Trigger Event Filtering for Real-Time Refresh (HDAP Trigger Connectors)](/deployment-and-tuning-guide/02-tuning-tips-for-caching-in-radiantone#configuring-trigger-event-filtering-for-real-time-refresh-hdap-trigger-connectors) in the RadiantOne Deployment and Tuning Guide.
+
+### Global trigger event filtering switch
+
+RadiantOne provides a deployment-wide switch, the **Enable trigger event filtering** check box available in Expert Mode under Main Control Panel > **Settings** > **Synchronization** > **Trigger Event Filtering**, to temporarily disable or enable trigger event filtering without deleting configured filter rules. When it is disabled, all configured filters remain stored but are not enforced, and all trigger events are captured and published. For details, see [Synchronization Settings](/sys-admin-guide/synchronization-settings) in the RadiantOne System Administration Guide.

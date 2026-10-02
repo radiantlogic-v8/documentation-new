@@ -30,3 +30,39 @@ After all synchronization source and target objects are represented in the Radia
 This section focuses on configuring the connector type. For details on the behavior of and properties for database connectors (Timestamp, Counter, Changelog), LDAP connectors (changelog or persistent search), and Active Directory connectors (usnChanged or DirSync), please see the [RadiantOne Connector Properties Guide](/documentation/connector-properties-guide/overview).
 1. A pipeline represents a synchronization flow from a given source object and a target object endpoint. Each pipeline in the selected topology must be configured.
 1. Select **CONFIGURE** next to the pipeline. There are two components that need configured per pipeline: Capture Connector and Transformation. Apply Connectors do not require configuration.
+
+## Configure topology-level trigger event filtering
+
+When synchronizing changes from an HDAP/LDAP directory using trigger-based capture, you can define a topology-level filter to restrict which change events are captured across all pipelines within that topology.
+
+>[!note]
+>This optional setting is not required for most deployments. Configure it only when needed for performance optimization.
+
+### Conditional visibility of the Trigger Filter button
+
+The **Trigger Filter** button in the topology header is displayed conditionally based on connector types:
+
+- **Visible**: Shown only when the selected topology contains at least one pipeline configured with an HDAP trigger-based capture connector.
+- **Hidden**: Hidden automatically if all pipelines in the topology use non-trigger sources (for example, Database or Timestamp connectors).
+
+### Configure a topology trigger filter
+
+To configure a topology trigger filter:
+
+1. In the Main Control Panel > Global Sync tab, select the target topology from the list on the left.
+1. In the topology header on the right, select **Trigger Filter**.
+1. In the **Topology Trigger Event Filter** dialog, enter the LDAP search filter representing the entries whose change events you want to capture. For example: `(department=Sales)` or `(&(objectClass=user)(l=Chicago))`.
+1. Review the advisory note in the dialog: *This optional setting is not required for most deployments. Configure it only when needed for performance optimization.*
+
+    ![Topology Trigger Event Filter dialog](../media/image-20261002-045807.png)
+
+1. Select **OK**.
+
+### Operational details
+
+- Filtering takes place at the trigger source before change notifications are queued into the pipeline.
+- The topology trigger filter applies to Add and Modify events. It does not filter Delete operations.
+- The topology filter is inherited by every HDAP trigger pipeline in the topology and is displayed as **Inherited from topology** in each pipeline's [Event Filtering](capture-connector/capture-connector-configuration#event-filtering-capture-tab) section. If a pipeline also defines its own filter, both filters are combined with a logical AND.
+- If global trigger event filtering is disabled under Settings > Synchronization (Expert Mode), the dialog displays a warning that trigger filtering is globally inactive. The filter is saved but not enforced until the setting is re-enabled. For details, see [Synchronization Settings](/sys-admin-guide/synchronization-settings) in the RadiantOne System Administration Guide.
+
+    ![Topology Trigger Event Filter dialog when Global Trigger Filtering is Disabled](../media/image-20261002-050009.png)

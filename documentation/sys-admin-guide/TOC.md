@@ -25,3 +25,4 @@ description: System Administration
 - [Directory Schema](07-directory-schema.md)
 - [Directory Browser Tab](08-directory-browser-tab.md)
 - [Logs](09-logs.md)
+- [Synchronization Settings](synchronization-settings.md)

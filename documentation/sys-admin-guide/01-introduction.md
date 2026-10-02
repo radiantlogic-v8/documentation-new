@@ -32,6 +32,8 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![Main Control Panel Expert Mode](Media/expert-mode.jpg "Main Control Panel Expert Mode")
 
+For example, the Settings > Synchronization section, which contains the global [Trigger Event Filtering](synchronization-settings) setting, is displayed in the Settings left navigation only when Expert Mode is ON.
+
 >[!note]
 >The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
