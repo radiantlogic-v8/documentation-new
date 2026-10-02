@@ -52,7 +52,7 @@ For pipelines using an HDAP trigger-based capture connector, the **Event Filteri
 
 To configure a pipeline event filter:
 
-1. In the Main Control Panel > Global Sync tab, select the topology and select **Configure** next to the pipeline.
+1. In the Main Control Panel > Synchronization tab, select the topology and select **Configure** next to the pipeline.
 1. Select the **Capture** section.
 1. In the **Event Filtering** section, review the inherited topology filter and enter a value for **Pipeline connector event filter** if needed.
 1. Select **Save**.

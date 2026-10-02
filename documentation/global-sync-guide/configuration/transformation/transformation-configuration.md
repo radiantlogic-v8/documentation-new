@@ -12,7 +12,7 @@ The transformation configuration contains the logic to translate a change in a s
 
 To configure the transformation:
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
+1. From the Main Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select **Configure** on the pipeline.
 1. Select the Transformation component and choose the Transformation Type; Mappings, Script, or Script and Mappings. Depending on the type selected, new sections are displayed.
 

@@ -39,7 +39,7 @@ Capture connectors log activity to: <RLI_HOME>\logs\sync_agents\<pipelineId>\con
  
 Figure 4: Capture Connector Log Example
  
-1.	The log level is defined per connector with the setting in Main Control Panel > Global Sync tab. 
+1.	The log level is defined per connector with the setting in Main Control Panel > Synchronization tab. 
 
 2.	Select the topology and click Configure next to the relevant pipeline. 
 
@@ -59,7 +59,7 @@ Figure 4: Capture Connector Log Example
 
 ## Sync Engine (Transformation and Apply)
 
-The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in: <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on each cluster node to find the correct log file. Or you can use the Main Control Panel -> Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click the Download button.
+The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in: <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on each cluster node to find the correct log file. Or you can use the Main Control Panel -> Synchronization tab to download the corresponding sync_engine.log file by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click the Download button.
 
 An example of transformation and apply activities that you can find in this log are shown below. Important information is highlighted in red.
 

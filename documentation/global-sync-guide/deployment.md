@@ -39,9 +39,9 @@ Configure access controls for these root naming contexts from Main Control Panel
 
 ## View logs
 
-Transformation and apply components log to `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on each cluster node to find the correct log file. Or you can use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the Log Viewer section, select the **Download** button.
+Transformation and apply components log to `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on each cluster node to find the correct log file. Or you can use the Synchronization tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the Log Viewer section, select the **Download** button.
 
-The upload process logs to the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node from where the upload was run. If there is an error during upload when using the Global Sync tab, the error is shown in the Log Viewer. You can search, download and expand the log file from here.
+The upload process logs to the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node from where the upload was run. If there is an error during upload when using the Synchronization tab, the error is shown in the Log Viewer. You can search, download and expand the log file from here.
 
 ![Log Viewer](media/image94.png)
 
@@ -49,7 +49,7 @@ Capture connectors log activity to: `{RLI_HOME}\logs\sync_agents\{PIPELINE_ID}\c
 
 ![Output of running command <RLI_HOME>/bin/monitoring.bat (.sh on Linux) -d pipeline](media/image92.png)
 
-The HDAP Trigger capture process logs to `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on each cluster node to find the correct log file. Or you can use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the Log Viewer section, select the **Download** button. HDAP trigger events are logged with the keyword `"pipe-sync"` followed by the pipeline id. Make sure the  
+The HDAP Trigger capture process logs to `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on each cluster node to find the correct log file. Or you can use the Synchronization tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the Log Viewer section, select the **Download** button. HDAP trigger events are logged with the keyword `"pipe-sync"` followed by the pipeline id. Make sure the  
 VDS – Sync Engine log file level is set to **DEBUG**. You can check the log level from the Main Control Panel > Settings tab > Logs > Log Settings. Select **VDS - Sync Engine** from the drop-down list and make sure **Log Level** is set to **DEBUG**.
 
 ![Sync Engine Log Settings](media/image95.png)
@@ -60,7 +60,7 @@ Once a pipeline is configured, all synchronization components start automaticall
 
 ## Monitor the synchronization process
 
-The number of entries processed and the number of entries queued by the Transformation component can be viewed from the Main Control Panel > Global Sync tab. Select the topology on the left. The pipelines displayed on the right indicate the number of entries processed by the transformation and apply connectors.
+The number of entries processed and the number of entries queued by the Transformation component can be viewed from the Main Control Panel > Synchronization tab. Select the topology on the left. The pipelines displayed on the right indicate the number of entries processed by the transformation and apply connectors.
 
 For complete details on monitoring Global Sync components, please see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
 
@@ -74,7 +74,7 @@ Default alerts are configured for all pipelines. The alerts are related to:
 
 - The processor queue size.
 
-Default alerts can be enabled on the Global Sync tab > selected topology. Select **Configure** next to the pipeline. In the options on the left, select **Alerts**.
+Default alerts can be enabled on the Synchronization tab > selected topology. Select **Configure** next to the pipeline. In the options on the left, select **Alerts**.
 
 ![Pipeline Alerts Example](media/image96.png)
 
@@ -119,7 +119,7 @@ To replay failed messages from the dead letter queue, you can use the vdsconfig 
 
 See [Pipeline ID](concepts-and-definitions/topology.md#pipeline-id) for assistance with finding the pipelineId value to pass in the command.
 
-Failed messages can also be replayed from the Main Control Panel > Global Sync tab. Select the topology and select **Configure** next to the pipeline. Select the **Queue** section on the left and locate the Failed Messages section. Select the **Resend** button next to the failed message that you want to be resent.
+Failed messages can also be replayed from the Main Control Panel > Synchronization tab. Select the topology and select **Configure** next to the pipeline. Select the **Queue** section on the left and locate the Failed Messages section. Select the **Resend** button next to the failed message that you want to be resent.
 
 ![Manually Replaying Failed Messages](media/image99.png)
 
@@ -147,7 +147,7 @@ This section describes exporting a topology from the source environment.
 
     vdsconfig.bat resource-export -name "dc=adtohdap" -path c:/
 
-1. In the Main Control Panel, navigate to the Global Sync tab.
+1. In the Main Control Panel, navigate to the Synchronization tab.
 
 1. Select the topology from the list of topologies on the left.
 
@@ -177,7 +177,7 @@ To import the topology:
 
     >[!warning] For rules-based transformation types, import rules to the new environment at <RLI_HOME>\vds_server\conf\sync\rules.
 
-3. Log into the Main Control Panel, and navigate to the Global Sync tab.
+3. Log into the Main Control Panel, and navigate to the Synchronization tab.
 
 4. Select the topology from the list of topologies on the left.
 

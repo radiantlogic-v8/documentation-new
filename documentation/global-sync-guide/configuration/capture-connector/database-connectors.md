@@ -36,7 +36,7 @@ RadiantOne can generate the SQL scripts which create the configuration needed to
 
 ### Connector configuration
 
-This section describes generating and executing the scripts in the Main Control Panel > Global Sync tab. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog connector uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
+This section describes generating and executing the scripts in the Main Control Panel > Synchronization tab. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog connector uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
 
 If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
 
@@ -45,7 +45,7 @@ To configure DB Changelog connector:
 >[!note]
 >These instructions assume you want to apply the SQL scripts immediately.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology.
+1. From the Main Control Panel > Synchronization Tab, select the topology.
 1. On the right, select the sync pipeline to configure.
 1. Select a Capture component and the configuration displays.
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
@@ -143,7 +143,7 @@ The following steps assume your backend database table has a primary key defined
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
+1. From the Main Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
 1. Select a Capture component and the configuration displays.
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
@@ -154,13 +154,13 @@ The following steps assume your backend database table has a primary key defined
 1. After the capture connector is configured, configure the transformation.
 
 >[!warning]
->If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
+>If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Synchronization tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
 ## DB counter
 
 The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-connectors) section.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
+1. From the Main Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
 1. Select the Capture component and the configuration displays.
 1. Select **DB Counter** from the **Connector Type** drop-down list.
@@ -173,7 +173,7 @@ The following steps assume your database backend table contains an indexed colum
 ![DB Counter Connector Configuration](../../media/image32.png)
 
 >[!warning]
->If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
+>If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Synchronization tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
 ## Database connector failover
 

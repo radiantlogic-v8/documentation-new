@@ -7,11 +7,11 @@ description: Configure capture connector types and properties
 
 The process of configuring connector properties and the property definitions described throughout the rest of this section are applicable to all connector types.
 
-Connector types and properties are configured from the Main Control Panel > Global Sync tab. Choose the topology on the left and then select **Configure** next to the pipeline. In the pipeline configuration, choose the **capture** component.
+Connector types and properties are configured from the Main Control Panel > Synchronization tab. Choose the topology on the left and then select **Configure** next to the pipeline. In the pipeline configuration, choose the **capture** component.
 
 The capture connector type is configured in the Core Properties section at the bottom.
 
-![An example of how to configure the capture connector type in the Core Properties section in the Global Sync tab of the Main Control Panel](media/image4.png)
+![An example of how to configure the capture connector type in the Core Properties section in the Synchronization tab of the Main Control Panel](media/image4.png)
 
 Connector Properties are configured in the Core Properties, Advanced Properties, Event Filtering, and Event Contents sections. Not all connector types have all sections.
 

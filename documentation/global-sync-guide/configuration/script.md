@@ -10,7 +10,7 @@ Using a script for transformation allows for complex logic to be applied before 
 >[!note]
 >If you use both script and attribute mappings, the attribute mappings are applied first.
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Main Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Transformation** component and choose either **Script** or **Script and Mappings** from the **Transformation Type** drop-down list.
 1. Expand the **Script** section that appears below the Transformation Type and select **Edit**.
@@ -60,7 +60,7 @@ The add your own log statements into the script, use the following:
 
 When your script has been modified, you can test it by emulating changes from the source.
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Main Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the Transformation component and choose either **Script** or **Script and Mappings** from the **Transformation Type** drop-down list.
 1. Expand the **Script** section that appears below the **Transformation Type** and select **Edit**.

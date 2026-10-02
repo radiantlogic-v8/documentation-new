@@ -88,7 +88,7 @@ RadiantOne Universal Directory (HDAP) stores across multiple sites/data centers 
 
 **Global Sync**
 
-The Global Sync tab is for managing synchronization pipelines and monitoring their activities. You can also set connector properties and perform uploads from here. For details on Global Sync, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
+The Synchronization tab is for managing synchronization pipelines and monitoring their activities. You can also set connector properties and perform uploads from here. For details on Global Sync, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
 
 **ZooKeeper**
 

@@ -159,7 +159,7 @@ Global Synchronization can be started in one of two ways: via the **Main Control
 
 ### Starting via Main Control Panel
 
-1. Navigate to **Main Control Panel > Global Sync** tab.
+1. Navigate to **Main Control Panel > Synchronization** tab.
 2. Select the desired topology from the left panel.
 3. Click **RESUME** to start synchronization for all pipelines.
 

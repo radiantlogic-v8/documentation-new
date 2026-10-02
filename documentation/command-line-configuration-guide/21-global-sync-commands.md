@@ -7,7 +7,7 @@ description: Command Line Configuration Guide
 
 This chapter outlines commands used to configure Global Sync.
 
-Global synchronization configuration can be performed on the Main Control Panel > Global Sync tab.
+Global synchronization configuration can be performed on the Main Control Panel > Synchronization tab.
 
 Several commands require the connectorname and/or the pipelineID. For Global Sync capture connectors, the value for the connectorname argument can be found in the Main Control Panel > Global Sync Monitoring tab. Select the topology on the left and click Configure on the right. Click the Capture component and expand the Core Properties section at the bottom. Note the Connector Name value. An example is shown below.
 
@@ -17,11 +17,11 @@ You can find the pipeline ID using the vdsconfig command line utility with the l
 
 ![pipeline ID using vdsconfig](Media/Image21.2.jpg)
 
-You can find the pipeline ID from the Main Control Panel > Global Sync tab.
+You can find the pipeline ID from the Main Control Panel > Synchronization tab.
 
 Select the topology and hover over the name property of the pipeline. An example is shown below.
 
-![pipeline id using global sync tab](Media/Image21.3.jpg)
+![pipeline id using Synchronization tab](Media/Image21.3.jpg)
 
 ## create-sync-topology
 

@@ -11,7 +11,7 @@ Rules offer a default event-based template that allows for configuring condition
 
 To create a rule set:
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Main Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the Transformation component and choose **Rules-based Transformation** from the **Transformation Type** drop-down list.
 1. Select the button to create a new Rule Set.

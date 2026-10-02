@@ -7,7 +7,7 @@ description: Test rules
 
 You can test your rules by emulating changes from the source.
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Main Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Transformation** component and choose **Rules-based Transformation** from the **Transformation Type** drop-down list.
 1. Expand the **Rules** section that appears below the **Transformation Type** and select ![Less than and greater than symbols](../../media/image87.png).

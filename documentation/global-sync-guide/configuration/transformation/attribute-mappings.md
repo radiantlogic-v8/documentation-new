@@ -120,7 +120,7 @@ The **Auto Map** option is a quick way to auto-generate attribute mappings betwe
 
 To edit an attribute mapping:
 
-1. Select the topology on the Global Sync tab.
+1. Select the topology on the Synchronization tab.
 1. Select **Configure** on the pipeline.
 1. Select the Transformation component.
 1. Expand below the Mappings section at the bottom.
@@ -132,7 +132,7 @@ To edit an attribute mapping:
 
 Test the attribute mappings by entering values for the source attributes.
 
-1. Select the topology on the Global Sync tab.
+1. Select the topology on the Synchronization tab.
 1. Select **Configure** on the pipeline.
 1. Select the Transformation component.
 1. Expand below the Mappings section at the bottom.

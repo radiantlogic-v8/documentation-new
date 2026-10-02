@@ -9,7 +9,7 @@ If the target/destination needs populated with entries before starting synchroni
 
 ## Upload from the main control panel
 
-1. Go to the Main Control Panel > Global Sync Tab.
+1. Go to the Main Control Panel > Synchronization Tab.
 1. Select the desired topology from the list of topologies on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Apply** component.
@@ -21,7 +21,7 @@ If the target/destination needs populated with entries before starting synchroni
 
 To run an upload from command line, you can use `{RLI_HOME}/bin/vdsconfig.bat init-sync-pipeline -pipelineid {PIPELINE_ID}`
 
-PipelineId is the name of the pipeline. You can view this from the Main Control Panel > Global Sync tab. Select the topology on the left. On the right, hover over the Pipeline Name:
+PipelineId is the name of the pipeline. You can view this from the Main Control Panel > Synchronization tab. Select the topology on the left. On the right, hover over the Pipeline Name:
 
 ![Example of Pipeline Name/ID](./media/image90.png)
 

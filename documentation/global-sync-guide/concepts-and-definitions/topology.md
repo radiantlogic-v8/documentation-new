@@ -29,7 +29,7 @@ You can find the pipeline ID using the vdsconfig command line utility with the `
 
 ![A terminal application and the execution of the "vdsconfig list-topologies" command with the subsequent output](../media/image7.png)
 
-You can find the pipeline ID from the Main Control Panel > Global Sync tab.
+You can find the pipeline ID from the Main Control Panel > Synchronization tab.
 
 Select the topology and hover over the name property of the pipeline. An example is shown below.
 

@@ -54,13 +54,13 @@ A high-level architecture is shown below.
 
 ## Reset connector cursor – detect new changes only
 
-Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from command line or from the Main Control Panel > Global Sync tab. Each option is described below.
+Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from command line or from the Main Control Panel > Synchronization tab. Each option is described below.
 
-### Global Sync tab
+### Synchronization tab
 
-On the Main Control Panel > Global Sync tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
+On the Main Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
 
-![The Reset Cursor option in the Global Sync tab of the Main Control Panel](media/image2.png)
+![The Reset Cursor option in the Synchronization tab of the Main Control Panel](media/image2.png)
 
 ### Command line
 
@@ -91,11 +91,11 @@ Each connector stores a cursor to maintain information about the last processed 
 >[!note]
 >Editing the cursor is supported for connectors that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
 
-1. Stop the capture connector by suspending the pipeline. You can do this from the Main Control Panel > Global Sync tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
+1. Stop the capture connector by suspending the pipeline. You can do this from the Main Control Panel > Synchronization tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
 1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
 1. Edit the cursor attribute and enter the value to indicate the point from which the connector should capture changes from. An example for a database changelog connector is shown below.
     ![Example of Database Changelog Connector Cursor Settings](media/image3.png)
-1. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Global Sync tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
+1. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Synchronization tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
 
 ## Message size
 

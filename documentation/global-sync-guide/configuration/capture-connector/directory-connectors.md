@@ -5,13 +5,13 @@ description: Directory connectors
 
 # Directory connectors
 
-For directory backends (LDAP-accessible including RadiantOne Universal Directory and Active Directory), the default connectors are configured and started automatically. Go to Main Control Panel > Global Sync tab to select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
+For directory backends (LDAP-accessible including RadiantOne Universal Directory and Active Directory), the default connectors are configured and started automatically. Go to Main Control Panel > Synchronization tab to select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
 
 ![Example Active Directory Connector Types](../../media/image34.png)
 
 ## LDAP directories
 
-For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Main Control Panel > Global Sync tab. Select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
+For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Main Control Panel > Synchronization tab. Select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
 
 Choose either the **LDAP** option (for Changelog) or **Persistent Search** and **Save**.
 

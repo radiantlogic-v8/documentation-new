@@ -20,7 +20,7 @@ After virtual views have been mounted into the RadiantOne directory namespace, e
 
 ## Create topologies
 
-After all synchronization source and target objects are represented in the RadiantOne directory namespace and the LDAP Schema contains all object definitions, synchronization topologies can be configured from the Main Control Panel > Global Sync tab.
+After all synchronization source and target objects are represented in the RadiantOne directory namespace and the LDAP Schema contains all object definitions, synchronization topologies can be configured from the Main Control Panel > Synchronization tab.
 
 1. Select **New Topology**.
 1. Either manually enter the DN, or select **Browse for the Source Naming Context** and select the location in the RadiantOne namespace that contains the source objects you want to detect change events on. If you cannot locate the container when browsing, manually enter the DN value. 
@@ -45,7 +45,7 @@ The **Trigger Filter** button in the topology header is displayed conditionally 
 
 To configure a topology trigger filter:
 
-1. In the Main Control Panel > Global Sync tab, select the target topology from the list on the left.
+1. In the Main Control Panel > Synchronization tab, select the target topology from the list on the left.
 1. In the topology header on the right, select **Trigger Filter**.
 1. In the **Topology Trigger Event Filter** dialog, enter the LDAP search filter representing the entries whose change events you want to capture. For example: `(department=Sales)` or `(&(objectClass=user)(l=Chicago))`.
 1. Review the advisory note in the dialog: *This optional setting is not required for most deployments. Configure it only when needed for performance optimization.*
