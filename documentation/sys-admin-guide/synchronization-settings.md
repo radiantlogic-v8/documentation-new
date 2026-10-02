@@ -42,5 +42,5 @@ To change the setting, check or uncheck **Enable trigger event filtering** and c
 For details on configuring the filters themselves, see:
 
 - [Topology-Level Trigger Filter](/global-sync-guide/configuration/synchronization-topologies#topology-level-trigger-filter) in the RadiantOne Synchronization Guide.
-- [2. Pipeline-Level Event Filter](/global-sync-guide/configuration/capture-connector/capture-connector-configuration#2-pipeline-level-event-filter) in the RadiantOne Synchronization Guide.
+- [Pipeline-Level Event Filter](/global-sync-guide/configuration/capture-connector/capture-connector-configuration#2-pipeline-level-event-filter) in the RadiantOne Synchronization Guide.
 - [Configuring Trigger Event Filtering for Persistent Cache](/deployment-and-tuning-guide/02-tuning-tips-for-caching-in-radiantone#configuring-trigger-event-filtering-for-persistent-cache) in the RadiantOne Deployment and Tuning Guide.
