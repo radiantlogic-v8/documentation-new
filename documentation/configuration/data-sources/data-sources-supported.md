@@ -75,7 +75,7 @@ Templates for cloud services are located on the OTHER tab.
 
 ### NHI and AI Agent Repositories
 
-To connect to the following sources, follow the steps to: [Create Data Sources](https://developer.radiantlogic.com/ido/v2/data-sync/datasource-examples/ai-agent-data-sources/)
+To connect to the following sources, follow the steps to: [Create Data Sources](../../../../ido/v2/data-sync/datasource-examples/ai-agent-data-sources/)
 
 - Amazon Bedrock
 - Microsoft Azure Foundry
