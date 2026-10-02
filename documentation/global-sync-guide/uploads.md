@@ -29,3 +29,5 @@ In the example in the screen above, the `pipelineId` value is: `o_ldap_sync_obje
 
 >[!note]
 >You can use the vdsconfig.bat command line tool with the `list-topologies` command to get a list of topology IDs and pipeline IDs.
+
+To view logs related to uploads, see [sync_engine.log](../logging-and-troubleshooting-guide/05-global-synchronization/#viewing-sync-engine-logs).
