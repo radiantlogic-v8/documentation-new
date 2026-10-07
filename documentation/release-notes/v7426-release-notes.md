@@ -70,6 +70,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 - [IV4-759, SQ-1798]: Improved resiliency of global sync processing by preventing a processing node from silently halting event handling, which could previously cause queues to accumulate until the node was restarted.
 - [IV4-785, SQ-1833]: The Clustermonitor setting and the Server Control Panel Dashboard graphs it feeds are deprecated and hidden from the Main Control Panel, because the store makes the leader poll the administrative port of every node every few seconds; a deployment that already has it enabled can still turn it off from the Clustermonitor settings page opened by its direct URL.
 - [IV4-787, SQ-666]: New global and per connector/pipeline HDAP trigger event filter fields added to the real-time persistent cache refresh and sync topology/pipeline pages.  Global trigger event filtering enabled page added on the settings tab under synchronization -> trigger event filtering.
+- [IV4-827]: Fixed a classdef not found error when using certificate login in the control panel or when using the test cert mapping vdsconfig CLI command.
 
 ## Critical Bug Fixes
 
