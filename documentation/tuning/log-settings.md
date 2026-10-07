@@ -282,18 +282,12 @@ All changes to persistent cache branches are logged in the cn=changelog. Therefo
 
 RadiantOne logs statistics related to operations it receives. This includes average execution time, peak execution time, and whether the operation was successful. No actual data (entires/attributes) is logged, only metadata. This log is primarily for Radiant Logic support to have key information to assist with troubleshooting.
 
-In v8 of Identity Data Management, this logging is enabled by default and can be managed from the Classic Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section. The log name is stats.log and statistics are calculated in one minute intervals.
-
 For each RadiantOne Directory store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the stats.log. 
-
-### Changes in v9
 
 In RadiantOne v9, log statistics settings are configured via the [Settings Service REST API](../../../../api/v9.0.0/#tag/Directory-Schema-API/operation/getObjectClassRequiredAttributes). 
 
 * GET /api/settings-service/logs_statistics — Retrieves the current log statistics configuration.
 
 * PUT /api/settings-service/logs_statistics — Updates the log statistics configuration.
-
-These settings are not available in the new Control Panel.
 
 
