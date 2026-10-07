@@ -10,7 +10,7 @@ Learn how to apply patches to an environment to update the version of RadiantOne
 
 ## Updating RadiantOne Identity Data Management - SaaS Deployments
 
-The following steps describe how to update RadiantOne Identity Data Management v8.1 to a new patch release (e.g. v8.1.X) for SaaS deployments. 
+The following steps describe how to update RadiantOne Identity Data Management v9 to a new patch release (e.g. v9.0.X) for SaaS deployments. 
 
 To learn how to update your application from v8 to v9, refer to [this upgrade guide](../upgrade-guides/updating-to-saas-v9.md). 
 
@@ -38,7 +38,7 @@ Sheduled backups can be enabled and configured by clicking the cog icon next to:
 
 ## Updating RadiantOne Identity Data Management - Self-managed Deployments
 
-The following steps describe how to update RadiantOne Identity Data Management v8.1 to a new patch release (e.g. v8.1.X) for self-managed deployments.
+The following steps describe how to update RadiantOne Identity Data Management v9 to a new patch release (e.g. v9.0.X) for self-managed deployments.
 
 ### Preparing for the Patch
 

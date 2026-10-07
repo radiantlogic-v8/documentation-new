@@ -158,6 +158,6 @@ PUT /api/settings-service/duplicate_handling/rules
 []
 ```
 
-Duplicate identity rules are useful for authentication searches that must return a single account. For authorization and profile lookups, however, suppressed entries do not contribute their attributes. If you need a complete profile across multiple sources, configure joins between the relevant virtual views. See see [Joins](https://developer.radiantlogic.com/idm/v8.1/introduction/concepts/#joins) for more information.
+Duplicate identity rules are useful for authentication searches that must return a single account. For authorization and profile lookups, however, suppressed entries do not contribute their attributes. If you need a complete profile across multiple sources, configure joins between the relevant virtual views. See see [Joins](https://developer.radiantlogic.com/idm/v9/introduction/concepts/#joins) for more information.
 
 >[!warning] If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) as opposed to trying to use Duplicate Identity Removal.

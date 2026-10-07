@@ -197,11 +197,8 @@ Harness your identity data with intelligent integration to drive better business
 ## Maintenance
 
 <section>
-   
-  > [v8 Release Notes](maintenance/release-notes/release-notes)  
-  > Release notes contain important information about new features, improvements and bug fixes.
 
-  > [v9 Release Notes](maintenance/v9release-notes/v9release-notes)  
+  > [v9 Release Notes](maintenance/v9release-notes/release-notes)  
   > Release notes contain important information about new features, improvements and bug fixes.
 
   > [Security Vulnerability Report](maintenance/vulnerability-report)  
@@ -250,69 +247,6 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 ## Configuration APIs
 
 <section>
-
-  > [API Developer Guide - v8.1.1](/api)
-  > Version 8.1.1 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.1.2](/api/v8.1.2)
-  > Version 8.1.2 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.1.3](/api/v8.1.3)
-  > Version 8.1.3 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.1.4](/api/v8.1.4)
-  > Version 8.1.4 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.1.5](/api/v8.1.5)
-  > Version 8.1.5 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.2.0](/api/v8.2.0)
-  > Version 8.2.0 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.2.1](/api/v8.2.1)
-  > Version 8.2.1 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.2.2](/api/v8.2.2)
-  > Version 8.2.2 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.3.0](/api/v8.3.0)
-  > Version 8.3.0 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.3.1](/api/v8.3.1)
-  > Version 8.3.1 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.3.2](/api/v8.3.2)
-  > Version 8.3.2 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.4.1](/api/v8.4.1)
-  > Version 8.4.1 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.4.2](/api/v8.4.2)
-  > Version 8.4.2 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.4.3](/api/v8.4.3)
-  > Version 8.4.3 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.4.4](/api/v8.4.4)
-  > Version 8.4.4 of RadiantOne Identity Data Management Configuration API.
-  
-  > [API Developer Guide - v8.4.5](/api/v8.4.5)
-  > Version 8.4.5 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.5.0](/api/v8.5.0)
-  > Version 8.5.0 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.5.1](/api/v8.5.1)
-  > Version 8.5.1 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.5.2](/api/v8.5.2)
-  > Version 8.5.2 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.5.3](/api/v8.5.3)
-  > Version 8.5.3 of RadiantOne Identity Data Management Configuration API.
-
-  > [API Developer Guide - v8.5.4](/api/v8.5.4)
-  > Version 8.5.4 of RadiantOne Identity Data Management Configuration API.
 
   > [API Developer Guide - v9.0.0](/api/v9.0.0)
   > Version 9.0.0 of RadiantOne Identity Data Management Configuration API.

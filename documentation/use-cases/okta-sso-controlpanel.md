@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document provides an example of how to configure Okta as the Identity Provider supporting Single Sign-on into the RadiantOne Control Panel. This configuration has been validated for RadiantOne v8.1+.
+This document provides an example of how to configure Okta as the Identity Provider supporting Single Sign-on into the RadiantOne Control Panel.
 
 ## Prerequisites
 

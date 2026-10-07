@@ -419,7 +419,7 @@ kubectl port-forward svc/fid-app -n self-managed 8443
 
 ### Accessing the Data Management SCIM and REST/ADAP APIs
 
-To access the Data Management [SCIM API](https://developer.radiantlogic.com/idm/v8.1/web-services-api-guide/scim/) and [REST/ADAP API](https://developer.radiantlogic.com/idm/v8.1/web-services-api-guide/rest/), open a new terminal and run the following command to port-forward:
+To access the Data Management [SCIM API](https://developer.radiantlogic.com/idm/v9/web-services-api-guide/scim/) and [REST/ADAP API](https://developer.radiantlogic.com/idm/v9/web-services-api-guide/rest/), open a new terminal and run the following command to port-forward:
 
 > Ensure that ports 8089 and 8090 are not already in use on your local machine.
 
@@ -433,7 +433,7 @@ kubectl port-forward svc/fid-app -n self-managed 8089 8090
 
 ### Accessing LDAP/LDAPs Service
 
-To access the [LDAP/LDAPs](https://developer.radiantlogic.com/idm/v8.1/configuration/global-settings/client-protocols/#ldap) service, open a new terminal and run the following command to port-forward:
+To access the [LDAP/LDAPs](https://developer.radiantlogic.com/idm/v9/configuration/global-settings/client-protocols/#ldap) service, open a new terminal and run the following command to port-forward:
 
 > Ensure that ports 2389 and 2636 are not already in use on your local machine.
 
