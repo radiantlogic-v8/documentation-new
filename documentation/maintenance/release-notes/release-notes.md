@@ -31,7 +31,7 @@ description: RadiantOne IDDM Release Notes
 - [v8.5.3](../../maintenance/release-notes/iddm-8-5-3.md) - Release Date: September 09, 2026
 - [v8.5.4](../../maintenance/release-notes/iddm-8-5-4.md) - Release Date: September 23, 2026
 
-See v9 release notes [here](../v9release-notes/v9release-notes.md).
+See v9 release notes [here](../../../../v9/release-notes/release-notes.md).
 
 
 
