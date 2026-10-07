@@ -284,7 +284,7 @@ RadiantOne logs statistics related to operations it receives. This includes aver
 
 For each RadiantOne Directory store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the stats.log. 
 
-In RadiantOne v9, log statistics settings are configured via the [Settings Service REST API](../../../../api/v9.0.0/#tag/Directory-Schema-API/operation/getObjectClassRequiredAttributes). 
+In RadiantOne v9, log statistics settings are configured via the [Settings Service REST API](../../../../api/v9.0.0/#tag/Entry-Statistics-API). 
 
 * GET /api/settings-service/logs_statistics — Retrieves the current log statistics configuration.
 
