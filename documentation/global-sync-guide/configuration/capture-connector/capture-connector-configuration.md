@@ -29,7 +29,7 @@ Trigger event filtering can be configured at multiple hierarchical levels for **
 
 * **LDAP Filter Syntax:** Filters must follow standard RFC 4515 LDAP filter syntax (e.g., `(title=active)`, `(&(ou=People)(status=1))`, `(l=NY*)`).
 * **Hierarchical AND-Merging:** When filters are defined at both a parent level (Topology or Whole-Cache) and a child level (Pipeline or Per-Trigger), the rules are combined using a logical **AND** condition:
-  $$\text{Effective Filter} = \text{Parent Filter} \ \mathbf{AND} \ \text{Child Filter}$$
+  * Effective Filter = Parent Filter **AND** Child Filter 
 * **Empty Filter:** If a filter field is left blank, all change events are captured for that level.
 
 
