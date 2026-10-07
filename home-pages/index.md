@@ -198,7 +198,7 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
 
-  > [v9 Release Notes](maintenance/v9release-notes/release-notes)  
+  > [v9 Release Notes](maintenance/release-notes/release-notes)  
   > Release notes contain important information about new features, improvements and bug fixes.
 
   > [Security Vulnerability Report](maintenance/vulnerability-report)  
