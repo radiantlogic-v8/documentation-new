@@ -38,8 +38,7 @@ The table below shows the mapping between the Identity Data Management applicati
 | 8.5.2                                                                                    | 1.5.2                                |
 | 8.5.3                                                                                    | 1.5.3                                |
 | 8.5.4                                                                                    | 1.5.4                                |
-
-
+| 8.5.5                                                                                    | 1.5.5                                |
 
 
 Ensure that you specify your target version when running installation and update commands that are listed in this document.  
