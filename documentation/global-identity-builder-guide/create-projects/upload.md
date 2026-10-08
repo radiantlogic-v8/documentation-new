@@ -34,13 +34,13 @@ To upload identities into the global profile, from the project page, select **Up
 
 There are two sections visible on the upload step. One section is for bulk loads, loading all identity sources in a particular order. One section is for single uploads, uploading from a select identity source.
 
+* Starting version 7.4.26 and higher, **Only process unresolved entries** option is available for both bulk and single uploads. Select this checkbox to only evaluate and process identities that were previously marked as unresolved. This speeds up the upload process for large data sources by skipping entries that have already been correlated or processed into the global profile.
+  
 ## Bulk upload
 
 Bulk upload is for processing identities from all sources in the indicated order. Use the ![up and down arrow icons](../media/image45.png) to change the order and then select **Upload All**.
 
 ![Bulk Upload Screen](../media/bulk-upload.png)
-
-* **Only process unresolved entries**: Select this checkbox to only evaluate and process identities that were previously marked as unresolved. This speeds up the upload process for large data sources by skipping entries that have already been correlated or processed into the global profile. When enabled, the scheduler task in **Server Control Panel > Tasks** is named with the `(unresolved-only)` suffix (for example, `Upload for ALL Identity Sources on Global Profile [<project_name>] (unresolved-only)`). **Note that this feature is available on version 7.4.26 and higher. **
 
 
 During the upload, correlation rules are evaluated and source identities are either linked to matching global profile identities, created as new identities in the global profile, or marked as [unresolved](../concepts.md#unresolved-identity) and not added into the global profile. During an upload, the upload and reset buttons are temporarily disabled.
