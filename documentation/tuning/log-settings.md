@@ -288,7 +288,7 @@ For each RadiantOne Directory store or persistent cache initialization, statisti
 
 ### Changes in v9
 
-In RadiantOne v9, log statistics settings are configured via the [Settings Service REST API](../../../../api/v9.0.0/#tag/Entry-Statistics-API){:target="_blank"}. 
+In RadiantOne v9, log statistics settings are configured via the [Settings Service REST API](../../../../api/v9.0.0/#tag/Entry-Statistics-API). 
 
 * GET /api/settings-service/logs_statistics — Retrieves the current log statistics configuration.
 
