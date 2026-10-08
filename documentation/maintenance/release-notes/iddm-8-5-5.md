@@ -5,7 +5,7 @@ description: RadiantOne IDDM v8.5.5 Release Notes
 
 # RadiantOne Identity Data Management v8.5.5 Release Notes
 
-October 7, 2026
+October 8, 2026
 
 These release notes contain important information about improvements and bug fixes for RadiantOne Identity Data Management v8.5.5
 
