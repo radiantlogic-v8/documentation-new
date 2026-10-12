@@ -16,8 +16,7 @@ Key differentiators between the two forms of subscription are shown below.
 
 Description	| SaaS | Self-managed
 -|-|-
-Securely connect to on-prem identity data silos w/o direct network connectivity (Secure Data Connectors)  	| X | - 
-Access to AIDA – the Artificial Intelligent Data Assistant​.	| X | -
+Securely connect to on-prem identity data silos w/o direct network connectivity (Secure Data Connectors)  	| X | -
 Environment Operations Center - Built-in dashboards for monitoring and reporting​.	| X | -
 Environment Operations Center - Built-in interface for querying and visualizing logs 	| X | -
 Environment Operations Center – Control Plane for quickly and easily deploying RadiantOne Identity Data Management.  	| X | -
@@ -25,8 +24,7 @@ Environment Operations Center – easily  upgrade your RadiantOne Identity Data 
 Customer can subscribe to release channels and get notifications about early access to Beta versions of upcoming product releases. | X | - 
 Guaranteed 99.9% infrastructure availability. | X | ? (customer responsibility)
 Deploy RadiantOne Identity Data Management in the platform using Helm Charts. | - | X
-Deploy RadiantOne Identity Analytics using Helm Charts | - | X
-Customer is responsible for deploying applications (IDDM and/or IDA), updating/upgrading versions of applications, scaling in/out the number of nodes used by the app. | X | X
+Customer is responsible for deploying the Identity Data Management application, updating/upgrading versions of applications, scaling in/out the number of nodes used by the app. | X | X
 Requires Kubernetes knowledgeable staff to install and maintain the cluster. | - | X
 Customer owns and manages the Kubernetes infrastructure for the Applications. | - | X
 
