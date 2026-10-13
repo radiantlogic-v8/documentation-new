@@ -358,3 +358,17 @@ September 10, 2026
 * [CFS-224]: Fixed an issue that caused SAML assertion encryption using RSA-1.5 and AES-128-CBC to be rejected on FIPS-enabled Bottlerocket nodes by introducing the following:
   - Added configurable SAML2 assertion encryption algorithms at the application level. Applications can use the default AES-256-CBC/RSA-1.5 pair or AES-256-GCM/RSA-OAEP; mismatched pairs are rejected. Also added a tenant-wide Enforce FIPS-approved SAML2 Encryption Algorithms setting that forces AES-256-GCM/RSA-OAEP for all encrypted assertions.
 
+### v3.18.3
+
+October 14, 2026
+
+**New Features**
+
+- [CFS-164]: Added Windows Performance Monitor (PerfMon) counters across eight categories (Authentication, SAML, WS-Fed, OIDC, Session, RTC, API, and Portal) to track performance metrics, latencies, and request rates for CFS components. Counters can be enabled using the UseCfsPerformanceCounters configuration flag.
+
+**Bug Fixes**
+
+- [CFS-226]: Fixed an issue where approving an application access request generated a generic error ("An error happened while trying to process the Access Request") despite the user being added to the application group. Access requests now process cleanly, display the approved application and group in the user portal, and properly support users without configured email addresses.
+- [CFS-227]: Fixed an issue on the System Dashboard Servers page (System > Dashboard > Servers) where the Master server did not display its hostname correctly and failed to maintain periodic heartbeats.
+- [CFS-230]: Fixed an issue where SAML responses encoded in UTF-8 incorrectly declared UTF-16 in the XML declaration (encoding="utf-16"), causing strict service providers to reject sign-in responses with "Invalid XML" errors.
+- [CFS-231]: Fixed an issue where SAML 2 sign-in requests that omit the AssertionConsumerServiceURL or AssertionConsumerServiceIndex failed with "No Recipients configured for this application" by ensuring CFS falls back to the configured default recipient. In addition, saving a SAML 2 application now validates that all recipient location URLs use absolute HTTP or HTTPS addresses.
