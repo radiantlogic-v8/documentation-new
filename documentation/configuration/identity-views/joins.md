@@ -17,27 +17,27 @@ To configure a global join:
 2. In the directory tree on the left, select the top node named **Root Naming Contexts**.
 3. On the right panel, select the **ADVANCED SETTINGS** tab.
 4. Expand the **Global Joins** section.
-5. Click **Add**. Once the **Join Wizard** opens, complete these steps:
-	i. **Step 1 – Primary Object Settings:**
-	   - Select the **Primary Object Class** associated with the entries you want to join.
-	   - Select the **Primary Join Attribute** from the drop-down menu (must belong to the selected primary object class).
-	   - Click **Next**. *(Note: If required selections are missing, validation errors prevent advancing to the next step).*
-	ii. **Step 2 – Secondary Object Settings:**
-	   - Select the **Data Source** containing the secondary objects. This must be an LDAP or custom data source (including RadiantOne `vds`); database data sources are not supported.
-	   - Enter or click **Browse** to specify the **Base DN** where the secondary entries reside.
-	   - Specify the search **Scope** (`base`, `one`, or `sub`).
-	   - (Optional) Set the **Size Limit** (defaults to `0` for no limit).
-	   - Select the **Secondary Object Class**.
-	   - Select the **Secondary Join Attribute**.
-	   - Review the **Join Condition**. It is generated automatically from the primary and secondary object settings and updates as you change them. The join condition is required, and you can edit it manually if needed (for example, when an attribute you need isn't available in the drop-down lists).
-	   - Click **Next**.
-	iii. **Step 3 – Return Attributes:**
-	   - Choose **Return all attributes** to return every attribute from the secondary object, or choose to return a specific subset.
-	   - If returning a subset, click **Add Attribute** to select the attributes to include.
-	   - Click **Next**.
-	iv. **Step 4 – Join Profile Name:**
-	   - The **Join Profile Name** is prefilled with a default name in the format `globalJoin-<primaryObjectClass>-<secondaryObjectClass>` (for example, `globalJoin-inetOrgPerson-person`). Keep the default or enter a different name. The name is required, case-insensitive, and cannot duplicate an existing join profile name.
-	   - Click **Finish**. A confirmation message should appear, and the new join profile will get displayed in the table under **Join Profile Name**.
+5. Click **Add**. The **Join Wizard** opens.
+   1. **Step 1 – Primary Object Settings:**
+      - Select the **Primary Object Class** associated with the entries you want to join.
+      - Select the **Primary Join Attribute** from the drop-down menu (must belong to the selected primary object class).
+      - Click **Next**. *(Note: If required selections are missing, validation errors prevent advancing to the next step).*
+   2. **Step 2 – Secondary Object Settings:**
+      - Select the **Data Source** containing the secondary objects. This must be an LDAP or custom data source (including RadiantOne `vds`); database data sources are not supported.
+      - Enter or click **Browse** to specify the **Base DN** where the secondary entries reside.
+      - Specify the search **Scope** (`base`, `one`, or `sub`).
+      - (Optional) Set the **Size Limit** (defaults to `0` for no limit).
+      - Select the **Secondary Object Class**.
+      - Select the **Secondary Join Attribute**.
+      - Review the **Join Condition**. It is generated automatically from the primary and secondary object settings and updates as you change them. The join condition is required, and you can edit it manually if needed (for example, when an attribute you need isn't available in the drop-down lists).
+      - Click **Next**.
+   3. **Step 3 – Return Attributes:**
+      - Choose **Return all attributes** to return every attribute from the secondary object, or choose to return a specific subset.
+      - If returning a subset, click **Add Attribute** to select the attributes to include.
+      - Click **Next**.
+   4. **Step 4 – Join Profile Name:**
+      - The **Join Profile Name** is prefilled with a default name in the format `globalJoin-<primaryObjectClass>-<secondaryObjectClass>` (for example, `globalJoin-inetOrgPerson-person`). Keep the default or enter a different name. The name is required, case-insensitive, and cannot duplicate an existing join profile name.
+      - Click **Finish**. A confirmation message should appear, and the new join profile should be displayed in the table under **Join Profile Name**.
 
 ### Editing a Global Join
 
@@ -45,7 +45,7 @@ To modify an existing global join profile:
 
 1. Navigate to **Control Panel** > **Setup** > **Directory Namespace** > **Namespace Design**.
 2. Select the **Root Naming Contexts** node, open the **ADVANCED SETTINGS** tab, and expand **Global Joins**.
-3. Select the join profile row from the table and click **Edit**. The **Edit Join** wizard opens with the existing settings prefilled. *(The Edit button is disabled if no row is selected).*
+3. Select the join profile row from the table and click **Edit**. The **Edit Join** wizard opens with the existing settings prefilled. 
 4. Update the primary object settings, secondary object settings, or return attributes as needed.
    - On the return attributes step, you can click **Edit Manually** to open the join URL editor. Validate the syntax, then click **OK** to apply or **Cancel** to discard manual edits.
 5. Advance to the final step and click **Finish**.
