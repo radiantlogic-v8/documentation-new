@@ -7,72 +7,72 @@ description: Learn how to configure joins.
 
 Objects from any sources in the RadiantOne namespace can be joined if they have an attribue value in common. With joins, you can extend the primary entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). 
 
-This page describes the following. 
-
-- [Configuring a Global Join](#configuring-a-global-join)
-- [Configuring a Regular Join](#configuring-a-regular-join)
-- [Configuring an Extended Join](#configuring-an-extended-join)
-- [Bind Order](#bind-order)
-- [Attribute Priority](#attribute-priority)
-
 ## Configuring a Global Join
 
-Global joins apply server-wide across all views below Root Naming Contexts and are evaluated for all incoming client queries that match the configured primary object criteria.
+A global join is a universal join condition that applies server-wide across all views below Root Naming Contexts and is evaluated for all incoming client queries that match the configured primary object criteria.
 
 To configure a global join:
 
-1. From the Control Panel, navigate to **Setup** > **Directory Namespace** > **Namespace Design**.
-2. Under the directory tree on the left, select the **Root Naming Contexts** node.
+1. From the **Control Panel**, navigate to **Setup** > **Directory Namespace** > **Namespace Design**.
+2. In the directory tree on the left, select the top node named **Root Naming Contexts**.
 3. On the right panel, select the **ADVANCED SETTINGS** tab.
 4. Expand the **Global Joins** section.
-5. Click **Add**. The **Join Wizard** opens.
-6. **Step 1 – Primary Object Settings:**
-   - Select the **Primary Object Class** associated with the entries you want to join.
-   - Select the **Primary Join Attribute** from the drop-down menu (must be an attribute belonging to the selected primary object class).
-   - Click **Next**.
-7. **Step 2 – Secondary Object Settings:**
-   - Select the **Data Source** containing the secondary objects (must be an LDAP-type data source or RadiantOne `vds`).
-   - Enter or click **Browse** to specify the **Base DN** where the secondary entries are located.
-   - Specify the search **Scope** (`base`, `one`, or `sub`).
-   - (Optional) Set the **Size Limit** (defaults to `0` for no limit).
-   - Select the **Secondary Object Class**.
-   - Select the **Secondary Join Attribute**. The generated **Join Condition** displays for review.
-   - Click **Next**.
-8. **Step 3 – Return Attributes:**
-   - Choose **Return all attributes** to return all attributes from the secondary object, or choose to return a specific subset.
-   - If returning a subset, click **Add Attribute** to select or enter the attributes to include.
-   - Click **Next**.
-9. **Step 4 – Join Profile Name:**
-   - Enter a unique **Join Profile Name**.
-   - Click **Finish**.
-
-A confirmation message appears, and the new join profile is added to the **Global Joins** table.
+5. Click **Add**. Once the **Join Wizard** opens, complete these steps:
+	i. **Step 1 – Primary Object Settings:**
+	   - Select the **Primary Object Class** associated with the entries you want to join.
+	   - Select the **Primary Join Attribute** from the drop-down menu (must belong to the selected primary object class).
+	   - Click **Next**. *(Note: If required selections are missing, validation errors prevent advancing to the next step).*
+	ii. **Step 2 – Secondary Object Settings:**
+	   - Select the **Data Source** containing the secondary objects. This must be an LDAP or custom data source (including RadiantOne `vds`); database data sources are not supported.
+	   - Enter or click **Browse** to specify the **Base DN** where the secondary entries reside.
+	   - Specify the search **Scope** (`base`, `one`, or `sub`).
+	   - (Optional) Set the **Size Limit** (defaults to `0` for no limit).
+	   - Select the **Secondary Object Class**.
+	   - Select the **Secondary Join Attribute**.
+	   - Review the **Join Condition**. It is generated automatically from the primary and secondary object settings and updates as you change them. The join condition is required, and you can edit it manually if needed (for example, when an attribute you need isn't available in the drop-down lists).
+	   - Click **Next**.
+	iii. **Step 3 – Return Attributes:**
+	   - Choose **Return all attributes** to return every attribute from the secondary object, or choose to return a specific subset.
+	   - If returning a subset, click **Add Attribute** to select the attributes to include.
+	   - Click **Next**.
+	iv. **Step 4 – Join Profile Name:**
+	   - The **Join Profile Name** is prefilled with a default name in the format `globalJoin-<primaryObjectClass>-<secondaryObjectClass>` (for example, `globalJoin-inetOrgPerson-person`). Keep the default or enter a different name. The name is required, case-insensitive, and cannot duplicate an existing join profile name.
+	   - Click **Finish**. A confirmation message should appear, and the new join profile will get displayed in the table under **Join Profile Name**.
 
 ### Editing a Global Join
 
 To modify an existing global join profile:
 
-1. Navigate to **Setup** > **Directory Namespace** > **Namespace Design** > **Root Naming Contexts** > **ADVANCED SETTINGS** > **Global Joins**.
-2. Select the join profile row from the table and click **Edit**.
-3. Update the primary object settings, secondary object settings, or returned attributes as needed.
-   > On the attributes step, you can click **Edit Manually** to inspect or directly modify the join condition URL string.
-   
-4. Advance to the final step and click **Finish** to save your changes.
+1. Navigate to **Control Panel** > **Setup** > **Directory Namespace** > **Namespace Design**.
+2. Select the **Root Naming Contexts** node, open the **ADVANCED SETTINGS** tab, and expand **Global Joins**.
+3. Select the join profile row from the table and click **Edit**. The **Edit Join** wizard opens with the existing settings prefilled. *(The Edit button is disabled if no row is selected).*
+4. Update the primary object settings, secondary object settings, or return attributes as needed.
+   - On the return attributes step, you can click **Edit Manually** to open the join URL editor. Validate the syntax, then click **OK** to apply or **Cancel** to discard manual edits.
+5. Advance to the final step and click **Finish**.
+
+A confirmation toast (*"Global joins saved successfully."*) displays, and the updated join settings are saved.
 
 ### Reordering Global Joins
 
-When multiple global joins are configured, you can define their evaluation priority:
+Global joins are evaluated in sequential order from top to bottom. To change their evaluation priority:
 
 1. In the **Global Joins** table, select the join profile you want to reorder.
-2. Click **Move Up** or **Move Down** to change its position in the list. The order is automatically saved and applied.
+   - When no join is selected, both **Move Up** and **Move Down** are disabled.
+   - When the top (first) join is selected, **Move Up** is disabled.
+   - When the bottom (last) join is selected, **Move Down** is disabled.
+2. Click **Move Up** or **Move Down** to adjust the position of the selected join. The updated order is saved automatically.
 
 ### Deleting a Global Join
 
 To remove a global join:
 
-1. In the **Global Joins** table, select the join profile you want to delete.
+1. In the **Global Joins** table, select the join profile you want to delete. *(The Delete button is disabled if no row is selected).*
 2. Click **Delete**.
-3. In the **Delete Global Join** confirmation dialog, confirm the deletion.
+3. In the **Delete Global Join** confirmation dialog, verify the join profile name.
+4. Click confirm to proceed.
+
+A confirmation toast message (*"Global join deleted successfully."*) appears, and the row is removed from the table. If all join profiles are removed, the table displays *"No global joins configured."*
+
 
 ## Configuring a Regular Join
 
