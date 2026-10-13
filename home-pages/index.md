@@ -201,9 +201,6 @@ Harness your identity data with intelligent integration to drive better business
   > [v8 Release Notes](maintenance/release-notes/release-notes)  
   > Release notes contain important information about new features, improvements and bug fixes.
 
-  > [v9 Release Notes](maintenance/v9release-notes/v9release-notes)  
-  > Release notes contain important information about new features, improvements and bug fixes.
-
   > [Security Vulnerability Report](maintenance/vulnerability-report)  
   > Learn about security vulnerabilities that have been addressed in each patch release.
   
