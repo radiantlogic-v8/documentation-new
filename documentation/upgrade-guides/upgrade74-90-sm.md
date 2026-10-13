@@ -21,6 +21,7 @@ The existing v7.4 deployment is not modified during the migration and can contin
 Before beginning the migration:
 
 - Review **Key Differences between v7.4 and v9** below to understand changes that may affect your deployment.
+- Read the [features comparison guide](./features-list.md) to understand potential feature gaps in the upgraded version and plan your upgrades accordingly.
 - Plan a configuration freeze on the v7.4 environment after the migration export is created. Configuration changes made after the export are not automatically carried over to the v9 deployment.
 - Plan a maintenance window for the final cutover, when production clients and traffic are redirected from the existing v7.4 deployment to the new v9 deployment.
 
