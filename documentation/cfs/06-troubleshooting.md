@@ -11,7 +11,7 @@ The Log Analyzer is installed on the same machine as the CFS server. You can fin
 
 Navigate to `C:\inetpub\wwwroot\CFS Web Site\cfs\Logs` and click OK.
 
-![](media/troubleshooting-1.png)
+![Log Analyzer prompt to select the CFS Logs folder](media/troubleshooting-1.png)
 
 The Log Analyzer has three main sections accessible at the top: Data, Stats, and Logs. Each is described in more details below.
 
@@ -19,69 +19,69 @@ The Log Analyzer has three main sections accessible at the top: Data, Stats, and
 
 The Data section displays a summary of activity of your server. From here you can get a glimpse of the total amount of log activity per day (shown in the bar chart at the top). If you see any red areas in the chart, this indicates errors have occurred on that particular day. The log details for a selected day are shown below.
 
-![](media/troubleshooting-2.png)
+![Data section with daily log activity bar chart and log details](media/troubleshooting-2.png)
 
 >[!note] If logs are deleted from the Logs directory on the CFS machine, it could compromise the log system.
 
 To change the type of log activity you want to see, click the "filter" button and mark what you are interested in (Connect, ConnectError, Disconnect, Information, Operation, Warning or Error). Only these types of log activities are shown.
 
-![](media/troubleshooting-3.png)
+![Data section filter options for log activity types](media/troubleshooting-3.png)
 
 ## Stats Section
 
 The Stats section allows you to view more detailed information from the logs. Some of the important information is represented graphically (the hours during which the most users are connected, the average time of a user session on the portal).
 
-![](media/troubleshooting-4.png)
+![Stats section with connection and session duration charts](media/troubleshooting-4.png)
 
 On the left side, the top ten most used applications, the top ten most used Identity providers, and the top ten most connected users can be seen. The default view shows the Top 10 most active users. To view activity for a specific user, select the desired identity from this list.
 
 To view the Top 10 most used applications, click in the drop-down list next to "Top 10" and select Applications.
 
-![](media/troubleshooting-5.png)
+![Top 10 drop-down list set to Applications](media/troubleshooting-5.png)
 
 To view the Top 10 most used authentication methods, click in the drop-list next to "Top 10" and select Idp.
 
 On the "Data" section for a selected user, you can see the user’s sessions, cookies, and log content applicable to this user’s actions.
 
-![](media/troubleshooting-6.png)
+![Data section for a selected user showing sessions, cookies, and logs](media/troubleshooting-6.png)
 
 An error related to the user’s activities will be shown with a red "X" button. Click the "+" next to the error to show details like exact error message and stack trace.
 
-![](media/troubleshooting-7.png)
+![Expanded user error showing the error message and stack trace](media/troubleshooting-7.png)
 
 On the "Stats" section for a selected user, you can see a summary of the user’s activities: hourly connections and average duration of the connection.
 
-![](media/troubleshooting-8.png)
+![Stats section for a selected user showing hourly connections and average duration](media/troubleshooting-8.png)
 
 A list of applications (unique GUID) that the user has access will be shown on the left. In the drop-down list, you can select IDP to see a list of authentication methods used by the user.
 
-![](media/troubleshooting-9.png)
+![Drop-down list set to IDP showing a user's authentication methods](media/troubleshooting-9.png)
 
 ## Files Section
 
 The Files section provides a list of the log files with the number of successful connections, errors, warnings, and so on, for each one.
 
-![](media/troubleshooting-10.png)
+![Files section listing log files with connection, error, and warning counts](media/troubleshooting-10.png)
 
 ## Refreshing the Log Analysis
 
 To contents of the Log Analyzer are set to update periodically. To refresh the view in the Log Analyzer more frequently than the default interval, click the refresh button in the bottom right corner as often as needed. You can control the auto update and put it on pause/activate it by using the buttons located at the bottom left of the screen.
 
-![](media/troubleshooting-11.png)
+![Refresh and auto-update controls at the bottom of the Log Analyzer](media/troubleshooting-11.png)
 
 ## Advanced Search Page
 
 The log files can be filtered based on a date range. For advanced filtering, click the Advanced button at the top of the Log Analyzer.
 
-![](media/troubleshooting-12.png)
+![Advanced button at the top of the Log Analyzer](media/troubleshooting-12.png)
 
 Indicate a Start Date and End Date covering the timeframe of logs you want to analyze. Logs associated with this period of time display.
 
-![](media/troubleshooting-13.png)
+![Advanced search with Start Date and End Date fields](media/troubleshooting-13.png)
 
 To change the type of log activity you want to see, click the filter button and mark what you are interested in (Connect, ConnectError, Disconnect, Information, Warning or Error). Only these types of log activities are shown.
 
-![](media/troubleshooting-14.png)
+![Advanced search filter options for log activity types](media/troubleshooting-14.png)
 
 ## Performance Counters
 
@@ -132,7 +132,7 @@ The application pool identity must have permission to update the counters:
     </setting>
     ```
 
-    ![Master web.config UseCfsPerformanceCounters configuration](Screenshot_89-20261005-102807.png)
+    ![CFS Master web.config showing the UseCfsPerformanceCounters, UsePerformanceCounters, and MaxPoolSize settings](media/counters-5.png)
 
 3. Save the file.
 4. In IIS Manager, recycle the `Cloud Federation Service` application pool.
@@ -149,7 +149,7 @@ The application pool identity must have permission to update the counters:
     </setting>
     ```
 
-    ![Proxy web.config UseCfsPerformanceCounters configuration](Screenshot_90-20261005-102950.png)
+    ![CFS Proxy web.config showing the UseCfsPerformanceCounters and UsePerformanceCounters settings](media/counters-6.png)
 
 3. Save the file.
 4. In IIS Manager, recycle the `Cloud Federation Service Proxy` application pool.
@@ -248,12 +248,15 @@ The legacy counters for CFS Proxy monitor the HTTPS calls that the Web API makes
         - `RadiantOne CFS API`
         - `RadiantOne CFS Portal`
 
-    ![Performance Monitor Add Counters dialog showing the RadiantOne CFS categories](image-20261005-133110.png)
+    ![Performance Monitor Add Counters dialog listing the RadiantOne CFS categories](media/counters-7.png)
 
 5. Expand a category, select the counters you want to view, click **Add >>**, and then click **OK**. The component categories are single-instance, so there are no instances to select.
+
+    ![Performance Monitor with RadiantOne CFS Authentication counters added](media/counters-8.png)
+
 6. (Optional) To change a counter's scale, line color, or line width, double-click the counter in the list at the bottom of the console.
 
-    ![Performance Monitor with RadiantOne CFS Authentication counters added](image-20261005-133505.png)
+    ![Performance Monitor counter properties for changing scale, color, and width](media/counters-4.png)
 
 ### Reading Counter Types
 
@@ -445,5 +448,3 @@ The connection counters are current values. The other counters are per-second ra
 | Counter | Description |
 |---|---|
 | `# HTTPS operations / sec` | A signed HTTPS call was sent from the Web API to CFS Master. |
-
-![](media/counters-4.png)
