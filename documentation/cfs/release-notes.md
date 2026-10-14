@@ -369,6 +369,5 @@ October 14, 2026
 **Bug Fixes**
 
 - [CFS-226]: Fixed an issue where approving an application access request generated a generic error ("An error happened while trying to process the Access Request") despite the user being added to the application group. Access requests now process cleanly, display the approved application and group in the user portal, and properly support users without configured email addresses.
-- [CFS-227]: Fixed an issue on the System Dashboard Servers page (System > Dashboard > Servers) where the Master server did not display its hostname correctly and failed to maintain periodic heartbeats.
 - [CFS-230]: Fixed an issue where SAML responses encoded in UTF-8 incorrectly declared UTF-16 in the XML declaration (encoding="utf-16"), causing strict service providers to reject sign-in responses with "Invalid XML" errors.
 - [CFS-231]: Fixed an issue where SAML 2 sign-in requests that omit the AssertionConsumerServiceURL or AssertionConsumerServiceIndex failed with "No Recipients configured for this application" by ensuring CFS falls back to the configured default recipient. In addition, saving a SAML 2 application now validates that all recipient location URLs use absolute HTTP or HTTPS addresses.
