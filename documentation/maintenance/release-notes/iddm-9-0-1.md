@@ -38,7 +38,6 @@ These release notes contain the following sections:
 
 ## Bug Fixes
 
-- [V9-463, SQ-1812]: Fixed an issue where the Microsoft Entra ID connector ignored the attribute list a caller requested and decided what to retrieve from the view's full attribute list instead.
 - [V9-466]: Fixed an issue where the password policy enforcement did not automatically add the userPassword attribute extension to Attribute Handling.
 - [V9-546]: Fixed an issue where merge links now allow updating the connection string base DN.
 - [V9-672, SQ-1968]: Fixed an issue in which large numbers of searches with timelimits could potentially exhaust the system's threads.
