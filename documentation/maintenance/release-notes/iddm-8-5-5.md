@@ -38,6 +38,7 @@ These release notes contain the following sections:
 
 ## Bug Fixes
 
+- [API-4838]: Fixed an issue so that the Real-time cache refresh on Microsoft Entra ID views no longer fails with "Dependency generation exception: the attribute id not exposed" when the id attribute isn't published in the view.
 - [API-4851, SQ-1404]: Fixed an issue where updates on follower nodes via client connecting over Kerberos or using certificate based authentication are failing.
 - [API-4864, SQ-1968]: Fixed an issue in which large numbers of searches with timelimits could potentially exhaust the system's threads.
 - [API-4866, SQ-1979]: Fixed an issue that caused join computed attributes to be lost on object builder save.
