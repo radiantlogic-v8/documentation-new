@@ -17,9 +17,9 @@ v9 updates the platform from Java 8 to Java 25 and from Lucene 6 to Lucene 10. L
 
 ## Updating SaaS Deployments
 
-The following steps describe how to update RadiantOne Identity Data Management v8 to v9.0.0 for SaaS deployments.
+The following sections describe the prerequisites for the update and list the steps to update RadiantOne Identity Data Management v8 to v9.0.0 for SaaS deployments.
 
-### Preparing for the Update
+### Prerequisites for the Update
 
 **1. Confirm your current version is 8.5.0 or newer.**
 
@@ -27,7 +27,11 @@ In Environment Operations Center, navigate to **Environments > [EnvironmentName]
 
 Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch updates until you reach 8.5.x, confirm the application returns to **Operational**, then continue.
 
-**2. Create a backup.**
+**2. Initialize or delete persistent caches** 
+
+Initialize every persistent cache you want to retain and delete any caches you no longer need. The update exports both active and inactive caches. Deactivating a cache does not exclude it from the export. If a cache’s data source is unavailable, restore the connection and initialize the cache, or delete the cache. 
+
+**3. Create a backup.**
 
 Prior to updating RadiantOne Identity Data Management, ensure you have a recent environment backup for your existing v8.5.x version.
 
@@ -45,11 +49,11 @@ Prior to updating RadiantOne Identity Data Management, ensure you have a recent 
 
    > A 9.x backup can't be restored into a 8.x deployment.
 
-**3. Confirm the application is active.**
+**4. Confirm the application is active.**
 
 If the status of the application is OFFLINE, the UPDATE option is not displayed. Restart the application first.
 
-**4. Plan a maintenance window.**
+**5. Plan a maintenance window.**
 
 All nodes stop during the update, so only run the update during a scheduled maintenance window. See the [Expected downtime](#expected-downtime) section for more details.
 
