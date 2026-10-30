@@ -21,7 +21,9 @@ Consider the following before you begin:
 
 2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.**
 
-    If you have created a persistent cache and have never initialized it, the upgrade fails, because the migration process expects every cache to be initialized. Before you upgrade to v9, do one of the following:
+    If you have created a persistent cache and have never initialized it, the upgrade fails because the migration process requires all caches to be initialized. Before upgrading, do one of the following:
+
+ because the migration process expects every cache to be initialized. Before you upgrade to v9, do one of the following:
 
     - **(Recommended) Delete any caches you no longer need before upgrading. After the upgrade, you can recreate and initialize them.
 
