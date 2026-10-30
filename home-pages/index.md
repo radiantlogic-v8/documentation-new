@@ -289,9 +289,12 @@ Discover and download connectors for the RadiantOne Identity Data Platform.
   </connector>
   <connector name="Idira Privilege Cloud (formerly CyberArk)" eyebrow="Privileged Access" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,readonly">List privileged users and the roles they belong to, with role nesting, from Idira.
   </connector>
-<connector name="ServiceNow" eyebrow="Workforce Automation" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List users, groups, and roles from ServiceNow.
-</connector>
-<connector name="Workday" eyebrow="Workforce Management" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,readonly">List workers, jobs, job postings, supervisory organizations, integration system users, security groups, security group memberships, security domains, and business processes from Workday.</connector>
+  <connector name="ServiceNow" eyebrow="Workforce Automation" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List users, groups, and roles from ServiceNow.
+  </connector>
+  <connector name="Workday" eyebrow="Workforce Management" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,readonly">List workers, jobs, job postings, supervisory organizations, integration system users, security groups, security group memberships, security domains, and business processes from Workday.
+  </connector>
+  <connector name="SailPoint ISC" eyebrow="Identity Governance" meta="v1.0.1" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List accounts, roles, access profiles, entitlements, sources, and public identities from SailPoint Identity Security Cloud.
+  </connector>
 </section>
 </tabpanel>
 </tabpanels>
