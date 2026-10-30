@@ -19,21 +19,38 @@ Consider the following before you begin:
 
 1. **The source deployment must run Identity Data Management 8.5.0 or later.**
 
-2. **Persistent caches must be initialized or deleted.** <br>
-  Initialize every persistent cache you want to retain and delete any caches you no longer need. The update exports both active and inactive caches. Deactivating a cache does not exclude it from the export. If a cache’s data source is unavailable, restore the connection and initialize the cache, or delete the cache. Delete caches only while all FID pods are running so that each pod can remove the associated data folder. Before continuing, check for empty store data folders on the <fullname>-0 pod. Run the following command with all FID pods running, replacing <namespace> and <fullname> with your deployment values:
-  
-    ```
-    kubectl -n <namespace> exec <fullname>-0 -c fid -- sh -c 'cd /opt/radiantone/vds/vds_server/data && for s in */; do n=${s%/}; [ -d "$n/$n" ] && [ -z "$(ls -A "$n/$n")" ] && echo "$n"; done; true'
-    ```
-    For each store listed:
-  
-    * If the associated persistent cache still exists, initialize it.
-    
-    * If the cache has been deleted, remove its empty data folder using the following command. Replace <store> with the store name returned by the check. The rmdir command removes empty folders only.
-    
-      `kubectl -n <namespace> exec <fullname>-0 -c fid -- rmdir /opt/radiantone/vds/vds_server/data/<store>/<store>`
-      
-      Run the check again and confirm that it returns no store names. Also verify that every remaining persistent cache has been initialized. The command does not detect uninitialized caches that do not yet have a data folder.
+2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.**
+
+    If you have created a persistent cache and have never initialized it, the upgrade fails, because the migration process expects every cache to be initialized. Before you upgrade to v9, do one of the following:
+
+    - **(Recommended) Delete any caches you no longer need**, and then proceed with the upgrade. After the upgrade is complete, you can recreate and initialize the caches.
+
+      Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache.
+
+      Delete caches only while all FID pods are running, so that each pod can remove the associated data folder. Before continuing, check for empty store data folders on the `<fullname>-0` pod. With all FID pods running, run the following command, replacing `<namespace>` and `<fullname>` with your deployment values:
+
+      ```
+      kubectl -n <namespace> exec <fullname>-0 -c fid -- sh -c 'cd /opt/radiantone/vds/vds_server/data && for s in */; do n=${s%/}; [ -d "$n/$n" ] && [ -z "$(ls -A "$n/$n")" ] && echo "$n"; done; true'
+      ```
+
+      For each store listed:
+
+      - If the associated persistent cache still exists, initialize it.
+      - If the cache has been deleted, remove its empty data folder with the following command. Replace `<store>` with the store name returned by the check. The `rmdir` command removes empty folders only.
+
+        ```
+        kubectl -n <namespace> exec <fullname>-0 -c fid -- rmdir /opt/radiantone/vds/vds_server/data/<store>/<store>
+        ```
+
+      Run the check again and confirm that it returns no store names. Also verify that every remaining persistent cache has been initialized. The command doesn't detect uninitialized caches that don't yet have a data folder.
+
+    - **Initialize the persistent caches you want to keep.** To do so, follow these steps:
+
+      1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
+      2. Select the **CACHE** tab.
+      3. Click **...** next to the cache node, and choose **Edit**.
+      4. In the **INITIALIZE/RE-INITIALIZE** section, click **INITIALIZE**, follow the prompts, and then click **DONE**.
+
 
 ### Backup
 
