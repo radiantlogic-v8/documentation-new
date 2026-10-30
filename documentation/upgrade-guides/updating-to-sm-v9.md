@@ -42,7 +42,7 @@ Consider the following before you begin:
 
       Run the check again and confirm that it returns no store names. Also verify that every remaining persistent cache has been initialized. The command doesn't detect uninitialized caches that don't yet have a data folder.
 
-    - ** Option 2: Initialize the persistent caches you want to keep.** To do so, follow these steps:
+    - **Option 2: Initialize the persistent caches you want to keep.** To do so, follow these steps:
 
       1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
       2. Select the **CACHE** tab.
