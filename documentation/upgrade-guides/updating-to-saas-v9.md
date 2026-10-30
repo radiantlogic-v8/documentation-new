@@ -27,7 +27,7 @@ In Environment Operations Center, navigate to **Environments > [EnvironmentName]
 
 Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch updates until you reach 8.5.x, confirm the application returns to **Operational**, then continue.
 
-2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.**
+**2. If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br>
     If you have created a persistent cache and have never initialized it, the upgrade fails because the migration process requires all caches to be initialized. Before upgrading, do one of the following:
    
     - **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the upgrade, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache. 
