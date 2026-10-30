@@ -23,7 +23,7 @@ Consider the following before you begin:
 
     If you have created a persistent cache and have never initialized it, the upgrade fails, because the migration process expects every cache to be initialized. Before you upgrade to v9, do one of the following:
 
-    - **(Recommended) Delete any caches you no longer need**, and then proceed with the upgrade. After the upgrade is complete, you can recreate and initialize the caches.
+    - **(Recommended) Delete any caches you no longer need before upgrading. After the upgrade, you can recreate and initialize them.
 
       Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache.
 
