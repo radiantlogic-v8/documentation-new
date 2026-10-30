@@ -28,21 +28,19 @@ In Environment Operations Center, navigate to **Environments > [EnvironmentName]
 Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch updates until you reach 8.5.x, confirm the application returns to **Operational**, then continue.
 
 **2. If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br>
-    If you have created a persistent cache and have never initialized it, the upgrade fails because the migration process requires all caches to be initialized. Before upgrading, do one of the following:
-   
-    - **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the upgrade, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache. 
-    
-       To delete a cache, follow these steps:
-         1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
-         2. Select the **CACHE** tab.
-         3. Click **...** next to the cache node, and choose **Edit**.
-         4. In the **Manage Properties** section, click **Delete**.
+If you have created a persistent cache and have never initialized it, the upgrade fails because the migration process requires all caches to be initialized. Before upgrading, do one of the following:
+- **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the upgrade, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache. <br>
+  To delete a cache, follow these steps:
+  1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
+  2. Select the **CACHE** tab.
+  3. Click **...** next to the cache node, and choose **Edit**.
+  4. In the **Manage Properties** section, click **Delete**.
+- **Option 2: Initialize the persistent caches you want to keep.** To do so, follow these steps:
+  1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
+  2. Select the **CACHE** tab.
+  3. Click **...** next to the cache node, and choose **Edit**.
+  4. In the **INITIALIZE/RE-INITIALIZE** section, click **INITIALIZE**, follow the prompts, and then click **DONE**.
       
-    - **Option 2: Initialize the persistent caches you want to keep.** To do so, follow these steps:
-      1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
-      2. Select the **CACHE** tab.
-      3. Click **...** next to the cache node, and choose **Edit**.
-      4. In the **INITIALIZE/RE-INITIALIZE** section, click **INITIALIZE**, follow the prompts, and then click **DONE**.
 **3. Create a backup.**
 
 Prior to updating RadiantOne Identity Data Management, ensure you have a recent environment backup for your existing v8.5.x version.
