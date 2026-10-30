@@ -21,13 +21,9 @@ Consider the following before you begin:
 
 2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.**
 
-    If you have created a persistent cache and have never initialized it, the upgrade fails because the migration process requires all caches to be initialized. Before upgrading, do one of the following:
+    If you have created a persistent cache and have never initialized it, the upgrade fails because the migration process requires all caches to be initialized. Before you upgrade to v9, do one of the following:
 
- because the migration process expects every cache to be initialized. Before you upgrade to v9, do one of the following:
-
-    - **(Recommended) Delete any caches you no longer need before upgrading. After the upgrade, you can recreate and initialize them.
-
-      Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache.
+    - **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the upgrade, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache.
 
       Delete caches only while all FID pods are running, so that each pod can remove the associated data folder. Before continuing, check for empty store data folders on the `<fullname>-0` pod. With all FID pods running, run the following command, replacing `<namespace>` and `<fullname>` with your deployment values:
 
@@ -46,7 +42,7 @@ Consider the following before you begin:
 
       Run the check again and confirm that it returns no store names. Also verify that every remaining persistent cache has been initialized. The command doesn't detect uninitialized caches that don't yet have a data folder.
 
-    - **Initialize the persistent caches you want to keep.** To do so, follow these steps:
+    - ** Option 2: Initialize the persistent caches you want to keep.** To do so, follow these steps:
 
       1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
       2. Select the **CACHE** tab.
