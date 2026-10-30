@@ -17,7 +17,7 @@ Consider the following before you begin:
 
 ### Prerequisites
 
-1. **The source deployment must run Identity Data Management 8.5.0 or later.**
+1. **The source deployment must run Identity Data Management 8.5.0 or later.** <br>
 
 2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.**
 
