@@ -32,7 +32,7 @@ Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch 
 
 > For version 8.5.7 or later, no action is required. The update automatically skips caches with missing or uninitialized index folders.
 
-In 8.5.6 and earlier 8.5 versions of Identity Data Management, if you have created a persistent cache and have never initialized it, the update fails because the migration process requires all caches to be initialized. Before updating to v9, you must do one of the following:
+When attempting to update from version 8.5.6 or an earlier version, the process will fail if you have created a persistent cache and have never initialized it, because the migration process requires all caches to be initialized. To resolve this, complete one of the following actions before proceeding with the update:
 - **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the update, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache. <br>
   To delete a cache, follow these steps:
   1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
