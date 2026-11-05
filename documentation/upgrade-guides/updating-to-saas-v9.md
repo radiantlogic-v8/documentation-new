@@ -17,9 +17,9 @@ v9 updates the platform from Java 8 to Java 25 and from Lucene 6 to Lucene 10. L
 
 ## Updating SaaS Deployments
 
-The following steps describe how to update RadiantOne Identity Data Management v8 to v9.0.0 for SaaS deployments.
+The following sections describe the prerequisites for the update and list the steps to update RadiantOne Identity Data Management v8 to v9.0.0 for SaaS deployments.
 
-### Preparing for the Update
+### Prerequisites for the Update
 
 **1. Confirm your current version is 8.5.0 or newer.**
 
@@ -27,7 +27,27 @@ In Environment Operations Center, navigate to **Environments > [EnvironmentName]
 
 Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch updates until you reach 8.5.x, confirm the application returns to **Operational**, then continue.
 
-**2. Create a backup.**
+
+**2. If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br>
+
+> For version 8.5.7 or later, no action is required. The update automatically skips caches with missing or uninitialized index folders.
+
+When attempting to update from version 8.5.6 or an earlier version, the process will fail if you have created a persistent cache and have never initialized it, because the migration process requires all caches to be initialized. To resolve this, complete one of the following actions before proceeding with the update:
+- **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the update, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache. <br>
+  To delete a cache, follow these steps:
+  1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
+  2. Select the **CACHE** tab.
+  3. Click **...** next to the cache node, and choose **Edit**.
+  4. In the **Manage Properties** section, click **Delete**.
+- **Option 2: Initialize the persistent caches you want to keep.** To do so, follow these steps:
+  1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
+  2. Select the **CACHE** tab.
+  3. Click **...** next to the cache node, and choose **Edit**.
+  4. In the **INITIALIZE/RE-INITIALIZE** section, click **INITIALIZE**, follow the prompts, and then click **DONE**.
+
+If you’re running Identity Data Management version 8.5.7 or later, you don’t need to initialize or delete uninitialized persistent caches before updating to version 9. The update export process automatically skips caches with missing or uninitialized index folders and cleans up or archives empty folders without causing the update to fail. You can skip the initialization and deletion steps above.
+      
+**3. Create a backup.**
 
 Prior to updating RadiantOne Identity Data Management, ensure you have a recent environment backup for your existing v8.5.x version.
 
@@ -45,11 +65,11 @@ Prior to updating RadiantOne Identity Data Management, ensure you have a recent 
 
    > A 9.x backup can't be restored into a 8.x deployment.
 
-**3. Confirm the application is active.**
+**4. Confirm the application is active.**
 
 If the status of the application is OFFLINE, the UPDATE option is not displayed. Restart the application first.
 
-**4. Plan a maintenance window.**
+**5. Plan a maintenance window.**
 
 All nodes stop during the update, so only run the update during a scheduled maintenance window. See the [Expected downtime](#expected-downtime) section for more details.
 
@@ -104,7 +124,7 @@ Additionally, you might need to perform these steps after the v8 application is 
 
 ## Release notes and support
 
-For v9 improvements and fixes, see the [v9.0 release notes](../maintenance/release-notes/release-notes).
+For v9 improvements and fixes, see the [v9.0 release notes](../maintenance/v9release-notes/v9release-notes).
 
 For known issues reported after release, see the [Radiant Logic Knowledge Base](https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues).
 
