@@ -28,7 +28,7 @@ In Environment Operations Center, navigate to **Environments > [EnvironmentName]
 Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch updates until you reach 8.5.x, confirm the application returns to **Operational**, then continue.
 
 
-**2. If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br><br>
+**2. If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br>
 
 > For version 8.5.7 or later, no action is required. The update automatically skips caches with missing or uninitialized index folders.
 
