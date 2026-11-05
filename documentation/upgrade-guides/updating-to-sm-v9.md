@@ -19,7 +19,7 @@ Consider the following before you begin:
 
 1. **The source deployment must run Identity Data Management 8.5.0 or later.** <br>
 
-2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br> >[!note] For version 8.5.7 or later, no action is required. The update automatically skips caches with missing or uninitialized index folders.
+2. **If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br><br> >[!note] For version 8.5.7 or later, no action is required. The update automatically skips caches with missing or uninitialized index folders.
 
    When attempting to update from version 8.5.6 or an earlier version, the process will fail if you have created a persistent cache and have never initialized it, because the migration process requires all caches to be initialized. To resolve this, complete one of the following actions before proceeding with the update:
 
