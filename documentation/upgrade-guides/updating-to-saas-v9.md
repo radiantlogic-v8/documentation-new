@@ -27,8 +27,12 @@ In Environment Operations Center, navigate to **Environments > [EnvironmentName]
 
 Environments on 8.1.x or 8.3.x must first update to 8.5.0 or newer. Apply patch updates until you reach 8.5.x, confirm the application returns to **Operational**, then continue.
 
+
 **2. If you're running version 8.5.6 or an earlier 8.5 version, initialize or delete all uninitialized persistent caches before you upgrade.** <br><br>
-If you have created a persistent cache and have never initialized it, the update fails because the migration process requires all caches to be initialized. Before updating, do one of the following:
+
+> For version 8.5.7 or later, no action is required. The update automatically skips caches with missing or uninitialized index folders.
+
+In 8.5.6 and earlier 8.5 versions of Identity Data Management, if you have created a persistent cache and have never initialized it, the update fails because the migration process requires all caches to be initialized. Before updating to v9, you must do one of the following:
 - **(Recommended) Option 1: Delete any caches you no longer need before upgrading.** After the update, you can recreate and initialize them. Deactivating a cache doesn't exclude it from the export. If a cache's data source is unavailable, restore the connection and initialize the cache, or delete the cache. <br>
   To delete a cache, follow these steps:
   1. In the Control Panel, go to **Setup** > **Directory Namespace** > **Namespace Design**, and select the root naming context that contains the cached branch.
@@ -40,6 +44,8 @@ If you have created a persistent cache and have never initialized it, the update
   2. Select the **CACHE** tab.
   3. Click **...** next to the cache node, and choose **Edit**.
   4. In the **INITIALIZE/RE-INITIALIZE** section, click **INITIALIZE**, follow the prompts, and then click **DONE**.
+
+If you’re running Identity Data Management version 8.5.7 or later, you don’t need to initialize or delete uninitialized persistent caches before updating to version 9. The update export process automatically skips caches with missing or uninitialized index folders and cleans up or archives empty folders without causing the update to fail. You can skip the initialization and deletion steps above.
       
 **3. Create a backup.**
 
