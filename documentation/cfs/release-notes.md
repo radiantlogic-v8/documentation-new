@@ -371,3 +371,15 @@ October 14, 2026
 - [CFS-226]: Fixed an issue where approving an application access request generated a generic error ("An error happened while trying to process the Access Request") despite the user being added to the application group. Access requests now process cleanly, display the approved application and group in the user portal, and properly support users without configured email addresses.
 - [CFS-230]: Fixed an issue where SAML responses encoded in UTF-8 incorrectly declared UTF-16 in the XML declaration (encoding="utf-16"), causing strict service providers to reject sign-in responses with "Invalid XML" errors.
 - [CFS-231]: Fixed an issue where SAML 2 sign-in requests that omit the AssertionConsumerServiceURL or AssertionConsumerServiceIndex failed with "No Recipients configured for this application" by ensuring CFS falls back to the configured default recipient. In addition, saving a SAML 2 application now validates that all recipient location URLs use absolute HTTP or HTTPS addresses.
+
+### v3.18.4
+
+November 10, 2026
+
+**Improvements**
+
+- [CFS-225]: Configurable FIPS SAML assertion encryption (do not hardwire algorithms) and leftover encryption hygiene.
+
+**Bug Fixes**
+
+- [CFS-227]: Fixed an issue with system servers not properly named.
