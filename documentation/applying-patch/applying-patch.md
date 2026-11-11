@@ -35,7 +35,7 @@ Best practice is to have a blue-green deployment, where you have an extra set of
 
 If you do not have a blue-green test environment, you can perform an in-place update, meaning you are applying the patch on your existing active machines as opposed to having a new, clean environment. 
 
-- For cluster deployments, update all RadiantOne FID follower and follower-only nodes first. Update the RadiantOne FID leader node last. After the node is patched, it is important to ensure that all needed services are back up and running prior to patching the next node.
+- For cluster deployments, <b>update all RadiantOne FID follower and follower-only nodes first. Update the RadiantOne FID leader node last. After the node is patched, it is important to ensure that all needed services are back up and running prior to patching the next node.</b>
 - Make sure you have backed up your <RadiantOne_Installation> folder.
 - (Optional) to gracefully scale down, drain any open connections for your load balancer to the RadiantOne node you are updating. See your vendor documentation for configuring connection draining for your load balancer.
 - Close any open RadiantOne applications.
