@@ -476,6 +476,471 @@ Install an RTC for each Active Directory forest you want to use as an Authentica
 
 ![](media/rtc-0.png)
 
+## Configuring the RTC Behind a Load Balancer
+
+This section describes how to run two RadiantOne Trust Connector (RTC) servers behind an AWS Network Load Balancer (NLB), with Cloud Federation Service (CFS) accepting the sign-in.
+
+The load balancer sits in front of RTC only. CFS remains on the first server and is still opened at its existing address, `<cfs-fqdn>`. Placing CFS behind a load balancer is a separate topic and is not covered here.
+
+Browsers sign in to RTC through a single DNS name, and the load balancer forwards those connections to either RTC server.
+
+### Placeholders Used in This Section
+
+Replace the following placeholders with the values for your environment.
+
+| Placeholder | Description | Example |
+| --- | --- | --- |
+| `<dns-domain>` | Active Directory DNS domain | `corp.example.com` |
+| `<netbios>` | Active Directory NetBIOS name | `CORP` |
+| `<rtc-fqdn>` | DNS name that browsers use for RTC | `rtc.corp.example.com` |
+| `<cfs-fqdn>` | Existing DNS name used to open CFS | `cfs.corp.example.com` |
+| `<rtc-host>` | Host label of `<rtc-fqdn>` | `rtc` |
+| `<nlb-private-ip>` | Each private IPv4 address of the load balancer | |
+| `<rtc-server-1-ip>` | Private IPv4 address of the first RTC server | |
+| `<domain-controller-ip>` | Private IPv4 address of a domain controller | |
+| `<vpc-cidr>` | IPv4 CIDR of the VPC | |
+| `<aws-region>` | AWS region of the servers | |
+| `<nlb-dns-name>` | DNS name that AWS assigns to the load balancer | |
+
+This section uses the suggested resource names `svc-rtc`, `rtc-nlb`, and `rtc-443`. You can use different names.
+
+### Deployment Overview
+
+When you complete this section, the deployment looks like this:
+
+| Item | Value |
+| --- | --- |
+| Domain | `<dns-domain>` |
+| RTC address | `<rtc-fqdn>` |
+| CFS address | `<cfs-fqdn>` on RTC server 1 |
+| Load balancer | Internal Network Load Balancer `rtc-nlb`, TCP 443 |
+| Load balancer address | `<nlb-private-ip>` |
+| Target group | `rtc-443` |
+| RTC server 1 | CFS and RTC |
+| RTC server 2 | RTC only |
+| Service account | `<netbios>\svc-rtc` |
+| Kerberos name | `HTTP/<rtc-fqdn>` |
+| CFS endpoint | `https://<rtc-fqdn>/rtc/RadiantTrustedConnector.svc/WSFed` |
+
+```
+Browser (domain user)
+    |
+    |  https://<rtc-fqdn>
+    v
+DNS A record  <rtc-fqdn>  ->  <nlb-private-ip>
+    |
+    v
+Internal Network Load Balancer  (TCP 443, TLS passed through)
+    |
+    +-- RTC server 1   CFS + RTC
+    +-- RTC server 2   RTC
+```
+
+Keep the following in mind:
+
+- TLS terminates on each Windows server; the load balancer does not decrypt it.
+- Both servers share one Kerberos service account, one HTTPS certificate, and one token-signing certificate.
+- Each domain-joined computer must be able to reach a domain controller.
+- Users must sign in with a domain account. A local server administrator cannot obtain a Kerberos ticket.
+- The clocks on the domain controllers and both RTC servers must be within five minutes of each other. If they are further apart, Kerberos fails before the request reaches IIS.
+
+### Step 1: Configure Active Directory
+
+On a domain controller:
+
+1. Create a service account named `svc-rtc`, or reuse an existing one. The account must be enabled, have a known password, and use AES Kerberos encryption.
+2. Register a single service principal name (SPN) on that account. The SPN is the name the browser uses, and it is held by the shared service account:
+   - Create one SPN, `HTTP/<rtc-fqdn>`, on `svc-rtc`.
+   - The load balancer's AWS DNS name must not have an SPN.
+   - `setspn -Q HTTP/<rtc-fqdn>` must list only `svc-rtc`.
+   - `<rtc-fqdn>` must not be the computer name of either RTC server.
+
+   ```
+   Enable-ADAccount svc-rtc
+   Set-ADUser svc-rtc -KerberosEncryptionType AES128,AES256 -PasswordNeverExpires $true
+   setspn -S HTTP/<rtc-fqdn> svc-rtc
+   setspn -Q HTTP/<rtc-fqdn>
+   ```
+
+   >[!note] If you set `KerberosEncryptionType` to AES on an account that already has a password, reset the password so that the AES keys are created.
+
+   `setspn -Q` must list only `svc-rtc`. `setspn` cannot find a disabled account until the account is enabled. Leave Kerberos delegation unset. RTC reads the Windows identity and signs its own token; it does not forward the user's Kerberos ticket.
+
+3. Create a DNS A record for `<rtc-fqdn>`. While you test the first server, point the record at `<rtc-server-1-ip>`. After the load balancer is in place, point it at `<nlb-private-ip>`.
+
+   ```
+   Add-DnsServerResourceRecordA -Name "<rtc-host>" -ZoneName "<dns-domain>" -IPv4Address "<rtc-server-1-ip>"
+   ```
+
+   >[!warning] Use an A record, not a CNAME. A CNAME can cause Windows to request a ticket for the load balancer's AWS DNS name, which does not match `HTTP/<rtc-fqdn>`.
+
+### Step 2: Prepare the Certificates
+
+This deployment requires two different certificates.
+
+#### HTTPS Certificate
+
+The HTTPS certificate secures the browser connection. It must include both of these names:
+
+- `<rtc-fqdn>`
+- `<cfs-fqdn>`
+
+The second name keeps the existing CFS address working. Bind the certificate to port 443 on every RTC server. Browsers that sign in must trust the certificate. Store it in **Local Computer > Personal** on each RTC server, and in **Trusted Root Certification Authorities** on any computer that must trust a certificate you issued yourself.
+
+>[!note] The HTTPS certificate is not the certificate configured on the CFS Active Directory connector.
+
+#### Token-Signing Certificate
+
+RTC signs the WS-Federation token with the certificate that the RTC installer creates. When the installer generates this certificate, its subject is:
+
+`CN=RadiantOne Trust Connector certificate`
+
+On each server, the installer stores the certificate in the RTC `Web.config` file and places the public certificate in **Local Computer > Trusted Root Certification Authorities**. CFS must be given this public certificate. You cannot use the HTTPS certificate for this purpose.
+
+During the first setup, CFS does not yet have this certificate, so there is no **Current Certificate** thumbprint to match. Export the installer certificate from server 1 and upload the `.cer` file. **Current Certificate** should then show it.
+
+Later, **Trusted Root** can contain more than one certificate with this subject. In that case, export the certificate whose thumbprint matches **Current Certificate**.
+
+### Step 3: Configure the First RTC Server
+
+Install CFS and RTC on the first Windows server. RTC uses the following IIS layout:
+
+- Site: `CFS Website`
+- Application: `/rtc`
+- Physical path: `C:\inetpub\wwwroot\CFS Web Site\rtc`
+- Application pool: `RadiantOne Trust Connector`
+
+Before you install RTC, install the following Windows features. `Web-Mgmt-Console` provides IIS Manager, and `NET-WCF-HTTP-Activation45` registers the handler for `.svc` files.
+
+```
+Install-WindowsFeature Web-Server, Web-WebServer, Web-Mgmt-Console, Web-Windows-Auth, Web-Asp-Net45, NET-Framework-45-ASPNET, NET-WCF-HTTP-Activation45 -IncludeManagementTools
+```
+
+#### Configure the Application Pool
+
+Configure the application pool to run as `<netbios>\svc-rtc`, with **Load User Profile** enabled. The account must be a member of the local `IIS_IUSRS` group and have the **Log on as a service** right. If that right or the pool password is missing, IIS returns HTTP 503.
+
+>[!warning] The `appcmd` command below passes the `svc-rtc` password on the command line, where it can be saved in PowerShell history. If the password must not appear in that history, set the identity in IIS Manager instead.
+
+```
+$pwd = Read-Host "svc-rtc password"
+& "$env:windir\system32\inetsrv\appcmd.exe" set apppool "RadiantOne Trust Connector" "/processModel.identityType:SpecificUser" "/processModel.userName:<netbios>\svc-rtc" "/processModel.password:$pwd" "/processModel.loadUserProfile:true"
+& "$env:windir\system32\inetsrv\appcmd.exe" start apppool "RadiantOne Trust Connector"
+```
+
+Before you rely on a load-balancer health check, open **Application Pools** and confirm that `RadiantOne Trust Connector` is **Started**. The TCP health check can remain **Healthy** while this pool is stopped, and IIS then returns HTTP 503.
+
+#### Enable Windows Authentication
+
+Leave anonymous authentication enabled. Enable Windows authentication for `/rtc` and configure IIS to decrypt the Kerberos ticket with the application pool account:
+
+```
+Import-Module WebAdministration
+$site = "IIS:\Sites\CFS Website\rtc"
+$filter = "system.webServer/security/authentication/windowsAuthentication"
+& "$env:windir\system32\inetsrv\appcmd.exe" unlock config -section:system.webServer/security/authentication/windowsAuthentication
+Set-WebConfigurationProperty -PSPath $site -Filter $filter -Name enabled -Value $true
+Set-WebConfigurationProperty -PSPath $site -Filter $filter -Name useAppPoolCredentials -Value $true
+Set-WebConfigurationProperty -PSPath $site -Filter $filter -Name useKernelMode -Value $true
+```
+
+`useAppPoolCredentials` is required because the Kerberos ticket is encrypted for `svc-rtc`, which holds `HTTP/<rtc-fqdn>`.
+
+#### Bind the HTTPS Certificate
+
+Bind the HTTPS certificate that contains `<rtc-fqdn>` to `CFS Website` on port 443.
+
+#### Check Ticket Issuance
+
+From a domain-joined computer, request a ticket before you open a browser:
+
+```
+C:\Windows\System32\klist.exe get HTTP/<rtc-fqdn>
+```
+
+A successful result shows `Server: HTTP/<rtc-fqdn>`.
+
+This command only tests ticket issuance. The ticket remains in the cache, so a later `klist` can show it even when the browser signed in with NTLM. Negotiate falls back to NTLM when the SPN is wrong, and IIS also returns 200 for a domain account with NTLM. An NTLM fallback hides an SPN problem until another client fails. The checks in [Step 8: Confirm the Sign-in](#step-8-confirm-the-sign-in) provide the proof, and they begin by closing the browser and purging this ticket.
+
+To test `https://<rtc-fqdn>` in a browser on the RTC server itself, add the following value and then run `iisreset`. This value is needed only for that local test:
+
+```
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0" -Name "BackConnectionHostNames" -PropertyType MultiString -Value "<rtc-fqdn>" -Force
+```
+
+### Step 4: Configure Browsers
+
+Users must open `https://<rtc-fqdn>`. An IP address, the computer name of either server, or the load balancer's AWS DNS name does not match `HTTP/<rtc-fqdn>`.
+
+The sign-in flow works as follows:
+
+1. CFS sends the browser to `https://<rtc-fqdn>/rtc/RadiantTrustedConnector.svc/WSFed`.
+2. That page loads a test image from `https://<rtc-fqdn>/rtc/IntegAccess/RTCService.svc/TestAccess_<guid>.bmp`.
+3. If the image loads, the browser continues to `https://<rtc-fqdn>/rtc/IntegAccess/RTCService.svc/WSFed`, which performs Windows authentication and issues the token. If the image fails to load, RTC takes the `NotAuth` path and returns an unauthenticated token.
+
+Edge and Chrome do not show a credential prompt for the test image, so automatic logon must already be allowed for `<rtc-fqdn>`. A credential prompt on `https://<rtc-fqdn>/rtc/IntegAccess/RTCService.svc` only proves that a navigation can authenticate. CFS sign-in depends on the image request, which does not prompt.
+
+Keep JavaScript enabled. The handoff is performed by a script on that page.
+
+#### Windows, Microsoft Edge, and Chrome
+
+1. Open **Control Panel > Internet Options > Security > Local intranet > Sites > Advanced**, and add `https://<rtc-fqdn>`.
+2. Return to **Local intranet** and click **Custom level**. Under **User Authentication > Logon**, select **Automatic logon only in Intranet zone**.
+3. Open **Internet Options > Advanced > Security**, and select **Enable Integrated Windows Authentication**. Restart the browser.
+4. On managed browsers, add `<rtc-fqdn>` to the Edge and Chrome `AuthServerAllowlist` policy.
+
+>[!warning] The `AuthServerAllowlist` policy replaces the browser's integrated authentication server list. A value that contains only `<rtc-fqdn>` turns off integrated authentication for every other host. Include the hosts that already rely on integrated authentication, along with `<rtc-fqdn>`.
+
+#### Firefox
+
+Firefox does not use Internet Options. Add `https://<rtc-fqdn>` to the existing values of `network.negotiate-auth.trusted-uris` and `network.automatic-ntlm-auth.trusted-uris`.
+
+>[!warning] Do not replace either preference with only `https://<rtc-fqdn>`. Doing so removes integrated authentication for the hosts that were already listed.
+
+### Step 5: Configure the CFS Active Directory Connector
+
+In CFS Admin, navigate to **Authentication > Active Directory** and edit the connector. Set the following fields:
+
+| Field | Value |
+| --- | --- |
+| Endpoint | `https://<rtc-fqdn>/rtc/RadiantTrustedConnector.svc/WSFed` |
+| Active Directory domains | `<dns-domain>` |
+| Certificate | Public certificate of the RTC token-signing certificate |
+
+During the first setup, export the installer certificate from server 1. Trusted Root usually contains one certificate with this subject:
+
+```
+Get-ChildItem Cert:\LocalMachine\Root |
+  Where-Object { $_.Subject -eq "CN=RadiantOne Trust Connector certificate" } |
+  ForEach-Object { Export-Certificate -Cert $_ -FilePath C:\rtc-signing.cer -Force }
+```
+
+Upload `C:\rtc-signing.cer` under **Change the Certificate** and save. **Current Certificate** should then show that certificate.
+
+If Trusted Root contains more than one certificate with that subject, export only the certificate whose thumbprint appears in **Current Certificate**. The command above writes every match to the same file, so only the last certificate in the store remains.
+
+```
+Get-ChildItem Cert:\LocalMachine\Root |
+  Where-Object { $_.Thumbprint -eq "<thumbprint>" } |
+  ForEach-Object { Export-Certificate -Cert $_ -FilePath C:\rtc-signing.cer -Force }
+```
+
+Do not use **Update from Metadata**. After this change, signing in to CFS redirects the browser to `<rtc-fqdn>` and then returns the user to CFS.
+
+### Step 6: Configure the Load Balancer
+
+Create the load balancer in `<aws-region>`, in the same VPC as the RTC servers (`<vpc-cidr>`).
+
+#### Create the Target Group
+
+In the EC2 console, under **Load Balancing**, create a target group with the following settings:
+
+| Setting | Value |
+| --- | --- |
+| Target type | Instances |
+| Name | `rtc-443` |
+| Protocol | TCP |
+| Port | 443 |
+| Health check | TCP |
+
+Register the first RTC server on port 443.
+
+The TCP health check confirms that port 443 accepts a connection. Before you treat **Healthy** as a working RTC, confirm that the `RadiantOne Trust Connector` application pool is **Started**. The target remains **Healthy** while that pool is stopped, and IIS then returns HTTP 503.
+
+#### Create the Network Load Balancer
+
+Create a Network Load Balancer with the following settings:
+
+| Setting | Value |
+| --- | --- |
+| Name | `rtc-nlb` |
+| Scheme | Internal |
+| Listener | TCP 443 |
+| Forward to | `rtc-443` |
+| Subnets | The Availability Zone of each RTC server |
+
+AWS assigns a private IPv4 address in each enabled zone. The console label **Assigned by AWS** refers to the allocation method. To read the addresses, resolve `<nlb-dns-name>` from a computer in the VPC:
+
+```
+Resolve-DnsName <nlb-dns-name>
+```
+
+Each A record returned is an `<nlb-private-ip>`.
+
+If the RTC servers are in different Availability Zones, enable each of those zones on the load balancer and turn on **Cross-zone load balancing**. A target in a zone that is not enabled stays in the **Unused** state. With cross-zone load balancing, sign-in still works when one zone is unavailable, because a remaining load balancer address can reach the RTC servers in the other zone.
+
+#### Configure Security Groups
+
+| Resource | Rule |
+| --- | --- |
+| `rtc-nlb` | Inbound TCP 443 from `<vpc-cidr>` |
+| Each RTC instance | Inbound TCP 443 from the clients that sign in |
+| Each RTC instance | Inbound TCP 443 from the load balancer private addresses, or from the subnets those addresses belong to |
+
+Keep the following in mind when you set these rules:
+
+- Client traffic arrives with the client address, because this load balancer preserves it. A rule that allows only the load balancer security group causes client timeouts.
+- Health checks come from the load balancer node addresses. A target whose security group allows only the client range stays unhealthy, because those packets do not come from the clients.
+- The load balancer drops connections when its own security group does not allow port 443.
+- The load balancer does not respond to ping, so a failed ping does not indicate a problem.
+
+Before you change DNS, confirm the path. Run the following command for each `<nlb-private-ip>`:
+
+```
+Test-NetConnection <nlb-private-ip> -Port 443
+```
+
+`TcpTestSucceeded` must be `True`.
+
+#### Switch DNS to the Load Balancer
+
+If the load balancer has one private address, point the existing A record at that address:
+
+```
+$rec = Get-DnsServerResourceRecord -ZoneName "<dns-domain>" -Name "<rtc-host>" -RRType A
+$new = $rec.Clone()
+$new.RecordData.IPv4Address = [ipaddress]"<nlb-private-ip>"
+Set-DnsServerResourceRecord -ZoneName "<dns-domain>" -OldInputObject $rec -NewInputObject $new
+```
+
+If the servers are in more than one Availability Zone, `<rtc-fqdn>` needs one A record for each load balancer private address. The SPN remains `HTTP/<rtc-fqdn>`. A single A record that points to one private IP fails when that zone is unavailable, even if the other RTC server is running.
+
+Replace the existing `<rtc-server-1-ip>` record with the first load balancer address; the script above performs this replacement. Do not include the RTC server address in the set, or some clients bypass the load balancer. Then add one A record for each additional load balancer address:
+
+```
+Add-DnsServerResourceRecordA -Name "<rtc-host>" -ZoneName "<dns-domain>" -IPv4Address "<nlb-private-ip>"
+```
+
+`Resolve-DnsName <rtc-fqdn>` should list only the load balancer addresses. Sign in to CFS again. The browser still uses `https://<rtc-fqdn>`, and CFS still uses the same endpoint and signing certificate.
+
+### Step 7: Configure the Second RTC Server
+
+Launch a Windows server in the same VPC and security group as the first RTC server. Join it to `<dns-domain>`, using `<domain-controller-ip>` as its DNS server. After the restart, sign in with a domain account.
+
+Install the same Windows features listed for the first server, and then install RTC with the same RadiantOne Trust Connector installer.
+
+#### Use the Same Token-Signing Certificate
+
+On the first server, export the signing certificate from the RTC configuration by running the script below in Windows PowerShell 5.1 (`powershell.exe`). PowerShell 7 cannot deserialize the `Web.config` value. Because the installer protects this value with the machine, copying `Web.config` to the new server does not work.
+
+When the installer generates the certificate, it stores an empty `password` value. Unprotect `password` only when the value is not empty. An empty value is not protected data, and attempting to unprotect it stops the script before it writes the PFX. If a password-protected PFX was imported during installation, the non-empty value unprotects to the password that `X509Certificate2` needs.
+
+```
+Add-Type -AssemblyName System.Security
+$entropy = [byte[]](5,1,7,5,3)
+function Unprotect-Rtc([string]$cipher) {
+  $protected = [Convert]::FromBase64String($cipher)
+  $clear = [System.Security.Cryptography.ProtectedData]::Unprotect($protected, $entropy, 'LocalMachine')
+  $ms = New-Object System.IO.MemoryStream(,$clear)
+  $formatter = New-Object System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+  return $formatter.Deserialize($ms)
+}
+[xml]$cfg = Get-Content "C:\inetpub\wwwroot\CFS Web Site\rtc\Web.config"
+$certB64 = Unprotect-Rtc (($cfg.configuration.appSettings.add | Where-Object key -eq "certificate").value)
+$passwordSetting = ($cfg.configuration.appSettings.add | Where-Object key -eq "password").value
+if ([string]::IsNullOrEmpty($passwordSetting)) {
+  $storedPassword = ""
+} else {
+  $storedPassword = Unprotect-Rtc $passwordSetting
+}
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2(
+  [Convert]::FromBase64String($certB64), $storedPassword, "Exportable")
+$secure = Read-Host -AsSecureString "PFX password"
+$bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+try {
+  $plain = [Runtime.InteropServices.Marshal]::PtrToStringUni($bstr)
+  [IO.File]::WriteAllBytes("C:\rtc-signing-protected.pfx", $cert.Export("Pkcs12", $plain))
+}
+finally {
+  [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+}
+```
+
+Also export the HTTPS certificate from **Local Computer > Personal** on the first server. Copy both PFX files to the new server.
+
+On the second server:
+
+1. In IIS Manager, select the `/rtc` application and open **RadiantOne Trust Connector > Change the certificate**. Select the signing certificate PFX. This writes a new machine-protected value into that server's `Web.config`.
+2. Import the HTTPS PFX and bind it to port 443.
+3. Apply the same application pool identity and Windows authentication settings used on the first server. The pool must remain **Started**.
+
+#### Register the Second Server
+
+In target group `rtc-443`, register the new instance on port 443. Enable its Availability Zone on `rtc-nlb` and leave cross-zone load balancing on. The target changes from **Unused** to **Healthy**.
+
+With only the new server registered, a CFS sign-in through `https://<rtc-fqdn>` must succeed, and the [Kerberos checks](#step-8-confirm-the-sign-in) must pass. Afterward, register the original server again. Both targets should show **Healthy**.
+
+After that sign-in succeeds, delete both PFX files from both servers.
+
+### Step 8: Confirm the Sign-in
+
+CFS is configured with `RadiantTrustedConnector.svc/WSFed`, while the completed sign-in appears in the IIS log as `RTCService.svc/WSFed`. These are different steps of the same login.
+
+After the ticket issuance test, close the browser, purge the client cache, and then sign in, in that order. The ticket from `klist get` is still cached, and a later `klist` would show it even if the browser used NTLM. A browser left open can keep the connection it already authenticated; after a purge, that session might not request a new ticket, so `klist` stays empty even though the sign-in worked.
+
+#### Verify the Client Ticket
+
+1. Close the browser, and then run:
+
+   ```
+   C:\Windows\System32\klist.exe purge
+   ```
+
+2. Sign in to CFS.
+3. On the client, run:
+
+   ```
+   C:\Windows\System32\klist.exe
+   ```
+
+A ticket for `HTTP/<rtc-fqdn>` with a start time that matches the sign-in is the client-side proof. IIS also returns 200 with the domain account for NTLM, so the account name in the log is not enough on its own.
+
+#### Verify the Server Logon Event
+
+On the RTC server that handled the request, a single security log event 4624 must contain all of the following:
+
+- The account is the domain user who signed in.
+- **Logon Type** is 3.
+- **Authentication Package** is Kerberos.
+
+If that field shows **NTLM**, Negotiate fell back and the SPN setup is still broken.
+
+In the command below, replace `<sign-in-account>` with the account name only, such as `jsmith`. Event 4624 stores this value in **Account Name** under **New Logon**. `CORP\jsmith` does not match, and the resulting empty output then looks like an auditing problem. The command prints the time, the account, and the authentication package.
+
+```
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4624; StartTime=(Get-Date).AddMinutes(-15)} |
+  Where-Object {
+    $_.Message -match 'Logon Type:\s+3' -and
+    $_.Message -match 'Authentication Package:\s+Kerberos' -and
+    $_.Message -match 'Account Name:\s+<sign-in-account>(\s|$)'
+  } |
+  ForEach-Object {
+    $account = if ($_.Message -match '(?s)New Logon:.*?Account Name:\s+(\S+)') { $Matches[1] } else { "" }
+    $package = if ($_.Message -match 'Authentication Package:\s+(\S+)') { $Matches[1] } else { "" }
+    "{0}  {1}  {2}" -f $_.TimeCreated, $account, $package
+  }
+```
+
+An empty result is ambiguous. Confirm that success auditing for logon events is enabled, and then sign in again.
+
+#### Verify the IIS Logs
+
+CFS logs show the redirect to `<rtc-fqdn>`, but not which RTC server handled it. Read the IIS log on each server:
+
+```
+$env:COMPUTERNAME
+$log = Get-ChildItem C:\inetpub\logs\LogFiles -Recurse -Filter *.log |
+  Sort-Object LastWriteTime -Descending | Select-Object -First 1
+Select-String -Path $log.FullName -Pattern "RTCService.svc/WSFed" |
+  Select-Object -Last 5 | ForEach-Object Line
+```
+
+A completed sign-in is a line that contains the domain account, `RTCService.svc/WSFed`, and status `200`, together with the Kerberos ticket and Kerberos logon described above.
+
+Close the browser between attempts, because a single browser session can keep using the same load balancer connection. Each server should show completed sign-ins. To check one server on its own, deregister the other target, sign in once, and then register it again.
+
+>[!note] A single sign-in can involve both servers. RTC begins by requesting a test image from `IntegAccess`, and the token request that follows can be sent on a different connection. Either server can complete that sequence because both share `svc-rtc` and the same signing certificate.
+
 ## Verifying the RTC Configuration
 
 Verify that the RTC is configured correctly. Check if you can access the RTC site:

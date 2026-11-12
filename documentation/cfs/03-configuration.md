@@ -72,40 +72,62 @@ Name | Description | Link
 
 ### Configuring SAML Signing Settings
 
-SAML2 applications let you control how responses and assertions are signed, which algorithms are used to encrypt assertions, and they support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
+SAML2 applications let you control how responses and assertions are signed, which algorithms are used to encrypt assertions, and support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
+
 1. Open the SAML2 application configuration page.
 2. Go to the **Parameters** tab and locate the **Recipients** table.
    ![SAML Recipients Configuration](media/saml-recipients-config.png "SAML application ACS parameters")
 3. Click **Add Recipient** to add each ACS endpoint as a separate entry, and configure each row:
-   - **Index** — position/order of the endpoint.
-   - **Location** — the ACS endpoint URL.
-   - **Binding** — the SAML binding (HTTP-POST only).
-   - **Default** — marks the fallback endpoint.
-4. Alternatively, click **Import from a metadata file** and upload the SP metadata XML. CFS parses any `<AssertionConsumerService>` elements and auto-populates the recipients table. Only SAML 2.0 HTTP-POST endpoints are supported; non-POST endpoints are ignored.
+   - **Index** — Position/order of the endpoint.
+   - **Location** — The ACS endpoint URL.
+   - **Binding** — The SAML binding (`HTTP-POST` only).
+   - **Default** — Marks the fallback endpoint.
+4. Alternatively, click **Import from a metadata file** and upload the SP metadata XML. CFS parses any `<AssertionConsumerService>` elements and auto-populates the recipients table. Only SAML 2.0 `HTTP-POST` endpoints are supported; non-POST endpoints are ignored.
 5. When an SP sends a SAML authentication request, CFS chooses the response destination as follows:
+
    | SP Request Attribute | CFS Behavior |
    |---|---|
    | `AssertionConsumerServiceURL` | Matches the URL against configured recipients and responds to that URL. |
    | `AssertionConsumerServiceIndex` | Uses the recipient at the matching index. |
    | *Neither specified* | Falls back to the recipient marked **Default**. |
+
 6. Upload your **encryption** and **signing** certificates using the import button.
    ![SAML signing parameters](media/saml2signing.png "SAML application parameters")
 7. If you uploaded an encryption certificate, choose the algorithms CFS uses to encrypt assertions for this application:
-   - **Assertion encryption algorithm** — the content-encryption algorithm. Keep the default, **AES-256-CBC (compatibility)**, for SPs that expect the legacy profile, or select **AES-256-GCM (FIPS)** for FIPS-restricted SPs.
-   - **Key transport algorithm** — the session-key transport algorithm. Keep the default, **RSA-1.5 (compatibility)**, or select **RSA-OAEP (FIPS)** for FIPS-restricted SPs.
+   - **Assertion encryption algorithm** — The content-encryption algorithm. Keep the default, **AES-256-CBC (compatibility)**, for SPs expecting the legacy profile, or select **AES-256-GCM (FIPS)** for FIPS-restricted SPs.
+   - **Key transport algorithm** — The session-key transport algorithm. Choices are:
+     - **RSA-1.5** (compatibility)
+     - **OAEP-SHA-1** (FIPS classic XML Encryption profile: SHA-1 / MGF1-SHA1, `http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p`)
+     - **OAEP-SHA-256** (FIPS XML Encryption 1.1 profile: SHA-256 / MGF1-SHA256, `http://www.w3.org/2009/xmlenc11#rsa-oaep`)
 
    ![Assertion encryption algorithms](media/saml2-encryption-algorithms.png "assertion encryption and key transport algorithms")
 
-   The two settings must be paired: **AES-256-CBC** with **RSA-1.5**, or **AES-256-GCM** with **RSA-OAEP** — the classic XML Encryption OAEP profile (SHA-1 / MGF1-SHA1, `http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p`). Saving a mismatched pair fails with an *Invalid assertion encryption combination* error. XML Encryption 1.1 RSA-OAEP with SHA-256 is not supported yet. Applications without an encryption certificate are unaffected — their assertions are not encrypted.
+   >[!note] **Supported pairs:** The encryption and key-transport algorithms must be configured as one of the three supported pairs:
+   > - **AES-256-CBC** with **RSA-1.5** (default compatibility pair)
+   > - **AES-256-GCM** with **OAEP-SHA-1** (FIPS SHA-1)
+   > - **AES-256-GCM** with **OAEP-SHA-256** (FIPS SHA-256)
+   >
+   > Saving any mismatched combination (for example, AES-256-CBC with OAEP-SHA-256, or AES-256-GCM with RSA-1.5) fails with an *Invalid assertion encryption combination* error. Applications without an encryption certificate are unaffected; their assertions are not encrypted. If encryption is configured on an application but cannot be performed, CFS fails closed and halts authentication to prevent sending assertions in the clear.
+
 8. Use the **Sign Response** toggle to sign the entire SAML response when required.
 9. Use the **Sign Assertion** toggle to sign only the assertion when required.
 10. Review the chosen options and click **Save**.
 11. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
     ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
 12. Return to the SAML configuration page and ensure neither option requires a signature.
-13. To require FIPS-approved encryption across the whole tenant, navigate to **Settings > General Settings > Others**, enable **Enforce FIPS-approved SAML2 Encryption Algorithms** (disabled by default), and click **Save**. Every encrypted SAML2 assertion in the tenant then uses AES-256-GCM and RSA-OAEP (SHA-1 / MGF1-SHA1, `xmlenc#rsa-oaep-mgf1p`), and the per-application dropdowns described in step 7 are ignored. Leave this setting off in mixed tenants where some SPs still require AES-256-CBC and RSA-1.5, and set the algorithms per application instead.
+13. To require FIPS-approved encryption across the whole tenant:
+    1. Navigate to **Settings > General Settings > Others**.
+    2. Enable **Enforce FIPS-approved SAML2 Encryption Algorithms**. The **SAML2 assertion encryption profile** dropdown appears.
+    3. Select a profile:
+       - **Fips-GCM-OAEP-SHA1** — AES-256-GCM with RSA-OAEP.
+       - **Fips-GCM-OAEP-SHA256** — AES-256-GCM with RSA-OAEP (SHA-256 / MGF1-SHA256).
+    4. Click **Save**.
 
-    ![Enforce FIPS-approved SAML2 encryption algorithms](media/fips-encryption-setting.png "tenant-wide FIPS encryption setting")
+    ![SAML2 assertion encryption profile](media/fips-encryption-setting.png "tenant-wide SAML2 assertion encryption profile")
+
+    When enforcement is off, each SAML2 application uses its own algorithm pair. When enforcement is on, the selected profile overrides the algorithm settings of every encrypted SAML2 application in the tenant. An application with no encryption certificate stays unencrypted either way. Disable enforcement if any service provider still requires AES-256-CBC with RSA-1.5.
+
+    >[!note] **Existing tenants:** Tenants created before this change have no stored profile. Their existing **Enforce FIPS** value still applies: off keeps each application's own algorithm pair, and on uses **Fips-GCM-OAEP-SHA1**. Opening General Settings and saving without changing enforcement does not store a profile. Choosing **Fips-GCM-OAEP-SHA256** stores that profile. After a FIPS profile is stored, that profile controls issuance while enforcement is on.
 
 ### Configuring Mappings
 
@@ -999,7 +1021,7 @@ The `TenantSettingsPSModel` object returned by `Get-CfsSettings` (and accepted b
 Property | Type | Description | Default | Since Version
 -|-|-|-|-
 `LoaHighlight` | Boolean | When `$true`, enables the LOA (Level of Assurance) Highlight feature for federated sign-in flows at the tenant level. | `$true` | 3.17.11
-`EnforceFipsSamlEncryptionAlgorithms` | Boolean | When `$true`, forces all encrypted SAML2 applications in the tenant to use `AES-256-GCM` + `RSA-OAEP` at token issuance, overriding per-application algorithm settings. | `$false` | 3.18.2
+`EnforceFipsSamlEncryptionAlgorithms` | Boolean | When `$true`, the tenant FIPS profile overrides the algorithm settings of every encrypted SAML2 application in the tenant. While no profile is stored, setting it to `$true` turns on `Fips-GCM-OAEP-SHA1`. | `$false` | 3.18.2
 
 **Example: disable LOA Highlight for the tenant**
 
@@ -1013,15 +1035,48 @@ Set-CfsSettings -Settings $settings
 # Expected: False
 ```
 
-**Example: enable tenant-wide FIPS SAML encryption enforcement**
+**Example: manage tenant-wide FIPS SAML encryption enforcement**
+
+`Get-CfsSettings` and `Set-CfsSettings` expose `EnforceFipsSamlEncryptionAlgorithms` and `SamlAssertionEncryptionProfile`. Run them after connecting and selecting a tenant.
+
+`Get-CfsSettings` returns the stored profile and the boolean. `EffectiveSamlAssertionEncryptionProfile` is the profile issuance will use. It is not stored.
 
 ```powershell
 $settings = Get-CfsSettings
-$settings.EnforceFipsSamlEncryptionAlgorithms # current value
+$settings.EnforceFipsSamlEncryptionAlgorithms
+$settings.SamlAssertionEncryptionProfile
+$settings.EffectiveSamlAssertionEncryptionProfile
+```
 
+`Set-CfsSettings` takes that settings object. While no profile is stored, setting only the boolean still works. `Get-CfsSettings` returns an empty profile, so this turns on **Fips-GCM-OAEP-SHA1** and leaves the profile unset:
+
+```powershell
+$settings = Get-CfsSettings
 $settings.EnforceFipsSamlEncryptionAlgorithms = $true
 Set-CfsSettings -Settings $settings
 ```
+
+Set `$false` the same way to return to per-application algorithms without storing a profile.
+
+Setting `SamlAssertionEncryptionProfile` stores that FIPS profile and sets the boolean to `$true`.
+
+Select SHA-256 for every encrypted application in the tenant:
+
+```powershell
+$settings = Get-CfsSettings
+$settings.SamlAssertionEncryptionProfile = "Fips-GCM-OAEP-SHA256"
+Set-CfsSettings -Settings $settings
+```
+
+Select the SHA-1 FIPS profile:
+
+```powershell
+$settings = Get-CfsSettings
+$settings.SamlAssertionEncryptionProfile = "Fips-GCM-OAEP-SHA1"
+Set-CfsSettings -Settings $settings
+```
+
+>[!note] While no profile is stored, set the boolean to `$false` to leave each application on its own algorithm pair. After a profile is stored, `Get-CfsSettings` copies it onto the object. A later `Set-CfsSettings` that only changes the boolean sends that profile back, and enforcement stays on. Change `SamlAssertionEncryptionProfile` to switch between the two FIPS profiles. Clearing the property and calling `Set-CfsSettings` leaves the stored profile and the boolean unchanged.
 
 
 #### Smart Links
