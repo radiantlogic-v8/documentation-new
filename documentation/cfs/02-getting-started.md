@@ -11,14 +11,6 @@ Before you begin, install and configure RadiantOne Federated Identity Service (F
 
 CFS supports multiple independent tenants, each with its own users, groups, and applications. For example, you can create separate tenants for your sales and engineering teams so that each team can access the applications it needs. The examples in this guide use the sample directory data included with a basic FID installation to introduce CFS concepts and demonstrate the configuration process.
 
-## Next Steps
-
-Now you know what this guide is about, follow the folling steps to get started.
-
--   [Prerequisites](#prerequisites) for RadiantOne CFS and how to prepare FID.
--   Learn about the [Concepts](#concepts) of federation.
--   Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
--   Create the [first tenant](#first-tenant).
 
 ## Prerequisites
 
@@ -97,11 +89,12 @@ If the user or group entries integrated by FID originate from a backend store ot
 
 ### Next Steps
 
-Now you know what are the prerequisites for RadiantOne CFS follow the steps.
+After reviewing the prerequisites, continue with the following steps:
 
--   Learn about the [Concepts](#concepts) of federation.
--   Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
--   Create the [first tenant](#first-tenant).
+1. Learn the key [federation concepts](#concepts).
+2. Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
+3. Create your [first tenant](#first-tenant).
+
 
 ## Concepts
 
