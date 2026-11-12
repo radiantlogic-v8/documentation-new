@@ -5,11 +5,11 @@ description: Step-by-step guide to installing and configuring CFS
 
 # Getting Started
 
-This guide is meant to help you achieve a simple installation of the Cloud Federation Service (CFS) for the first time. It assumes that you have RadiantOne Federated Identity Service (FID) already installed and configured on another server. If not, you should start by using the documentation that comes with the FID to complete your installation and configuration.
+This guide explains how to install and configure Cloud Federation Service (CFS), prepare the RadiantOne Federated Identity Service (FID) identity store, and create your first tenant. It also introduces key federation concepts and covers CFS Proxy deployment, Active Directory authentication with RadiantOne Trust Connector (RTC), RTC load balancing, and certificate configuration.
 
-In this guide, you will install CFS and configure your first tenant. A tenant in CFS is like a store in the mall. CFS can be configured to host many tenants, each with their own base of users and groups. Each tenant is independent of the others. As an example, you may have certain applications that your sales team needs access to, but your engineering team does not, and vice versa. In CFS, your sales team can have its own tenancy, with unique applications available for those that access the sales tenant. The engineering tenant would be accessed by other users and grant access to different applications.
+Before you begin, install and configure RadiantOne Federated Identity Service (FID) on a separate server. If you have not completed this step, follow the FID installation and configuration documentation.
 
-If you have done a basic installation of FID on your other server, you have some sample data already populated in the directory tree. We use that sample data as our basis to get started and explain the CFS concepts.
+CFS supports multiple independent tenants, each with its own users, groups, and applications. For example, you can create separate tenants for your sales and engineering teams so that each team can access the applications it needs. The examples in this guide use the sample directory data included with a basic FID installation to introduce CFS concepts and demonstrate the configuration process.
 
 ## Next Steps
 
@@ -20,11 +20,11 @@ Now you know what this guide is about, follow the folling steps to get started.
 -   Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
 -   Create the [first tenant](#first-tenant).
 
-# Prerequisites 
+## Prerequisites
 
 This section describes the prerequisites for installing the Cloud Federation Service (CFS) and Radiant Trust Connectors (RTCs). CFS does not have to be installed on a FID server; however, the FID server must be accessible to the server that CFS is installed on.
 
-## CFS Requirements
+### CFS Requirements
 
 Windows users without administrator privileges may launch the CFS installer; however, administrator credentials are required to complete the CFS installation. You are prompted to enter the administrator credentials during installation. SSL must be enabled on the FID prior to installing CFS.
 
@@ -55,7 +55,7 @@ CFS v3.16.2 supports FID v7.1.14 and later, with the exception of:
 -   v7.2.21
 -   v7.2.22
 
-## Other Microsoft Requirements
+### Other Microsoft Requirements
 
 -   Web Server IIS 7.5 or higher. (Server Manager > Roles > Web Server (IIS))
 -   CFS Version **3.16.2** requires .NET Framework 4.8
@@ -72,7 +72,7 @@ CFS v3.16.2 supports FID v7.1.14 and later, with the exception of:
 -   RTC only:
     -   Windows Authentication (Server Manager > Roles > Web Server (IIS) > Web Server > Security > Windows Authentication)
 
-## Preparing the Identity Store
+### Preparing the Identity Store
 
 The identity store used by CFS is the RadiantOne FID. The FID provides the identity integration layer and the storage for self-registered users.
 
@@ -95,7 +95,7 @@ Depending on the CFS features you plan to use, you must have some attributes ava
 
 If the user or group entries integrated by FID originate from a backend store other than the local HDAP storage in FID, the easiest way to extend these entries with the writable attributes mentioned above is by configuring an Extended External Join on your FID virtual view (be sure to mark these attributes as **UPDATEABLE** and **SEARCHABLE** ). For details on configuring extended joins, please see the FID System Admin Guide. Extended joins alleviate the need to extend the schemas of the backend sources in order to support the writable attributes required by CFS. The lifecycle of these extension attributes is managed by and maintained in FID and FID joins this information to the relevant user/group entries when needed.
 
-## Next Steps
+### Next Steps
 
 Now you know what are the prerequisites for RadiantOne CFS follow the steps.
 
@@ -103,9 +103,9 @@ Now you know what are the prerequisites for RadiantOne CFS follow the steps.
 -   Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
 -   Create the [first tenant](#first-tenant).
 
-# Concepts
+## Concepts
 
-## Identity Providers
+### Identity Providers
 
 Identity Provider is the term used to describe any mechanism or system that handles authentication of users, and provides claims about those users to CFS. There are five types of identity providers/authentication systems supported in CFS:
 
@@ -117,7 +117,7 @@ Identity Provider is the term used to describe any mechanism or system that hand
 
 ![identity providers](media/identity-providers.png)
 
-## Applications
+### Applications
 
 Application is the term used for relying parties/service providers that trust CFS as the identity provider. The CFS System Administrator must enable the applications that tenants can make available through their portals.
 
@@ -125,29 +125,29 @@ The term "Application" can also refer to other Security Token Service's (STS) su
 
 ![](media/applications.png)
 
-## Identity Store
+### Identity Store
 
 An identity store is the user repository used to uniquely identify people for authentication and retrieving profile attributes and groups to package inside tokens. The identity store used by CFS is FID. For more details, please see [Preparing the Identity Store](#preparing-the-identity-store).
 
-## Tenant
+### Tenant
 
 CFS supports a multitenancy architecture allowing each configured tenant to manage their own groups, users, identity providers (authentication systems), applications and portal. Each tenant is totally independent and cannot access resources managed by other tenants.
 
 The CFS system administrator configures all tenants and then the designated tenant administrator can configure the groups, users, identity providers and applications applicable for their portal. See the [Tenant Administrator Guide](04-user-roles#tenant-administrator) for configuration details.
 
-## Web Gallery
+### Web Gallery
 
 The web gallery contains all applications that CFS provides a configuration template for. The CFS system administrator must retrieve any applications they want to allow tenants to use in their portal from the web gallery. After an application is installed, it is displayed in the Applications, Available section.
 
 ![web gallery](media/web-gallery.png)
 
-## Comparable Federation Terms
+### Comparable Federation Terms
 
 Some federation terms have different names across the industry. The chart below is a quick reference guide to various terminology used across prominent federation technologies.
 
 ![federation terms](media/federation-terms.png)
 
-## IDP-Initiated SSO
+### IDP-Initiated SSO
 
 Once CFS has been configured by the CFS system Administrator and the Tenant Administrator has configured their portal, users can log in to the portal and access applications.
 
@@ -161,7 +161,7 @@ Once logged in, the user is shown a list of applications they are authorized by 
 
 For more details, please see the portal user guide.
 
-## RP-Initiated SSO
+### RP-Initiated SSO
 
 
 A user can navigate directly to an application, rather than first going to the portal site. If the user has been previously authenticated by CFS, the user gains access to the application without having to re-authenticate.
@@ -181,21 +181,21 @@ Step(s) Flow description:
 4.  The browser sends a POST containing the token to the application, application redirects the browser to the default access page defined in CFS.
 5.  The browser requests the page, the Application sends back the page.
 
-## Circle of Trust
+### Circle of Trust
 
 Circle of Trust (COT) is one of the methods available for CFS to authorize access to relying parties. The criteria that qualifies a user to be a member of the circle of trust is based on IP Address or DNS. Each IP Address/DNS is associated with a "location" (e.g. Headquarters, BuildingA, BuildingB) and this rule is evaluated when the user logs into CFS. The user can be authorized to access a relying party if their IP address or DNS is indicated in the Circle of Trust rule associated with the relying party.
 
-## Level of Assurance
+### Level of Assurance
 
 Level of Assurance (LOA) is one of the methods available for CFS to authorize access to relying parties and is modeled on the FICAM Trust Framework leveraged by the United States Government. A Level of Assurance is assigned to each identity provider/authentication method (e.g. Forms-Based, Certificate authentication, Active Directory) and describes the degree of certainty and confidence that the user has presented a valid identifier that refers to his or her identity. CFS offers four levels of assurance: **Little**, **Some**, **High** and **Very High**.
 
 Levels of Assurance are also assigned to relying parties. A user can be authorized to access a relying party if the Level of Assurance (LOA) associated with the identity provider/authentication method they authenticated with is equivalent to or more secure than the level assigned to the relying party.
 
-## Next Steps
+### Next Steps
 
 Now you know the basic concepts of federation, follow the steps.
 
-# RadiantOne CFS Master
+## RadiantOne CFS Master
 
 The RadiantOne CFS and Radiant Trust Connector (RTC) install files are available via an FTP site.
 
@@ -203,7 +203,7 @@ The RadiantOne CFS and Radiant Trust Connector (RTC) install files are available
 
 Once you get access to the site, you will find a folder name "installers" that contains all the executable and their relative msi files. Ensure you run the .exe files directly from this folder, as each executable has dependencies on its corresponding .msi file and on ExeRunner.exe. Running them from another location may break these dependencies and result in installation failures. 
 
-## FID LDAPs Certificate
+### FID LDAPs Certificate
 
 Installing the FID Certificate on the CFS Server allows CFS to communicate with the FID over an SSL connection. CFS requires an SSL connection.
 
@@ -223,7 +223,7 @@ Installing the FID Certificate on the CFS Server allows CFS to communicate with 
    
 ![](media/fid-cert-3.png)
 
-## Installing CFS Master
+### Installing CFS Master
 
 The CFS installer automatically installs all the required components (including the monitoring console), makes the necessary configurations, and creates a new web site in IIS. Please follow the following steps to install CFS Master.
 
@@ -255,7 +255,7 @@ The CFS installer automatically installs all the required components (including 
 11.   Once the install is complete, click Finish. ![](media/master-11.png)
 12.  If an error happened during the installation, a link should display on the next screen to see the logs. ![](media/master-12.png)
 
-## Uninstalling CFS Master
+### Uninstalling CFS Master
 
 1.  To uninstall CFS Master, go to the Windows Control Panel, select Programs, Uninstall a program. In the list of applications installed, select Cloud Federation Service and click Uninstall.
 
@@ -273,14 +273,14 @@ The CFS installer automatically installs all the required components (including 
 
 
 
-## Next Steps
+### Next Steps
 
 Now you have installed and configure RadiantOne CFS, follow the steps.
 
 -   Create the [first tenant](#first-tenant).
 
 
-# First Tenant
+## First Tenant
 
 After your installation has completed, open your web browser. In the address bar enter the address of your CFS: `[https://<CFS_SERVER>/system/](https://<CFS_SERVER>/system/)`
 
@@ -288,7 +288,7 @@ After your installation has completed, open your web browser. In the address bar
 
 >[!note] Select "Continue to this website (not recommended)". The reason this appears is because CFS is hosted on Microsoft's IIS Web Server and installs a self-signed certificate during installation that is not trusted by your machine. There are instructions on how to correct this in the [Microsoft IIS](05-deployment#change-the-ssl-certificate) section.
 
-# Installation Wizard
+### Installation Wizard
 
 The Global Administration Page takes some time to load for the first time, but when it does, it should look something like this.
 
@@ -314,7 +314,7 @@ Once this process has completed, you are at the end of the configuration process
 
 ![](media/first-tenant7.png)
 
-## System Dashboard
+### System Dashboard
 
 At this point, you are logged in as the Directory Manager and able to configure CFS at the Global Level. That means that you won't be able to directly give users access to applications, but you can create Tenants and give Tenant Administrators the ability to make Applications available to the users. Click **Tenants** on the left hand side of the page and select "New Tenant". In the name field, you are asked for a name. This is arbitrary. For our tenant, we call it "Accounting". The Identifier is automatically generated.
 
@@ -352,7 +352,7 @@ Once complete, you are taken to the Registered Tenants Tab and you will see the 
 
 Now, log out of the control panel by clicking the arrow in the top right next to the Welcome, Directory Manager message and select "Logout". You are taken back to the login screen. This, however, is the login screen for global administrators, not for tenant administrators.
 
-## Tenant Portal
+### Tenant Portal
 
 Use the address bar in your browser to navigate to `[https://<CFS_SERVER>/cfs/](https://<CFS_SERVER>/cfs/)`
 
@@ -366,15 +366,15 @@ The screen that you are taken to is the default portal for all the users of that
 
 Here, you are able to administer your Tenant, as described in the [Tenant Administration](04-user-roles#tenant-administrator) portion of this documentation.
 
-## Next Steps
+### Next Steps
 
 Now you have installed and configure RadiantOne CFS and created your first tenant you can follow the guide.
 
 -   Install and configure [CFS Proxy](#radiantone-cfs-proxy).
--   Install and configure [RTC](#radiant-trust-connectors-rtc).
+-   Install and configure [RTC](#radiantone-trust-connector).
 -   Configure the different [Certificates](#certificates).
 
-# RadiantOne CFS Proxy
+## RadiantOne CFS Proxy
 
 The CFS Proxy allows external users to access CFS while protecting the identities stored in FID from external attacks by removing the direct link between CFS (in the DMZ) and FID. A CFS proxy may connect to only one master CFS Proxy Web API. The CFS Proxy could also point to a load balancer which distributes traffic to multiple CFS Proxy Web API if needed.
 
@@ -382,7 +382,7 @@ The CFS Proxy allows external users to access CFS while protecting the identitie
 
 Internal users still use the CFS Master directly to access applications. Only internal users have access to CFS's administration panels. External users exchange information with the CFS Proxy. This server contacts a CFS Proxy Web API server located inside the corporate network through REST calls over HTTPS. Then, the CFS Proxy Web API server contacts FID to get the information needed.
 
-## Create a CFS Proxy
+### Create a CFS Proxy
 
 You must have installed a CFS Master with the System Dashboard in order to add a CFS Proxy in the system.
 
@@ -400,7 +400,7 @@ Keep the next screen on hand; you need to get the **id** and **secret** keys for
 
 >[!note] Make sure you have installed a CFS Proxy Web API in your network in order for the CFS Proxy to communicate with FID. Follow the steps of the [RadiantOne CFS Master](#radiantone-cfs-master) to install the CFS Proxy Web API.
 
-## Installing CFS Proxy
+### Installing CFS Proxy
 
 The CFS Proxy installer automatically installs all the required components (including the monitoring console), makes the necessary configurations, and creates a new web site in IIS. Please follow the following steps to install CFS Proxy.
 
@@ -444,7 +444,7 @@ Once the install is complete, click Finish.
 
 ![](media/proxy-11.png)
 
-## Uninstalling CFS Proxy
+### Uninstalling CFS Proxy
 
 1.  To uninstall CFS Proxy, go to the Windows Control Panel, select Programs, Uninstall a program. In the list of applications installed, select Cloud Federation Service Proxy and click Uninstall.
 2.  Click Uninstall. 
@@ -455,18 +455,18 @@ Once the install is complete, click Finish.
     
 4.  The setup has successfuly uninstalled the CFS Proxy. ![](media/uninstall6.png)
     
-## Next Steps
+### Next Steps
 
 Now you have installed and configure RadiantOne CFS Proxy, you can follow the guide.
 
 -   Install and configure [RTC](#radiantone-trust-connector).
 -   Configure the different [Certificates](#certificates).
 
-# RadiantOne Trust Connector
+## RadiantOne Trust Connector
 
 Install an RTC for each Active Directory forest you want to use as an Authentication System within CFS. If you do not want to support Active Directory (NTLM/Kerberos) authentication, then you do not need to install an RTC. It is advised that the default self-signed certificate for each RTC be replaced with a certificate designated exclusively for use by that RTC. Also, make sure the name you are using to access this RTC through the web browser is the FQDN of the machine, otherwise the kerberos token is not be sent to the server and the end user is prompted for his/her credentials. The same is true if the SSL certificate is not valid.
 
-## Installing the RTC
+### Installing the RTC
 
 1.  Double click `Radiant Logic, Inc. CFS Radiant Trust Connector - <version#>.exe`.
 2.  Check the **I agree to the license terms and conditions** check box and click Install.
@@ -476,7 +476,7 @@ Install an RTC for each Active Directory forest you want to use as an Authentica
 
 ![](media/rtc-0.png)
 
-## Configuring the RTC Behind a Load Balancer
+### Configuring the RTC Behind a Load Balancer
 
 This section describes how to run two RadiantOne Trust Connector (RTC) servers behind an AWS Network Load Balancer (NLB), with Cloud Federation Service (CFS) accepting the sign-in.
 
@@ -484,7 +484,7 @@ The load balancer sits in front of RTC only. CFS remains on the first server and
 
 Browsers sign in to RTC through a single DNS name, and the load balancer forwards those connections to either RTC server.
 
-### Placeholders Used in This Section
+#### Placeholders Used in This Section
 
 Replace the following placeholders with the values for your environment.
 
@@ -504,7 +504,7 @@ Replace the following placeholders with the values for your environment.
 
 This section uses the suggested resource names `svc-rtc`, `rtc-nlb`, and `rtc-443`. You can use different names.
 
-### Deployment Overview
+#### Deployment Overview
 
 When you complete this section, the deployment looks like this:
 
@@ -544,7 +544,7 @@ Keep the following in mind:
 - Users must sign in with a domain account. A local server administrator cannot obtain a Kerberos ticket.
 - The clocks on the domain controllers and both RTC servers must be within five minutes of each other. If they are further apart, Kerberos fails before the request reaches IIS.
 
-### Step 1: Configure Active Directory
+#### Step 1: Configure Active Directory
 
 On a domain controller:
 
@@ -574,11 +574,11 @@ On a domain controller:
 
    >[!warning] Use an A record, not a CNAME. A CNAME can cause Windows to request a ticket for the load balancer's AWS DNS name, which does not match `HTTP/<rtc-fqdn>`.
 
-### Step 2: Prepare the Certificates
+#### Step 2: Prepare the Certificates
 
 This deployment requires two different certificates.
 
-#### HTTPS Certificate
+##### HTTPS Certificate
 
 The HTTPS certificate secures the browser connection. It must include both of these names:
 
@@ -589,7 +589,7 @@ The second name keeps the existing CFS address working. Bind the certificate to 
 
 >[!note] The HTTPS certificate is not the certificate configured on the CFS Active Directory connector.
 
-#### Token-Signing Certificate
+##### Token-Signing Certificate
 
 RTC signs the WS-Federation token with the certificate that the RTC installer creates. When the installer generates this certificate, its subject is:
 
@@ -601,7 +601,7 @@ During the first setup, CFS does not yet have this certificate, so there is no *
 
 Later, **Trusted Root** can contain more than one certificate with this subject. In that case, export the certificate whose thumbprint matches **Current Certificate**.
 
-### Step 3: Configure the First RTC Server
+#### Step 3: Configure the First RTC Server
 
 Install CFS and RTC on the first Windows server. RTC uses the following IIS layout:
 
@@ -616,7 +616,7 @@ Before you install RTC, install the following Windows features. `Web-Mgmt-Consol
 Install-WindowsFeature Web-Server, Web-WebServer, Web-Mgmt-Console, Web-Windows-Auth, Web-Asp-Net45, NET-Framework-45-ASPNET, NET-WCF-HTTP-Activation45 -IncludeManagementTools
 ```
 
-#### Configure the Application Pool
+##### Configure the Application Pool
 
 Configure the application pool to run as `<netbios>\svc-rtc`, with **Load User Profile** enabled. The account must be a member of the local `IIS_IUSRS` group and have the **Log on as a service** right. If that right or the pool password is missing, IIS returns HTTP 503.
 
@@ -630,7 +630,7 @@ $pwd = Read-Host "svc-rtc password"
 
 Before you rely on a load-balancer health check, open **Application Pools** and confirm that `RadiantOne Trust Connector` is **Started**. The TCP health check can remain **Healthy** while this pool is stopped, and IIS then returns HTTP 503.
 
-#### Enable Windows Authentication
+##### Enable Windows Authentication
 
 Leave anonymous authentication enabled. Enable Windows authentication for `/rtc` and configure IIS to decrypt the Kerberos ticket with the application pool account:
 
@@ -646,11 +646,11 @@ Set-WebConfigurationProperty -PSPath $site -Filter $filter -Name useKernelMode -
 
 `useAppPoolCredentials` is required because the Kerberos ticket is encrypted for `svc-rtc`, which holds `HTTP/<rtc-fqdn>`.
 
-#### Bind the HTTPS Certificate
+##### Bind the HTTPS Certificate
 
 Bind the HTTPS certificate that contains `<rtc-fqdn>` to `CFS Website` on port 443.
 
-#### Check Ticket Issuance
+##### Check Ticket Issuance
 
 From a domain-joined computer, request a ticket before you open a browser:
 
@@ -668,7 +668,7 @@ To test `https://<rtc-fqdn>` in a browser on the RTC server itself, add the foll
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0" -Name "BackConnectionHostNames" -PropertyType MultiString -Value "<rtc-fqdn>" -Force
 ```
 
-### Step 4: Configure Browsers
+#### Step 4: Configure Browsers
 
 Users must open `https://<rtc-fqdn>`. An IP address, the computer name of either server, or the load balancer's AWS DNS name does not match `HTTP/<rtc-fqdn>`.
 
@@ -682,7 +682,7 @@ Edge and Chrome do not show a credential prompt for the test image, so automatic
 
 Keep JavaScript enabled. The handoff is performed by a script on that page.
 
-#### Windows, Microsoft Edge, and Chrome
+##### Windows, Microsoft Edge, and Chrome
 
 1. Open **Control Panel > Internet Options > Security > Local intranet > Sites > Advanced**, and add `https://<rtc-fqdn>`.
 2. Return to **Local intranet** and click **Custom level**. Under **User Authentication > Logon**, select **Automatic logon only in Intranet zone**.
@@ -691,13 +691,13 @@ Keep JavaScript enabled. The handoff is performed by a script on that page.
 
 >[!warning] The `AuthServerAllowlist` policy replaces the browser's integrated authentication server list. A value that contains only `<rtc-fqdn>` turns off integrated authentication for every other host. Include the hosts that already rely on integrated authentication, along with `<rtc-fqdn>`.
 
-#### Firefox
+##### Firefox
 
 Firefox does not use Internet Options. Add `https://<rtc-fqdn>` to the existing values of `network.negotiate-auth.trusted-uris` and `network.automatic-ntlm-auth.trusted-uris`.
 
 >[!warning] Do not replace either preference with only `https://<rtc-fqdn>`. Doing so removes integrated authentication for the hosts that were already listed.
 
-### Step 5: Configure the CFS Active Directory Connector
+#### Step 5: Configure the CFS Active Directory Connector
 
 In CFS Admin, navigate to **Authentication > Active Directory** and edit the connector. Set the following fields:
 
@@ -727,11 +727,11 @@ Get-ChildItem Cert:\LocalMachine\Root |
 
 Do not use **Update from Metadata**. After this change, signing in to CFS redirects the browser to `<rtc-fqdn>` and then returns the user to CFS.
 
-### Step 6: Configure the Load Balancer
+#### Step 6: Configure the Load Balancer
 
 Create the load balancer in `<aws-region>`, in the same VPC as the RTC servers (`<vpc-cidr>`).
 
-#### Create the Target Group
+##### Create the Target Group
 
 In the EC2 console, under **Load Balancing**, create a target group with the following settings:
 
@@ -747,7 +747,7 @@ Register the first RTC server on port 443.
 
 The TCP health check confirms that port 443 accepts a connection. Before you treat **Healthy** as a working RTC, confirm that the `RadiantOne Trust Connector` application pool is **Started**. The target remains **Healthy** while that pool is stopped, and IIS then returns HTTP 503.
 
-#### Create the Network Load Balancer
+##### Create the Network Load Balancer
 
 Create a Network Load Balancer with the following settings:
 
@@ -769,7 +769,7 @@ Each A record returned is an `<nlb-private-ip>`.
 
 If the RTC servers are in different Availability Zones, enable each of those zones on the load balancer and turn on **Cross-zone load balancing**. A target in a zone that is not enabled stays in the **Unused** state. With cross-zone load balancing, sign-in still works when one zone is unavailable, because a remaining load balancer address can reach the RTC servers in the other zone.
 
-#### Configure Security Groups
+##### Configure Security Groups
 
 | Resource | Rule |
 | --- | --- |
@@ -792,7 +792,7 @@ Test-NetConnection <nlb-private-ip> -Port 443
 
 `TcpTestSucceeded` must be `True`.
 
-#### Switch DNS to the Load Balancer
+##### Switch DNS to the Load Balancer
 
 If the load balancer has one private address, point the existing A record at that address:
 
@@ -813,13 +813,13 @@ Add-DnsServerResourceRecordA -Name "<rtc-host>" -ZoneName "<dns-domain>" -IPv4Ad
 
 `Resolve-DnsName <rtc-fqdn>` should list only the load balancer addresses. Sign in to CFS again. The browser still uses `https://<rtc-fqdn>`, and CFS still uses the same endpoint and signing certificate.
 
-### Step 7: Configure the Second RTC Server
+#### Step 7: Configure the Second RTC Server
 
 Launch a Windows server in the same VPC and security group as the first RTC server. Join it to `<dns-domain>`, using `<domain-controller-ip>` as its DNS server. After the restart, sign in with a domain account.
 
 Install the same Windows features listed for the first server, and then install RTC with the same RadiantOne Trust Connector installer.
 
-#### Use the Same Token-Signing Certificate
+##### Use the Same Token-Signing Certificate
 
 On the first server, export the signing certificate from the RTC configuration by running the script below in Windows PowerShell 5.1 (`powershell.exe`). PowerShell 7 cannot deserialize the `Web.config` value. Because the installer protects this value with the machine, copying `Web.config` to the new server does not work.
 
@@ -864,7 +864,7 @@ On the second server:
 2. Import the HTTPS PFX and bind it to port 443.
 3. Apply the same application pool identity and Windows authentication settings used on the first server. The pool must remain **Started**.
 
-#### Register the Second Server
+##### Register the Second Server
 
 In target group `rtc-443`, register the new instance on port 443. Enable its Availability Zone on `rtc-nlb` and leave cross-zone load balancing on. The target changes from **Unused** to **Healthy**.
 
@@ -872,13 +872,13 @@ With only the new server registered, a CFS sign-in through `https://<rtc-fqdn>` 
 
 After that sign-in succeeds, delete both PFX files from both servers.
 
-### Step 8: Confirm the Sign-in
+#### Step 8: Confirm the Sign-in
 
 CFS is configured with `RadiantTrustedConnector.svc/WSFed`, while the completed sign-in appears in the IIS log as `RTCService.svc/WSFed`. These are different steps of the same login.
 
 After the ticket issuance test, close the browser, purge the client cache, and then sign in, in that order. The ticket from `klist get` is still cached, and a later `klist` would show it even if the browser used NTLM. A browser left open can keep the connection it already authenticated; after a purge, that session might not request a new ticket, so `klist` stays empty even though the sign-in worked.
 
-#### Verify the Client Ticket
+##### Verify the Client Ticket
 
 1. Close the browser, and then run:
 
@@ -895,7 +895,7 @@ After the ticket issuance test, close the browser, purge the client cache, and t
 
 A ticket for `HTTP/<rtc-fqdn>` with a start time that matches the sign-in is the client-side proof. IIS also returns 200 with the domain account for NTLM, so the account name in the log is not enough on its own.
 
-#### Verify the Server Logon Event
+##### Verify the Server Logon Event
 
 On the RTC server that handled the request, a single security log event 4624 must contain all of the following:
 
@@ -923,7 +923,7 @@ Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4624; StartTime=(Get-Date
 
 An empty result is ambiguous. Confirm that success auditing for logon events is enabled, and then sign in again.
 
-#### Verify the IIS Logs
+##### Verify the IIS Logs
 
 CFS logs show the redirect to `<rtc-fqdn>`, but not which RTC server handled it. Read the IIS log on each server:
 
@@ -941,7 +941,7 @@ Close the browser between attempts, because a single browser session can keep us
 
 >[!note] A single sign-in can involve both servers. RTC begins by requesting a test image from `IntegAccess`, and the token request that follows can be sent on a different connection. Either server can complete that sequence because both share `svc-rtc` and the same signing certificate.
 
-## Verifying the RTC Configuration
+### Verifying the RTC Configuration
 
 Verify that the RTC is configured correctly. Check if you can access the RTC site:
 
@@ -956,7 +956,7 @@ Verify that the RTC is configured correctly. Check if you can access the RTC sit
 
 ![](media/rtc-4.png)
 
-## Adding A Certificate To Use With An RTC
+### Adding a Certificate to Use with an RTC
 
 When deploying in a production environment, you should replace the certificate with a certificate issued by a Certificate Authority. This section describes the method for replacing the certificate to use with the RTC.
 
@@ -972,7 +972,7 @@ To add a certificate to use with an RTC:
 8.  Enter the password of your pfx file.
 9.  Click OK to close the Change the certificate window.
 
-## Uninstalling an RTC
+### Uninstalling an RTC
 
 1.  To uninstall an RTC, go to the Windows Control Panel, select Programs, Uninstall a program. In the list of applications installed, select RadiantOne Trust Connector and click Uninstall.
 2.  Click Uninstall. ![](media/rtcuninstall-1.png)
@@ -981,11 +981,11 @@ To add a certificate to use with an RTC:
     
 4.  The setup has successfuly uninstalled the RTC. ![](media/rtcuninstall-3.png)
     
-## Next Steps
+### Next Steps
 
 Now you have installed and configure RadiantOne RTC, you can follow the guide.
 
--   Configure the different [Certificates](02-gettingstarted#certificates).
+-   Configure the different [Certificates](#certificates).
 
 ## Certificates
 
@@ -1010,7 +1010,7 @@ Once you have configured your certificates, you can view them by navigating to *
 
 You can also [enable and manage certificate rollovers](./certificate-rollover.md) using the UI or command line. 
 
-## Applications / Relying Parties
+### Applications / Relying Parties
 
 CFS uses a certificate to build the signature of the tokens it generates for applications. CFS sends a signed token to the application (through the browser) and because the application has the same certificate (but only the public key) it can validate the incoming message has come from CFS. There are two options for the certificate that is used by applications:
 
@@ -1030,13 +1030,13 @@ Generally it is best practice to have a dedicated certificate for each applicati
 -   Upload a certificate that contains both the private and public keys. This certificate is stored in the FID entry associated with the application located at: ou=<application\_uniqueID>,ou=applications,ou=<tenant\_name>,ou=tenants,ou=cfs,cn=config. This option is less secure than #2 (below) because the whole certificate (containing the private and public keys) must travel between CFS and FID (even though this communication would flow over SSL).
 -   Upload a certificate that contains the public key only. This certificate is stored in the FID entry associated with the application located at: ou=<application\_uniqueID>,ou=applications,ou=<tenant\_name>,ou=tenants,ou=cfs,cn=config. This option is more secure than #1 (above) because only the public key is stored in FID. However, if you choose this option, you must also install and trust the full certificate in all CFS instances. This certificate (public and private keys) must be stored in the Windows vault where the CFS in running. This is additional configuration that you must manually setup.
 
-## Authentication Systems
+### Authentication Systems
 
 The identity providers (AKA: Authentication Systems) configured in CFS need only the public key configured because CFS checks the signature of the token that is sent by the Identity Provider.
 
 ![](media/getting-started-certificates-3.png)
 
-# Radiant Trust Connectors (RTC)
+### Radiant Trust Connectors (RTC)
 
 When you install a RTC, because it is installed on IIS Web Server, and because we use https to communicate with the RTC, the installer generates a self-signed certificate and installs it in IIS. This certificate should be replaced with a “legit” CA-issued certificate. This certificate contains the private key. When you request a certificate from a CA, it is important to note that the subject of the certificate should be the FQDN of the machine where the it is used (e.g. s-se14-ad.seradiant.com). To check the certificate used by IIS where the RTC is installed, go into IIS Manager, select the root of IIS and on the right, double-click "Server Certificates" (screen shots below based on Windows Server 2012 OS).
 
