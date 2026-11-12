@@ -473,9 +473,7 @@ Install an RTC for each Active Directory forest you want to use as an Authentica
 
 This section describes how to run two RadiantOne Trust Connector (RTC) servers behind an AWS Network Load Balancer (NLB), with Cloud Federation Service (CFS) accepting the sign-in.
 
-The load balancer sits in front of RTC only. CFS remains on the first server and is still opened at its existing address, `<cfs-fqdn>`. Placing CFS behind a load balancer is a separate topic and is not covered here.
-
-Browsers sign in to RTC through a single DNS name, and the load balancer forwards those connections to either RTC server.
+The load balancer routes traffic only to RTC. CFS remains on the first server and is accessed directly at its existing address, <cfs-fqdn>. Configuring CFS behind a load balancer is outside the scope of this section. Browsers connect to RTC through a single DNS name. The load balancer forwards each connection to one of the two RTC servers.
 
 #### Placeholders Used in This Section
 
