@@ -27,6 +27,9 @@ These release notes contain the following sections:
 - [INT]: Critical vulnerability fix to improve the security of communication between nodes.
 - [API-4918]: Fix to address: CVE-2026-2332, CVE-2026-41707, CVE-2026-47884, CVE-2026-10050, CVE-2026-19203, CVE-2026-47842, CVE-2026-47879, CVE-2026-47885, CVE-2026-47886, CVE-2026-47889, CVE-2026-59276, CVE-2026-59281, CVE-2026-59282, CVE-2026-59283, CVE-2026-59284, CVE-2026-59316, CVE-2026-59322 and CVE-2026-59324.
 
+>[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](../vulnerability-report).
+
+
 ## Known Issues
 
 The following issues have been identified in this release and will be addressed in a future release:
