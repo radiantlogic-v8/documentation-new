@@ -364,6 +364,8 @@ Discover and download connectors for the RadiantOne Identity Data Platform.
   </connector>
   <connector name="SailPoint ISC" eyebrow="Identity Governance" meta="v1.0.1" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List accounts, roles, access profiles, entitlements, sources, and public identities from SailPoint Identity Security Cloud.
   </connector>
+  <connector name="Okta" eyebrow="Access Management" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List applications, groups, and users from Okta.
+  </connector>
 </section>
 </tabpanel>
 </tabpanels>
