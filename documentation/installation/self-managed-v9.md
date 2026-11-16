@@ -23,7 +23,7 @@ This replaces the v8 mapping, in which an 8.X.Y application version corresponded
 
 ## Prerequisites
 
-- Use a [Kubernetes cluster](https://kubernetes.io/docs/setup/) running version 1.27 or later. Refer to [Sizing a Kubernetes cluster](../sizing-kubernetes/) for more information.
+- Use a [Kubernetes cluster](https://kubernetes.io/docs/setup/) running version 1.27 or later. Refer to [Sizing a Kubernetes cluster](sizing-kubernetes.md) for more information.
 - Install [Helm](https://helm.sh/docs/intro/install/) version 3.8 or later. Version 3.8 is required for OCI registries.
 - Install [kubectl](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or later and configure it to access your Kubernetes cluster.
 - New customers receive an Identity Data Management license key during onboarding. Existing licenses should work with v9. If your license does not work, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
@@ -153,7 +153,7 @@ kubectl get storageclass <name> \
 
    **Optional properties:**
 
-   - **logging**: Optional property. Use this to enable the log-shipping sidecar and its destinations. Refer to the [Logging](../metrics-and-logging/) guide.
+   - **logging**: Optional property. Use this to enable the log-shipping sidecar and its destinations. Refer to the [Logging](metrics-and-logging.md) guide.
    - **fid.migration.url**: Optional property. Use this field only during the initial deployment to restore the configuration from a backup file of an existing deployment. Refer to [Restoring from a Backup](#restoring-from-a-backup) to learn more. A v9 deployment can be seeded from any 8.x backup, and directly from 7.4 backups.
 
    > The migration property must be **fid.migration.url**. A value placed at `migration.url` is ignored without an error, and the deployment starts empty.
@@ -243,7 +243,7 @@ Use this feature to initialize a new Identity Data Management deployment with ex
 
 > You cannot use this feature for updates or patches. It applies only to a new deployment. To change settings on a running deployment, refer to [Updating a Deployment](#updating-a-deployment). To update an existing version 8 deployment to version 9, refer to [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/).
 
-To create the backup file that this procedure uses, refer to [Creating backups](../creating-backups/).
+To create the backup file that this procedure uses, refer to [Creating backups](creating-backups.md).
 
 Complete the following steps to restore your self-managed Identity Data Management deployment.
 
@@ -419,7 +419,7 @@ kubectl port-forward svc/fid-app -n self-managed 8443
 
 ### Accessing the Data Management SCIM and REST/ADAP APIs
 
-To access the Data Management [SCIM API](https://developer.radiantlogic.com/idm/v9/web-services-api-guide/scim/) and [REST/ADAP API](https://developer.radiantlogic.com/idm/v9/web-services-api-guide/rest/), open a new terminal and run the following command to port-forward:
+To access the Data Management [SCIM API](../web-services-api-guide/scim.md) and [REST/ADAP API](../web-services-api-guide/rest.md), open a new terminal and run the following command to port-forward:
 
 > Ensure that ports 8089 and 8090 are not already in use on your local machine.
 
@@ -433,7 +433,7 @@ kubectl port-forward svc/fid-app -n self-managed 8089 8090
 
 ### Accessing LDAP/LDAPs Service
 
-To access the [LDAP/LDAPs](https://developer.radiantlogic.com/idm/v9/configuration/global-settings/client-protocols/#ldap) service, open a new terminal and run the following command to port-forward:
+To access the [LDAP/LDAPs](../configuration/global-settings/client-protocols.md#ldap) service, open a new terminal and run the following command to port-forward:
 
 > Ensure that ports 2389 and 2636 are not already in use on your local machine.
 

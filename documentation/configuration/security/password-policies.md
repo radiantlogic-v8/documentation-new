@@ -43,7 +43,7 @@ To configure password policies, use the Control Panel > Security > Password Poli
 There is a default password policy that is enforced at a global level for all RadiantOne Directory stores and persistent cache (if password policy enforcement is enabled), no matter where a user account is located. You can override the default policy with a custom one that is applicable only to a certain subset of the user population (determined by group they are a member of, or the location of the entry in the virtual namespace).
 
 >[!note]
->If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see [Managing Persistent Cache](../tuning/persistent-cache).
+>If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see [Managing Persistent Cache](../../tuning/persistent-cache.md).
 
 #### Default Password Policy
 

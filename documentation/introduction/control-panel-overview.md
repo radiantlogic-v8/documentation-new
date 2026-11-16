@@ -5,7 +5,7 @@ description: Learn how to navigate the Control Panels.
 
 ## Overview
 The Control Panel is a web-based interface that administrators use to configure and manage the RadiantOne Identity Data Management product.
-RadiantOne also offers a configuration API that can be called programmatically with an [Access Token](/documentation/configuration/security/access-tokens).
+RadiantOne also offers a configuration API that can be called programmatically with an [Access Token](../configuration/security/access-tokens.md).
 
 ## Accessing the Control Panels
 The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see [Create Environments](/../../eoc/latest/environments/environment-overview/create-environments).
@@ -27,7 +27,7 @@ For more details, see [Configuration Changes that Require Classic Control Panel]
 ## Authentication 
 
 ### Username and Password 
-Log in using the directory administrator (cn=directory manager) as the user with the password you set during the install of RadiantOne. Once logged in, the Directory Administrator should navigate in the Control Panel to the ADMIN section and define other users needed to administer RadiantOne. A user can either use their full DN (if known), or their user ID. However, to login with just a user ID, you must configure a [user ID to DN Mapping](/documentation/configuration/global-settings/client-protocols).
+Log in using the directory administrator (cn=directory manager) as the user with the password you set during the install of RadiantOne. Once logged in, the Directory Administrator should navigate in the Control Panel to the ADMIN section and define other users needed to administer RadiantOne. A user can either use their full DN (if known), or their user ID. However, to login with just a user ID, you must configure a [user ID to DN Mapping](../configuration/global-settings/client-protocols.md).
 
 The Control Panel displays a message when authentication fails. The table below lists the possible error messages. 
 
@@ -632,21 +632,21 @@ The setup section contains the Data Catalog where connections to identity source
 
 **Data Catalog**
 
-*Data Sources* - Data Sources repesent connections to identity sources. For details see: [Managing Data Sources](/documentation/configuration/data-sources/data-sources)
+*Data Sources* - Data Sources repesent connections to identity sources. For details see: [Managing Data Sources](../configuration/data-sources/data-sources.md)
 
-*Schemas* - Schemas contain the metadata extracted from data sources. This metadata is used to create identity views. For details see: [Managing Schemas](/documentation/configuration/data-sources/schemas)
+*Schemas* - Schemas contain the metadata extracted from data sources. This metadata is used to create identity views. For details see: [Managing Schemas](../configuration/data-sources/schemas.md)
 
-*Drivers and Templates* - Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](/documentation/configuration/data-sources#managing-templates)
+*Drivers and Templates* - Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](../configuration/data-sources/data-sources.md#managing-templates)
 
 **Directory Namespace**
 
 The RadiantOne namespace can be comprised of many different root naming contexts. Each one can represent a different type of backend configuration. This might be a RadiantOne Directory store, or an identity view created from a data source (LDAP, database, or custom).  The configuration of the namespace is managed in the Namespace Design section.  The LDAP schema for RadiantOne is configured in the Directory Schema section.
 
-*Namespace Design* - The RadiantOne namespace is managed from here. Create and manage RadiantOne Directory stores, identity views, and persistent cache from here. For details, see: [Managing Directory Stores](/documentation/configuration/directory-stores/managing-directory-stores) and [Managing Identity Views](/documentation/configuration/identity-views/intro-view-design).
+*Namespace Design* - The RadiantOne namespace is managed from here. Create and manage RadiantOne Directory stores, identity views, and persistent cache from here. For details, see: [Managing Directory Stores](../configuration/directory-stores/managing-directory-stores.md) and [Managing Identity Views](../configuration/identity-views/intro-view-design.md).
 
-*Directory Schema* - The RadiantOne LDAP directory schema is managed from here. For details, see: [Managing Directory Schema](/documentation/configuration/directory-stores/managing-directory-schema).
+*Directory Schema* - The RadiantOne LDAP directory schema is managed from here. For details, see: [Managing Directory Schema](../configuration/directory-stores/managing-directory-schema.md).
 
-*Global Identity Builder* - The [Global Identity Builder](/documentation/configuration/global-identity-builder/concepts) is only access in the Classic Control Panel.
+*Global Identity Builder* - The [Global Identity Builder](../configuration/global-identity-builder/concepts.md) is only access in the Classic Control Panel.
 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
@@ -664,35 +664,35 @@ Entries can be managed from the [Directory Browser](../configuration/directory-s
 
 **Tasks**
 
-[Manage Tasks](/documentation/configuration/tasks) from here.
+[Manage Tasks](../configuration/tasks/) from here.
 
 **Security**  
 
-*Attribute Encryption* - [Manage Attribute Encryption](/documentation/configuration/security/attribute-encryption) from here.
+*Attribute Encryption* - [Manage Attribute Encryption](../configuration/security/attribute-encryption.md) from here.
 
-*Password Policies* - [Manage Password Policies](/documentation/configuration/security/password-policies) from here.
+*Password Policies* - [Manage Password Policies](../configuration/security/password-policies.md) from here.
 
-*Access Controls* - [Manage Access Controls](/documentation/configuration/security/access-controls) from here.
+*Access Controls* - [Manage Access Controls](../configuration/security/access-controls.md) from here.
 
 ### Global settings
 
 The Global Settings section is where client access protocols (LDAP, SCIM, REST) are managed from. Client certificates for TLS communication are also managed here.  Token Validators, tuning limits and global attribute handling are also managed in this section.
 
-*Client Protocols* - Manage supported LDAP controls and user-to-DN mapping from the Control Panel > Global Settings > Client Protocols > [LDAP](/documentation/configuration/global-settings/client-protocols).
+*Client Protocols* - Manage supported LDAP controls and user-to-DN mapping from the Control Panel > Global Settings > Client Protocols > [LDAP](../configuration/global-settings/client-protocols.md).
 
 [Manage the SCIM interface](../web-services-api-guide/rest) from Classic Control Panel.
 
 [Manage the REST interface](../web-services-api-guide/rest) from Control Panel > Global Settings > Client Protocols > REST.
 
-*Client Certificates* - Manage client certificates from the Control Panel > Global Settings > [Client Certificates](/documentation/configuration/global-settings/client-certificates).
+*Client Certificates* - Manage client certificates from the Control Panel > Global Settings > [Client Certificates](../configuration/security/client-cert-truststore.md).
 
-*Token Validators* - External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. For details on configuring external token validators, see: [External Token Validators](/documentation/configuration/security/external-token-validators).
+*Token Validators* - External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. For details on configuring external token validators, see: [External Token Validators](../configuration/security/external-token-validators.md).
 
-*Tuning* - Tuning topics include [Limits](/documentation/tuning/tuning-limits), [General Attributes Handling](/documentation/tuning/attribute-handling), [Changelog Settings](/documentation/tuning/log-settings#changelog), and [Log Settings](/documentation/tuning/log-settings).
+*Tuning* - Tuning topics include [Limits](../tuning/tuning-limits.md), [General Attributes Handling](../tuning/attribute-handling.md), [Changelog Settings](../tuning/log-settings.md#changelog), and [Log Settings](../tuning/log-settings.md).
 
-*Changelog* - The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. For details, please see: [Changelog](/documentation/tuning/log-settings#changelog)
+*Changelog* - The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. For details, please see: [Changelog](../tuning/log-settings.md#changelog)
 
-*Log Settings* - RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Control Panel > Global Settings > Tuning > Log Settings section. For details, please see: [Log Settings](/documentation/tuning/log-settings)
+*Log Settings* - RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Control Panel > Global Settings > Tuning > Log Settings section. For details, please see: [Log Settings](../tuning/log-settings.md)
 
 ### Admin  
 
@@ -700,7 +700,7 @@ The Admin section is used for managing admin users, delegated roles and permissi
 
 **Access Tokens** 
 
-[Manage Access Tokens](/documentation/configuration/security/access-tokens) from here.
+[Manage Access Tokens](../configuration/security/access-tokens.md) from here.
 
 **Audit Logging** 
 
@@ -828,11 +828,11 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 **Control Panel Configuration**  
 
-[Manage the OIDC Provider Configuration to support SSO into Control Panel](#oidc=token) and other customizations from here.
+[Manage the OIDC Provider Configuration to support SSO into Control Panel](#oidc-token-configuration) and other customizations from here.
 
 **Entry Statistics**
 
-[Run Entry Statistics Reports](/documentation/reporting/reporting#entry-statistics-report) from here.
+[Run Entry Statistics Reports](../reporting/reporting.md#entry-statistics-report) from here.
 
 ### File Manager
 
@@ -948,10 +948,10 @@ To reach the Server Control Panel from within the Classic Control Panel, click t
 ![Classic Control Panel](Media/server-cp.jpg)
 
 The following settings must be managed from the RadiantOne Classic Control Panel:
--	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](/documentation/configuration/synchronization/synchronization-concepts) for details. 
+-	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](../configuration/synchronization/synchronization-concepts.md) for details. 
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
 -	Duplicates Handling​: Classic Control Panel > Settings > Server Front End > Duplicates Handling See [Duplicates Handling](../tuning/attribute-handling/#duplicate-entry-handling) for details.
--	Control Panel customizations (lock, color theme, session timeout, max users)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
+-	Control Panel customizations (lock, color theme, session timeout, max users)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-control-panel) for details.
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab <br> See [Persistent Cache Refresh Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#persistent-cache-refresh-pcache-monitoring-tab) for details.
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab <br> See [Replication Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#replication-monitoring-tab) for details.
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.

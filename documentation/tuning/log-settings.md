@@ -260,11 +260,11 @@ If *all* log level is selected, the cn=cacherefreshlog branch contains all reque
 
 The latest IETF description of it is:
 
-http://www.mozilla.org/directory/ietf-docs/draft-good-ldap-changelog-03.txt
+https://datatracker.ietf.org/doc/html/draft-good-ldap-changelog-03
 
 The ‘changes’ attribute is actually an LDIF representation of the change as defined in:
 
-http://ietfreport.isoc.org/rfc/rfc2849.txt
+https://www.rfc-editor.org/rfc/rfc2849
 
 The difference between *status* level and *all* level is that all only logs entries that have actually changed whereas status level logs all changes coming into the persistent cache whether the actual entry has changed or not. To provide an example, say you have cached data from a materialized view in a database and are using triggers to detect changes on the database. A materialized view may be rebuilt daily, triggering many “changes” detected by the RadiantOne change capture connector. On a more simplistic level, updating an entry with the exact same value results in the connector picking up an update change. Therefore, the persistent cache connector sends a cache refresh to RadiantOne for the entry that was updated. If the cache refresh log level is set to *status*, this update is logged in the cn=cacherefreshlog. If the cache refresh log level is *all*, the existing entry in persistent cache is compared with the entry received in the message from the connector, if the entry really has changed, it is stored in the cache refresh log. If the entry did not change, then the “change” is not documented in the cacherefresh log. Because of this, the *all* log level generates LESS entries in the cn=cacherefreshlog, and documents which attribute actually changed, but is more time consuming because of the comparison required. 
 

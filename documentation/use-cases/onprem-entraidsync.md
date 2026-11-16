@@ -15,7 +15,7 @@ Ensure that you have the following requirements in place.
 
 - An on-premises Active Directory environment.
 - A Radiant One IDDM v8.4.0 (or later) SaaS instance.
-- [Secure Data Connector](../../eoc/latest/secure-data-connector/configure-sdc-service/) is installed on a Windows machine that can reach your Active Directory.
+- [Secure Data Connector](../../../eoc/latest/secure-data-connector/configure-sdc-service/) is installed on a Windows machine that can reach your Active Directory.
 - The Visual C++ Redistributable v143 (Visual C++ Redistributable for Visual Studio 2015–2022) must be installed on the machine where the SDC client is running.
 
 ## Steps for Synchronization
@@ -49,7 +49,7 @@ These values will be used when registering Entra ID as a data source in Identity
 
 ### 2. Install and start the SDC Client
 
-1. [Install and run the SDC client](../../eoc/latest/secure-data-connector/configure-sdc-client/#deploy-on-windows) on the same Windows machine as your AD domain controller, or on another Windows host that has network access to AD over the ports used by your directory (typically 389 for LDAP or 636 for LDAPS).
+1. [Install and run the SDC client](../../../eoc/latest/secure-data-connector/configure-sdc-client/#deploy-on-windows) on the same Windows machine as your AD domain controller, or on another Windows host that has network access to AD over the ports used by your directory (typically 389 for LDAP or 636 for LDAPS).
 
 ### 3. Configure On-Prem AD as a Data Source
 

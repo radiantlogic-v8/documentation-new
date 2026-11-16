@@ -239,7 +239,7 @@ When the connector restarts, uSNChanged detection catches the entries that have 
 
 If you are using the RadiantOne Directory, a persistent cache on a proxy view of a RadiantOne Directory, or a nested persistent cache view (a cached view used in another cached view), the connector type is noted as HDAP trigger automatically and cannot be changed. This is a special trigger mechanism that publishes changes directly into the queue to invoke the synchronization as opposed to requiring a connector component to detect the change.
 
-![HDAP Trigger Connector Type](Media/image37.png)
+![HDAP Trigger Connector Type](../configuration/synchronization/Media/image37.png)
 
 ## Directory connector failover
 
@@ -250,7 +250,7 @@ This section describes the failover mechanism for the LDAP (changelog), Persiste
 
 The directory connectors leverage the failover servers that have been configured for the data source. When you configure a data source for your backend directory, you need to indicate the list of failover servers in order of priority. When the connector fails over, it uses the failover servers in the order they are listed. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
 
- ![Configuring Failover Servers for the Backend Directory](Media/image38.png)
+ ![Configuring Failover Servers for the Backend Directory](../configuration/synchronization/Media/image38.png)
 
 If a connection cannot be made to the primary server and the maximum number of retry attempts has been exhausted, the connector connects to the failover servers in the order they are listed. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 

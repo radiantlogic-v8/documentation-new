@@ -33,7 +33,7 @@ For details, see: [Client Certificates](../security/client-cert-truststore)
 
 When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the Control Panel > Manage > Tasks.
 
-For details, see: [Tasks](tasks.md)
+For details, see: [Tasks](../tasks/)
 
 
 

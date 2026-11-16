@@ -243,7 +243,7 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../../troubleshooting/troubleshooting#managing-log-levels) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center > Environments > `<Selected Environment>` > LOGS.
+>[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../../troubleshooting/troubleshooting.md#managing-log-levels-and-log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center > Environments > `<Selected Environment>` > LOGS.
 
 ![EOC Environment Logs](Media/eoc-env-logs.jpg)
 
@@ -313,7 +313,7 @@ To allow the RadiantOne LDAP service to process these requests as anonymous bind
 
 ### Allow Directory Manager to Impersonate Other Users
 
-Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is allowed to impersonate other users. Toggle this off if you do not want the super user account to impersonate other users. Also, to allow impersonation, verify that the [Proxy Authorization Control](/documentation/configuration/global-settings/client-protocols#supported-controls) is enabled because this is the control that allows clients to request access on behalf of another user.
+Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is allowed to impersonate other users. Toggle this off if you do not want the super user account to impersonate other users. Also, to allow impersonation, verify that the [Proxy Authorization Control](../global-settings/client-protocols.md#supported-controls) is enabled because this is the control that allows clients to request access on behalf of another user.
 
 ### Bind Requires Password
 

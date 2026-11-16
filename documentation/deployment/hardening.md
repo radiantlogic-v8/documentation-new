@@ -140,7 +140,7 @@ It is recommended that only users required to configure and administer RadiantOn
 
 ### Leverage Corporate Identity Provider and Strong Authentication Practices to Login to the Control Panel
 
-Log into the Control Panel using an OIDC token as an alternative to using username and password. The OIDC token provider can support strong authentication methods. Any method supported by the Identity Provider can be used for authentication. For details on this configuration, please see: [OIDC Token Authentication](../introduction/control-panel-overview/#oidc-token)
+Log into the Control Panel using an OIDC token as an alternative to using username and password. The OIDC token provider can support strong authentication methods. Any method supported by the Identity Provider can be used for authentication. For details on this configuration, please see: [OIDC Token Authentication](../introduction/control-panel-overview.md#oidc-token-authentication-overview)
 
 
 
@@ -335,7 +335,7 @@ You can view the supported cipher suites from the Classic Control Panel > Settin
 ### Advise Application Owners to use the Latest Java Patches
 
 Java patches are currently released quarterly by OpenJDK:
-https://wiki.openjdk.java.net/display/jdk8u/Main
+https://openjdk.org/projects/jdk8u/
 
 Radiant Logic releases patches for RadiantOne approximately one week after OpenJDK releases to ensure support for the latest Java patch is included.
 

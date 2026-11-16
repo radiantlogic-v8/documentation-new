@@ -289,16 +289,16 @@ Rules offer a default event-based template that allows for configuring condition
 1. Select the object class associated with the entries in the target that you want changes applied to from the **Target ObjectClass** drop-down list.
 1. (Optional) enter a description.
     ![Rule Definition](./Media/image70.png)
-1. (Optional) if you need to define variables to use in conditions, select the [RULE VARIABLES](variable-configuration.md) section and configure them.
-1. Select the [RULES](rule-configuration.md) section to configure the Rules for transformation.
-1. (Optional) to configure advanced options like Target Object RDN and DN generation, rules processing order and others, select the [ADVANCED OPTIONS](identity-linkage.md) section.
+1. (Optional) if you need to define variables to use in conditions, select the [RULE VARIABLES](#creating-rule-variables) section and configure them.
+1. Select the [RULES](#creating-rules) section to configure the Rules for transformation.
+1. (Optional) to configure advanced options like Target Object RDN and DN generation, rules processing order and others, select the [ADVANCED OPTIONS](#configuring-advanced-options) section.
 1. Select **Save**.
 
 ### Creating Rule Variables
 
 Rule variables are configured in the RULE VARIABLES section of the Rule Set.
 
-A variable can be defined to store a temporary value and used in a rule condition to apply a computation or more advanced logic. See [Variables](../../concepts-and-definitions/sync-engine-and-transformation.md#variables) for more information.
+A variable can be defined to store a temporary value and used in a rule condition to apply a computation or more advanced logic. See [Variables](#creating-rule-variables) for more information.
 
 >[!note]
 >If you configure multiple values for a rule variable, it could be returned as a multi valued attribute (if all sources contribute a value). In the example below, the variable named `VarDetails` can be multi-valued with one value coming from the source `carLicense` attribute and one coming from source `employeeNumber`.
@@ -309,9 +309,9 @@ A variable can be defined to store a temporary value and used in a rule conditio
 1. Enter a variable name.
 1. (Optional) To add a constant value for the variable, select![Plus symbol](./Media/image72.png) next to Values, select the **Constant** option from the drop-down list and enter the value. Select **OK** and **OK** again to close the Edit Rule Variable window.
 1. (Optional) A value of a variable can come from another variable. This can be a source attribute value or from another variable that has been defined. Select ![Plus symbol](./Media/image72.png) next to Values, select the **Attribute** option from the drop-down list and then select the source attribute, or variable name from the drop-down list on the right. Select **OK** and **OK** again to close the Edit Rule Variable window.
-1. (Optional) To apply a function on a source attribute and store the computed value in a variable, select![Plus symbol](./Media/image72.png) next to Values and select the **Function** option from the drop-down list. Select the **Edit** button, [select a function](../transformation/attribute-mappings.md#standard-functions-available) from the available list and select **Next**. The configuration screen and options vary depending on the function selected. After the function is configured, select **OK** and **OK** again to close the Edit Rule Variable window.
-1. (Optional) To [configure conditions](#configure-rule-variable-conditions) that dictate how and when the rule variable is populated, select **Start Condition**.
-1. Variables can be used when defining rule conditions by selecting the **Rule Variable Condition** from the **Condition Type** drop-down list. After all variables are defined, select the [RULES](rule-configuration.md) section.
+1. (Optional) To apply a function on a source attribute and store the computed value in a variable, select![Plus symbol](./Media/image72.png) next to Values and select the **Function** option from the drop-down list. Select the **Edit** button, [select a function](#standard-functions-available) from the available list and select **Next**. The configuration screen and options vary depending on the function selected. After the function is configured, select **OK** and **OK** again to close the Edit Rule Variable window.
+1. (Optional) To [configure conditions](#configuring-conditions) that dictate how and when the rule variable is populated, select **Start Condition**.
+1. Variables can be used when defining rule conditions by selecting the **Rule Variable Condition** from the **Condition Type** drop-down list. After all variables are defined, select the [RULES](#creating-rules) section.
 
 **Configure rule variable conditions**
 
@@ -320,14 +320,14 @@ You can configure one or more conditions that dictate the context in which the v
 1. On the Rule Variables tab, select a variable and select **Edit**.
 1. Select **Start Condition**.
 1. If you want multiple conditions, select `AND` Condition, or `OR` Condition. If you only need one condition, select `Condition Node`.
-1. If you selected `Condition Node` in the previous step, choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables](../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
+1. If you selected `Condition Node` in the previous step, choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables](#creating-rule-variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configuring-conditions), [Configure Source Event condition](#configuring-conditions), [Configure Attribute Event condition](#configuring-conditions), and [Configure Rule Variable condition](#configuring-conditions) for details.
 
 >[!note]
 >If you need another condition after selecting `Condition Node` (for one condition), select **Add Parent Condition** and choose either `AND` Condition or `OR` Condition. Then select ![Plus symbol](./Media/image75.png) to add the new condition node (`AND` Condition or `OR` condition can be selected if you need nesting).
 
-5. If you selected `AND` Condition or `OR` Condition in step three, select ![Plus symbol](./Media/image76.png) and choose **Condition Node** (`AND` Condition or `OR` Condition can also be selected if you want nested conditions) and choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables (../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
+5. If you selected `AND` Condition or `OR` Condition in step three, select ![Plus symbol](./Media/image76.png) and choose **Condition Node** (`AND` Condition or `OR` Condition can also be selected if you want nested conditions) and choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables (../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configuring-conditions), [Configure Source Event condition](#configuring-conditions), [Configure Attribute Event condition](#configuring-conditions), and [Configure Rule Variable condition](#configuring-conditions) for details.
 6. Select **OK** to close the Edit Rule Variable window.
-7. After all variables are defined, select the [RULES](rule-configuration.md) section.
+7. After all variables are defined, select the [RULES](#creating-rules) section.
 
 **Configure Source Attribute condition**
 
@@ -377,7 +377,7 @@ The Rule Variable condition type allows you to populate the rule variable when a
 
 1. On the Rule Variables tab, select a variable and select **Edit**. Change the variable and select **OK**.
 1. If you want to delete a local variable, select the variable and select **Delete**.
-1. After all variables are defined, select the [RULES](rule-configuration.md) section.
+1. After all variables are defined, select the [RULES](#creating-rules) section.
 
 
 ### Creating Rules
@@ -391,17 +391,17 @@ To automatically configure rules for insert, update and delete events, select ![
 1. Select ![Plus symbol](./Media/image78.png)
 1. Enter a Rule name.
 1. (Optional) Enter a Description.
-1. Configure the [identity linkage](identity-linkage.md) in the Identity Linkage property.
-1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](./Media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
-1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
+1. Configure the [identity linkage](#configuring-identity-linkage) in the Identity Linkage property.
+1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](./Media/editapprovals.jpg) and [Configure Approvers](#configuring-approvals).
+1. If you have selected the option to manually define the target DN in [Advanced options](#configuring-advanced-options), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
 1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
 1. Uncheck [Adaptive Mode](#adaptive-mode) if you don't want to use it. 
-1. Select the [CONDITIONS](conditions.md) section to define the conditions.
-1. Select the [ACTIONS](actions.md) section to define the actions.
+1. Select the [CONDITIONS](#configuring-conditions) section to define the conditions.
+1. Select the [ACTIONS](#configuring-actions) section to define the actions.
 1. Select **OK**.
 1. Repeat steps 1-10 to create rules for other source event types.
 1. Select **Save**.
-1. Create another [rule set](overview.md) for every source object class you want to detect changes on.
+1. Create another [rule set](#creating-rule-sets) for every source object class you want to detect changes on.
 
 ### Adaptive Mode
 Adaptive mode is enabled for rules by default.
@@ -422,9 +422,9 @@ The Require Approvals option is located on the **BASIC INFORMATION** tab.
 1. Enable the Require Approvals checkbox.
 2. Click ![Edit Approvals](./Media/editapprovals.jpg).
 3. Click ![Plus symbol](./Media/image78.png).
-4. Select one or more members of the [Approvers group](../../concepts-and-definitions/approvals/#approvers) and click ADD. If you select more than one approver, all must approve the action before it expires.
+4. Select one or more members of the [Approvers group](synchronization-concepts.md#approvals) and click ADD. If you select more than one approver, all must approve the action before it expires.
 5. Enter a length of time to indicate how long a message should be queued awaiting action (approval or rejection) before it is deleted from the queue. This can be in either minutes or days.
-6. Enter a meaningful description and select a source attribute to display in the [*Approvals* experience](../../concepts-and-definitions/approvals/#performing-approvals) to help provide context for the approver about the synchronization event. 
+6. Enter a meaningful description and select a source attribute to display in the [*Approvals* experience](synchronization-concepts.md#approvals) to help provide context for the approver about the synchronization event. 
 
 ![Approval Config](./Media/editapprovalsux.jpg).
 
@@ -489,8 +489,8 @@ Identity linkage is used to match the target identity to the source identity. Th
 
 1. For a selected rule, choose the **BASIC INFORMATION** tab.
 1. Select the **Edit** button next to Identity Linkage.
-1. The target attribute used for the identity linkage is configured in the Target Object RDN property of the [Advanced options](../advanced-options.md#target-object-rdn) for the Rule Set. You cannot change the target attribute on the identity linkage configuration page.
-1. In the **Type** drop-down list, choose **Constant**, **Source Attribute**, or **Function** to indicate how you want the target attribute populated. The **Constant** option allows you to enter a static value. The **Source Attribute** option lets you select a source attribute to base the target attribute value on. The [Function](../transformation/attribute-mappings.md#standard-functions-available) option lets you compute the target attribute value based on a function.
+1. The target attribute used for the identity linkage is configured in the Target Object RDN property of the [Advanced options](#configuring-advanced-options) for the Rule Set. You cannot change the target attribute on the identity linkage configuration page.
+1. In the **Type** drop-down list, choose **Constant**, **Source Attribute**, or **Function** to indicate how you want the target attribute populated. The **Constant** option allows you to enter a static value. The **Source Attribute** option lets you select a source attribute to base the target attribute value on. The [Function](#standard-functions-available) option lets you compute the target attribute value based on a function.
 1. Select **OK**.
 
 
@@ -536,7 +536,7 @@ To create conditions:
 
 1. Edit the rule and select the **CONDITIONS** section.
 1. Select **Start Condition**.
-1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute condition](#configure-source-attribute-condition), [Source Event condition](#configure-source-event-condition), [Attribute Event condition](#configure-attribute-event-condition), or [Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](./Media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
+1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute condition](#configuring-conditions), [Source Event condition](#configuring-conditions), [Attribute Event condition](#configuring-conditions), or [Rule Variable condition](#configuring-conditions). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](./Media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
 1. Select **OK**.
 
 **Configure Source Attribute condition**
@@ -600,8 +600,8 @@ To map attributes:
 
 1. Use the ![Less than and greater than symbols](./Media/image81.png) on the bottom right of the attribute table to page through and find the attribute you want to map.
 1. In the **Operation Type** drop-down list, select the operation to perform on the target attribute (e.g. **Replace Value(s)**, **Add Value(s)**, etc.).
-1. Select ![Plus symbol](./Media/image82.png) next to the input value and select how to populate the target attribute value. You can use a **Constant**, **Attribute** (source attribute or variable), or a **Function**. If you choose **Constant**, enter the value to set. If you choose **Attribute**, select the source attribute or variable from the drop-down list. If you choose **Function**, select the [function](../transformation/attribute-mappings.md#standard-functions-available) and follow the guidance to define the value.
-1. (Optional) you can define an [Input Condition](#configure-input-conditions-for-target-attributes) by selecting ![Pencil symbol](./Media/image83.png). Select **Insert** after defining the input condition.
+1. Select ![Plus symbol](./Media/image82.png) next to the input value and select how to populate the target attribute value. You can use a **Constant**, **Attribute** (source attribute or variable), or a **Function**. If you choose **Constant**, enter the value to set. If you choose **Attribute**, select the source attribute or variable from the drop-down list. If you choose **Function**, select the [function](#standard-functions-available) and follow the guidance to define the value.
+1. (Optional) you can define an [Input Condition](#configuring-conditions) by selecting ![Pencil symbol](./Media/image83.png). Select **Insert** after defining the input condition.
 
 >[!note]
 >If you use an input condition that uses an alternative value, select (+) in the Alternate Values section and choose how to populate the value (e.g. **Constant**, **Attribute** or **Function**).
@@ -621,11 +621,11 @@ The default is "None" meaning that no special checking of the input value(s) is 
 | Set value(s) only if not empty, else use alternate value(s) | If the input value(s) is empty, set the target attribute to the Alternate Value (if defined). If no Alternate value is defined, nothing is set.<br>If the input value(s) is not empty, set the target attribute to the value from the input value(s). |
 | Delete attribute if value(s) are empty or null | If the input value(s) is empty or null, delete the attribute in the target. This sets a NULL value (for a database target) or an empty value (for a directory target). |
 | Delete attribute if value(s) are empty. | If the input value(s) is empty, delete the attribute in the target. This option allows you to differentiate between empty and null. |
-| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable configuration](variable-configuration.md).<br>![Edit Conditional Values example](./Media/image85.png) |
+| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable configuration](#creating-rule-variables).<br>![Edit Conditional Values example](./Media/image85.png) |
 
 **Configure custom code/function**
 
-If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](./Media/image87.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
+If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](./Media/image87.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](#script) instead of the web editor if you prefer.
 
  >[!warning] If you choose to delete the custom function action in a rule, the code for this is no longer called at runtime. However, the custom function code does remain in the transformation script. You must  manually remove the custom function from the transformation script if you don't want it there. Select [<>] on the **Rule Set** page to edit the transformation script.
 

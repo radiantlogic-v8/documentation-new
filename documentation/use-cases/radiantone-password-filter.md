@@ -45,7 +45,7 @@ Before configuring the Password Filter, an administrator should have the followi
 
 ### Environment requirements
 
-1. [SDC Client](../../eoc/latest/secure-data-connector/configure-sdc-service/) v1.2.2 or higher.
+1. [SDC Client](../../../eoc/latest/secure-data-connector/configure-sdc-service/) v1.2.2 or higher.
 2. Windows x64 (for each AD domain controller running the DC relay)
 3. .NET Framework 4.7.2 or higher (on the domain controller and forwarder host)
 4. Two downloadable MSI packages from RadiantOne: 

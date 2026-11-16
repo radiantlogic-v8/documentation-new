@@ -81,7 +81,7 @@ Messages remain in the queue until they are either picked up by the sync engine,
 
 ## Apply Process
 
-The apply process applies changes to the destination object(s). Once the transformation component is successfully configured, the Apply process starts automatically. The apply process leverages the [virtualization of the target](../introduction.md#architecture) as depicted in [this figure](../introduction.md#global-synchronization-architecture-figure), meaning that all changes are sent to the RadiantOne service, directed to the branch in the namespace where the virtual view of the target has been mounted.
+The apply process applies changes to the destination object(s). Once the transformation component is successfully configured, the Apply process starts automatically. The apply process leverages the [virtualization of the target](../../introduction/sync.md#architecture) as depicted in [this figure](../../introduction/sync.md#architecture), meaning that all changes are sent to the RadiantOne service, directed to the branch in the namespace where the virtual view of the target has been mounted.
 
 ## Sync Engine 
 The Sync Engine processes the transformations and invokes the apply process by sending the change events to the RadiantOne service.
@@ -99,13 +99,13 @@ A transformation describes how changes on source entries should be translated in
 
 Attribute mappings indicate how data should be transformed before propagating the event to the destination. This could involve a simple 1-to-1 mapping of a value, setting a constant value, or computing a new value. Each sync pipeline can be associated with one or more attribute mappings. Typically, each type of object (e.g. group, user) you are synchronizing has an Attribute Mapping associated with it.
 
-See [Attribute mappings](../configuration/transformation/attribute-mappings.md) for configuration steps.
+See [Attribute mappings](transformations.md#attribute-mappings) for configuration steps.
 
 ### Script
 
 When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Classic Control Panel > Synchronization tab provides an interface for configuring the script (with some support for basic syntax checking). 
 
-See [Script](../configuration/script.md) for configuration steps.
+See [Script](transformations.md#script) for configuration steps.
 
 ### Rules-based Transformation
 
@@ -115,7 +115,7 @@ Rules are packaged as a set and are associated with a single source entry object
 
 ![A diagram for rule configuration](Media/image11.png)
 
-See [Rules](../configuration/rules/overview.md) for configuration steps.
+See [Rules](transformations.md#rules-based) for configuration steps.
 
 **Conditions**
 
