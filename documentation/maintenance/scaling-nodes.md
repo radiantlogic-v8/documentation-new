@@ -9,7 +9,7 @@ This guide describes how to adjust the number of nodes in an environment and to 
 
 ## SaaS Deployment
 
-To set the number of RadiantOne nodes contained in an environment, in the EOC navigation pane on the left, select Environments. On the Environments page, select an environment and select an application.Select the Scale option under "Application Details". For more information, see [Adjusting the Number of Nodes](/../../eoc/latest/environments/environment-details/node-details#adjust-number-of-nodes).
+To set the number of RadiantOne nodes contained in an environment, in the EOC navigation pane on the left, select Environments. On the Environments page, select an environment and select an application.Select the Scale option under "Application Details". For more information, see [Adjusting the Number of Nodes](/../../eoc/latest/environments/applications/node-details#adjust-number-of-nodes).
 
 ## Self-Managed Deployment
 

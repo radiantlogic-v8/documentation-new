@@ -13,10 +13,6 @@ These release notes contain the following sections:
 
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
 
-[Improvements](#improvements)
-
-[Bug Fixes](#bug-fixes)
-
 [Known Issues](#known-issues)
 
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)

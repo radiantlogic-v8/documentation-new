@@ -19,9 +19,9 @@ A typical architecture for a production deployment of the RadiantOne platform co
  
 Once the primary and disaster recovery environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the disaster recovery environment. 
 
-For SaaS deployments, you can export the configuration from the primary environment by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the DR environment. Import the backup using the custom configuration option in Advanced Setup when creating the Disaster recovery environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
+For SaaS deployments, you can export the configuration from the primary environment by taking a [Backup](/../../eoc/latest/environments/applications/backup-and-restore/create-backup) and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the DR environment. Import the backup using the custom configuration option in Advanced Setup when creating the Disaster recovery environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
 
-For Self-managed deployments, refer to the [creating backups](../../installation/creating-backups/) and [restore](../../installation/restore/) guides. 
+For Self-managed deployments, refer to the [creating backups](../installation/creating-backups.md) and [restore](../installation/restore.md) guides. 
 
 >[!note]
 >Configuration changes are not automatically synchronized across cluster. These must be manually migrated. 
@@ -149,7 +149,7 @@ To enable inter-cluster replication for a directory store:
 
 ## Migrating Configuration
 
-To migrate configuration from a lower environment to production, export the configuration from the lower environment and import this configuration when creating the production environment. When deployed as SaaS, you can export the configuration by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) in the lower environment and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the production environment. Import the backup using the custom configuration option in Advanced Setup.
+To migrate configuration from a lower environment to production, export the configuration from the lower environment and import this configuration when creating the production environment. When deployed as SaaS, you can export the configuration by taking a [Backup](/../../eoc/latest/environments/applications/backup-and-restore/create-backup) in the lower environment and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the production environment. Import the backup using the custom configuration option in Advanced Setup.
 Once the lower environment and production environments are in place, you can setup [configuration promotion pipelines](./configuration-promotion.md) to keep the configuration from the lower environment in sync with production.
 
 ### Migrating ACIs 
@@ -158,7 +158,7 @@ If you need to migrate only ACIs between two environments without transferring t
 
 ## Managing the State of the RadiantOne Service
 
-When deployed as SaaS, you can manage the state of the RadiantOne service from the [Environment Operations Center](/../../eoc/latest/environment-details/environment-overview). Select the environment and use the options shown when clicking on ![Power Options](Media/power-icon.jpg) to start/stop/restart the service.
+When deployed as SaaS, you can manage the state of the RadiantOne service from the [Environment Operations Center](/../../eoc/latest/environments/environment-overview/environments). Select the environment and use the options shown when clicking on ![Power Options](Media/power-icon.jpg) to start/stop/restart the service.
 
 ![Restart Service](Media/restart-service.jpg)
 

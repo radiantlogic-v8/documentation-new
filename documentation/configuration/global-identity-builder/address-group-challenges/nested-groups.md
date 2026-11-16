@@ -74,5 +74,5 @@ The virtual view now returns an un-nested list of groups for the user's `memberO
 
 25. From the **RadiantOne Main Control Panel** > **Wizards tab**, select the **Global Identity Builder**.
 
-26. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#base-dn) should point to the persistent cached view of the actual backend data source. An example is shown below.
+26. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#global-identity-builder-identity-sources) should point to the persistent cached view of the actual backend data source. An example is shown below.
     ![Sample Identity Source Pointing to RadiantOne](../../Media/image145.png)

@@ -59,7 +59,7 @@ These capabilities and rights provide the necessary level of access to connect t
     
 Note that additional scoping and rights management within IdentityIQ to provide more granular control in IdentityIQ is beyond the scope of this document. For a better understanding of the IdentityIQ security model, refer to the resources below:  
 
-- [SailPoint Documentation](https://documentation.sailpoint.com/identityiq/help/identitymgmt/rightscapabilitiesforidentities.html?tocpath=Identity%20Management%7CIdentity%20Management%7C_____4)  
+- [SailPoint Documentation](https://documentation.sailpoint.com/identityiq/9.0/help/identity_management/rights_capabilities.html)  
 - [Community Article](https://community.sailpoint.com/t5/IdentityIQ-Articles/IdentityIQ-Rights-and-Capabilities-Definitions/ta-p/77550)  
 
 

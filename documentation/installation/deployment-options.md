@@ -52,4 +52,4 @@ For self-managed deployments, configure your Kubernetes cluster and then deploy 
 
 ## Upgrades
 
-If you are looking to upgrade to v8.1 SaaS or Self-managed, see [Upgrades](./upgrades.md) for options.
+If you are looking to upgrade to v8.1 SaaS or Self-managed, see [Updating to v9 SaaS](../upgrade-guides/updating-to-saas-v9.md) or [Updating to v9 Self-managed](../upgrade-guides/updating-to-sm-v9.md) for options.

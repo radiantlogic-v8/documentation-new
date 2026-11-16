@@ -9,14 +9,14 @@ For SaaS deployments, use the Environment Operations Center to restart the Radia
 
 ## Restarting the RadiantOne Service
 
-For SaaS deployments, restarting the RadiantOne Identity Data Management service is performed in the Environment Operations Center. In the EOC navigation pane, select Environments. On the Environments page, select an environment and an application. On the application page, click the Power button. For more details, see: [Starting Environments](/../../eoc/latest/environments/applications/stop-and-restart-application.md).
+For SaaS deployments, restarting the RadiantOne Identity Data Management service is performed in the Environment Operations Center. In the EOC navigation pane, select Environments. On the Environments page, select an environment and an application. On the application page, click the Power button. For more details, see: [Starting Environments](/../../eoc/latest/environments/applications/stop-and-restart-application).
 
 
 ## Deleting Environments
 
-By deleting an environment, you are also deleting application(s) that are installed in the environment. For SaaS deployments, you can delete an environment in the Environment Operations Center. From the Environments home screen, locate the environment you would like to delete from the list of environments. Go the specific environment and on the right top corner, select the ellipsis (...), to expand the options available and select DELETE from the list. For more details, see: [Delete an Environment](/../../eoc/latest/environments/environment-overview/delete-an-environment)
+By deleting an environment, you are also deleting application(s) that are installed in the environment. For SaaS deployments, you can delete an environment in the Environment Operations Center. From the Environments home screen, locate the environment you would like to delete from the list of environments. Go the specific environment and on the right top corner, select the ellipsis (...), to expand the options available and select DELETE from the list. For more details, see: [Delete an Environment](/../../eoc/latest/environments/environment-overview/delete-environment)
 
-For self-managed deployments, you can delete the deployed Identity Data Managed application by following [these steps](../installation/self-managed/#deleting-identity-data-management). For self-managed Identity Analytics deployment deletion, follow [these steps](https://developer.radiantlogic.com/ia/descartes/igrc-platform/self-managed/#deleting-identity-analytics-chart). 
+For self-managed deployments, you can delete the deployed Identity Data Managed application by following [these steps](../installation/self-managed/#deleting-identity-data-management). For self-managed Identity Analytics deployment deletion, follow [these steps](/../../ia/descartes/igrc-platform/self-managed/#deleting-identity-analytics-chart). 
 
 ## Performing Backups
 
@@ -37,7 +37,7 @@ Backups include everything needed to safely restore the application if needed - 
 * Custom scripts (e.g. interception scripts, synchronization scripts, custom tasks...etc.)
 * All RadiantOne service configuration properties
 
-For more details, see: [Backups](/../../eoc/latest/environments/backup-and-restore/create-backup)
+For more details, see: [Backups](/../../eoc/latest/environments/applications/backup-and-restore/create-backup)
 
 ### Manual
 

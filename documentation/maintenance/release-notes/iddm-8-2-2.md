@@ -12,10 +12,10 @@ These release notes contain important information about improvements and bug fix
 These release notes contain the following sections:
 
 * [Security Vulnerability Fixes](#security-vulnerability-fixes)
-* [Known Issues/Important Notes](#known-issuesimportant-notes)
+* [Known Issues/Important Notes](#known-issues--important-notes)
 * [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
-For specific hardware requirements of each, read the [system requirements](../system-requirements/v74-system-requirements/) guide. 
+For specific hardware requirements of each, read the [system requirements](/../../idm/v7.4/system-requirements/v74-system-requirements/) guide. 
 
 ## Security Vulnerability Fixes
 - [API-3743-3745, SQ-1043]: Resolved several vulnerabilities found in the open-source dependencies used in Identity Data Management. The higher-severity CVEs are listed below: <br>

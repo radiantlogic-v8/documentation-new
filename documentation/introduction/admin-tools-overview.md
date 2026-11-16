@@ -35,7 +35,7 @@ The endpoint to reach the Control Panel can be found by navigating to the enviro
 
 The Directory Administrator credentials for Control Panel are defined when the environment is created. These credentials must be used to log into the Control Panel for the first time. 
 
-The Directory Administrator can create other admin accounts and roles as needed from the Control Panel > Admin section. Users can login with a [username and password](control-panel-overview.md), an [Access Token](../configuration/security/access-tokens.md), or a [corporate SSO provider](control-panel-overview#oidc-token) can be configured.
+The Directory Administrator can create other admin accounts and roles as needed from the Control Panel > Admin section. Users can login with a [username and password](control-panel-overview.md), an [Access Token](../configuration/security/access-tokens.md), or a [corporate SSO provider](control-panel-overview.md#oidc-token-authentication-overview) can be configured.
 
 
 ![An image showing ](Media/usermanagement.jpg)

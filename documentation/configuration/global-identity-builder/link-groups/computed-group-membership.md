@@ -26,7 +26,7 @@ The virtual view of group entries needs a computed attribute defined for the mem
     ![Computed Attributes](../../Media/image93.png)
 1.  Select **Save**.
 1.  Select **Yes** to apply the changes to the server.
-1.  On the **Objects** tab, in the **Virtual Attribute Name** table, select the `member` attribute. It is noted that the attribute is populated from both the primary backend and a computed attribute: ![member icon](../media/image95.png). To avoid returning the existing actual member DNs and return only the computed value, select **Edit Attribute**.
+1.  On the **Objects** tab, in the **Virtual Attribute Name** table, select the `member` attribute. It is noted that the attribute is populated from both the primary backend and a computed attribute: ![member icon](../../Media/image95.png). To avoid returning the existing actual member DNs and return only the computed value, select **Edit Attribute**.
 1.  In the **Priority** drop-down list for the **GLOBAL (Computed)** origin, choose **Highest** (or **High** – as long as the value has more priority than the one assigned to the group origin).<br>
     ![Attribute Priority](../../Media/image97.png)
 1. Select **OK**.

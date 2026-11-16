@@ -707,9 +707,9 @@ If your goal is to create an identity view which aggregates multiple types of ba
 
 For details on the different parameters for each type of backend, please see the following sections:
 
--	[LDAP Backend Parameters and Settings](#Managing-Nodes-in-Model-driven-Identity-Views)
+-	[LDAP Backend Parameters and Settings](#managing-nodes-in-model-driven-identity-views)
 
--	[Database Backend Parameters and Settings](#Managing-Nodes-in-Model-driven-Identity-Views)
+-	[Database Backend Parameters and Settings](#managing-nodes-in-model-driven-identity-views)
 
 -	[RadiantOne Directory Parameters and Settings](../directory-stores/managing-properties)
 

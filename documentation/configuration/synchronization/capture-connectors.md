@@ -75,7 +75,7 @@ To configure DB Changelog change detection mechanism:
 1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`).
 
 >[!warning]
->Change the value for this property only if you are creating the log table manually and the configuration does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
+>Change the value for this property only if you are creating the log table manually and the configuration does not calculate the log table name correctly. Be sure to use the [correct syntax](#database-changelog) if you change the value.
 
 ![DB Changelog Configuration](Media/db-changelog.jpg)
 

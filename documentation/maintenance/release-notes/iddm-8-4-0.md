@@ -11,7 +11,7 @@ These release notes contain important information about improvements and bug fix
 
 These release notes contain the following sections:
 
-[New Features](#new-features)
+[New Features](#new-feature)
 
 [Improvements](#improvements)
 
