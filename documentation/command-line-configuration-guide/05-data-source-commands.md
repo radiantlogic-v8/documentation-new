@@ -153,7 +153,7 @@ This command updates the connection info for the specified database data source.
 <br>Indicates that the data source is active or disabled. Accepted values are “true”, “false.
 
 `- autocommit <autocommit>`
-<br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using [execfile](general-commands.md#execfile) to run a series of commands from a file, to update many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of updated data sources as opposed to writing one at a time. An example of the file contents is shown below.
+<br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using [execfile](02-general-commands.md#execfile) to run a series of commands from a file, to update many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of updated data sources as opposed to writing one at a time. An example of the file contents is shown below.
 
 update-db-datasource -datasourcename DB1 -autocommit false ....<other props>
 update-db-datasource -datasourcename DB2 -autocommit false ....<other props>
@@ -208,7 +208,7 @@ This command creates a new LDAP data source.
 <br>Indicates that the data source is active or disabled. Accepted values are “true”, “false.
 
 `- autocommit <autocommit>`
-<br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using [execfile](general-commands.md#execfile) to run a series of commands from a file, to create many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of data sources as opposed to writing one at a time. An example of the file contents is shown below.
+<br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using [execfile](02-general-commands.md#execfile) to run a series of commands from a file, to create many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of data sources as opposed to writing one at a time. An example of the file contents is shown below.
 
 `create-db-datasource -datasourcename DB1 -autocommit false ....<other props>`
 <br> `create-db-datasource -datasourcename DB2 -autocommit false ....<other props>`

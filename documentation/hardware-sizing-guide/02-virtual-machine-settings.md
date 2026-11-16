@@ -39,7 +39,7 @@ Do not oversubscribe to CPU cycles that you do not really need.
 
 Time synchronization between cluster nodes is imperative! It is recommended to reduce the polling interval to 15 minutes. As timekeeping is different with virtual machines, please follow the recommendations made by the hypervisor vendor. Example, for VMWare:
 
-[http://www.vmware.com/files/pdf/Timekeeping-In-VirtualMachines.pdf](http://www.vmware.com/files/pdf/Timekeeping-In-VirtualMachines.pdf)
+[https://www.vmware.com/docs/vmware_timekeeping](https://www.vmware.com/docs/vmware_timekeeping)
 
 Timekeeping can have an effect on Java programs if they are sensitive to accurate measurements over periods of time, or if they require a timestamp that is within an exact tolerance (such as a timestamp on a shared document or data item). VMware Tools contains features that are installable on the guest operating system to enable time synchronization. Use of those tools is recommended. The frequency of timer interrupts can also affect the performance of your Java application.
 

@@ -9,34 +9,34 @@ description: LDAP Browser Guide
 
 The LDAP Browser is a Java-based LDAP client used for viewing and managing the content of any LDAP directory.
 
-To connect to the RadiantOne LDAP service, please see create a profile [Create a Profile](02-using-the-ldap-browser#Create-a-Profile-for-Radiantone) for RadiantOne.
+To connect to the RadiantOne LDAP service, please see create a profile [Create a Profile](02-using-the-ldap-browser.md#create-a-profile-for-radiantone) for RadiantOne.
 
-To connect to any LDAP server, please see the section on [creating profiles](02-using-the-ldap-browser#Create-a-Profile).
+To connect to any LDAP server, please see the section on [creating profiles](02-using-the-ldap-browser.md#create-a-profile).
 
 This guide presents the LDAP Browser concepts and procedures as follows:
 
 
-▪ [LDAP Browser Concepts](#LDAP-Browser-Concepts)
+▪ [LDAP Browser Concepts](#ldap-browser-concepts)
 
 ▪ [LDAP Browser Interface](#ldap-browser-interface)
 
-▪ [Using the LDAP Browser](#Using-the-LDAP-Browser)
+▪ [Using the LDAP Browser](02-using-the-ldap-browser.md#using-the-ldap-browser)
 
 ### LDAP Browser Concepts
 
 This section describes some terms that are important to know for using the LDAP Browser.
 
-▪ [Profile](#Profile)
+▪ [Profile](#profile)
 
-▪ [LDIF](#LDIF)
+▪ [LDIF](#ldif)
 
 #### Profile
 
-A profile stores the necessary information required to connect to an LDAP-enabled directory. This information includes server name, port, username and password (if required), and BaseDN. The profile information is stored in a .prof file and can found in the directory of $RLI_HOME\<instance_name>\ldif\profiles. For more information, please see [Manage Directory Profiles](02-using-the-ldap-browser#Manage-Directory-Profiles)
+A profile stores the necessary information required to connect to an LDAP-enabled directory. This information includes server name, port, username and password (if required), and BaseDN. The profile information is stored in a .prof file and can found in the directory of $RLI_HOME\<instance_name>\ldif\profiles. For more information, please see [Manage Directory Profiles](02-using-the-ldap-browser.md#manage-directory-profiles)
 
 #### LDIF
 
-An LDIF file can be generated from the directory trees. After testing the tree from the LDAP Browser, an LDIF file can be generated for populating an existing LDAP directory. For more information, please see [Creating an LDIF File](02-using-the-ldap-browser#Create-an-LDIF-file-for-populating-a-directory).
+An LDIF file can be generated from the directory trees. After testing the tree from the LDAP Browser, an LDIF file can be generated for populating an existing LDAP directory. For more information, please see [Creating an LDIF File](02-using-the-ldap-browser.md#create-an-ldif-file-for-populating-a-directory).
 
 ### LDAP Browser Interface
 

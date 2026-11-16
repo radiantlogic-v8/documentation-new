@@ -129,7 +129,7 @@ Figure 8: Auto-generated Groups
 
 ##### Attributes-Based Authorization
 
-The term dynamic join means that RadiantOne FID performs the aggregation of attributes from common identities on-the-fly as applications request a particular entry. Each time an application requests a user entry, RadiantOne FID performs the join. This ensures that the most up-to-date information is retrieved in real-time from the authoritative source. If this real-time join does not meet your performance requirements, then a RadiantOne FID cache may be used. More details on caching can be found in the [High Availability and Performance](06-high-availability-and-performance.md) chapter in this guide.
+The term dynamic join means that RadiantOne FID performs the aggregation of attributes from common identities on-the-fly as applications request a particular entry. Each time an application requests a user entry, RadiantOne FID performs the join. This ensures that the most up-to-date information is retrieved in real-time from the authoritative source. If this real-time join does not meet your performance requirements, then a RadiantOne FID cache may be used. More details on caching can be found in the [High Availability and Performance](high-availability-and-performance.md) chapter in this guide.
 
 Below is a high-level diagram depicting a join across three data sources for a common user.
 

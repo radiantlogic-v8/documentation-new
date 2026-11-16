@@ -16,7 +16,7 @@ Generally, RadiantOne is deployed behind a hardware load balancer that is charge
 Each RadiantOne node must be able to communicate to the other nodes on the following ports (these are configurable during install). Therefore, the firewall rules for these ports must be inbound and outbound. Note here that the non-SSL ports can be disabled if desired.
 
 >[!note]
->For more information on disabling non-SSL access, see the [Forbid Access to RadiantOne on the Non-SSL Port](04-securing-data-in-transit-ssl-tls-settings.md#forbid-access-to-radiantone-on-the-non-ssl-port) section.
+>For more information on disabling non-SSL access, see the [Forbid Access to RadiantOne on the Non-SSL Port](04-securing-data-in-transit.md#forbid-access-to-radiantone-on-the-non-ssl-port) section.
 
 The default TCP ports defined during install are described here. You might have changed these defaults.
 
@@ -337,7 +337,7 @@ RadiantOne generates a random master key by default to use for encrypting inform
 
 The migration process involves exporting your existing configuration, installing RadiantOne with PBE enabled, and importing the configuration from your existing deployment.
 
-The RadiantOne configuration can be exported from one machine/cluster and imported into another. The [export](#exporting-the-existing-environment) needs to happen on only one node in a cluster (as all nodes share the same config) and needs to be [imported](#importing-the-existing-configuration) on only one node in the cluster of the target environment.
+The RadiantOne configuration can be exported from one machine/cluster and imported into another. The [export](#exporting-the-existing-environment) needs to happen on only one node in a cluster (as all nodes share the same config) and needs to be [imported](#importing-configuration-into-the-pbe-enabled-environment) on only one node in the cluster of the target environment.
 
 >[!note] Ensure you have the latest patch applied before migrating to a PBE-enabled environment: v7.3.30 or v7.4.8.
 

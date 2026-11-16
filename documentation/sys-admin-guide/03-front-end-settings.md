@@ -154,7 +154,7 @@ Restart Jetty (server hosting the Control Panel) and the RadiantOne service (on 
 
 This parameter can be set to the DN of any special group you want that is defined in the virtual namespace. The special users group is checked for enforcing access regulation (if access restrictions are set). To manage this value, from the Main Control Panel > Settings Tab > Administration section, locate the Special Users Group DN parameter. Enter the value of a valid group DN located in the virtual namespace.
 
-For details on how this group is related to access restrictions, see the section titled [Access Regulation](06-security#access-regulation).
+For details on how this group is related to access restrictions, see the section titled [Access Regulation](limits.md#access-regulation).
 
 ### Administrators Group DN
 
@@ -369,7 +369,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls using the *proxy* operation from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](./access-controls/#operations).
 
->[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxied Authorization Control must be enabled.
+>[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](access-controls.md#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxied Authorization Control must be enabled.
 
 ### Subtree Delete Control
 

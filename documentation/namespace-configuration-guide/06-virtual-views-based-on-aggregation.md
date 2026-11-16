@@ -58,7 +58,7 @@ For details on the different parameters for each type of backend, please see the
 
 -	[Web Service Parameters and Settings](07-virtual-vews-for-dsml-or-spml-backends#web-service-backend-parameters-and-settings)
 
--	[Universal Directory Parameters and Settings](05-radiantone-universal-directory#universal-directory-storage-parameters-and-settings)
+-	[Universal Directory Parameters and Settings](05-radiantone-universal-directory.md#radiantone-directory-storage-parameters-and-settings)
 
 If you need to modify a backend configuration, navigate to the appropriate location in the tree and modify the parameters on the tabs available on the right. Remember to click Save and click Yes to apply the changes to the server.
 

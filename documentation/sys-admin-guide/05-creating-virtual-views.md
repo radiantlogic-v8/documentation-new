@@ -49,7 +49,7 @@ The Global Identity Builder can be used in situations where applications require
 
 The Groups Builder Wizard manages virtual views for defining groups and members. With this wizard, you can define rules for dynamically creating groups from multiple heterogeneous data sources. Administrators can utilize this wizard to either create user-defined or auto-generated groups. 
 
-For more information on [groups](02-concepts#groups) supported in RadiantOne please see [Concepts](concepts.md).
+For more information on [groups](02-concepts#groups) supported in RadiantOne please see [Concepts](02-concepts.md).
 
 The Groups Builder wizard should be used in situations where applications are accessing RadiantOne to retrieve groups/membership for enforcing authorization and a list of applicable groups either does not currently exist in any backend data source or the existing groups are insufficient because they lack all the required members. This wizard should be used if there is the need to add new members into existing groups or if there is the need to build entirely new global groups containing members from multiple different data sources.
 

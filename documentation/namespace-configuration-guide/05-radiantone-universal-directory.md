@@ -9,7 +9,7 @@ The RadiantOne platform offers a directory as a scalable storage that can be use
 
 Once a directory naming context is created, a properties tab is available for managing the configuration. To access the properties tab, select the node representing the RadiantOne directory storage below the Root Naming Contexts section on the Main Control Panel > Directory Namespace Tab.
 
-Properties – This tab lists the settings: [storage location](#storage-location), [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting](#exporting-radiantone-universal-directory-stores), [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
+Properties – This tab lists the settings: [storage location](#storage-location), [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-directory-stores), [exporting](#exporting-radiantone-directory-stores), [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-directory-store), [restoring](#restoring-a-radiantone-directory-store), and [deleting the local storage](#deleting-a-radiantone-directory-store) (must be de-activated to delete).
 
 >[!warning] Although persistent cache leverages the RadiantOne directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see the [[RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface)](/deployment-and-tuning-guide/00-preface.md) as this chapter is related to RadiantOne Directory stores only.
 
@@ -145,7 +145,7 @@ Check the Active option if you want to activate this naming context. Uncheck the
 
 Defined on the Properties Tab for the selected RadiantOne Directory store, this is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the store and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the RadiantOne Directory store.
 
-If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. For details on this control, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction.md).
+If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. For details on this control, please see the [RadiantOne System Administration Guide](../sys-admin-guide/01-introduction.md).
 
 If you change the sorted attributes, re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
@@ -376,7 +376,7 @@ To delete a RadiantOne Directory, first de-activate it (uncheck the Active check
 
 In releases prior to v7 of RadiantOne, replication was solely discussed in terms of master servers (that serve read requests and accept updates) and slave servers (that serve read requests and forward updates to master servers). A master accepted directory updates from other clients, and a slave only accepted updates from a master server. The replication structure was rigidly defined and any particular directory could only fulfill a single role, either master or slave. These terms are still applicable if deploying RadiantOne in a classic Active/Active and/or Active/Passive architecture. 
 
-Starting in v7, RadiantOne supports a clustered architecture in addition to the classic architecture. For a clustered architecture, the terms master and slave have been deprecated and now leader and follower are used. Each RadiantOne server in the cluster is considered a node and there are three types of nodes: leader, follower and follower-only. ZooKeeper is the distributed configuration manager for the cluster and ensures configuration changes are shared across all nodes in the cluster. For more details on the cluster architecture and node definitions, please see the [RadiantOne Architect Guide](/architect-guide/preface.md).
+Starting in v7, RadiantOne supports a clustered architecture in addition to the classic architecture. For a clustered architecture, the terms master and slave have been deprecated and now leader and follower are used. Each RadiantOne server in the cluster is considered a node and there are three types of nodes: leader, follower and follower-only. ZooKeeper is the distributed configuration manager for the cluster and ensures configuration changes are shared across all nodes in the cluster. For more details on the cluster architecture and node definitions, please see the [RadiantOne Architect Guide](../architect-guide/preface.md).
 
 Configuring replication for both classic and clustered architectures are described in the following sections.
 
@@ -1082,5 +1082,5 @@ Numsubordinates is an operational attribute and is only returned in searches whe
 
 ## Detecting Changes in RadiantOne Directory
 
-Changes to entries can be detected based on changelog (listening for change on the cn=changelog naming context) or using the Persistent Search Control. For details on these change detection mechanisms, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction.md). 
+Changes to entries can be detected based on changelog (listening for change on the cn=changelog naming context) or using the Persistent Search Control. For details on these change detection mechanisms, please see the [RadiantOne System Administration Guide](../sys-admin-guide/01-introduction.md). 
 

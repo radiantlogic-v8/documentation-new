@@ -84,7 +84,7 @@ In typical deployments, the primary function of RadiantOne is processing end use
 -	One network interface (1GB or greater) of the Hypervisor should be dedicated to RadiantOne as low network latency and high network throughput are desired.
 
 -	Time synchronization between cluster nodes is imperative! It is recommended to reduce the polling interval to 15 minutes. As timekeeping is different with virtual machines, please follow the recommendations made by the hypervisor vendor. Example, for VMWare:
-http://www.vmware.com/files/pdf/Timekeeping-In-VirtualMachines.pdf
+https://www.vmware.com/docs/vmware_timekeeping
 http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1005092
 
 ## Vulnerability and Web Application Scanners

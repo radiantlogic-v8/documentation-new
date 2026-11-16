@@ -7,11 +7,11 @@ description: LDAP Browser Guide
 
 The following procedures describe how to:
 
-[Manage Directory Profiles](02-using-the-ldap-browser.md#Manage-directory-profiles)
+[Manage Directory Profiles](#manage-directory-profiles)
 
 [Modify directory contents](02-using-the-ldap-browser.md#modify-directory-content)
 
-[Configure Browser to Connect to LDAP Directories via SSL](#Configure-browser-to-connect-to-ldap-directories-via-ssl)
+[Configure Browser to Connect to LDAP Directories via SSL](#configure-browser-to-connect-to-ldap-directories-via-ssl)
 
 ## Manage Directory Profiles
 

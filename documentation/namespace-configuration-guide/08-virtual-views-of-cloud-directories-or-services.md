@@ -257,7 +257,7 @@ If you are connecting to a custom salesforce domain, use `jdbc:salesforce:<domai
    
 1.	Click **Save**. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
 1.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
-1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction.md).
+1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the [RadiantOne Context Builder Guide](../context-builder-guide/introduction.md).
 
 #### Getting a Security Token from Salesforce
 
@@ -577,11 +577,11 @@ To work with multiple Entra ID tenants, you can clone the default graphapi or mg
 
 ### Entra ID Schema
 
-A schema file contains the metadata leveraged by RadiantOne to create virtual views of a data source. The default graphapi custom data source is associated with a schema file named graphapi.orx. The default mgraph custom data source is associated with a schema file named mgraph.orx. These files can be opened and modified in the Schema Manager sub-tab on the Main Control Panel > Context Builder tab. For details on this tool, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction.md).
+A schema file contains the metadata leveraged by RadiantOne to create virtual views of a data source. The default graphapi custom data source is associated with a schema file named graphapi.orx. The default mgraph custom data source is associated with a schema file named mgraph.orx. These files can be opened and modified in the Schema Manager sub-tab on the Main Control Panel > Context Builder tab. For details on this tool, see the [RadiantOne Context Builder Guide](../context-builder-guide/introduction.md).
 
 The default objects defined in the schema are Contacts, Devices, Groups and Users. 
 
-Any attributes that you want clients to use in a search filter, or insert/update, must be manually added to the applicable object definition in the schema file (right-click on the Fields level below the object and choose Add New Attribute). Once they are added to the schema file, make sure the attribute(s) is also properly added to the [virtual view](#azure-ad-virtual-view).
+Any attributes that you want clients to use in a search filter, or insert/update, must be manually added to the applicable object definition in the schema file (right-click on the Fields level below the object and choose Add New Attribute). Once they are added to the schema file, make sure the attribute(s) is also properly added to the [virtual view](#entra-id-virtual-view).
 
 ![An image showing ](Media/Image8.30.jpg)
 
@@ -833,7 +833,7 @@ RadiantOne includes a custom data source defined for Google Directory. This defa
 
 18.	Click **Ok** to complete the wizard and **OK** again to exit the confirmation.
 
->[!note] To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction.md).
+>[!note] To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the [RadiantOne Context Builder Guide](../context-builder-guide/introduction.md).
 
 You can browse the runtime virtual view from the Main Control Panel > Directory Browser tab. An example is shown below.
 

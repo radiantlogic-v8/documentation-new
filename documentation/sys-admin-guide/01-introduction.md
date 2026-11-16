@@ -62,7 +62,7 @@ The background color of the login screen can be customized after you log into th
 
 ### Logging in with Username and Password
 
-You can log in using directory administrator (default cn=directory manager) as the user with the password you set for the directory administrator during the install of RadiantOne. The Control Panel also supports [delegated administration](#delegated-administration-of-radiantone) accounts if you prefer not to use the directory administrator account. When a user logs in, the control panel application passes the credentials to RadiantOne for authentication. A user can either use their full DN (if known), or their user ID. However, to login with just a user ID, you must configure a [user ID to DN Mapping](03-front-end-settings#user-to-dn-mapping).
+You can log in using directory administrator (default cn=directory manager) as the user with the password you set for the directory administrator during the install of RadiantOne. The Control Panel also supports [delegated administration](#delegated-administration-of-radiantone) accounts if you prefer not to use the directory administrator account. When a user logs in, the control panel application passes the credentials to RadiantOne for authentication. A user can either use their full DN (if known), or their user ID. However, to login with just a user ID, you must configure a [user ID to DN Mapping](interception.md#user-to-dn-mapping).
 
 The Main Control Panel displays a message when authentication fails. The table below lists the possible error messages. 
 
@@ -72,7 +72,7 @@ Message	 | Cause | Solution
 “Authentication failed. Reason: 532 - Password expired." | The user's password has expired. | If the client application supports password reset capabilities, the user can reset their password. <br>The Main Control Panel supports resetting expired passwords. The user can click the *Reset Password* link in the message displayed on the Main Control Panel to set a new password. If the [password policy](password-policies#password-policy-associated-with-control-panel-delegated-administrator-roles) associated with the user requires the current password to set a new password, the user is prompted to enter their current password along with the new password. 
 “Authentication failed. Reason: [LDAP: error code 19 - The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.]” | The account is locked. | Retry later or contact the system administrator to reset the password.
 
->[!note] If you are logged into the Main Control Panel and your password is set to expire soon due to a [password policy](06-security#password-policy-associated-with-control-panel-delegated-administrator-roles), the Main Control Panel displays the following warning. 
+>[!note] If you are logged into the Main Control Panel and your password is set to expire soon due to a [password policy](password-policies.md#password-policy-associated-with-control-panel-delegated-administrator-roles), the Main Control Panel displays the following warning. 
 
 ![password expiring soon](Media/password-expiring-soon.png)
 
@@ -631,7 +631,7 @@ The hostname where the server is installed. By default this is set to the machin
 
 This value can be seen in ZooKeeper from the Zookeeper tab in the Main Control Panel at: `/radiantone/v1/cluster/shards/shard1/services/vds/registry/<unique ID assigned to the server>`
 
-If RadiantOne is running on a multi-homed machine, you can change this parameter to specify a single IP address (or host name). The value set here can work in conjunction with the Server Socket: Restrict to Host/IP specified in Multi Home settings and SSL Server socket: Restrict to Host/IP specified in [Multi Home settings](03-front-end-settings-tab#multi-home-settings) defined in the Main Control Panel > Settings tab > Server Front End section > Advanced sub-section.
+If RadiantOne is running on a multi-homed machine, you can change this parameter to specify a single IP address (or host name). The value set here can work in conjunction with the Server Socket: Restrict to Host/IP specified in Multi Home settings and SSL Server socket: Restrict to Host/IP specified in [Multi Home settings](03-front-end-settings.md#multi-home-settings) defined in the Main Control Panel > Settings tab > Server Front End section > Advanced sub-section.
 
 Changing this value is a delicate operation that must be performed during off-peak hours generally during a maintenance window. You must have your original (unapplied) license key file from Radiant Logic and make sure that the RadiantOne service and Jetty (that hosts the Control Panel) are stopped. Then, follow the steps below.
 
@@ -664,7 +664,7 @@ Changing this value is a delicate operation that must be performed during off-pe
 A server certificate used by RadiantOne uniquely identifies it to clients for establishing SSL/TLS and StartTLS connections. RadiantOne supports the JSSE standard provided by Java. RadiantOne is installed with a default self-signed certificate. If you have your own server certificate, please follow the steps listed below in the Replacing the Default Self-signed Certificate section.
 
 >[!warning]
->Every time you change the RadiantOne server certificate, you must export the public key and import this public key into the [Client Certificate Truststore](06-security#client-certificate-trust-store) (unless the CA that signed the server certificate is already trusted). Also, the RadiantOne server certificate is shared by the Jetty server to support HTTPS access to the Control Panel(s). If you prefer HTTPS access to the Main Control Panel to use a different certificate, you must [manually update the settings for Jetty](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
+>Every time you change the RadiantOne server certificate, you must export the public key and import this public key into the [Client Certificate Truststore](06-security.md#client-certificate-trust-store-cluster-level-trust-store) (unless the CA that signed the server certificate is already trusted). Also, the RadiantOne server certificate is shared by the Jetty server to support HTTPS access to the Control Panel(s). If you prefer HTTPS access to the Main Control Panel to use a different certificate, you must [manually update the settings for Jetty](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
 >The RadiantOne server certificate is also used by the SAML Attribute Service. However, when you update the server certificate from the Server Control Panel, the SAML Attribute Service configuration is not automatically updated in the following configuration files:
 >`<RLI_HOME>/config/saml/client.properties`,`<RLI_HOME>/config/saml/query.properties`,`<RLI_HOME>/config/saml/serverEncryption.properties`, and `<RLI_HOME>/config/saml/server/AttributeService.properties`. If you are using the SAML Attribute Service, update these files manually with the new keystore and password. If you are not using the SAML Attribute Service, you do not need to update these files. Note that if these files are not manually updated, error messages related to these files are shown in the vds_server.log files and can be ignored.
 
@@ -1241,7 +1241,7 @@ cn=icsoperator,ou=globalgroups,cn=config
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Read Only, Schema Administrator, ICS Administrator, ICS Operator and ACI Administrator. These roles can be assigned to static members or dynamic members. Both are described below. Any user that is assigned to one of the delegated administration roles can login to the Control Panels and manage certain server settings based on the privileges (vdPrivilege attribute) assigned to the role. 
 
 >[!note]
->Remember that you might require a [User ID to DN Mapping](03-front-end-settings#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID). <br> Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
+>Remember that you might require a [User ID to DN Mapping](interception.md#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID). <br> Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-controls.md#access-controls) for the delegated admin groups.
 
 #### Managing Explicit Members
 
@@ -1315,7 +1315,7 @@ Any user that is dynamically assigned to a delegated admin group can log in to t
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access.
 
 >[!note]
->Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
+>Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-controls.md#access-controls) for the delegated admin groups.
 
 Default administrative users are included as members of these groups. They are as follows:
 
@@ -1407,7 +1407,7 @@ Image 56: Adding the vdPrilvilege Attribute
  
     Image 57: Example of Assigning an Existing Group to the Directory Administrator Role
 
-    >[!note] Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-securityy#access-control) for the delegated admin groups.
+    >[!note] Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-controls.md#access-controls) for the delegated admin groups.
 
 8.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](#expert-mode)).
 

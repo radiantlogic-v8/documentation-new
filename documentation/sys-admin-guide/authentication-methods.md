@@ -7,7 +7,7 @@ description: Details about the authentication methods supported in RadiantOne.
 
 >[!note] This section is accessible only in [Expert Mode](01-introduction#expert-mode).
 
-To access the RadiantOne service via LDAP, the LDAP client must authenticate itself. This process is called a “bind” operation and means, the client must tell the LDAP server who is going to be accessing the data so that the server can decide what the client is allowed to see and do (authorization). After the client successfully authenticates, RadiantOne checks whether the client is allowed to perform subsequent requests. This process is called authorization and is enforced via [access controls](#access-control-terms--definitions).
+To access the RadiantOne service via LDAP, the LDAP client must authenticate itself. This process is called a “bind” operation and means, the client must tell the LDAP server who is going to be accessing the data so that the server can decide what the client is allowed to see and do (authorization). After the client successfully authenticates, RadiantOne checks whether the client is allowed to perform subsequent requests. This process is called authorization and is enforced via [access controls](access-controls.md#access-control-terms--definitions).
 
 RadiantOne supports three types of authentication: anonymous, simple and SASL.
 
@@ -17,7 +17,7 @@ Clients that send an LDAP request without doing a "bind" are treated as anonymou
 
 **Simple:**
 
-Simple authentication consists of sending the LDAP server the fully qualified DN of the client (user) and the client's clear-text password. To avoid exposing the password in clear over the network, you can use SSL (an encrypted channel). For details on configuring SSL, please see the [SSL Settings](#ssl-settings) section.
+Simple authentication consists of sending the LDAP server the fully qualified DN of the client (user) and the client's clear-text password. To avoid exposing the password in clear over the network, you can use SSL (an encrypted channel). For details on configuring SSL, please see the [SSL Settings](06-security.md#ssl-settings) section.
 
 **SASL:**
 
@@ -168,7 +168,7 @@ If RadiantOne received a user ID like laura_callahan@ny.radiant.com, the search 
 
 `ou=ny,dc=radiant,dc=com??sub?(&(uid=laura_callahan)(dc=radiant))`
 
-For more details, please see [Processing Multiple Mapping Rules](03-front-end-settings#processing-multiple-mapping-rules).
+For more details, please see [Processing Multiple Mapping Rules](interception.md#processing-multiple-mapping-rules).
 
 The user DN returned from the search is used by RadiantOne to identify the user entry in the RadiantOne namespace and to base authorization decisions on. For more information, please see [Authorization of Kerberos Users](#authorization-of-kerberos-users).
 
@@ -276,7 +276,7 @@ The following describes the connection parameters from Softerra LDAP Administrat
 
 Figure 15: Softerra LDAP Administrator Interface
 
-After the Kerberos client user successfully authenticates via Kerberos, authorization will be determined based on the access rights configured in RadiantOne. For more information, please see the section titled, [Authorization of Kerberos Users](06-security#authorization-of-kerberos-users).
+After the Kerberos client user successfully authenticates via Kerberos, authorization will be determined based on the access rights configured in RadiantOne. For more information, please see the section titled, [Authorization of Kerberos Users](#authorization-of-kerberos-users).
  
 ### Support for MIT Kerberos
 
@@ -334,7 +334,7 @@ Enter the Server fully qualified name for the machine running RadiantOne (<machi
 
 **Client User Name Mapping**
 
-After authentication via MD5, authorization (access permissions) must be determined. Client User Name Mapping can be used to set up a mapping between the user who authenticates using MD5 and a user DN in the virtual namespace. The DN is required to set access permissions and for RadiantOne to enforce authorization. If no client user name mappings are configured (or the ones configured fail to link the user name to a valid DN in the virtual tree), then RadiantOne allows [anonymous access](access-control#allow-anonymous-access) (you must make sure anonymous access is allowed). To configure the mapping, click **Change** next to the Client User Name Mapping parameter.
+After authentication via MD5, authorization (access permissions) must be determined. Client User Name Mapping can be used to set up a mapping between the user who authenticates using MD5 and a user DN in the virtual namespace. The DN is required to set access permissions and for RadiantOne to enforce authorization. If no client user name mappings are configured (or the ones configured fail to link the user name to a valid DN in the virtual tree), then RadiantOne allows [anonymous access](access-controls.md#allow-anonymous-access) (you must make sure anonymous access is allowed). To configure the mapping, click **Change** next to the Client User Name Mapping parameter.
 
 There are three different ways to determine the DN from the user ID received in the LDAP bind (using regular expression syntax). Each is described below.
 
@@ -400,5 +400,5 @@ Valid User Name with Incorrect Password. Account locked due to too many bind att
 Valid User Name with no password. Bind might succeed; it depends on the “Bind Requires Password” setting. | If “Bind Requires Password” is enabled, error code 49, invalid credentials, is returned. If “Bind Requires Password” is not enabled, the user is authenticated as Anonymous.
 User Name and Password are Corrrect. Account is locked due to inactivity. Bind is unsuccessful.	| Error Code 50, Reason 775 – Account Locked. This account has been locked due to inactivity. Please contact the system administrator to reset the password.
 No User Name with no password. Bind is successful. | Error code 0. User is authenticated as Anonymous. <br>Even if “Bind Requires Password” is enabled, error code 0 is returned. User is authenticated as Anonymous.
-[Bind Requires SSL or StartTLS](#bind-requires-ssl-or-starttls) is enabled and a user attempts to bind over a non-SSL connection. | Error code 13. Confidentiality Required.
+[Bind Requires SSL or StartTLS](access-controls.md#bind-requires-ssl-or-starttls) is enabled and a user attempts to bind over a non-SSL connection. | Error code 13. Confidentiality Required.
 

@@ -15,7 +15,7 @@ This chapter explains how to manage alerts and email alert settings using comman
 
 This command displays all alerts that are configured. An example of the default configuration for disk usage alert is shown below.
 
->[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
+>[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](01-introduction.md#configuring-command-output-format) for more information.
 
 ![An image showing ](Media/Image15.2.jpg)
 
@@ -29,7 +29,7 @@ In the following example, a request is made to display all configured alerts.
 
 This command allows you to configure a new alert.
 
->[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
+>[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](01-introduction.md#configuring-command-output-format) for more information.
 
 An example of creating an alert that returns the information from the node-monitor data collector for a given node is: vdsconfig.bat new-alert -d node-monitor -p nodeId:4ef6b4c3-a56f-4cd0- 853f-b054c5e851a3 -t not-equals -g isVdsRunning:false -i 60 -e true -n "My Custom Alert" -o FileAlert,EmailAlert
 
@@ -75,7 +75,7 @@ In the following example, a request is made to create a custom alert for when th
 
 This command allows you to edit an alert.
 
->[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
+>[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](01-introduction.md#configuring-command-output-format) for more information.
 
 An example of editing an alert is: vdsconfig.bat edit-alert -x e7dd5763-40eb-4b5c-8799-c6a46cde86ef -g isVdsRunning:true -m "New custom message"
 
@@ -125,7 +125,7 @@ In the following example, a request is made to edit the message that is sent in 
 
 This command allows you to delete an alert.
 
->[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
+>[!note] This command does not support output format configuration. Refer to [Configuring Command Output Format](01-introduction.md#configuring-command-output-format) for more information.
 
 An example of deleting an alert is: vdsconfig.bat delete-alert -x e7dd5763-40eb-4b5c-8799-c6a46cde86ef
 

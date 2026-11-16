@@ -475,7 +475,7 @@ To define an attribute as searchable, from the Main Control Panel > Directory Na
 
 You can define attributes as updateable or not.
 
--	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls](access-control) will allow it).
+-	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls](access-controls.md) will allow it).
 
 -	If an attribute is not updateable, clients cannot modify the value.
 
@@ -586,7 +586,7 @@ For specific configuration details, please see the [RadiantOne Namespace Configu
 
 If you would like your virtual entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value. 
 
-If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of [binary attributes](03-front-end-settings-tab#binary-attributes) in order for RadiantOne to handle it properly.
+If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of [binary attributes](03-front-end-settings.md#binary-attributes) in order for RadiantOne to handle it properly.
 
 Creating multiple computed attributes with the same name is not allowed. If you need to create a computed attribute from a previously computed attribute, that attribute must appear in the virtual object list first. All attributes of the virtual object can be seen on the Objects tab.
 
@@ -726,7 +726,7 @@ Interception scripts are written in Java and used to override the default behavi
 >[!warning]
 >Interception scripts are powerful and offer a lot of flexibility. However, this logic is executed inside RadiantOne so caution should be taken to ensure no undesirable effects. It is highly recommended that you engage Radiant Logic Professional Services to write the interception script(s). If you choose to write your own script(s), the Radiant Logic support team might be unable to diagnose problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the script logic. This is beyond the scope of support and falls under Radiant Logic Professional Services.
 
-Interception scripts can be configured at a [global level](03-front-end-settings#global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). This section describes the tasks that are common for interception scripts no matter where they are enabled.
+Interception scripts can be configured at a [global level](interception.md#global-interception-script) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). This section describes the tasks that are common for interception scripts no matter where they are enabled.
 
 1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
 
@@ -803,7 +803,7 @@ When it comes to evaluating access permissions/authorization, the notion of enfo
   <br>Typically, in situations where the application is configured to assign roles to specific groups, it will be the enforcement point for authorization. This is common with Web Access Management (WAM) products. The application searches the directory for the groups and then checks group membership to see if a particular user should have access to a protected resource. In this scenario, RadiantOne only must respond with groups and members, and the application enforces authorization for the resources it protects.
 
   **RadiantOne Enforcement:**
-  <br>[Access control checking](06-security#access-control) can be turned on or off at the level of RadiantOne. If access control checking is enabled, every time a user authenticates to RadiantOne, it verifies whether the user (or a group the user is a member of) has permissions to access the entries. It allows or denies access based on permissions that have been defined. 
+  <br>[Access control checking](access-controls.md#access-controls) can be turned on or off at the level of RadiantOne. If access control checking is enabled, every time a user authenticates to RadiantOne, it verifies whether the user (or a group the user is a member of) has permissions to access the entries. It allows or denies access based on permissions that have been defined. 
 
 Both the application and RadiantOne can play a role in authorization enforcement if required. If access control checking is enabled in RadiantOne, it decides whether the service account the application connects to the directory with can see groups or not. Then, after reading the group entries, the application decides whether a particular user can access a resource based on roles that are defined in the application itself.
 

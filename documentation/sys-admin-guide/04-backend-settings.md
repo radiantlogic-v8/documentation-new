@@ -101,7 +101,7 @@ To change the Active Directory SRV record limit:
 
 ## Data Sources
 
-A data source in RadiantOne represents the connection to a backend. Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section. Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For more details on data sources, please see [Concepts](concepts).
+A data source in RadiantOne represents the connection to a backend. Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section. Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For more details on data sources, please see [Concepts](02-concepts.md).
 
 >[!note] Data sources can also be managed from the command line using the RadiantOne command line config utility. Details on this utility can be found in the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 

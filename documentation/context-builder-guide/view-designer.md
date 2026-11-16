@@ -507,7 +507,7 @@ Use caution when enabling this parameter if an interception script is defined (w
 
 The default behavior of RadiantOne is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation.
 
-If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details, please see the [How the Join is Performed](02-concepts-and-utilities.md#how-the-join-is-performed). 
+If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details, please see the [How the Join is Performed](concepts-and-utilities.md#how-the-join-is-performed). 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
@@ -893,9 +893,9 @@ To log stored procedure values used at runtime, set the RadiantOne server log le
 
 ### Building Virtual Views from SCIMv2 Backends
 
->[!warning] Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#ldap-accessible-backend). Define the attribute mappings, computed attributes and joins on this virtual view.
+>[!warning] Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#capturing-metadata-from-ldap-accessible-backends). Define the attribute mappings, computed attributes and joins on this virtual view.
 
-It is assumed that the SCIMv2 schema has already been extracted. If you need help with this process, please see [Schema Manager](03-schema-manager.md#ldap-accessible-backend) on the Schema Manager. The steps below describe the basic of creating a virtual view from a SCIMv2 backend. 
+It is assumed that the SCIMv2 schema has already been extracted. If you need help with this process, please see [Schema Manager](schema-manager.md#capturing-metadata-from-ldap-accessible-backends) on the Schema Manager. The steps below describe the basic of creating a virtual view from a SCIMv2 backend. 
 
 1.	On the View Designer tab, click ![new view definition ](Media/Imagenewviewdefinition.jpg) and enter a virtual view name. If a view with the same name already exists, it is overwritten.
 

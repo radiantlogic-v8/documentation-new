@@ -76,7 +76,7 @@ This setting can be enabled from Main Control Panel > Settings tab > Security > 
 
 ## Define Strong Password Policies
 
-RadiantOne offers advanced password policy settings to control everything from password strength, account locking and expiration, and grace logins. For more details, see [Configure Strong Password Policies](02-client-access-limits-and-regulations.md#configure-strong-password-policies).
+RadiantOne offers advanced password policy settings to control everything from password strength, account locking and expiration, and grace logins. For more details, see [Configure Strong Password Policies](01-radiantone-configuration-and-administration.md#configure-strong-password-policies).
 
 ## Use Multi-Factor Authentication
 

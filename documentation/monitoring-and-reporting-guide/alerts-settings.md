@@ -51,7 +51,7 @@ Alerts based on RadiantOne processing load are pre-configured, but not enabled b
 
 ## Custom Alerts
 
-Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in [data collectors](monitoring-and-reporting-guide/data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
+Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in [data collectors](data-collectors.md). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
 
 All custom alerts defined appear on the Main Control Panel > Settings tab > Monitoring section > Custom Alerts section.
 
@@ -59,9 +59,9 @@ The “Enabled” column/status indicates if the alert is active.
 
 ### RadiantOne Service Availability
 
-The RadiantOne service should be monitored. A default custom alert named “VDS Running Check” is configured to monitor the state of the service. If RadiantOne is deployed in a cluster, the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the “VDS Running Check” alert and click Edit.
+The RadiantOne service should be monitored. A default custom alert named “VDS Running Check” is configured to monitor the state of the service. If RadiantOne is deployed in a cluster, the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)). Select the “VDS Running Check” alert and click Edit.
 
-This custom alert leverages the isVdsRunning property of the [node-monitor](monitoring-and-reporting-guide/data-collectors/#node-monitor) data collector to trigger a [file alert](#file-alert-settings) if the RadiantOne service is not equal to true. If the value of the isVdsRunning property is false or N/A, an alert is triggered.
+This custom alert leverages the isVdsRunning property of the [node-monitor](data-collectors.md#node-monitor) data collector to trigger a [file alert](#file-alert-settings) if the RadiantOne service is not equal to true. If the value of the isVdsRunning property is false or N/A, an alert is triggered.
 
 ![An image showing the default alert for RadiantOne Service Availability](Media/Image1.15.jpg)
 
@@ -148,7 +148,7 @@ Whereas the default “VDS Running Check” alert would not send a new alert in 
 To send an alert in the event of a persistent cache periodic refresh failure, configure a custom
 alert.
 
-1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
+1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select event-log from the Monitoring Source drop-down menu.
 4. Click Add Filter in the Event Type column, enter PCACHE for the value and click Add.
@@ -173,7 +173,7 @@ When triggered, this alert displays on the Main Control Panel's Dashboard tab un
 
 ### ZooKeeper Write Failure
 
-The ZooKeeper Write Check alert is enabled by default. This custom alert can be configured from the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the ZooKeeper Write Check alert and click Edit.
+The ZooKeeper Write Check alert is enabled by default. This custom alert can be configured from the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)). Select the ZooKeeper Write Check alert and click Edit.
 
 This custom alert triggers a [file alert](#file-alert-settings) if clients cannot write to ZooKeeper. If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click Save if you modify the alert output).
 
@@ -182,7 +182,7 @@ This custom alert triggers a [file alert](#file-alert-settings) if clients canno
 To send an alert in the event of a synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert. A custom alert can be automatically configured by using the settings from Main Control Panel > Synchronization tab. Select the desired topology and click Configure. In the left navigation menu, click Alerts.  Toggle on the `Capture State Alert Enabled`.  The alert output is a file.  
 
 The custom alert can also be manually configured using the steps below:
-1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
+1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select pipeline from the Monitoring Source drop-down menu.
 4. Click Add Filter in the sourceDn column. Enter the naming context corresponding to the source DN in your sync topology and click Add.
@@ -207,7 +207,7 @@ To send an alert in the event of a synchronization queue growing, configure a cu
 
 The custom alert can also be manually configured using the steps below:
 
-1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
+1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select pipeline from the Monitoring Source drop-down menu.
 4. Click Add Filter in the sourceDn column. Enter the naming context corresponding to the source DN in your sync topology and click Add.
@@ -239,7 +239,7 @@ To send an alert in the status of the pipeline changes (e.g. from running to sto
 To configure alerts when configuration changes are made from the Main Control Panel > Settings tab or using the command line configuration utility (vdsconfig), configure the following
 custom alert.
 
-1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
+1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)).
 2. Click Add.
 3. Select Custom from the Template drop-down menu.
 4. Select config-change from the Monitoring Source drop-down menu.
@@ -258,7 +258,7 @@ custom alert.
 
 A file descriptor is an integer that uniquely represents an opened file. To ensure that the number of file descriptors in use does not reach the maximum file descriptor limit, configure a custom alert as follows.
 
-1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
+1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](01-monitoring.md#expert-mode)).
 2. Click Add.
 3. Select Custom from the Template drop-down menu.
 4. Select node-monitor from the Monitoring Source drop-down menu.
@@ -395,7 +395,7 @@ formatted file located at <RLI_HOME>/logs/alerts.log.
 
 The default rollover size for the alert file is 100MB. The default number of log files to keep archived is 10. The default archive location and file name is: <RLI_HOME>/logs/alerts-<number>.log. These settings can be changed from the Main Control Panel > Settings Tab > Monitoring section > File Alerts Settings sub-section.
 
-To change the alert file location and/or the archive location, expand the Advanced section (requires [Expert Mode](#expert-mode)) and change the value for alert.log.file and alert.log.file.archive respectively.
+To change the alert file location and/or the archive location, expand the Advanced section (requires [Expert Mode](01-monitoring.md#expert-mode)) and change the value for alert.log.file and alert.log.file.archive respectively.
 
 ![An image showing ](Media/Image1.34.jpg)
 

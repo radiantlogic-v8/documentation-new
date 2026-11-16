@@ -64,7 +64,7 @@ To virtualize a SCIM backend:
 
 6.	Click **Test Connection**.
 
-7.	To customize or add new property names, click **Advanced Edit**. See [Custom Properties](#custom-properties) for details.
+7.	To customize or add new property names, click **Advanced Edit**. See [Custom Properties](04-backend-settings.md#custom-properties) for details.
 
 8.	Click **Save**.
 

@@ -20,7 +20,7 @@ Deployment guidelines:
 
 ## Basic Architecture
 
-A basic architecture for the RadiantOne platform consists of a ZooKeeper ensemble of at least 3 nodes and a RadiantOne cluster consisting of at least 2 nodes. This is the basic architecture that should be deployed in each data center. To install this basic architecture in production, follow the steps in the [RadiantOne External Zookeeper Install Guide](/external-zookeeper-install-guide/01-introduction). Once the ZooKeeper ensemble is installed, follow the steps in the [RadiantOne Installation Guide](/installation-guide/01-introduction) to setup the RadiantOne cluster nodes. 
+A basic architecture for the RadiantOne platform consists of a ZooKeeper ensemble of at least 3 nodes and a RadiantOne cluster consisting of at least 2 nodes. This is the basic architecture that should be deployed in each data center. To install this basic architecture in production, follow the steps in the [RadiantOne External Zookeeper Install Guide](../installation-guide/zk-configuring-external-zookeeper-ensemble.md). Once the ZooKeeper ensemble is installed, follow the steps in the [RadiantOne Installation Guide](/installation-guide/01-introduction) to setup the RadiantOne cluster nodes. 
 
 ![An image showing ](Media/Image7.1.jpg)
  
@@ -358,7 +358,7 @@ If the Global Identity Builder was used in the Dev/QA environment, perform an up
 
 ### (Optional) Enabling FIPS Mode
 
-FIPS Mode settings are not migrated with the migration utility. To enable FIPS Mode in production, see the [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
+FIPS Mode settings are not migrated with the migration utility. To enable FIPS Mode in production, see the [RadiantOne FIPS Mode Guide](../hardening-guide/04-securing-data-in-transit.md#enable-fips-mode).
 
 ### (Optional) Configuring Instance Subclusters of RadiantOne
 

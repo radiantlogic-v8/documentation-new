@@ -13,7 +13,7 @@ This section assumes that you have access to an existing Kafka instance that you
 
 To sync between RadiantOne and Kafka topics, you need to configure the following. 
 
-- [Properties file](#configuring-the-properties-files)
+- [Properties file](#configuring-the-properties-file)
 - [Data source](#configuring-the-producer-data-source)
 - [Schemas](#configuring-the-producer-schema) 
 - [Views](#mounting-the-virtual-view)

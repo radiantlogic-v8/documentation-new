@@ -31,7 +31,7 @@ Figure 2: Sample Database Backend
 
 If you configure the database backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of Database Backend.
 
->[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the [RadiantOne Identity Service Wizards Guide](/identity-service-wizards-guide/01-overview.md).
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the [RadiantOne Identity Service Wizards Guide](../identity-service-wizards-guide/01-overview.md).
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the DB Data Sources section. Click **Add** to define database data sources.
 
@@ -306,7 +306,7 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 5.	Click **OK** to apply the changes to the server.
 
-6.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+6.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](../sys-admin-guide/01-introduction.md).
 
 ### Joins
 

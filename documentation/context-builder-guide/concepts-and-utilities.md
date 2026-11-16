@@ -356,7 +356,7 @@ Figure 2.11: Example of an Inner Join
 
 #### Behavior if a Secondary Source is Unavailable 
 
-In cases where one or more of the secondary sources is unavailable, the behavior of RadiantOne depends on if the “[Process Joins and Computed Attributes Only when Necessary](view-designer.md#process-joins-and-computed-attributes-only-when-necessary)” optimization is enabled or not. 
+In cases where one or more of the secondary sources is unavailable, the behavior of RadiantOne depends on if the “[Process Joins and Computed Attributes Only when Necessary](../deployment-and-tuning-guide/03-tuning-tips-for-specific-types-of-backend-data-sources.md#process-joins-and-computed-attributes-only-when-necessary)” optimization is enabled or not. 
 
 If the Process Joins and Computed Attributes Only when Necessary optimization is enabled, and the filter coming from the client request only involves attributes from the primary source, and the attributes requested are only from the primary (main) source, RadiantOne does not need to perform the join. If one of the secondary backend sources is down, RadiantOne does not know in this case because the optimization indicates that it should only join if necessary, and in this example, a join is not necessary. Therefore, RadiantOne does not know if a secondary backend is down or not. In this situation, the entry (with the specific attributes requested) is returned to the client. If the filter in the client request involves attributes that could come from a secondary source (and they are configured as searchable), or if the requested attributes from the client include attributes from secondary sources(s), the optimization is not possible and RadiantOne must join. In this case, the default behavior is to not return the entry at all. If the client issued a base search, they receive LDAP error code 32 along with the error message from the secondary backend that was unavailable. If the client issued a one level or subtree search, they receive error code 9 along with the error message from the secondary backend that failed. 
 
@@ -627,7 +627,7 @@ Figure 22: Desired Hierarchy
 
 The following steps can be used to build the new virtual hierarchy. This example describes building a hierarchy from an LDAP directory backend. 
 
-1.	Extract the object class from the LDAP directory using the Schema Manager. If you need help with this, see section on [Capturing Metadata from LDAP Backends](schema-manager.md#ldap-accessible-backend). 
+1.	Extract the object class from the LDAP directory using the Schema Manager. If you need help with this, see section on [Capturing Metadata from LDAP Backends](schema-manager.md#capturing-metadata-from-ldap-accessible-backends). 
 
     ![Example LDAP Schema](Media/Image2.23.jpg)
 

@@ -261,7 +261,7 @@ You should now see new views created corresponding to the depth level entered, a
 
 ![An image showing ](Media/Image3.18.jpg)
 
-Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [View Designer](04-view-designer.md). 
+Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [View Designer](view-designer.md). 
 
 >[!note] If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: http://support.radiantlogic.com
 
@@ -285,7 +285,7 @@ To create a synonym for an object:
     ![An image showing ](Media/Image3.20.jpg)
   
 
-The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building virtual views. For details on building custom virtual views, please see [Chapter 4: View Designer](04-view-designer.md). 
+The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building virtual views. For details on building custom virtual views, please see [Chapter 4: View Designer](view-designer.md). 
 
 ### Declaring RDN Attribute Name and Value 
 
@@ -348,7 +348,7 @@ To create a derived view, follow the steps below.
 
 ![An image showing ](Media/Image3.26.jpg)
 
-The new derived view object appears in the list of views in the Schema Manager tab. This new object can be used when building virtual views in the [View Designer](04-view-designer.md). 
+The new derived view object appears in the list of views in the Schema Manager tab. This new object can be used when building virtual views in the [View Designer](view-designer.md). 
 
 >[!note] A derived view may NOT be created from the same attribute twice.
 

@@ -116,7 +116,7 @@ The example correlation rule shown below indicates that a source identity is lin
 7. To add a rule, select **Add Correlation Rule**. Rules are processed in the order in which they appear.
 8. Select **Save Rules**.
 9. (Optional) [Define attribute priority](define-attribute-priority.md) if you have global profile attributes whose value can come from multiple identity sources.
-10. [Upload](upload.md) the identity source into the global profile. Otherwise, [add new identity sources](#identity-sources) to the project.
+10. [Upload](upload.md) the identity source into the global profile. Otherwise, [add new identity sources](#global-identity-builder-identity-sources) to the project.
 
 To return to the correlation rules, on the project page, select ![pencil icon](../media/image28.png) next to the identity source and choose **Correlation Rules**.
 

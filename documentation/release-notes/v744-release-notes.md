@@ -13,8 +13,6 @@ These release notes contain the following sections:
 
 [Improvements](#improvements)
 
-[Supported Platforms](#supported-platforms)
-
 [Bug Fixes](#bug-fixes)
 
 [Known Issues](#known-issues)

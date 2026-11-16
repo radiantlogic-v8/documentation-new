@@ -397,7 +397,7 @@ For more details on each application, please refer to the [Applications guide](0
 
 ![](media/apps-upload.png)
 
-This guide explains the different feature of the application configuration pages. Anything specific to an application is described in the [Applications section](02-configuration/#applications).
+This guide explains the different feature of the application configuration pages. Anything specific to an application is described in the [Applications section](03-configuration.md#applications).
 
 #### Group Sets
 
@@ -681,7 +681,7 @@ Downloading the app:
 Downloading the app:
 
 1.  Visit the Windows Store.
-2.  Search for Authenticator or click this [link](https://www.microsoft.com/en-us/store/apps/authenticator/9wzdncrfj3rj).
+2.  Search for Authenticator or click this [link](https://www.microsoft.com/en-us/security/mobile-authenticator-app).
 3.  Download and install the application.
 
 ##### BlackBerry devices

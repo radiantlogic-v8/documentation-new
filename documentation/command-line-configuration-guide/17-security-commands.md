@@ -7,7 +7,7 @@ description: Command Line Configuration Guide
 
 Attribute encryption cipher and key can be set from the Main Control Panel > Settings tab > Security section > HDAP Attribute Encryption section.
 
->[!note] The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
+>[!note] The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](01-introduction.md#configuring-command-output-format) for more information.
 
 ![security commands](Media/Image17.1.jpg)
 

@@ -92,7 +92,7 @@ Figure 4: Authentication Process based on User ID to DN Mapping
 
 ### Manage Global User to DN Mapping
 
-This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](06-security#kerberos), [NTLM](06-security#ntlm), or [MD5](06-security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
+This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](authentication-methods.md#kerberos), [NTLM](06-security#ntlm), or [MD5](authentication-methods.md#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
 
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 
@@ -336,7 +336,7 @@ Linked attributes are attributes that allow relationships between objects. A typ
 
 The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name for the back link attribute is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. 
 
-The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Universal Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes](03-front-end-settings#hide-operational-attributes) is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must check the option to [Enable Nested Groups](06-security#enable-nested-groups) on the Main Control Panel > Settings tab > Security section > Access Control sub-section. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
+The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Universal Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes](03-front-end-settings#hide-operational-attributes) is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must check the option to [Enable Nested Groups](access-controls.md#enable-nested-groups) on the Main Control Panel > Settings tab > Security section > Access Control sub-section. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
 
 To configure rules for linked attributes, following the steps below:
 

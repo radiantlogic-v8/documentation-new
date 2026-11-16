@@ -113,7 +113,7 @@ Level 1 indicates an authentication method of basic credentials (username+passwo
 Level 2 indicates an authentication method of Kerberos (leveraging GSSAPI) is required to access the data. At this level, there is some confidence in the asserted identity's validity. You can use this level when there is moderate risk associated with the authentication strength used to access the RadiantOne data.
 
 >[!warning]
->Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](06-security#kerberos).
+>Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](authentication-methods.md#kerberos).
 
 Level 3 indicates multi-factor authentication (e.g. RSA SecurID token code, Yubikey) is required to access the data. At this level, there is high confidence in the asserted identity's validity. You can use this level when there is high risk associated with the authentication strength used to access the RadiantOne data. 
 
@@ -212,10 +212,10 @@ To support moving an entry from one parent to another, define the access control
 
 A subject is whom the access control rule applies to. The subject types that can be associated with access control rules are described below:
 
->[!warning] It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](concepts#data-source) is configured with the failover servers appropriately.
+>[!warning] It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](02-concepts.md#data-source) is configured with the failover servers appropriately.
 
 -	Users – applicable to any specific user(s).
--	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](access-control#enable-nested-groups) and configure [Linked Attribute](interception#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
+-	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](#enable-nested-groups) and configure [Linked Attribute](interception#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
 -	Tree Branch - Applicable to the DN specified as part of the subject and all entries below it in the virtual directory tree. The defined access permissions apply to any user found in the tree branch you choose.
 -	Public – anyone connected to the directory is considered public. This also includes anonymous users.
 -	Self – applicable to the user whose authenticated DN matches the DN of the entry that is being accessed.
@@ -264,7 +264,7 @@ The ACI evaluation rules that RadiantOne follows are:
 If both lists are empty, access is denied.
 
 >[!warning]
->To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log
+>To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](09-logs.md#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log
 
 ## Setting Access Controls
 
@@ -290,12 +290,12 @@ To define access controls:
 1.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
 1.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
 
-    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](radiantone-ldap-schema#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
+    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](07-directory-schema.md#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
 
 1.	In the Permissions section, select either to allow or deny. 
-1.	Select the [operations](06-security#operations) that you want allowed or denied.
+1.	Select the [operations](#operations) that you want allowed or denied.
 1.	In the Authentication Context section, configure bind rules as needed.
-1.	In the Apply to section, select the [subjects](06-security#subjects) that will be allowed or denied access. 
+1.	In the Apply to section, select the [subjects](#subjects) that will be allowed or denied access. 
 
     To assign users, groups or users associated in a specific tree/branch, click **LDAP SEARCH**. 
 
@@ -317,11 +317,11 @@ The settings configured in the Authorization section determine how RadiantOne ha
 
 ### Enable ACI
 
-The checking of ACIs by RadiantOne can be enabled or disabled by using the Enable ACI checkbox. Check the box to enable and uncheck to disable. For specific details about setting ACI, please see [Security and Access Controls](#security-and-access-controls).
+The checking of ACIs by RadiantOne can be enabled or disabled by using the Enable ACI checkbox. Check the box to enable and uncheck to disable. For specific details about setting ACI, please see [Security and Access Controls](#setting-access-controls).
 
 ### Allow Anonymous Access
 
-If RadiantOne should allow anonymous access, then check the Allow Anonymous Access checkbox. If RadiantOne should not allow anonymous access, make sure this checkbox is not checked. This is the default global access permission for anonymous users and is enforced before subsequent ACI rules. In other words, even if anonymous access were allowed as a general policy, subsequent ACI rules could prevent anonymous users from accessing any data. For details on access controls that can be set, please [Security and Access Controls](#security-and-access-controls).
+If RadiantOne should allow anonymous access, then check the Allow Anonymous Access checkbox. If RadiantOne should not allow anonymous access, make sure this checkbox is not checked. This is the default global access permission for anonymous users and is enforced before subsequent ACI rules. In other words, even if anonymous access were allowed as a general policy, subsequent ACI rules could prevent anonymous users from accessing any data. For details on access controls that can be set, please [Security and Access Controls](#setting-access-controls).
 
 ### Allow Anonymous Access Legacy Behavior
 
@@ -342,7 +342,7 @@ If a user binds to RadiantOne and provides a password, that password is vulnerab
 
 >[!warning] As a best practice, it is recommended that you only allow SSL communication to the RadiantOne service. If you require non-SSL communication but still want to require that binds use SSL or StartTLS, you can use this option.
 
-This option requires enabling SSL. If you want binds to use StartTLS, you must also enable StartTLS. Refer to [SSL Settings](security#ssl-settings) for more information on these settings.
+This option requires enabling SSL. If you want binds to use StartTLS, you must also enable StartTLS. Refer to [SSL Settings](06-security.md#ssl-settings) for more information on these settings.
 
 If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Main Control Panel you must enable “Use SSL” for internal connections in Main Control Panel > Settings > Internal Connections. This setting corresponds to the “internalVDSClientEnableSSL” setting in ZooKeeper at: /radiantone/v2/doc737cluster/config/vds_server.conf.
 

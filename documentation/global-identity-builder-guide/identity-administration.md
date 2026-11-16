@@ -88,7 +88,7 @@ As another example, a user (`Harrison Barnes`) in the global profile, has a logi
 
 Possible ways to resolve a conflicted identity are:
 
-1. Verify that the Global Profile entry has been correlated properly. If it has not, fix your correlation rules, [reset](#remove-identities-from-the-global-profile) and re-upload the identity sources. If correlation logic is insufficient, you can always [manually link](#perform-manual-identity-administration) identities.
+1. Verify that the Global Profile entry has been correlated properly. If it has not, fix your correlation rules, [reset](#remove-identities-from-the-global-profile) and re-upload the identity sources. If correlation logic is insufficient, you can always [manually link](#perform-manual-identity-administration-in-global-identity-builder) identities.
 
 >[!warning]
 >This approach should only be done when [real-time persistent cache refresh](manage-persistent-cache/overview.md) is not running. When you reset a data source, the identities are removed from the global profile. If the identity is the last reference in the global profile (there are no other users linked to it) it is deleted and the unique identifier (VUID) assigned to the identity is removed. In this case, identities that are uploaded again from the same data source are assigned a new global identifier.

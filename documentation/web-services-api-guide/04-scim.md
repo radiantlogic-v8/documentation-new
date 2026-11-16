@@ -183,7 +183,7 @@ To create SCIM attributes:
 
 5.	Provide an optional description. 
 
-6.	Select an [attribute type](#attribute-types).
+6.	Select an [attribute type](#scim-attribute-types).
 
 7.	Enable the Required option if you want this attribute to be required (have a value) to insert or update entries associated with this SCIM schema.
 
@@ -191,9 +191,9 @@ To create SCIM attributes:
 
 9.	Enable Case Exact if the attribute is a string type and you want the value to be case-sensitive.
 
-10.	Select the [mutability](#attribute-mutability).
+10.	Select the [mutability](#scim-attribute-mutability).
 
-11.	Select the condition in which the [attribute is returned](#attribute-returned-characteristics). This indicates when an attribute and associated values are returned in response to a GET request or in response to a PUT, POST, or PATCH request.
+11.	Select the condition in which the [attribute is returned](#scim-attribute-returned-characteristics). This indicates when an attribute and associated values are returned in response to a GET request or in response to a PUT, POST, or PATCH request.
 
 12.	Click Save.
 

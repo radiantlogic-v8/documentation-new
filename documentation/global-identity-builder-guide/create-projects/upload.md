@@ -46,7 +46,7 @@ Bulk upload is for processing identities from all sources in the indicated order
 During the upload, correlation rules are evaluated and source identities are either linked to matching global profile identities, created as new identities in the global profile, or marked as [unresolved](../concepts.md#unresolved-identity) and not added into the global profile. During an upload, the upload and reset buttons are temporarily disabled.
 
 >[!warning]
->Upload order is very important. Consider your correlation rules and identity source data to determine the best upload order. If you modify the upload order during a bulk upload, the modification is implemented in the next upload. For more details, see the [previous section](#upload).
+>Upload order is very important. Consider your correlation rules and identity source data to determine the best upload order. If you modify the upload order during a bulk upload, the modification is implemented in the next upload. For more details, see the [previous section](#upload-a-global-identity-builder-project).
 
 To download the log file for the bulk upload task, select the ![download icon](../media/image47.png) button. Your internet browser settings determine the download location. The file name syntax is as follows.
 
@@ -59,7 +59,7 @@ To remove all entries from the global profile, select **Reset All**. This allows
 Single uploads are for processing identities from a single source. Select **Upload** next to the identity source you want to process and upload into the global profile. During the upload, correlation rules are evaluated and source identities are either linked to matching global profile identities, created as new identities in the global profile, or marked as [unresolved](../concepts.md#unresolved-identity) and not added into the global profile. During an upload, the upload and reset buttons are temporarily disabled.
 
 >[!warning]
->Upload order is very important. Consider your correlation rules and identity source data to determine the best upload order. For more details, see the [previous section](#upload).
+>Upload order is very important. Consider your correlation rules and identity source data to determine the best upload order. For more details, see the [previous section](#upload-a-global-identity-builder-project).
 
 To download the log file for the single upload task, select the ![download icon](../media/image47.png) button. Your internet browser settings determine the download location. The file name syntax is as follows.
 

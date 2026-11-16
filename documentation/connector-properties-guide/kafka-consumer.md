@@ -14,7 +14,7 @@ This section assumes that you have access to an existing Kafka instance that you
 To sync between RadiantOne and Kafka topics, you need to configure the following. 
 
 - [Data source](#configuring-the-consumer-data-source)
-- [Schemas](#configuring-the-schema) 
+- [Schemas](#configuring-the-consumer-schema) 
 - [Views](#mounting-the-virtual-view)
 - [Sync topologies](#configuring-synchronization-as-a-kafka-consumer)
 
@@ -60,7 +60,7 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
 1.	Name the view. In this example, the schema is named kafkaExample.
 
-1. Select the schema you created in [Configuring the Schema](#configuring-the-schema). Click OK. 
+1. Select the schema you created in [Configuring the Schema](#configuring-the-consumer-schema). Click OK. 
 
 1.	In the pane on the left, select the view’s folder icon and click New Content.
 

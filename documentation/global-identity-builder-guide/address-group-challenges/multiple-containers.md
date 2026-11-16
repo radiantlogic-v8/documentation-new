@@ -25,7 +25,7 @@ Once the proxy view is defined, configure a persistent cache.
 5. After the persistent cache is configured, select the cached branch below **Cache** and on the **Refresh Settings** tab, select **Initialize**.
 6. If you selected a Real-time refresh strategy, configure the connectors accordingly and start them. For details, see the Connector Properties Guide and the Deployment and Tuning Guide. If you selected a periodic cache refresh approach, configure the refresh interval. For details, see the Deployment and Tuning Guide.
 7. From the **RadiantOne Main Control Panel** > **Wizards** tab, select the **Global Identity Builder**.
-8. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#base-dn) should point to the persistent cached view of the actual backend data source. An example is shown below.
+8. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#global-identity-builder-identity-sources) should point to the persistent cached view of the actual backend data source. An example is shown below.
     ![Sample Identity Source Pointing to RadiantOne](../media/image148.png)
 
 To learn more about Global Identity Builder, please read the chapter that describes how to [extend the global profile view](../global-profile-view.md).

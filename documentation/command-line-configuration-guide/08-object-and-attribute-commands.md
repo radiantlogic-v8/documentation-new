@@ -318,7 +318,7 @@ This command adds an attribute to a primary object for an LDAP proxy view.
 <br>[required] The source of an attribute. For computed attributes use 'Computed'. For join attributes, use the join ID.
 
 **`- computedexpr <computedexpr>`**
-The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](introduction.md#parsing-command-argument-strings).
+The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](01-introduction.md#parsing-command-argument-strings).
 
 **`- hidden <hidden>`**
 <br>The 'hidden' property value for an attribute. Accepted values are: true, false.
@@ -878,7 +878,7 @@ This command adds an attribute to a content or container node.
 
 **`- computedexpr <computedexpr>`**
 <br>The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument
-Strings](introduction.md#parsing-command-argument-strings).
+Strings](01-introduction.md#parsing-command-argument-strings).
 
 **`- hidden <hidden>`**
 The 'hidden' property value for an attribute. Accepted values are: true, false.
@@ -924,7 +924,7 @@ This command updates the properties of an existing attribute for a content or co
 <br>[required] The source of an attribute. For primary backend attributes use 'Main'. For computed attributes use 'Computed'. For join attributes, use the join ID.
 
 **`- computedexpr <computedexpr>`**
-<br>The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](introduction.md#parsing-command-argument-strings).
+<br>The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](01-introduction.md#parsing-command-argument-strings).
 
 **`- hidden <hidden>`**
 <br>The 'hidden' property value for an attribute. Accepted values are: true, false.

@@ -11,8 +11,6 @@ These release notes contain important information about improvements and bug fix
 
 These release notes contain the following sections: 
 
-[Improvements](#improvements)
-
 [Supported Platforms](#supported-platforms)
 
 [Bug Fixes](#bug-fixes)

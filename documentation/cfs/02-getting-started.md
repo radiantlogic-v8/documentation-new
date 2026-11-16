@@ -59,7 +59,7 @@ CFS v3.16.2 supports FID v7.1.14 and later, with the exception of:
 -   ASP.NET v4.6 (Server Manager > Roles > Web Server (IIS) > Web Server > Web Server > Application Development > ASP.NET 4.6)
 -   HTTP Activation (Server Manager > Features > .NET Framework 4.6 Features > WCF Services > HTTP Activation)
 -   PowerShell 4.0
-    -   [What's New in Windows PowerShell](https://technet.microsoft.com/library/hh857339.aspx)
+    -   [What's New in Windows PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/overview)
     -   [Download Windows Management Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=40855)
 -   RTC only:
     -   Windows Authentication (Server Manager > Roles > Web Server (IIS) > Web Server > Security > Windows Authentication)

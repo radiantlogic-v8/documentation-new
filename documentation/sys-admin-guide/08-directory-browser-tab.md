@@ -66,7 +66,7 @@ Figure 4: Search and Export Functions on the Directory Browser Tab
 
 To create new entries, select the parent location in the tree above where you want the entry created and click ![manage group button](Media/manage-group-button.jpg). Select New Entry, New inetOrgPerson, New Active Directory User New OrganizationalUnit, New Group, or New Active Directory Group. If the entry is not created in a RadiantOne Universal Directory store, the create request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the parent entry is in a Universal Directory store, RadiantOne processes the create request directly.
 
-The sections below describe these default new entry options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the drop-down list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the schema first and then come back to this screen to add your entry. See [RadiantOne Schema](radiantone-ldap-schema) for details on extending the LDAP schema.
+The sections below describe these default new entry options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the drop-down list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the schema first and then come back to this screen to add your entry. See [RadiantOne Schema](07-directory-schema.md) for details on extending the LDAP schema.
 
 ## New Entry
 
@@ -119,7 +119,7 @@ To add explicit members, follow the steps below.
 
 2.	If group members can be other groups, click the checkbox next to the “Search Groups” option in the upper left. 
 
-    >[!note] If RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.
+    >[!note] If RadiantOne needs to [support nested groups](access-controls.md#enable-nested-groups), you must enable that feature.
 
 3.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
 
@@ -148,7 +148,7 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 3.	If group members can be other groups, click on the checkbox next to the “Search Groups” option in the upper left.
 
-    >[!note] If RadiantOne needs to [support nested groups](06-security#enable-nested-groups), you must enable that feature.
+    >[!note] If RadiantOne needs to [support nested groups](access-controls.md#enable-nested-groups), you must enable that feature.
 
 4.	Click **Add**.
 

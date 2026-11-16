@@ -2,7 +2,7 @@
 SAML2 applications let you control how responses and assertions are signed, and they support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
 1. Open the SAML2 application configuration page.
 2. Go to the **Parameters** tab and locate the **Recipients** table.
-   ![SAML Recipients Configuration](media/saml-recipients-config.png "SAML application ACS parameters")
+   ![SAML Recipients Configuration](saml-recipients-config.png "SAML application ACS parameters")
 3. Click **Add Recipient** to add each ACS endpoint as a separate entry, and configure each row:
    - **Index** — position/order of the endpoint.
    - **Location** — the ACS endpoint URL.
@@ -16,12 +16,12 @@ SAML2 applications let you control how responses and assertions are signed, and 
    | `AssertionConsumerServiceIndex` | Uses the recipient at the matching index. |
    | *Neither specified* | Falls back to the recipient marked **Default**. |
 6. Upload your **encryption** and **signing** certificates using the import button.
-   ![SAML signing parameters](media/saml2signing.png "SAML application parameters")
+   ![SAML signing parameters](saml2signing.png "SAML application parameters")
 7. Use the **Sign Response** toggle to sign the entire SAML response when required.
 8. Use the **Sign Assertion** toggle to sign only the assertion when required.
 9. Review the chosen options and click **Save**.
 10. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
-    ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
+    ![Unsigned response option](unsignedsetting.png "unsigned response option")
 11. Return to the SAML configuration page and ensure neither option requires a signature.
 
 ### Configure Token Validity, Level of Assurance, and LOA Highlight
@@ -32,7 +32,7 @@ The **General** tab of a SAML 2 or WS-Federation application includes settings t
 2. Select the SAML application you want to configure and click **Edit**.
 3. Open the **General** tab.
 
-   ![General settings UI](media/token-validity.png "General settings UI")
+   ![General settings UI](token-validity.png "General settings UI")
 
 **Token validity (minutes)** defines how long tokens generated for this application remain valid. Set this value according to your security policy.
 
@@ -81,7 +81,7 @@ CFS allows administrators to control application access by filtering groups usin
 1. Open the SAML2 application configuration page.
 2. Select the application to configure and click Edit.
 3. Open the Access Rules tab.
-    ![](media/ldap-filter.png "LDAP filter UI")
+    ![](ldap-filter.png "LDAP filter UI")
 4. Locate the "Allow groups using filter" field under the group access (allowed groups) section. 
 5. Enter an LDAP filter pattern that matches the groups you want to allow. 
     **Examples:**
@@ -93,7 +93,7 @@ CFS allows administrators to control application access by filtering groups usin
       `(cn=east-*)`
     - Groups ending with `-developers`  
       `(cn=*-developers)`
-     ![](media/ldap-filter-example.png "LDAP filter example")
+     ![](ldap-filter-example.png "LDAP filter example")
     Any group whose attributes match the filter will be granted access based on the defined access rules.
 7. Click **Validate** next to the filter field.
     **Validation results:**
@@ -106,10 +106,10 @@ In SAML, WS-Fed, and OIDC applications, you can configure clock skew to mitigate
 
 To configure clock skew, navigate to Applications > Configured > Parameters. Locate the Clock skew (minutes) setting, enter the appropriate value for certificate and/or token expiration validation, and save your changes.
 
-![](media/clock-skew.png "application clock skew")
+![](clock-skew.png "application clock skew")
 
 By default, the maximum permitted clock skew duration is 10 minutes. To modify this limit, follow these steps:
 1. Log in to the RadiantOne portal and go to the Directory Browser tab.
 2. Navigate from the CFS configuration root (ou=cfs,cn=config) to ou=Parameters,ou={your_tenant},ou=tenants,{configuration_root}, then update the MaxClockSkewMinutes parameter with the desired value.
 
-![](media/clock-skew-param.png "tenant clock skew limit")
+![](clock-skew-param.png "tenant clock skew limit")

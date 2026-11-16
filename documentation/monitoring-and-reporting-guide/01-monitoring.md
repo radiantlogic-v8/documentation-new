@@ -9,8 +9,8 @@ Monitoring is one of the most important aspects of maintaining the health of Rad
 
 The RadiantOne components can be monitored from both the Main and Server Control Panels and command line scripts, in addition to using third party tools.
 
-The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](monitoring-and-reporting-guide/alert-settings/#radiantone-service-availability). For ZooKeeper, see
-[ZooKeeper Write Failure](monitoring-and-reporting-guide/alert-settings/#zookeeper-write-failure).
+The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](alerts-settings.md#radiantone-service-availability). For ZooKeeper, see
+[ZooKeeper Write Failure](alerts-settings.md#zookeeper-write-failure).
 
 ## Expert Mode
 
@@ -975,11 +975,11 @@ Details about configuring and starting the Log2DB utility and the database colum
 
 ### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
 
-Output options and configuration are described in [Alerts](/alerts-settings/#alerts).
+Output options and configuration are described in [Alerts](alerts-settings.md#alerts-overview).
 
 ### Legacy Monitoring Scripts
 
-[Monitoring.bat](#monitoring-and-alerts-from-the-command-line) (monitoring.sh on Unix), consolidates the monitoring abilities of the legacy scripts: memoryMonitoring, ldapBackendMonitoring, connectionMonitoring, dbBackendMonitoring, checkDataSources, and diskSpaceMonitoring.
+[Monitoring.bat](#monitoring-and-alerts-for-the-radiantone-service-from-the-command-line) (monitoring.sh on Unix), consolidates the monitoring abilities of the legacy scripts: memoryMonitoring, ldapBackendMonitoring, connectionMonitoring, dbBackendMonitoring, checkDataSources, and diskSpaceMonitoring.
 
 The legacy monitoring scripts can still be used and are in the <RLI_HOME>/bin/advanced directory. However, the default target log output for these scripts has changed (if you use -v true and want the output to log to a file) because the rli.log has been deprecated. Refer to the description of the -v argument for details.
 

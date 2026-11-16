@@ -16,7 +16,7 @@ Additionally, this document also covers guidance on how to migrate ACIs from one
 
 The contents of this guide are organized into the following sections:
 
-- [Overview](01-overview.md)  
+- [Overview](overview.md)  
   The current page provides a general summary of the ACI migration process and the required credentials.
 
 - [OpenDJ, SunOne/Oracle ODSEE, and RadiantOne v6 ACI Migration](opendj-sunone-migration.md)  

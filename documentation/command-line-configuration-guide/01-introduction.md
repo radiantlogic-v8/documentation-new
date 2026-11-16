@@ -94,9 +94,9 @@ RLI_CLI_MIN_LOGLEVEL | - OFF <br>- FATAL <br>- ERROR <br>- WARN <br>- INFO <br>-
 
 The following VDSConfig command categories do not currently support this configuration.
 
-- Monitoring Alerts Configuration – these commands are a subset of the commands covered in [Security Commands](security-commands.md).
-- [Migration Commands](migration-commands.md)
-- [Security Commands](security-commands.md)
+- Monitoring Alerts Configuration – these commands are a subset of the commands covered in [Security Commands](17-security-commands.md).
+- [Migration Commands](16-migration-commands.md)
+- [Security Commands](17-security-commands.md)
 
 To return legacy plain text output for the commands, use vdsconfig72.bat (Windows), or vdsconfig72.sh (Linux). Vdsconfig72 is located in <RLI_HOME>/bin.
 
@@ -206,7 +206,7 @@ The &quot; notation is replaced at runtime by a double quote character and is in
 
 `update-ldap-primary-attr -name testattr -namingcontext o=companyprofiles -primaryobject inetOrgPerson -source Computed -computedexpr "testattr=&quot;this is a &apos;testattribute&apos;&quot;"`
 
-These special notations should be used only when indicating quotes as part of the value for your argument, and they also work when used as described in the [execfile](general-commands.md#execfile) command.
+These special notations should be used only when indicating quotes as part of the value for your argument, and they also work when used as described in the [execfile](02-general-commands.md#execfile) command.
 
 >[!note] These notations are not compatible with operations issued through a REST (ADAP) interface.
 

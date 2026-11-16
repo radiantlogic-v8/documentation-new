@@ -7,7 +7,7 @@ description: Command Line Configuration Guide
 
 This chapter explains how to manage node properties in a virtual tree using the <RLI_HOME>/bin/vdsconfig utility.
 
-After creating a new virtual tree type of naming context, you can create “sub-containers” with the new-label command. After the new label is created, you can mount different types of backends at these labels (using the [naming context commands](naming-context-commands.md)). An example is shown below.
+After creating a new virtual tree type of naming context, you can create “sub-containers” with the new-label command. After the new label is created, you can mount different types of backends at these labels (using the [naming context commands](06-naming-context-commands.md)). An example is shown below.
 
 ![tree hierarchy commands](Media/Image7.1.jpg)
 
@@ -151,7 +151,7 @@ The response is shown below. The \r\n in the SystemOut represents a carriage ret
 This command sets the value of a given property of a specified node. Setting node property values with this command should be done with extreme caution as the syntax of the properties is very specific and editing them manually is prone to error. It is highly recommended that setting node properties in this manner is done only if advised and guided by the Radiant Logic support team.
 
 >[!warning]
->This command should not be used to modify RDNs. To modify an RDN, use the [set-node-rdn](tree-hierarchy-commands#set-node-rdn) command.
+>This command should not be used to modify RDNs. To modify an RDN, use the [set-node-rdn](#set-node-rdn) command.
 
 **Usage:**
 <br>`set-node-property -dn <dn> -prop <prop> -value <value> [-instance <instance>]`

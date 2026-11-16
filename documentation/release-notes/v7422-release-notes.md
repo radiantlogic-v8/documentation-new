@@ -40,7 +40,6 @@ These release notes contain the following sections:
 
 * [Supported Platforms](#supported-platforms)
 * [Security Vulnerability Fixes](#security-vulnerability-fixes)
-* [Critical Bug Fixes](#critical-bug-fixes)
 * [Improvements](#improvements)
 * [Bug Fixes](#bug-fixes)
 * [Known Issues/Important Notes](#known-issuesimportant-notes)

@@ -277,7 +277,7 @@ The utility does not require the RadiantOne service on the node to be running, b
 
 This option assumes you have maintained a cluster in a DR site that can be used to repair your primary cluster using the steps below. The overall objective is to temporarily add a new node to the DR cluster and then decouple it from the cluster so it becomes the leader node for your primary cluster.
 
-1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the [RadiantOne Installation Guide](/installation-guide/04-node-configuration-commands). For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
+1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the [RadiantOne Installation Guide](../command-line-configuration-guide/04-node-configuration-commands.md). For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
 
 2. Stop all RadiantOne service and Jetty. ZooKeeper should be running on all nodes.
 

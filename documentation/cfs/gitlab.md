@@ -90,4 +90,4 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 Configure GitLab
 ----------------
 
-Follow this [online documentation](https://docs.gitlab.com/ce/integration/saml.html) to configure GitLab for SAML 2.0.
+Follow this [online documentation](https://docs.gitlab.com/integration/saml/) to configure GitLab for SAML 2.0.
