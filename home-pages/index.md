@@ -134,7 +134,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Monitoring in Control Panel](monitoring-and-alerts/monitoring-and-alerts)  
   > Learn about Monitoring capabilities built into the Control Panel. This can be used for both SaaS and Self-managed deployments of RadiantOne Identity Data Management.
   
-  > [Monitoring in Environment Operations Center](/../../eoc/latest/monitoring/monitoring-overview) 
+  > [Monitoring in Environment Operations Center](/../../eoc/latest/dashboards/dashboards-overview/) 
   > Learn about Monitoring capabilities built into the Environment Operations Center. This is only applicable to SaaS deployments of RadiantOne Identity Data Management.
   
   > [Alerts for SaaS Deployments](/../../eoc/latest/admin/integrations/manage-integrations) 
