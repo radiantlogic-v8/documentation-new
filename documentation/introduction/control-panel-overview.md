@@ -123,10 +123,10 @@ This is the callback address your identity provider will redirect back to after 
 
 1. **Configuration Name** (required) — a short internal label for this configuration, e.g. `okta-employees` or `google-workspace`. This is how it'll appear in the OIDC Provider Configurations list, so make it descriptive if you expect to configure more than one provider.
 2. **OIDC Provider** — choose from the dropdown:
-   - **Google**, **Apple**, **Microsoft**, or **Salesforce** — picking one of these automatically fills in the **Discovery URL** with that provider's standard `.well-known/openid-configuration` address.
+   - **Google**, **Microsoft**, or **Salesforce** — picking one of these automatically fills in the **Discovery URL** with that provider's standard `.well-known/openid-configuration` address.
    - **Custom** (default) — for any other provider (Okta, Auth0, Ping, Azure AD/Entra ID, your own IdP, etc.). Enter that provider's discovery URL yourself, or leave it blank and fill in the authorization and token endpoints manually.
 
-![OIDC Provider dropdown open, showing Google, Apple, Microsoft, Salesforce, and Custom](Media/oidc-03-provider-dropdown.jpg)
+![OIDC Provider dropdown open, showing Google, Microsoft, Salesforce, and Custom](Media/oidc-03-provider-dropdown.jpg)
 
 3. Leave **Enabled** off for now if you want to finish testing before this configuration goes live; toggle it on when you're ready for users to be able to sign in with it.
 
@@ -135,7 +135,7 @@ This is the callback address your identity provider will redirect back to after 
 You have two options:
 
 **Option A — Discovery (recommended when your provider supports it):**
-1. Enter the provider's discovery URL in **Discovery URL** (already filled in if you picked Google/Apple/Microsoft/Salesforce in Step 3). This is normally something ending in `/.well-known/openid-configuration`.
+1. Enter the provider's discovery URL in **Discovery URL** (already filled in if you picked Google/Microsoft/Salesforce in Step 3). This is normally something ending in `/.well-known/openid-configuration`.
 2. Click **Discover Endpoint URLs**. The Control Panel fetches that document and automatically fills in **Authorization Endpoint URL** and **Token Endpoint URL** for you.
 
 **Option B — Manual entry:**
@@ -833,6 +833,17 @@ This parameter can be set to the DN of the Administrators group defined in the v
 **Entry Statistics**
 
 [Run Entry Statistics Reports](../reporting/reporting.md#entry-statistics-report) from here.
+
+### Analyze
+
+The Analyze section of the left navigation menu contains the following pages:
+
+- **Alerts**
+- **Monitoring**
+- **Usage & Activity**
+- **Log Viewer**
+
+Only the pages you have permission to view are shown. If none are available to you, the Analyze section is not shown. Searching from the header also returns only the pages you have permission to view.
 
 ### File Manager
 

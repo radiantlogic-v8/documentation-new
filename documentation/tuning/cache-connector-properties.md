@@ -161,7 +161,7 @@ This property accepts a value of `true` or `false` and dictates how the connecto
 For Oracle, SQL Server, MySQL, MariaDB, PostGres, Apache Derby, Snowflake and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
 
 >[!warning]
->This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
+>This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type. For Salesforce backends, see [Real-Time Persistent Cache for Salesforce Objects](#real-time-persistent-cache-for-salesforce-objects).
 >This connector type does not differentiate between `ADD` and `UPDATE` operations. All events are processed as `UPDATE` operations. 
 
 For each database object that is a publisher of changes, a new/changed row in the table must have a timestamp column associated with it.
@@ -231,6 +231,30 @@ Some examples of valid SQL Filters are:
 If the SQL Filter syntax entered into the property is not correct, an error occurs. The connector waits for the length of time specified in the [Retry Interval on Error](#retry-interval-on-error) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#max-retries-on-error) property) is exhausted, if the SQL syntax is still invalid, the connector stops. You must either remove or correct the SQL filter before restarting the connector. It is recommended that you set the connector [Log Level](#log-level) to `DEBUG` and check the connector log for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. The capture connector log is located at `{RLI_HOME}\logs\sync_agents\{PIPELINE_ID}\connector.log` on the RadiantOne node where the sync agent is running. Go to the Classic Control Panel > Server Control Panel > Log Viewer to download and/or view the log file. 
 
 If the connector should process all changed entries, do not enter a SQL filter.
+
+### Real-Time Persistent Cache for Salesforce Objects
+
+You can keep a real-time persistent cache of a Salesforce object by using the Database Timestamp connector with the `LastModifiedDate` column.
+
+To configure it:
+
+1. Create a persistent cache over the identity view of the Salesforce object, with **Real-time** refresh and the **DB Timestamp** connector type.
+2. In the connector properties, set:
+   * **Timestamp Column**: `LastModifiedDate`
+   * **Processing Delay**: `0`
+3. Initialize the cache before you start real-time capture. When the connector starts, it does not replay existing records. It starts from the latest `LastModifiedDate` value of the object.
+
+Inserts and updates are captured.
+
+**Handling deleted records**
+
+With an empty **SQL Filter**, the connector does not see deleted Salesforce records, so a deleted record stays in the cache until a periodic refresh removes it. To have the connector see deleted records, set the **SQL Filter** to exactly:
+
+```
+(IsDeleted=true) OR (IsDeleted=false)
+```
+
+Put parentheses around each comparison and use lowercase `true` and `false`. A filter without the parentheses, such as `IsDeleted=true OR IsDeleted=false`, is rejected with the error `Missing (`, and no changes are captured. After changing the SQL Filter, restart the connector.
 
 ### Query Timeout
 

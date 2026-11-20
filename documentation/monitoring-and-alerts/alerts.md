@@ -64,3 +64,33 @@ To receive alerts when the process that captures source events changes state (e.
 ### Message Queue
 
 To receive alerts when the message queue associated with the selected pipeline reaches a maximum amount of messages in the queue, toggle on the `Processor Queue Size Alert Enabled` and set the threshold.
+
+### Dead Letter Queue
+
+Global Sync events that cannot be applied after the retries are moved to the pipeline's dead letter queue. You can monitor the size of the dead letter queue with the following collectors.
+
+**message-queues-job collector**
+
+Each open dead letter queue is reported as its own row, named `{pipelineId}#dlqueue` with type `SYNC_DEADLETTER`, next to the pipeline's live queue (`{pipelineId}`, type `SYNC`). If a pipeline's dead letter queue has never been opened, no `#dlqueue` row is reported for it.
+
+To read only the dead letter queue of a pipeline, filter on the queue name and type together:
+
+```bash
+monitoring.sh -d message-queues-job -p name:<pipelineId> -p queueType:SYNC_DEADLETTER
+```
+
+Filtering on the name alone returns only the live queue.
+
+**pipeline collector**
+
+The `pipeline` collector reports `deadLetterQueueSize` for the `PROCESSOR` component, next to `processorQueueSize` (the size of the live queue).
+
+**Default dead letter queue alert**
+
+When you install a new sync topology, a default alert named `{pipelineId} dead letter queue size threshold exceeded` is created with the pipeline's other default alerts. This alert:
+
+* Is disabled by default.
+* Is a file alert that is checked every 120 seconds.
+* Is triggered when `deadLetterQueueSize` is greater than `0`, and returns to normal when the dead letter queue is empty.
+
+This alert is not added to sync topologies that were installed before the upgrade. For those topologies, create a custom alert on the `pipeline` collector's `deadLetterQueueSize` property.

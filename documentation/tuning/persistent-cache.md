@@ -125,7 +125,7 @@ If this is the first time you’ve initialized the persistent cache, choose this
 
 *Using an Existing LDIF*
 
-If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose this option to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the LDIF file. 
+If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose this option to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). For details on selecting the file, see [Selecting an Existing LDIF File on the Server](#selecting-an-existing-ldif-file-on-the-server). 
 
 11. Click **DONE**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Manage > Tasks section. 
 
@@ -134,6 +134,31 @@ If you’ve initialized the persistent cache before and the LDIF file was create
 13. (Optional) If your main identity view is joined with other identity views, the cache is auto-configured for these secondary views when you click **CREATE CACHE FOR DEPENDENCIES**. Navigate to the location of the secondary views in the Directory Namespace and **initialize** the cache(s) and **configure the refresh strategy** for the dependent/secondary view(s) from the **CACHE** tab.
 
 >[!warning] When you configure joins on the Object Builder tab using objects from *Secondary Data Source Schemas*, the view is auto-created and mounted under the **cn=staging** root naming context. Go to this naming context and select the **CACHE** tab to manage these secondary data source caches.
+
+## HDAP Trigger Event Filtering
+
+When a persistent cache with real-time refresh or a Global Sync pipeline uses an HDAP trigger to capture changes, you can define LDAP filters so that only matching changes are processed. Changes that don't match the filter are not applied to the cache or the target.
+
+Filters can be defined at the following levels:
+
+| Level | Where to configure | Applies to |
+| :--- | :--- | :--- |
+| Persistent cache | The cache's **Refresh Settings** > **Trigger Event Filter** | All connectors of the cache |
+| Persistent cache connector | The connector's **Pipeline Filter**. The cache-level filter is shown as **Inherited from cache**. | That connector only |
+| Sync topology | The topology's **Trigger Filter** | All pipelines of the topology |
+| Sync pipeline | The pipeline's **Capture** tab > **Pipeline Filter**. The topology-level filter is shown as **Inherited from topology**. | That pipeline only |
+
+When filters are defined at two levels, they are combined with `AND`. For example, a cache filter of `(title=active)` and a connector filter of `(l=NY*)` result in the effective filter `(&(title=active)(l=NY*))`. After you save a filter, the server log shows the effective filter.
+
+### Turning Trigger Event Filtering On or Off for the Deployment
+
+Trigger event filtering can be turned off for the whole deployment from **Control Panel** > **Global Settings** > **Tuning** > **Synchronization**. When it is off:
+
+* All trigger events are processed, and no filters are applied.
+* The filters you defined are kept. They are applied again when you turn trigger event filtering back on.
+* The cache **Refresh Settings** page and the pipeline **Capture** tab show a banner that trigger event filtering is disabled deployment-wide.
+
+Turning trigger event filtering on or off takes effect without a restart.
 
 ## Configuring Persistent Cache with Periodic Refresh
 
@@ -174,7 +199,7 @@ If this is the first time you’ve initialized the persistent cache, then you sh
 
 *Initialize from an Existing LDIF File*
 
-If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and select the LDIF file. 
+If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). For details on selecting the file, see [Selecting an Existing LDIF File on the Server](#selecting-an-existing-ldif-file-on-the-server). 
 
 After you choose to either generate or re-use an LDIF file, click **DONE** and cache initialization begins. Cache initialization is launched as a task and can be viewed from Manage > Tasks.
 
@@ -207,6 +232,19 @@ For details on how the periodic persistent cache refresh process works, see [Per
 You can define a threshold to validate the generated LDIF file/image prior to RadiantOne executing the cache refresh process. The threshold is a percentage of the total entries.
 
 To define a granular threshold for add operations, indicate the percentage in the Add Validation Threshold. For example, if Add Validation Threshold contains a value of 50, it means if the generated LDIF image contains 50% more entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
+
+### Viewing Periodic Refresh Status
+
+When at least one cache on a root naming context uses periodic refresh, the cache table on the **CACHE** tab shows two additional columns:
+
+* **LAST REFRESH**: The result of the most recent periodic refresh: **Never run**, **In progress**, **Success**, or **Failed**.
+* **NEXT REFRESH**: The date and time of the next scheduled refresh, based on the CRON expression (for example, `2026/10/30 – 11:40:00 UTC+2`).
+
+For caches that don't use periodic refresh, both columns show **—**. If no cache uses periodic refresh, the columns are not shown.
+
+The table does not update automatically after a refresh runs. Reload the page to see the latest values.
+
+To monitor persistent cache refresh in more detail, click the **Monitoring** link in the **CACHE** tab description. This opens **Analyze** > **Monitoring** > **Persistent Cache Refresh** with the cache selected.
 
 ## Managing Cache
 
@@ -242,6 +280,14 @@ To use this option, you must have an LDIFZ encryption key configured. The securi
 Once the security key has been defined, check the option to "Use .ldifz" (zipped and secure format).
 
 ![Use LDIFZ](Media/use-ldifz.jpg)
+
+### Selecting an Existing LDIF File on the Server
+
+When you initialize a persistent cache with **Use an existing LDIF file** and **Select file on the server**, the list shows the `.ldif` and `.ldifz` files in the LDIF folder and its subfolders (for example, `export` and `import`) on all nodes in the cluster. Each file is listed with its path relative to the LDIF folder and the node it is on. Use the search box to find a file by name or node. The selected file is shown as the **Source file**.
+
+This lets you reuse an LDIF file that was exported during an earlier initialization, even if that initialization failed or cluster leadership has moved to another node since then.
+
+If the selected file is on another node, it is copied to the node running the initialization at the start of the initialization task. The copy is deleted when the task completes.
 
 ### Backing up (Exporting) Persistent Cache
 

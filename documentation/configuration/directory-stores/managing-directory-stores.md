@@ -141,6 +141,13 @@ When you browse a directory, the browser sends a request to the server to fetch 
 
 The value is set in milliseconds (e.g., if you set the value as 10000, the timeout will happen after 10 seconds). If you're seeing timeout errors when browsing large directories, try increasing this value.
 
+**Sorting the Tree**
+
+To change the sort order of the tree, click the sort icon next to the top node of the tree. Each click switches between ascending (A–Z) and descending (Z–A) order. The default is ascending. Root naming contexts and the entries below each entry are sorted by name, without regard to case. Expanded branches stay expanded.
+
+>[!note]
+>When a branch contains more entries than are returned in one page, the Directory Browser sorts only the entries in the page that was returned.
+
 ### Creating New Entries
 
 >[!warning] 
