@@ -14,7 +14,7 @@ description: Installing RadiantOne Identity Data Platform
     - [Updating certificates](updating-self-signed-certificates.md)
     - [Updating license](updating-license.md)
     - [Configuration promotion](config-promotion.md)
-    - [Configure FIPS mode](configure-fips-mode.md)
+    - [Configure FIPS mode and Internal TLS](configure-fips-mode.md)
     - [Advanced](#)
       - [Deploying with Istio](advanced/deploying-with-istio.md)
       - [Deploying NGINX Ingress](advanced/deploying-with-nginx.md)

@@ -303,6 +303,37 @@ To configure an extended join:
 1.	Click **SAVE** to save the canvas.
  
 
+### Configuring Data Source Storage for Object Extensions
+
+By default, object extension entries are stored in the internal `cn=extendedxjoin` naming context. You can instead store them in a custom HDAP store.
+
+To choose where extension entries are stored:
+
+1. On the OBJECT BUILDER tab, select **Object Extension** from the **+ADD COMPONENT** drop-down menu. The **Object Extension Attributes** dialog opens.
+1. Select the **OBJECT CLASS** and the extension attributes to associate.
+1. Under **Data Source Setting**, select one of the following:
+   * **Default**: Extension entries are stored in the internal `cn=extendedxjoin` naming context. The Full DN is `xid=@[dn]`.
+   * **Custom**: Extension entries are stored in a local HDAP naming context that you choose.
+1. If you selected **Custom**, configure the following:
+   * **Data Source**: Set to **Local VDS**. This value can't be changed.
+   * **Base DN**: Click the browse icon and select the base naming context of your HDAP store (e.g., `o=custom_extension_store`). Base DN is required for a custom store. If it is empty when you click **DONE**, the message "Base DN is required for a custom store." appears and the dialog stays open.
+   * **RDN**: Select the attribute used to construct the extension RDN, `xid=` followed by the attribute value (e.g., `dn` or `EMPLOYEEID`).
+   * **Full DN**: Displays the resulting entry DN, and updates as you change the Base DN and RDN (e.g., `xid=@[EMPLOYEEID],o=custom_extension_store`).
+1. Click **DONE**.
+1. Click **SAVE** to save the canvas.
+
+>[!note] Each object extension on the canvas must use a different object class. If you add an extension with an object class that is already used by another extension on the canvas, the error "Extensible Object already exists in canvas" appears.
+
+#### Changing the Storage Location of an Existing Extension
+
+You can view and change the Data Source Setting after the extension is created.
+
+1. On the OBJECT BUILDER canvas, click the extension object. The side panel opens and displays the settings.
+1. Change the Data Source Setting, Base DN, or RDN as needed. The Full DN updates immediately.
+1. Click **SAVE**.
+
+To go back to the internal store, select **Default** in the side panel and click **SAVE**.
+
 ### Deleting an Extended Join
 
 To delete an extended join, click the extension object on the canvas. This opens the join configuration panel on the right. Click the **Delete** button.

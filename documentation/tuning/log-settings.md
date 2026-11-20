@@ -62,7 +62,7 @@ The table below shows which settings are available in each component based on th
 | SCIM | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
 | Persistent Cache Periodic Refresh | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
 | Sync Agents | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
-| Sync Engine | Log Level | Log Level |
+| Sync Engine | Log Level | Log Level, Rollover Size, Archive Files to Keep, Advanced (File, Archive, Pattern) |
 | Control Panel Server | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
 | Control Panel Access | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
 | Scheduler Server | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
@@ -141,6 +141,103 @@ To verify the signature, download the server.log.file from the Server Control Pa
 openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
 If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”.
 ```
+
+### Temporary Log Level
+
+You can raise a log level for a limited time, for example to DEBUG while you reproduce an issue. At the reset time you choose, the level automatically changes back. This avoids leaving verbose logging on by mistake.
+
+A temporary log level is available for every component on the Log Settings page except **RadiantOne LDAP Access** and **Custom Data Source**.
+
+#### Setting a Temporary Log Level in the Control Panel
+
+1. In the Control Panel, go to **Global Settings** > **Tuning** > **Log Settings** and select the log component.
+2. Select the log level to apply, for example **DEBUG**.
+3. Turn on **Level is Temporary**. The **Reset Time** and **Reset to Log Level** fields appear.
+4. In **Reset Time**, enter the date and time when the log level should change back. The time is in your browser's local time zone. By default, the field is set to about one hour from now. The reset time is required and must be in the future.
+5. In **Reset to Log Level**, select the level to apply at the reset time. By default, this is the component's current log level.
+6. Click **SAVE**.
+
+The temporary level applies immediately on all cluster nodes. Until the reset time, the Log Settings page shows the switch on, with the reset time and the level to reset to. At the reset time, the level changes to the **Reset to Log Level** value on all nodes, and the switch turns off.
+
+#### Changing a Temporary Log Level
+
+* **Keep the current level**: Turn off **Level is Temporary** and click **SAVE**. The pending reset is canceled, and the current level stays in place.
+* **Set a permanent level**: Select a different log level with **Level is Temporary** off and click **SAVE**. The pending reset is canceled.
+* **Replace the temporary window**: Select a new temporary level, reset time, or reset-to level and click **SAVE**. The new settings replace the pending reset.
+
+#### Setting a Temporary Log Level from the Command Line
+
+Use the `set-temporary-log-level` command. The duration is in minutes and must be a positive whole number.
+
+```
+vdsconfig.sh set-temporary-log-level -logger <logger> -level <level> -duration <minutes>
+```
+
+For example, the following command sets the RadiantOne Server log to DEBUG for 2 minutes:
+
+```
+vdsconfig.sh set-temporary-log-level -logger vds-server -level DEBUG -duration 2
+```
+
+The command confirms the change and the reset time, for example: `Logger <Server> level changed from <WARN> to <DEBUG>. Will reset to <WARN> at 2026-11-18T01:46:01.172704066Z[GMT].` When you use the command line, the level resets to the level that was in place before the command.
+
+While a reset is pending for a logger, the command line does not let you change that logger's level, either with `set-temporary-log-level` or with `set-logging-property`. The command returns: `Error: a temporary log level reset task is currently scheduled for <logger>. Please cancel it first using the stop-temporary-log-level-reset command.`
+
+To cancel a pending reset and keep the current level, run:
+
+```
+vdsconfig.sh stop-temporary-log-level-reset -logger <logger>
+```
+
+The following logger names are available:
+
+| Log component | Logger name |
+| :--- | :--- |
+| RadiantOne Server | `vds-server` |
+| Persistent Cache Periodic Refresh | `persistent-cache` |
+| ADAP Access | `adap-access` |
+| Sync Engine | `sync-engine` |
+| SCIM | `scim` |
+| Scheduler Server | `scheduler-server` |
+| Scheduler Tasks | `scheduler-tasks` |
+| Control Panel Server | `control-panel-server` |
+| Control Panel Access | `access` |
+| Control Panel Context Builder Audit | `context-builder-audit` |
+| Common User | `user` |
+| Sync Agents | `agents` |
+
+>[!note] Control Panel Context Builder Audit and Common User are not listed on the Log Settings page. You can set a temporary level for them only from the command line.
+
+#### Confirming the Reset
+
+When the level is reset, the leader node records it in the scheduler task log for that logger, `scheduler/task.<logger>-temporary-log-level-reset-task.log`. For example:
+
+```
+INFO  com.rli.logging.log4j2.TemporaryLogLevelResetTask:163 - Successfully reset Server log level to WARN
+```
+
+### Customizing Sync Engine Logs
+
+For self-managed deployments, you can change the Sync Engine log file location, rollover size, number of archive files, and log pattern from the Control Panel. On SaaS deployments, only the Sync Engine log level can be changed.
+
+Changes apply to all cluster nodes without a restart.
+
+To customize the Sync Engine log:
+
+1. In the Control Panel, go to **Global Settings** > **Tuning** > **Log Settings** and select **Sync Engine**.
+2. Configure the following settings:
+   * **Log Level**: The logging verbosity.
+   * **Rollover Size**: The maximum file size before the log rolls over. The default is `100MB`.
+   * **Archive Files to Keep**: The number of rolled-over log files to keep. The default is `10`.
+3. In the **Advanced** section, you can also configure:
+   * **File**: The log file path. The default is `${rli:logging.root}/${rli:instance.name}/logs/sync_engine/sync_engine.log`.
+   * **Archive**: The file name pattern for rolled-over files. The default is the log file path followed by `.%i`.
+   * **Pattern**: The log line format. The default is `%d{ISO8601} %-5p %C:%L - $$${rli:exec.context}%m%n`.
+4. Click **SAVE**.
+
+>[!note] Keep the three `$` characters before `{rli:exec.context}` in the log pattern. They are required for the execution context to appear in log lines.
+
+After you change the log file location, the Classic Control Panel Log Viewer reads the log from the new file.
 
 ### Production Tuning and Log Management Guidelines
 

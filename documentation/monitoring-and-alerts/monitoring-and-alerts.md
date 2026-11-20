@@ -231,6 +231,21 @@ java.lang.Exception: Threshold reached with 85% difference for adds.
 
 In the example above, a periodic persistent cache refresh is configured on the o=sql naming context.
 
+### Periodic Refresh Statistics
+
+The **Periodic refresh statistics** collector reports the `inserted`, `updated`, and `deleted` values of the most recent completed periodic refresh of each cache. These values are not a running total across refreshes.
+
+To read the values, create a custom alert on the **Periodic refresh statistics** collector, set `storeDN` to the cache's naming context and `propertyId` to the value you want (`inserted`, `updated`, `deleted`, or `agentName`), then click **Preview Data**.
+
+* **Failed refreshes**: If a refresh fails, for example because the backend is unavailable, a validation threshold is reached, or the validation script rejects the image, the values from the last successful refresh are kept.
+* **Values reset to 0**: The values read `0` until the next refresh finishes after the refresh type is changed back to Periodic, the cache is deactivated and reactivated, or the RadiantOne service restarts.
+* **Refresh type None**: If the cache's refresh type is changed to None, the collector returns no values for that cache.
+* **agentName**: The ID of the periodic refresh agent that ran the refresh. It is empty when the RadiantOne server ran the refresh.
+* **Cluster**: All nodes report the same values.
+
+>[!warning]
+>Custom alert thresholds are evaluated against the most recent refresh only. If you set thresholds against the previous running totals, review them.
+
 ### ZooKeeper Logs and Error Messages to Monitor
 
 The most important log to monitor for ZooKeeper is zookeeper.log. This log file can be viewed and downloaded from Server Control Panel > Log Viewer. The following are critical error messages to monitor in this log:

@@ -15,6 +15,10 @@ To design an identity view that aggregates multiple data sources, create a new n
 
 ![Directory Namespace Mounting Options](./Media/dir-namespace-mounting.jpg)
 
+### Sorting the Naming Context Tree
+
+To change the sort order of the naming context tree, click the sort icon next to **Root Naming Contexts**. Each click switches between ascending (A–Z) and descending (Z–A) order. The default is ascending. Root naming contexts and the nodes below them are sorted by name, without regard to case. Expanded branches stay expanded. The Directory Browser uses the same sort order.
+
 ### Icon Overview
 
 Each naming context visible on the Control Panel > Setup > Directory Namespace > Namespace Design can represent a unique type of configuration. Some nodes represent a direct mapping to an LDAP directory identity source backend. Some represent nodes that are configured as persistent cache. Some nodes represent a combination of many different types of identity sources backends. The following table outlines the icons used and their meaning. This gives you global visibility into how the namespace is constructed without having to click on each node to understand the type.

@@ -33,3 +33,27 @@ You only need to follow these steps if your existing license key is about to exp
 
 7. After the update process is complete, confirm that the system displays **“License is Valid”** in a green notification box.  
    The license expiration date and product details should be automatically updated to reflect the new license information.  
+
+## Configuring License Expiration Email Notifications (Self-Managed Only)
+
+>[!note] This applies to Self-managed deployments only. This is managed automatically in RadiantOne SaaS.
+
+You can configure email notifications that are sent before your license expires. These settings are configured from the Control Panel, so you don't need to edit `vds_server.conf` manually.
+
+To configure license expiration email notifications:
+
+1. In the Control Panel, go to **Administration** > **License Management**.
+2. In the **License Expiration Email Notifications** section, enter the following:
+   * **SMTP Server URL** (required): The host name of the SMTP server used to send the notifications.
+   * **SMTP Port** (required): The port of the SMTP server.
+   * **Username** and **Password**: The credentials used to connect to the SMTP server, if required.
+   * **Message Recipient** (required): The email address that receives the notifications.
+   * **Message Sender** (required): The email address the notifications are sent from.
+   * **Days Before Expiration** (required): Notifications are sent when the license expires within this number of days.
+   * **License Check Interval (Days)** (required): How often, in days, the license expiration date is checked.
+   * **Message Subject** (required): The subject of the notification email.
+   * **Message Body** (required): The text of the notification email.
+3. (Optional) Click **SEND TEST EMAIL** to send a test message to the recipient with the configured subject and body. The test email confirms that the SMTP settings work. It does not check the license expiration date.
+4. Click **SAVE**.
+
+The license check runs as the scheduled task `LicenseExpirationEmailSenderTask`, which you can view in **Control Panel** > **Manage** > **Tasks**. A notification is sent only when the license expires within the configured **Days Before Expiration**. A license without an expiration date does not trigger notifications.

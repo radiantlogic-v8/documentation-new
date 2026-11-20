@@ -13,13 +13,14 @@ These release notes contain the following sections:
 
 - [Security Vulnerability Fixes](#security-vulnerability-fixes)
 - [Improvements](#improvements)
+- [Deprecated Features](#deprecated-features)
 - [Bug Fixes](#bug-fixes)
 - [Known Issues](#known-issues)
 - [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
 ## Security Vulnerability Fixes
 
-- [V9-789, V9-998, and V9-1071]: Addressed the following vulnerability in v9.1: CVE-2026-114938.
+- [V9-789, V9-998, and V9-1071]: Addressed the following vulnerabilities in v9.1: CVE-2026-114938, CVE-2025-22228, CVE-2026-2332, CVE-2026-22732, CVE-2026-41707, CVE-2026-47884, CVE-2026-59270, CVE-2024-38816, CVE-2024-38819, CVE-2025-41242, CVE-2025-41249, CVE-2026-19203, CVE-2026-22737, CVE-2026-22740, CVE-2026-41720, CVE-2026-41841, CVE-2026-41842, CVE-2026-41843, CVE-2026-41849, CVE-2026-41850, CVE-2026-41851, CVE-2026-45820, CVE-2026-47838, CVE-2026-47842, CVE-2026-47879, CVE-2026-47885, CVE-2026-47886, CVE-2026-47889, CVE-2026-59276, CVE-2026-59280, CVE-2026-59281, CVE-2026-59282, CVE-2026-59283, CVE-2026-59284, CVE-2026-59316, CVE-2026-59322, CVE-2026-59324, CVE-2026-110816, CVE-2026-111756, and CVE-2026-116689.
 
 ## Improvements
 
@@ -61,8 +62,6 @@ These release notes contain the following sections:
 
 - [V9-544, SQ-1874]: Browser authentication now uses HttpOnly cookies instead of Bearer tokens. Session tokens are fully cleared when users log off or close the browser.
 
-- [V9-545, SQ-1833]: Deprecated the Clustermonitor setting and the Server Control Panel Dashboard graphs it feeds, and hid both from the classic Control Panel. If the Clustermonitor store is still enabled, FID logs a deprecation warning at startup. The `/cluster_monitor` REST endpoints still work, but they are marked as deprecated and no longer appear in the published API documentation.
-
 - [V9-554, SQ-666]: Added new global and per-connector/pipeline HDAP trigger event filter fields to the real-time persistent cache refresh and sync topology/pipeline pages. Added a page for enabling global trigger event filtering under Settings > Synchronization > Trigger Event Filtering.
 
 - [V9-561, SQ-1350]: Added debug logging for paged LDAP searches and index searchers. It records when a paged-results cursor is opened, closed, aged out, or abandoned, and when an index searcher is acquired and released. A periodic message also appears when a paged search producer is blocked because the client has stopped reading pages. This helps identify what is holding index files open when block replication fails with `AccessDeniedException` on a follower node.
@@ -92,6 +91,12 @@ These release notes contain the following sections:
 - [V9-917]: Fixed the HAProxy health check for internal TLS.
 
 - [V9-960]: Mutual authentication can now be disabled for internal TLS.
+
+## Deprecated Features
+
+For the complete list of deprecated and removed features, see [Deprecated and Removed Features](../deprecated-features).
+
+- [V9-545, SQ-1833]: Deprecated the cluster monitor store (`cn=clustermonitor`), its Clustermonitor setting, and the Server Control Panel Dashboard graphs it feeds. These are hidden from the Classic Control Panel. If the cluster monitor store is enabled in your environment, the Clustermonitor setting is still shown with a deprecation warning, so that you can turn it off without configuring it from the command line. After it is turned off, it can no longer be turned on. While the store is enabled, FID logs a deprecation warning at startup. The `/cluster_monitor` REST endpoints still work, but they are marked as deprecated and no longer appear in the published API documentation.
 
 ## Bug Fixes
 

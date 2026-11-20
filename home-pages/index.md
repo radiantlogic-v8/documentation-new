@@ -201,6 +201,9 @@ Harness your identity data with intelligent integration to drive better business
   > [v9 Release Notes](maintenance/release-notes/release-notes)  
   > Release notes contain important information about new features, improvements and bug fixes.
 
+  > [Deprecated and Removed Features](maintenance/deprecated-features)  
+  > Learn which features are deprecated or removed, and what to do before you upgrade.
+
   > [Security Vulnerability Report](maintenance/vulnerability-report)  
   > Learn about security vulnerabilities that have been addressed in each patch release.
   

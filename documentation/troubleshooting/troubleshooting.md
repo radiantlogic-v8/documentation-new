@@ -277,7 +277,6 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 
 -	cn=changelog: modifications to entries in the RadiantOne namespace are tracked in the changelog. Other services can query the changelog frequently to check for changes.
 
--	cn=clustermonitor: various statistics and availability of cluster nodes are retrieved by querying cn=clustermonitor.
 -	cn=replicationjournal: inter-cluster replication queries the cn=replicationjournal.
 
 
@@ -430,6 +429,22 @@ An example of transformation and apply activities that you can find in this log 
 2021-12-14T09:38:27,962 INFO  com.rli.cragents.refresh.EventsProcessor:259 - [EventsProcessor-Sync - sync pipeline - o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory] [SessionId=o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory1639503507954, SequenceId=11] <span style="color:red">Done processing sync event.
 
 2021-12-14T09:38:27,962 INFO  com.rli.cragents.refresh.EventsProcessor:329 - [EventsProcessor-Sync - sync pipeline - o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory] <span style="color:red">Done processing batch of 1 events in 8 ms
+
+#### Upload Logging
+
+When you upload (initialize) a Global Sync pipeline, `sync_engine.log` on the leader node records the upload in lines that start with `[SyncUpload pipelineId=... topologyId=...]`. These lines include:
+
+* The start of the upload and whether it is a new upload or a resumed one.
+* The start and end of the export, with the number of exported entries and the duration.
+* The start and end of the sort, with the duration.
+* The start and end of the upload, with the number of processed entries, the number of errors, and the duration.
+* A summary of the result, with the total duration and the counts.
+* A sample of the first and last applied entries.
+* A progress line about every 1,000 entries, with the number of processed entries, the number of errors, the last event ID, and the elapsed time.
+
+Attribute values are not written to these lines. DNs are written in full, except when the RDN attribute is configured to be hidden in logs, is encrypted, or has a name that ends in `password` or `pwd`.
+
+Upload events are marked with `isFromUpload:true`. For pipelines that use rules-based transformation, regenerate the rule code and rebuild the transformation JAR after upgrading, otherwise upload events are still marked `isFromUpload:false`.
 
 ## Task Scheduler and Tasks
 
