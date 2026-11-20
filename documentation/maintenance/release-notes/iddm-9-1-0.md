@@ -13,8 +13,8 @@ These release notes contain the following sections:
 
 - [Security Vulnerability Fixes](#security-vulnerability-fixes)
 - [Improvements](#improvements)
-- [Deprecated Features](#deprecated-features)
 - [Bug Fixes](#bug-fixes)
+- [Deprecated Features](#deprecated-features)
 - [Known Issues](#known-issues)
 - [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
@@ -90,10 +90,6 @@ These release notes contain the following sections:
 
 - [V9-960]: Mutual authentication can now be disabled for internal TLS.
 
-## Deprecated Features
-
-- [V9-545, SQ-1833]: Deprecated the cluster monitor store (`cn=clustermonitor`), its Clustermonitor setting, and the Server Control Panel Dashboard graphs it feeds. These are hidden from the Classic Control Panel. If the cluster monitor store is enabled in your environment, the Clustermonitor setting is still shown with a deprecation warning, so that you can turn it off without configuring it from the command line. After it is turned off, it can no longer be turned on. While the store is enabled, Identity Data Management logs a deprecation warning at startup. The `/cluster_monitor` REST endpoints still work, but they are marked as deprecated and no longer appear in the published API documentation.
-
 ## Bug Fixes
 
 - [V9-213, SQ-1229]: Fixed an issue so that the Global Identity Builder project configuration is now unlocked only if the Cache Refresh type is set to NONE.
@@ -141,6 +137,10 @@ These release notes contain the following sections:
 - [V9-818]: Fixed an issue where LDIF imports with large groups (500K+ members) ran indefinitely.
 
 - [V9-980]: Fixed an issue where Directory Browser entries whose DNs contained an escaped backslash (`\\`) or escaped double quote (`\"`) could be created but not read, modified, or deleted, and returned 404, 400, or 500 errors.
+
+## Deprecated Features
+
+- [V9-545, SQ-1833]: Deprecated the cluster monitor store (`cn=clustermonitor`), its Clustermonitor setting, and the Server Control Panel Dashboard graphs it feeds. These are hidden from the Classic Control Panel. If the cluster monitor store is enabled in your environment, the Clustermonitor setting is still shown with a deprecation warning, so that you can turn it off without configuring it from the command line. After it is turned off, it can no longer be turned on. While the store is enabled, Identity Data Management logs a deprecation warning at startup. The `/cluster_monitor` REST endpoints still work, but they are marked as deprecated and no longer appear in the published API documentation.
 
 ## Known Issues
 
