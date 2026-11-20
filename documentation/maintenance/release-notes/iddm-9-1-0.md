@@ -84,7 +84,7 @@ These release notes contain the following sections:
 
 - [V9-754]: AD password sync is now configured with environment variables instead of ZooKeeper properties. Also, `vds_server.log` no longer shows startup errors caused by reading the agent registry before the HDAP store has finished initializing.
 
-- [V9-785]: The AD Password Sync client binary is now packaged with FID.
+- [V9-785]: The AD Password Sync client binary is now packaged with Identity Data Management.
 
 - [V9-800, SQ-2029]: The cache initialization screen now allows users to select existing `.ldif`/`.ldifz` files from subfolders of the LDIF folder and files on any cluster node.
 
@@ -96,7 +96,7 @@ These release notes contain the following sections:
 
 For the complete list of deprecated and removed features, see [Deprecated and Removed Features](../deprecated-features).
 
-- [V9-545, SQ-1833]: Deprecated the cluster monitor store (`cn=clustermonitor`), its Clustermonitor setting, and the Server Control Panel Dashboard graphs it feeds. These are hidden from the Classic Control Panel. If the cluster monitor store is enabled in your environment, the Clustermonitor setting is still shown with a deprecation warning, so that you can turn it off without configuring it from the command line. After it is turned off, it can no longer be turned on. While the store is enabled, FID logs a deprecation warning at startup. The `/cluster_monitor` REST endpoints still work, but they are marked as deprecated and no longer appear in the published API documentation.
+- [V9-545, SQ-1833]: Deprecated the cluster monitor store (`cn=clustermonitor`), its Clustermonitor setting, and the Server Control Panel Dashboard graphs it feeds. These are hidden from the Classic Control Panel. If the cluster monitor store is enabled in your environment, the Clustermonitor setting is still shown with a deprecation warning, so that you can turn it off without configuring it from the command line. After it is turned off, it can no longer be turned on. While the store is enabled, Identity Data Management logs a deprecation warning at startup. The `/cluster_monitor` REST endpoints still work, but they are marked as deprecated and no longer appear in the published API documentation.
 
 ## Bug Fixes
 
