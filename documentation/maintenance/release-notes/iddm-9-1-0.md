@@ -38,7 +38,7 @@ These release notes contain the following sections:
 
 - [V9-291, SQ-1468]: Enhanced LDIF comparison to support excluding specific DNs/subtrees from comparison and delta generation.
 
-- [V9-324, SQ-1693]: Added a new settings page (Settings > Monitoring > License Expiration Notification) to configure license expiration email alerts for self-managed deployments, but not EOC. License expiration email notifications are available on the License page. Administrators can set the SMTP server, sender and recipient, message subject and body, how many days before the license expires to send the notification, and how often to check. A test email confirms the settings before they are saved.
+- [V9-324, SQ-1693]: License expiration email notifications for self-managed deployments can now be configured from the Control Panel, in the License Expiration Email Notifications section of Administration > License Management.
 
 - [V9-339, SQ-1721]: AD DirSync and AD USN Changed connectors can now detect leave-scope changes and emit a cache DELETE for the object’s previously cached DN.
 
@@ -50,9 +50,7 @@ These release notes contain the following sections:
 
 - [V9-413, SQ-1798]: Improved the resiliency of Global Sync processing by preventing a processing node from silently halting event handling, which could previously cause queues to accumulate until the node was restarted.
 
-- [V9-468, SQ-1661]: Added a new server setting, `concurrentWriteWaitTimeLimit`, that limits how long a write operation waits when many clients modify the same entry at the same time, such as when making many membership changes to a large group. When the limit is reached, the write is rejected with a "time limit exceeded" error (LDAP code 3) and is not applied, so the client can safely retry it. A write reported as failed is never applied, and a write reported as successful is always applied.
-
-  The value is in seconds, and the setting is disabled by default (`0`), which preserves the current behavior. Concurrent changes to the same entry sent through a follower node are now combined in the same way as on the leader, so bursts of group membership updates complete much faster.
+- [V9-468, SQ-1661]: Added a new server setting, `concurrentWriteWaitTimeLimit`, that limits how long a write operation waits when many clients modify the same entry at the same time, such as when making many membership changes to a large group. When the limit is reached, the write is rejected with a "time limit exceeded" error (LDAP code 3) and is not applied, so the client can safely retry it. A write reported as failed is never applied, and a write reported as successful is always applied. The value is in seconds, and the setting is disabled by default (`0`), which preserves the current behavior. Concurrent changes to the same entry sent through a follower node are now combined in the same way as on the leader, so bursts of group membership updates complete much faster.
 
 - [V9-478]: Added Cost-aware admission, a new Feature Management option that protects RadiantOne nodes from running out of memory when a burst of large persistent cache refreshes or Global Sync changes arrives, such as changes to groups with hundreds of thousands of members. When enabled, each node starts only as many changes as fit within a memory budget (by default, about half of the heap). Small changes continue processing instead of waiting behind larger ones, and changes to the same entry stay in order. The option is disabled by default and can be enabled or disabled without a restart.
 
@@ -68,7 +66,7 @@ These release notes contain the following sections:
 
 - [V9-575]: Added internal TLS for communication between RadiantOne components.
 
-- [V9-581]: [V9-581]: Removed an incorrect option that listed Apple as a supported OIDC provider. This option no longer appears in the UI.[V9-581]: Removed an incorrect option that listed Apple as a supported OIDC provider. This option no longer appears in the UI.
+- [V9-581]: Removed an incorrect option that listed Apple as a supported OIDC provider. This option no longer appears in the UI.
 
 - [V9-631, SQ-1473]: Restored detailed SyncUpload INFO logging for the upload/init lifecycle, with DN and error sanitization. Fixed `isFromUpload` so it is correctly preserved through mapping and newly generated transform/rule code.
 

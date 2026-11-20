@@ -1,6 +1,6 @@
 ---
 title: Updating a License
-description: Learn how to replace an expiring license with a new license in your self-managed Identity Data Management.
+description: Learn how to replace an expiring license with a new license and configure license expiration email notifications in your self-managed Identity Data Management.
 ---
 
 ## Overview
@@ -9,7 +9,6 @@ This document provides detailed instructions for updating the license key in a *
 You only need to follow these steps if your existing license key is about to expire. These steps do not apply to the SaaS version of Identity Data Management.  
 
 > If you are unable to access your Identity Data Management application endpoints due to an invalid license, you will need to update your [values.yaml](./self-managed/#steps-for-deployment) file with the new license key and [redeploy your application](./self-managed/#updating-a-deployment).  
-
 
 ### Prerequisites
 
@@ -53,6 +52,9 @@ To configure license expiration email notifications:
    * **License Check Interval (Days)** (required): How often, in days, the license expiration date is checked.
    * **Message Subject** (required): The subject of the notification email.
    * **Message Body** (required): The text of the notification email.
+
+   ![License Expiration Email Notifications section on the License Management page](images/license-expiration-email-notifications.png "License Expiration Email Notifications")
+
 3. (Optional) Click **SEND TEST EMAIL** to send a test message to the recipient with the configured subject and body. The test email confirms that the SMTP settings work. It does not check the license expiration date.
 4. Click **SAVE**.
 
