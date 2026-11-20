@@ -33,7 +33,7 @@ You only need to follow these steps if your existing license key is about to exp
 7. After the update process is complete, confirm that the system displays **“License is Valid”** in a green notification box.  
    The license expiration date and product details should be automatically updated to reflect the new license information.  
 
-## Configuring License Expiration Email Notifications (Self-Managed Only)
+### Configuring License Expiration Email Notifications
 
 >[!note] This applies to Self-managed deployments only. This is managed automatically in RadiantOne SaaS.
 
