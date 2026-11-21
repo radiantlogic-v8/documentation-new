@@ -24,9 +24,9 @@ These release notes contain the following sections:
 
 ## Improvements
 
-- [V9-146, SQ-1127]: Object Extensions can now store their entries in a custom HDAP naming context. The new Data Source Setting has two options: Default keeps the internal `cn=extendedxjoin` store, and Custom uses Local VDS. You select a Base DN and an RDN attribute, and the full DN is shown. The custom setting can be viewed and changed later from the extension's side panel, not only when the extension is created.
+- [V9-146, SQ-1127]: Object Extensions can now store their entries in a custom HDAP naming context. The new Data Source Setting has two options: Default keeps the internal `cn=extendedxjoin` store, and Custom uses Local VDS.
 
-- [V9-184]: The following server settings can now be viewed and updated programmatically: Disable Referral Chasing, Paged Results, Page Size (when paging is enabled), and Enable SSL. A dedicated API provides a way to read current values and change them in a controlled way. No new Control Panel or UI screens have been added.
+- [V9-184]: Added a new API to perform these actions: Disable Referral Chasing, Paged Results, Page Size (when paging is enabled), and Enable SSL. 
 
 - [V9-212]: Added the ability to set a temporary log level that reverts to the previous level after a limited time. This is useful for temporarily enabling debug-level logging without the risk of leaving it on.
 
@@ -50,9 +50,9 @@ These release notes contain the following sections:
 
 - [V9-413, SQ-1798]: Improved the resiliency of Global Sync processing by preventing a processing node from silently halting event handling, which could previously cause queues to accumulate until the node was restarted.
 
-- [V9-468, SQ-1661]: Added a new server setting, `concurrentWriteWaitTimeLimit`, that limits how long a write operation waits when many clients modify the same entry at the same time, such as when making many membership changes to a large group. When the limit is reached, the write is rejected with a "time limit exceeded" error (LDAP code 3) and is not applied, so the client can safely retry it. A write reported as failed is never applied, and a write reported as successful is always applied. The value is in seconds, and the setting is disabled by default (`0`), which preserves the current behavior. Concurrent changes to the same entry sent through a follower node are now combined in the same way as on the leader, so bursts of group membership updates complete much faster.
+- [V9-468, SQ-1661]: Added concurrentWriteWaitTimeLimit (seconds; default 0, disabled) to limit waits for concurrent writes to the same entry. Timed-out writes return LDAP code 3 without being applied and can be safely retried. Follower nodes now combine concurrent updates like the leader, speeding up group membership changes.
 
-- [V9-478]: Added Cost-aware admission, a new Feature Management option that protects RadiantOne nodes from running out of memory when a burst of large persistent cache refreshes or Global Sync changes arrives, such as changes to groups with hundreds of thousands of members. When enabled, each node starts only as many changes as fit within a memory budget (by default, about half of the heap). Small changes continue processing instead of waiting behind larger ones, and changes to the same entry stay in order. The option is disabled by default and can be enabled or disabled without a restart.
+- [V9-478]: Added Cost-aware admission in Feature Management to prevent memory exhaustion during large persistent cache refreshes or Global Sync bursts. It limits concurrent changes to a memory budget (about half the heap), lets smaller changes proceed, and preserves per-entry update order. Disabled by default; changes require no restart.
 
 - [V9-485]: The configured cache details for periodic refreshes now show Last Refresh Status and Next Scheduled Refresh.
 
