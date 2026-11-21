@@ -161,6 +161,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Synchronizing Passwords using RadiantOne Password Filter](use-cases/radiantone-password-filter)
   > Learn how to use the RadiantOne Password Filter to keep user passwords consistent across multiple Active Directories.
 
+  > [Synchronizing AD Passwords in Self-managed Deployments](use-cases/ad-password-sync)
+  > Learn how to configure AD Password Sync to retrieve and synchronize Active Directory password hashes in self-managed deployments.
+
   > [Modernize Legacy LDAP Directories](use-cases/ldap-directory-replacement)
   > Learn how to migrate from legacy LDAP directories to the RadiantOne Directory. 
 

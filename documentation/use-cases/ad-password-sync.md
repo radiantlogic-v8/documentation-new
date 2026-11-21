@@ -1,9 +1,9 @@
 ---
-title: Active Directory Password Synchronization for Self-Managed Deployments
+title: Synchronizing AD Passwords in Self-managed Deployments
 description: Learn how to configure Active Directory password hash retrieval and synchronization with AD Password Sync in self-managed RadiantOne Identity Data Management v9 deployments.
 ---
 
-# Active Directory Password Synchronization for Self-Managed Deployments
+# Synchronizing AD Passwords in Self-managed Deployments
 
 ## Overview
 
