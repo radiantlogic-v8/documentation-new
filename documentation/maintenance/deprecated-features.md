@@ -15,8 +15,8 @@ For the changes made in a specific release, see the [v9 Release Notes](release-n
 ## Deprecated Features
 
 | Feature | Deprecated in | Details |
-| :--- | :--- | :--- | :--- |
-| Cluster monitor store (`cn=clustermonitor`) and the Server Control Panel Dashboard graphs it feeds | v9.1.0 | See [Cluster Monitor Store](#cluster-monitor-store). |
+| :--- | :--- | :--- |
+| Cluster monitor store (`cn=clustermonitor`) and the Server Control Panel Dashboard graphs that use its data | v9.1.0 | See [Cluster Monitor Store](#cluster-monitor-store). |
 
 
 ### Cluster Monitor Store
