@@ -222,16 +222,16 @@ Changes apply to all cluster nodes without a restart.
 
 To customize the Sync Engine log:
 
-1. In the Control Panel, go to **Global Settings** > **Tuning** > **Log Settings** and select **Sync Engine**.
+1. In the Control Panel, go to Global Settings > Tuning > Log Settings and select Sync Engine.
 2. Configure the following settings:
-   * **Log Level**: The logging verbosity.
-   * **Rollover Size**: The maximum file size before the log rolls over. The default is `100MB`.
-   * **Archive Files to Keep**: The number of rolled-over log files to keep. The default is `10`.
+   * Log Level: The logging verbosity.
+   * Rollover Size: The maximum file size before the log rolls over. The default is `100MB`.
+   * Archive Files to Keep: The number of rolled-over log files to keep. The default is `10`.
 3. In the **Advanced** section, you can also configure:
-   * **File**: The log file path. The default is `${rli:logging.root}/${rli:instance.name}/logs/sync_engine/sync_engine.log`.
-   * **Archive**: The file name pattern for rolled-over files. The default is the log file path followed by `.%i`.
-   * **Pattern**: The log line format. The default is `%d{ISO8601} %-5p %C:%L - $$${rli:exec.context}%m%n`.
-4. Click **SAVE**.
+   * File: The log file path. <br> Default is `${rli:logging.root}/${rli:instance.name}/logs/sync_engine/sync_engine.log`.
+   * Archive: The file name pattern for rolled-over files. The default is the log file path followed by `.%i`.
+   * Pattern: The log line format. The default is `%d{ISO8601} %-5p %C:%L - $$${rli:exec.context}%m%n`.
+4. Click SAVE.
 
 >[!note] Keep the three `$` characters before `{rli:exec.context}` in the log pattern. They are required for the execution context to appear in log lines.
 
