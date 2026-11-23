@@ -144,9 +144,9 @@ If the source file is authentic, the above command returns “Verified OK”. If
 
 ### Temporary Log Level
 
-You can raise a log level for a limited time, for example to DEBUG while you reproduce an issue. At the reset time you choose, the level automatically changes back. This avoids leaving verbose logging on by mistake.
+The Temporary Level setting lets you turn on more detailed logging for a specified time. For example, you can switch from WARN to DEBUG while troubleshooting an issue, then set it to automatically switch back after a set period. This helps you capture the information you need without leaving detailed logging on for longer than needed, which can slow performance and increase log size. 
 
-A temporary log level is available for every component on the Log Settings page except **RadiantOne LDAP Access** and **Custom Data Source**.
+A temporary log level is available for all components on the Log Settings page except **RadiantOne LDAP Access** and **Custom Data Source**.
 
 #### Setting a Temporary Log Level in the Control Panel
 
@@ -156,8 +156,6 @@ A temporary log level is available for every component on the Log Settings page 
 4. In **Reset Time**, enter the date and time when the log level should change back. The time is in your browser's local time zone. By default, the field is set to about one hour from now. The reset time is required and must be in the future.
 5. In **Reset to Log Level**, select the level to apply at the reset time. By default, this is the component's current log level.
 6. Click **SAVE**.
-
-The temporary level applies immediately on all cluster nodes. Until the reset time, the Log Settings page shows the switch on, with the reset time and the level to reset to. At the reset time, the level changes to the **Reset to Log Level** value on all nodes, and the switch turns off.
 
 #### Changing a Temporary Log Level
 
@@ -189,7 +187,7 @@ To cancel a pending reset and keep the current level, run:
 vdsconfig.sh stop-temporary-log-level-reset -logger <logger>
 ```
 
-The following logger names are available:
+**Logger values** 
 
 | Log component | Logger name |
 | :--- | :--- |
