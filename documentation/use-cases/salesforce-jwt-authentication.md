@@ -5,18 +5,16 @@ description: Configure a Salesforce JDBC data source with OAuth 2.0 JWT Bearer a
 
 # Connect RadiantOne Identity to Salesforce
 
-Connect RadiantOne Identity Data Management to Salesforce to query Salesforce data and expose the results as directory entries. This guide uses OAuth 2.0 JWT Bearer authentication, which does not require a Salesforce password or interactive login.
+Connect RadiantOne Identity Data Management to Salesforce to query Salesforce data and display the results as directory entries. This guide uses OAuth 2.0 JWT Bearer authentication, which does not require a Salesforce password or interactive login.
 
 Starting with Identity Data Management 9.1.0, the Salesforce JDBC driver can sign a JWT assertion using a private key on the Identity Data Management host and exchange the assertion for an access token.
 
-Configure Salesforce first, then configure Identity Data Management using the values collected from Salesforce.
-
-Username and password authentication (`basic` mode) remains the default. Switching to JWT Bearer authentication does not change queries, schemas, or mounts.
+Configure Salesforce first, then configure Identity Data Management using the values collected from Salesforce. Username and password authentication (`basic` mode) remains the default. Switching to JWT Bearer authentication does not change queries, schemas, or mounts.
 
 >[!note]
 >The instructions in this document apply to RadiantOne Identity Data Management 9.1.0 and later.
 
-## When to switch
+## Login method deprecation
 
 Salesforce is retiring the SOAP `login()` call traditionally used by Salesforce JDBC data sources.
 
