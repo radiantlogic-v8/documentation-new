@@ -167,6 +167,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Modernize Legacy LDAP Directories](use-cases/ldap-directory-replacement)
   > Learn how to migrate from legacy LDAP directories to the RadiantOne Directory. 
 
+  > [Integrate Identity Data from Salesforce](use-cases/salesforce-jdbc)
+  > Learn how to connect RadiantOne to Salesforce and virtualize its identity data in Identity Data Management.
+
   > [Integrate Identity Data from Okta Universal Directory](use-cases/radiantone-okta-integration)
   > Learn how to ingest/virtualize identity data from Okta Universal Directory.
  
