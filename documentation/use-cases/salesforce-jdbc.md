@@ -3,7 +3,7 @@ title: Connect RadiantOne Identity Data Management to Salesforce
 description: Configure a Salesforce JDBC data source with OAuth 2.0 JWT Bearer authentication and expose Salesforce records as directory entries in RadiantOne.
 ---
 
-# Connect RadiantOne Identity to Salesforce
+# Overview
 
 Connect RadiantOne Identity Data Management to Salesforce to query Salesforce data and display the results as directory entries. This guide uses OAuth 2.0 JWT Bearer authentication, which does not require a Salesforce password or interactive login.
 
