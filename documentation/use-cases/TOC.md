@@ -12,4 +12,4 @@ description: Learn about how you can utilize Radiant Logic to synchronize data f
 - [Replacing Legacy LDAP Directories with RadiantOne Directory](ldap-directory-replacement.md)
 - [Integrating Identity Data from Okta Universal Directory](radiantone-okta-integration.md)
 - [Leverage Okta as the Identity Provider for SSO into Control Panel](okta-sso-controlpanel.md)
-- [Connect RadiantOne Identity Data Management to Salesforce](salesforce-jwt-authentication.md)
+- [Connect RadiantOne Identity Data Management to Salesforce](salesforce-jdbc.md)
