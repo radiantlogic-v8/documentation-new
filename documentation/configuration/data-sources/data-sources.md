@@ -187,7 +187,7 @@ PROPERTY	| DESCRIPTION
 Driver Class Name	| Auto-populated, non-editable. Based on the template.
 Driver URL	| Enter the URL to connect to the Database server.
 User 	| Service account name that the RadiantOne service should use to connect to the backend.
-Password	| Credentials associated with the account indicated in the User property.
+Password	| Credentials associated with the account indicated in the User property. The value depends on the database and its authentication method. For example, for a Salesforce data source that uses OAuth 2.0 JWT Bearer authentication, enter the keystore password, not the Salesforce account password. For more information, see [Connect RadiantOne to Salesforce](../../use-cases/salesforce-jdbc).
 Failover servers | Select the configured database data source that contains the failover server connection details. 
 
 
