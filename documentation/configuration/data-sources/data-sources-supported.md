@@ -67,7 +67,7 @@ Templates for cloud services are located on the OTHER tab.
 - Google Directory. Use the template named Google Directory.
 - Amazon Cognito. Use the template named awscognito.
 - Any SCIMv2 service. Use the template named SCIMv2.
-- Salesforce. Use the template named SCIMv2.
+- Salesforce. Use the template named Salesforce.
 - Zscaler. Use the template named SCIMv2.
 - Saviynt. Use the template named SCIMv2.
 - CyberArk Privileged Cloud. Create a new template based on the CyberArk connector you can download from the [Connector Marketplace](https://github.com/radiantlogicinc/connector-marketplace/tree/main/cyberark-privilege-cloud)
